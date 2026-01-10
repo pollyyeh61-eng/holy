@@ -1,0 +1,159 @@
+<style>
+    :root {
+        --iridescent-glow: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+        --neon-blue: #00d2ff;
+    }
+
+    /* 確保嵌入時背景顏色一致 */
+    .p8-wrapper {
+        background: #050505;
+        color: #fff;
+        min-height: 100%;
+        font-family: 'PingFang TC', sans-serif;
+    }
+
+    .links-header {
+        padding: 80px 10% 40px;
+        text-align: center;
+    }
+
+    .links-header h1 {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+        font-weight: 900;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: clamp(5px, 2vw, 15px);
+        background: var(--iridescent-glow);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .links-matrix {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 0 10% 120px;
+    }
+
+    .link-card {
+        position: relative;
+        height: 300px; /* 稍微調降高度讓畫面更緊湊 */
+        background: #1a1a1a;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: all 0.4s ease;
+        text-decoration: none;
+    }
+
+    .link-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 2px solid transparent;
+        background: var(--iridescent-glow) border-box;
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: 0.4s;
+    }
+
+    .link-card:hover { transform: translateY(-5px); }
+    .link-card:hover::after { opacity: 1; }
+
+    .card-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+
+    .link-card:hover .card-bg { opacity: 0.8; transform: scale(1.1); }
+
+    .card-content {
+        padding: 20px;
+        z-index: 2;
+        background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    }
+
+    .card-content h3 { margin: 0; font-size: 1.2rem; letter-spacing: 2px; color: #fff; }
+    .card-content .action-text {
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 0.75rem;
+        color: var(--neon-blue);
+        font-weight: bold;
+    }
+
+    .footer-logo {
+        text-align: center;
+        padding-bottom: 50px;
+        opacity: 0.3;
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+    }
+</style>
+
+<div class="p8-wrapper">
+    <header class="links-header">
+        <h1>Connect Us</h1>
+    </header>
+
+    <main class="links-matrix">
+        <a href="https://www.youtube.com/@vitalityhair" target="_blank" class="link-card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800');"></div>
+            <div class="card-content">
+                <h3>YouTube 頻道</h3>
+                <span class="action-text">GO TO CHANNEL →</span>
+            </div>
+        </a>
+
+        <a href="#" target="_blank" class="link-card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=800');"></div>
+            <div class="card-content">
+                <h3>FB 社團</h3>
+                <span class="action-text">JOIN COMMUNITY →</span>
+            </div>
+        </a>
+
+        <a href="#" target="_blank" class="link-card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800');"></div>
+            <div class="card-content">
+                <h3>蝦皮賣場</h3>
+                <span class="action-text">SHOP NOW →</span>
+            </div>
+        </a>
+
+        <a href="#" target="_blank" class="link-card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1595475243510-973f443df890?auto=format&fit=crop&q=80&w=800');"></div>
+            <div class="card-content">
+                <h3>FB 粉絲專頁</h3>
+                <span class="action-text">FOLLOW US →</span>
+            </div>
+        </a>
+
+        <a href="#" target="_blank" class="link-card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&q=80&w=800');"></div>
+            <div class="card-content">
+                <h3>LINE 社群</h3>
+                <span class="action-text">LINE GROUP →</span>
+            </div>
+        </a>
+
+        <a href="mailto:service@hairweb.net" class="link-card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=800');"></div>
+            <div class="card-content">
+                <h3>葉老師信箱</h3>
+                <span class="action-text">SEND EMAIL →</span>
+            </div>
+        </a>
+    </main>
+
+    <div class="footer-logo">VITALITY HAIR ACADEMY 2026</div>
+</div>
