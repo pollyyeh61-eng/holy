@@ -1,50 +1,79 @@
 <style>
-    /* 基礎排版 */
-    .content-inner { padding: clamp(60px, 10%, 120px) 8% 100px 8%; }
-    
-    .brand-heading { position: relative; padding-left: 20px; margin-bottom: 40px; }
-    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: #000; }
-    .brand-heading::after { content: ""; position: absolute; left: 0; bottom: 0; width: 50px; height: 3px; background: #000; }
-    
-    /* 標題字體縮小並改為純黑 */
-    .brand-heading h1 { 
-        font-size: clamp(1.8rem, 6vw, 2.8rem); 
-        margin: 0; 
-        letter-spacing: 3px; 
-        font-weight: 700; 
-        color: #000; 
-    }
-    .brand-heading .subtitle { font-size: 0.85rem; letter-spacing: 4px; color: #5a4ad1; font-weight: 700; margin-top: 5px; }
-    
-    .info-section { margin-bottom: 40px; max-width: 700px; }
-    
-    /* 內文字加深、加粗 */
-    p { 
-        color: #000000 !important; 
-        line-height: 1.7; 
-        font-weight: 450; 
-        font-size: 1.05rem;
+    /* 1. 調整整體內距，讓內容在手機上不會頂到上下選單 */
+    .content-inner { 
+        padding: clamp(40px, 10%, 80px) 6% 120px 6%; 
     }
 
+    /* 2. 標題區域優化 */
+    .brand-heading { 
+        position: relative; 
+        padding-left: 20px; 
+        margin-bottom: 30px; 
+    }
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: #000; }
+    
+    /* 標題字體縮小：使用 clamp 確保手機不折行，電腦夠大 */
+    .brand-heading h1 { 
+        font-size: clamp(1.8rem, 8vw, 2.8rem); 
+        margin: 0; 
+        letter-spacing: 2px; 
+        font-weight: 800; 
+        color: #000; /* 純黑增加清晰度 */
+    }
+    .brand-heading .subtitle { 
+        font-size: 0.8rem; 
+        letter-spacing: 3px; 
+        color: #4834d4; 
+        font-weight: 700; 
+    }
+
+    /* 3. 內文顏色加深與字體微調 */
+    .info-section { margin-bottom: 40px; max-width: 700px; }
+    
+    p { 
+        color: #000000 !important; /* 強制純黑 */
+        font-size: 1.05rem;        /* 稍微放大字體 */
+        line-height: 1.8;          /* 增加行高，閱讀更輕鬆 */
+        font-weight: 450;          /* 增加一點點粗度 */
+        margin-bottom: 1.2em;
+    }
+
+    /* 強調語錄加深 */
     .highlight-quote { 
         font-size: 1.1rem; 
         font-weight: 700; 
         border-left: 5px solid #6c5ce7; 
-        padding: 10px 20px; 
+        padding: 15px 20px; 
         margin: 25px 0; 
         color: #000; 
-        background: rgba(108, 92, 231, 0.05);
+        background: rgba(108, 92, 231, 0.08); /* 稍微加深底色 */
     }
-    
-    .path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
-    .path-card { background: rgba(255,255,255,0.6); padding: 20px; border: 1px solid #ddd; backdrop-filter: blur(10px); }
-    .path-card h4 { margin: 0 0 10px 0; color: #4834d4; font-weight: 700; font-size: 1.1rem; }
 
-    /* 📱 手機版特別強化 */
+    /* 4. 職涯路徑卡片在手機改為單欄 */
+    .path-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+        gap: 15px; 
+        margin-top: 25px; 
+    }
+    .path-card { 
+        background: rgba(255,255,255,0.7); 
+        padding: 20px; 
+        border: 1px solid #ccc; /* 邊框顏色加深 */
+        backdrop-filter: blur(10px); 
+    }
+    .path-card h4 { 
+        margin: 0 0 10px 0; 
+        color: #2e1fad; 
+        font-weight: 800; 
+        font-size: 1.15rem;
+    }
+
+    /* 5. 手機版特別修正 */
     @media (max-width: 768px) {
-        .content-inner { padding-top: 40px; } /* 減少上方留白 */
-        .path-grid { grid-template-columns: 1fr; } /* 卡片改為一欄排列 */
-        .brand-heading h1 { letter-spacing: 1px; }
+        .content-inner { padding-top: 30px; } /* 減少上方留白 */
+        .brand-heading { padding-left: 15px; }
+        .path-grid { grid-template-columns: 1fr; } /* 強制單欄排列 */
     }
 </style>
 
@@ -64,7 +93,7 @@
     </section>
 
     <section class="info-section">
-        <h3 style="letter-spacing: 1px; color: #000; font-weight: 700;">美髮職涯深度分析</h3>
+        <h3 style="letter-spacing: 1px; color: #000; font-weight: 800; margin-bottom: 20px;">美髮職涯深度分析</h3>
         <div class="path-grid">
             <div class="path-card">
                 <h4>1. 美髮講師路徑</h4>
@@ -77,7 +106,7 @@
         </div>
     </section>
 
-    <section class="info-section" style="background: rgba(108, 92, 231, 0.08); padding: 25px; border-radius: 8px;">
+    <section class="info-section" style="background: rgba(108, 92, 231, 0.1); padding: 25px; border-radius: 8px; border: 1px solid rgba(108, 92, 231, 0.2);">
         <p>🚩 美髮業的職涯天花板由自己定義。將技術「商品化」，才能突破體力與時間的限制。</p>
         <p style="font-weight: 800; color: #4834d4; margin-bottom: 0; font-size: 1.1rem;">活力美髮學堂：品牌定位與核心價值主張</p>
     </section>
