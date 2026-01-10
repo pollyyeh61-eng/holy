@@ -4,201 +4,156 @@
     :root {
         --primary-purple: #6c5ce7;
         --deep-purple: #322b5f;
-        --soft-bg: #f8f9fa;
+        --soft-bg: #ffffff; /* 第一層採用乾淨白底 */
         --accent-pink: #e91e63;
         --pure-black: #000000;
     }
 
-    /* 1. 浮動導覽 (右上角) */
-    .floating-nav {
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        z-index: 2000;
+    /* 基礎排版：第一層不需要為浮動按鈕留頂部空間 */
+    .content-inner { 
+        padding: 40px 6% 80px 6%; 
+        box-sizing: border-box; 
+        background: var(--soft-bg); 
     }
-    .nav-btn {
-        background: rgba(0, 0, 0, 0.85);
-        color: #fff !important;
-        text-decoration: none;
-        padding: 8px 16px;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        font-weight: 800;
-        backdrop-filter: blur(5px);
-        border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    /* 2. 內容導航 (橫向捲動) */
-    .content-guide {
-        display: flex;
-        gap: 10px;
-        margin: 20px 0;
-        overflow-x: auto;
-        padding: 5px 0 15px 0;
-        scrollbar-width: none;
-        position: sticky;
-        top: 0;
-        background: rgba(255,255,255,0.95);
-        z-index: 900;
-    }
-    .content-guide::-webkit-scrollbar { display: none; }
-    .guide-item {
-        white-space: nowrap;
-        background: #fff;
-        color: var(--primary-purple);
-        padding: 10px 18px;
-        border-radius: 12px;
-        font-weight: 800;
-        font-size: 0.95rem;
-        text-decoration: none;
-        border: 2px solid var(--primary-purple);
-    }
-
-    /* 3. 基礎排版 */
-    .content-inner { padding: 70px 6% 100px 6%; box-sizing: border-box; background: var(--soft-bg); }
     
+    .brand-heading {
+        text-align: center;
+        margin-bottom: 50px;
+    }
     .brand-heading h1 { 
         font-size: 2.2rem; 
         font-weight: 900; 
         color: var(--pure-black); 
-        line-height: 1.2;
+        line-height: 1.3;
+        margin-top: 10px;
+    }
+    .brand-heading .brand-tag {
+        color: var(--primary-purple);
+        font-weight: 800;
+        letter-spacing: 4px;
+        font-size: 0.9rem;
     }
 
+    /* 區塊標題 */
     .section-title { 
-        font-size: 1.5rem; 
+        font-size: 1.6rem; 
         font-weight: 900; 
         color: var(--pure-black);
-        margin: 40px 0 20px 0;
-        border-left: 6px solid var(--primary-purple);
-        padding-left: 15px;
+        margin: 50px 0 25px 0;
+        text-align: center;
+    }
+    .section-title::after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 4px;
+        background: var(--primary-purple);
+        margin: 10px auto 0;
     }
 
+    /* 內容文字 */
     .content-text {
         font-size: 1.15rem;
         font-weight: 600;
         color: var(--pure-black);
         line-height: 1.8;
-        text-align: justify;
+        margin-bottom: 25px;
     }
 
-    /* 4. 核心價值與解決方案卡片 (淺色高對比) */
-    .value-card {
-        background: #ffffff;
-        border: 2px solid #eee;
+    /* 卡片設計 (淺色高對比) */
+    .feature-card {
+        background: #fcfaff;
+        border: 2px solid var(--primary-purple);
         padding: 25px;
         border-radius: 20px;
-        margin-bottom: 20px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        margin-bottom: 25px;
     }
-    .value-card h3 { 
+    .feature-card h3 { 
         margin: 0 0 15px 0; 
         color: var(--primary-purple); 
         font-size: 1.3rem; 
         font-weight: 900;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
-    .value-card strong { color: var(--accent-pink); font-weight: 900; }
 
-    /* 5. 策略性核心：雙引擎驅動 */
-    .engine-box {
-        background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
-        color: #fff;
+    /* 雙引擎色塊 */
+    .engine-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 30px 0;
+    }
+    .engine-item {
         padding: 25px;
-        border-radius: 20px;
-        margin: 20px 0;
+        border-radius: 15px;
+        color: #fff;
     }
-    .engine-box h4 { margin: 0 0 10px 0; font-size: 1.2rem; font-weight: 900; text-decoration: underline; }
-    .engine-box p { margin: 0; font-size: 1.05rem; line-height: 1.6; font-weight: 500; }
+    .engine-item h4 { margin: 0 0 10px 0; font-size: 1.25rem; font-weight: 900; }
+    .engine-item p { margin: 0; font-weight: 500; opacity: 0.95; line-height: 1.6; }
 
-    /* 6. 職涯路徑分析 */
-    .path-choice {
-        border-top: 2px dashed #ccc;
-        margin-top: 40px;
-        padding-top: 20px;
-    }
-    .path-item {
-        background: #fff;
-        border: 2px solid var(--deep-purple);
+    /* 職涯路徑 */
+    .career-path-box {
+        border: 2px solid #000;
         padding: 20px;
         border-radius: 15px;
         margin-bottom: 15px;
     }
-    .path-item h4 { margin: 0 0 10px 0; font-size: 1.2rem; font-weight: 900; color: var(--deep-purple); }
+    .career-path-box strong { color: var(--primary-purple); font-size: 1.2rem; display: block; margin-bottom: 5px; }
 
 </style>
 
-<div class="floating-nav">
-    <a href="index.html" class="nav-btn">🏠 首頁</a>
-    <a href="p3.html" class="nav-btn">📚 課程</a>
-</div>
-
 <div class="content-inner">
     <header class="brand-heading">
-        <h4 style="color:var(--primary-purple); margin-bottom:10px; font-weight:800;">VITALITY HAIR ACADEMY</h4>
+        <div class="brand-tag">VITALITY ACADEMY</div>
         <h1>品牌定位與<br>核心價值主張</h1>
     </header>
 
-    <nav class="content-guide">
-        <a href="#vision" class="guide-item">💎 核心價值</a>
-        <a href="#engine" class="guide-item">⚙️ 雙引擎驅動</a>
-        <a href="#career" class="guide-item">🚀 職涯路徑</a>
-    </nav>
+    <section>
+        <p class="content-text" style="text-align: center;">
+            我們致力於打造一個以<strong>遊戲化教學</strong>與<strong>導師制</strong>為核心的美髮職涯賦能平台，不只是提供課程，更是為您指引一條清晰的成長路徑。
+        </p>
 
-    <section id="vision">
-        <div class="content-text">
-            我們的品牌定位是以<strong>遊戲化教學</strong>與<strong>導師制</strong>為核心的美髮職涯賦能平台。我們不只是提供課程，更是為從業者提供一個有系統、有回饋、有支持的成長路徑。
+        <div class="feature-card">
+            <h3><span>🎯</span> 對學員的價值</h3>
+            <p class="content-text" style="margin:0; font-size: 1.05rem;">提供高效率、充滿樂趣的學習體驗，確保學員能紮實掌握技能並順利銜接美髮產業。</p>
         </div>
 
-        <div class="value-card">
-            <h3>🎯 對學員的價值</h3>
-            <p class="content-text" style="font-size:1.05rem;">提供高效率、充滿樂趣的學習體驗，確保紮實掌握技能並順利銜接產業。</p>
-        </div>
-
-        <div class="value-card">
-            <h3>🎓 對講師的價值</h3>
-            <p class="content-text" style="font-size:1.05rem;">提供專注教學、有效獲客並獲得透明化回饋的平台，激發合作意願。</p>
+        <div class="feature-card">
+            <h3><span>🎓</span> 對講師的價值</h3>
+            <p class="content-text" style="margin:0; font-size: 1.05rem;">提供專注教學、有效獲客並獲得透明化回饋的合作平台，激發內在動力。</p>
         </div>
     </section>
 
-    <section id="engine">
+    <section>
         <div class="section-title">策略核心：雙引擎驅動</div>
-        
-        <div class="engine-box">
-            <h4>1. 遊戲化教學</h4>
-            <p>解決痛點：學習倦怠與低完成率。<br>
-            方案：拆解為「新手任務」、「最終Boss」等關卡，透過積分、成就徽章將進步具象化。</p>
-        </div>
-
-        <div class="engine-box" style="background: linear-gradient(135deg, #322b5f 0%, #6c5ce7 100%);">
-            <h4>2. 導師制</h4>
-            <p>解決痛點：教學品質不穩定、缺乏人脈。<br>
-            方案：配對實戰導師，提供個人化職涯規劃與心態輔導，創建強大社群網絡。</p>
+        <div class="engine-section">
+            <div class="engine-item" style="background: var(--primary-purple);">
+                <h4>1. 遊戲化教學</h4>
+                <p>將課程拆解為「新手任務」與「最終Boss」，透過積分與成就徽章，將進步具象化，提供即時回饋與動力。</p>
+            </div>
+            <div class="engine-item" style="background: var(--deep-purple);">
+                <h4>2. 導師制</h4>
+                <p>配對實戰導師，不只指導技術，更提供個人化職涯規劃與心態輔導，建立強大的專業社群。</p>
+            </div>
         </div>
     </section>
 
-    
-
-    <section id="career" class="path-choice">
-        <div class="section-title">美髮職涯深度分析</div>
-        <div class="content-text" style="margin-bottom:20px;">
-            在行業中，選擇清晰的長期路徑能減少試錯成本。以下是兩大發展方向：
+    <section>
+        <div class="section-title">職涯路徑深度分析</div>
+        <div class="career-path-box">
+            <strong>1. 美髮講師路徑</strong>
+            <p class="content-text" style="margin:0; font-size: 1rem;">將技術模組化，搭配工具包銷售，成為行業標竿。</p>
+        </div>
+        <div class="career-path-box">
+            <strong>2. 創業開店路徑</strong>
+            <p class="content-text" style="margin:0; font-size: 1rem;">打造商業模式與自有產品，突破時間換收入的限制。</p>
         </div>
 
-        <div class="path-item">
-            <h4>1. 美髮講師路徑</h4>
-            <p class="content-text" style="font-size:1rem;">🚩 將技術拆解為模組化課程，搭配工具包銷售，成為行業標竿。</p>
-        </div>
-
-        <div class="path-item">
-            <h4>2. 創業開店路徑</h4>
-            <p class="content-text" style="font-size:1rem;">🚩 打造自有產品與服務流程儀式化，突破時間換收入的限制。</p>
-        </div>
-
-        <div class="light-card" style="background:#fff; border:2px solid var(--accent-pink); padding:20px; border-radius:15px; margin-top:20px;">
-            <p class="content-text" style="color:var(--accent-pink); font-weight:900; text-align:center; margin:0;">
-                「美髮業的職涯天花板由自己定義，將技術商品化，才能突破體力與時間的限制。」
+        <div style="background: #fff; border: 2.5px solid var(--accent-pink); padding: 25px; border-radius: 15px; margin-top: 30px; text-align: center;">
+            <p class="content-text" style="color: var(--accent-pink); font-weight: 900; margin: 0;">
+                「將技術或商業模式『商品化』，才能真正突破體力與時間的限制，定義自己的職涯天花板。」
             </p>
         </div>
     </section>
