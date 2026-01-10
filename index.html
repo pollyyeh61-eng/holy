@@ -33,6 +33,34 @@
             z-index: 1000;
         }
 
+        /* 📱 手機版 RWD 調整 */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column; /* 改為上下排列 */
+    }
+
+    .nav-sidebar {
+        width: 100%; /* 寬度佔滿 */
+        height: auto; /* 高度隨內容調整 */
+        order: -1; /* 將導航列移至上方（可選） */
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px 0;
+    }
+
+    #content-target {
+        height: calc(100vh - 200px); /* 扣除導航列高度 */
+    }
+
+    .nav-item {
+        padding: 12px 30px; /* 減少手機版內距 */
+        font-size: 1rem;
+    }
+
+    .sub-item {
+        padding: 10px 30px 10px 50px; /* 調整子選單縮排 */
+    }
+}
         .nav-box { overflow-y: auto; scrollbar-width: none; padding: 40px 0; }
         .nav-box::-webkit-scrollbar { display: none; }
 
@@ -189,3 +217,4 @@
     </script>
 </body>
 </html>
+
