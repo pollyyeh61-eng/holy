@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>活力美髮學堂 | 品牌中心</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&family=Noto+Sans+TC:wght@300;400&display=swap');
@@ -18,14 +19,18 @@
         /* 左側內容區 */
         #content-target {
             flex: 1; height: 100vh; overflow-y: auto; scrollbar-width: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
+            position: relative;
         }
         #content-target::-webkit-scrollbar { display: none; }
 
         /* 右側導航列 */
         .nav-sidebar {
             width: 400px; height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(25px); border-left: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
         }
 
         .nav-box { overflow-y: auto; scrollbar-width: none; padding: 40px 0; }
@@ -44,7 +49,7 @@
             font-family: 'Times New Roman', serif; margin-left: 20px;
         }
 
-        .nav-item:hover { background: rgba(255, 255, 255, 0.3); }
+        .nav-item:hover { background: rgba(255, 255, 255, 0.3); padding-left: 70px; }
 
         .nav-item.active { 
             background: rgba(255, 255, 255, 0.4); font-weight: 500; 
@@ -52,35 +57,34 @@
         }
         .nav-item.active .nav-page-num { opacity: 1; color: #6c5ce7; font-weight: 700; }
 
-        /* 💡 二層子選單樣式 */
+        /* 二層子選單樣式 */
         .sub-nav-container {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             background: rgba(108, 92, 231, 0.03);
         }
         
-        /* 展開狀態由 JavaScript 切換 */
-        .expanded .sub-nav-container {
-            max-height: 500px; /* 足夠容納 7 個項目的高度 */
+        .nav-group.expanded .sub-nav-container {
+            max-height: 600px; 
         }
 
         .sub-item {
-            padding: 12px 60px 12px 80px; /* 增加左側縮排 */
+            padding: 12px 60px 12px 85px;
             text-decoration: none; color: #322b5f; font-size: 0.95rem;
             display: flex; align-items: baseline; justify-content: space-between;
             transition: all 0.3s ease; letter-spacing: 2px; font-weight: 300; cursor: pointer;
             opacity: 0.6;
         }
 
-        .sub-item:hover { opacity: 1; background: rgba(255, 255, 255, 0.5); padding-left: 85px; }
+        .sub-item:hover { opacity: 1; background: rgba(255, 255, 255, 0.5); padding-left: 95px; }
 
         .sub-item.active { 
             opacity: 1; color: #6c5ce7; font-weight: 500;
-            border-left: 4px solid #6c5ce7; padding-left: 76px;
+            border-left: 4px solid #6c5ce7; padding-left: 81px;
         }
         
-        .sub-num { font-size: 0.8rem; font-style: italic; opacity: 0.8; }
+        .sub-num { font-size: 0.8rem; font-style: italic; opacity: 0.8; font-family: 'Times New Roman', serif; }
 
     </style>
 </head>
@@ -120,49 +124,65 @@
     </div>
 
     <script>
-        // 切換子選單展開/縮回
+        /**
+         * 切換子選單展開狀態，並加載主類別頁面
+         */
         function toggleSubNav(groupId, url, element) {
             const group = document.getElementById(groupId);
             const isExpanded = group.classList.contains('expanded');
             
-            // 如果還沒展開，則展開它
+            // 如果還沒展開，則關閉其他 group 並展開自己
             if (!isExpanded) {
-                // 先關閉其他可能展開的 group (若未來有 P4 子頁面可擴充)
                 document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('expanded'));
                 group.classList.add('expanded');
+            } else {
+                // 如果已經展開點擊第二次，則縮回
+                group.classList.remove('expanded');
             }
             
-            // 同時載入 P3 主頁面
             loadPage(url, element);
         }
 
+        /**
+         * 非同步加載 HTML 片段並更新內容區
+         */
         async function loadPage(url, element) {
             const target = document.getElementById('content-target');
             
-            // 處理導航列 Active 狀態 (同時找 nav-item 和 sub-item)
+            // 處理導航列 Active 樣式切換
             document.querySelectorAll('.nav-item, .sub-item').forEach(nav => nav.classList.remove('active'));
             if(element) element.classList.add('active');
 
+            // 開始切換動畫：先淡出
             target.style.opacity = 0;
 
             try {
+                // 延遲 300ms 等待淡出後再抓取新內容
                 const response = await fetch(url);
+                if (!response.ok) throw new Error('Network response was not ok');
+                
                 const html = await response.text();
                 
                 setTimeout(() => {
                     target.innerHTML = html;
                     target.style.opacity = 1;
-                    target.scrollTop = 0;
+                    target.scrollTop = 0; // 回到頂部
                 }, 300);
             } catch (err) {
-                target.innerHTML = "<div style='padding: 100px; opacity: 0.5;'>頁面讀取中或路徑錯誤...</div>";
-                target.style.opacity = 1;
+                console.error("Failed to load page:", err);
+                setTimeout(() => {
+                    target.innerHTML = `
+                        <div style='padding: 100px; text-align: center; color: #322b5f;'>
+                            <h2 style="font-weight: 300;">頁面開發中...</h2>
+                            <p style="opacity: 0.5;">找不到 ${url}，請確認檔案已上傳至 GitHub。</p>
+                        </div>`;
+                    target.style.opacity = 1;
+                }, 300);
             }
         }
 
-        // 預設加載首頁
+        // 頁面初次載入時預設顯示 p1.html
         window.onload = () => {
-            // 這裡設定啟動時要顯示哪一頁，例如 p1.html
             const firstItem = document.querySelector('.nav-item');
             loadPage('p1.html', firstItem); 
         };
