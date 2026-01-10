@@ -1,163 +1,99 @@
 <style>
-    /* 1. 整體容器與手機適配 */
+    /* 1. 容器與基礎設定 */
     .content-inner { 
         padding: clamp(40px, 10%, 80px) 6% 120px 6%; 
     }
-    
-    /* 2. 標題優化：字體縮小並加深 */
-    .brand-heading { 
-        position: relative; 
-        padding-left: 20px; 
-        margin-bottom: 30px; 
-    }
-    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: #000; }
-    .brand-heading::after { content: ""; position: absolute; left: 0; bottom: 0; width: 50px; height: 3px; background: #000; }
-    
-    .brand-heading h1 { 
-        font-size: clamp(1.8rem, 8vw, 2.8rem); 
-        margin: 0; 
-        letter-spacing: 2px; 
-        font-weight: 800; 
-        color: #000; 
-    }
-    .brand-heading .subtitle { 
-        font-size: 0.8rem; 
-        letter-spacing: 3px; 
-        color: #4834d4; 
-        font-weight: 700; 
-        margin-top: 5px;
-    }
 
-    /* 3. 內文強化：純黑、加厚、高行距 */
-    .info-section { margin-bottom: 40px; max-width: 750px; }
-    
-    .section-title { 
-        font-size: 1.25rem; 
-        margin-bottom: 20px; 
-        font-weight: 800; 
-        color: #000; 
-        border-bottom: 2px solid #eee;
-        padding-bottom: 5px;
+    /* 2. 三維課程結構清單樣式 */
+    .structure-list {
+        list-style: none;
+        padding: 0;
+        margin: 30px 0;
     }
-    
-    p { 
-        color: #000000 !important; 
-        font-size: 1.05rem; 
-        line-height: 1.8; 
-        font-weight: 450; 
+    .structure-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+        font-weight: 800; /* 大幅加粗 */
+        color: #000; /* 純黑文字 */
     }
-
-    /* 4. 價值卡片 RWD 調整 */
-    .value-grid { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-        gap: 15px; 
-        margin: 25px 0; 
-    }
-    .value-card { 
-        background: rgba(255,255,255,0.7); 
-        padding: 20px; 
-        border: 1px solid #ccc; 
-        backdrop-filter: blur(10px);
-        border-radius: 4px;
-    }
-    .value-card h4 { 
-        margin: 0 0 10px 0; 
-        color: #4834d4; 
-        font-weight: 800;
-        font-size: 1.1rem;
-        border-bottom: 2px solid #6c5ce7; 
-        display: inline-block; 
-    }
-
-    /* 5. 策略核心盒 */
-    .strategy-box { 
-        background: rgba(108, 92, 231, 0.08); 
-        border-left: 5px solid #6c5ce7;
-        padding: 20px; 
-        margin: 15px 0;
-    }
-    .strategy-box b { color: #2e1fad; font-size: 1.1rem; font-weight: 800; }
-
-    /* 6. 層級列表樣式 */
-    .layer-item { 
-        display: flex; 
-        align-items: center; 
-        margin-bottom: 15px; 
-        font-size: 1.1rem; 
-        font-weight: 700; 
-        color: #000;
-    }
-    .layer-icon { 
-        background: #322b5f; 
-        color: #fff; 
-        width: 28px; 
-        height: 28px; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        margin-right: 12px; 
-        border-radius: 50%; 
-        font-size: 0.8rem; 
+    .structure-number {
+        background: #322b5f;
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-size: 1rem;
         flex-shrink: 0;
     }
 
-    /* 手機版細節修正 */
+    /* 3. 調整後的淺色區塊 (原深色塊) */
+    .feature-highlight-box {
+        background: rgba(255, 255, 255, 0.6); /* 改為半透明白色 */
+        border: 2px solid #6c5ce7; /* 加上紫色邊框增加質感 */
+        padding: 30px;
+        border-radius: 12px;
+        margin-top: 40px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 20px rgba(108, 92, 231, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .feature-highlight-box p {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 800; /* 加深字重 */
+        color: #000 !important; /* 強制純黑，解決看不到字的問題 */
+        line-height: 1.6;
+    }
+
+    .highlight-icon {
+        font-size: 1.5rem;
+    }
+
+    /* 4. 標題與內文強化 */
+    .brand-section-title {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: #000;
+        margin-bottom: 25px;
+        border-bottom: 3px solid #fbc2eb;
+        display: inline-block;
+    }
+
+    /* 📱 手機版調整 */
     @media (max-width: 768px) {
-        .content-inner { padding-top: 30px; }
-        .value-grid { grid-template-columns: 1fr; }
-        .layer-item { font-size: 1rem; }
+        .structure-item { font-size: 1.1rem; }
+        .feature-highlight-box { padding: 20px; }
     }
 </style>
 
 <div class="content-inner">
-    <section class="brand-heading">
-        <h1>品牌白皮書</h1>
-        <div class="subtitle">BRAND WHITE PAPER</div>
-    </section>
-
     <section class="info-section">
-        <p style="font-size: 1.1rem; font-weight: 700; line-height: 1.8;">
-            我們的品牌定位是以<strong>遊戲化教學與導師制</strong>為核心的美髮職涯賦能平台。我們不只是提供課程，更是為美髮從業者提供一個有系統、有回饋、有支持的成長路徑。
-        </p>
-    </section>
-
-    <section class="info-section">
-        <div class="section-title">核心價值主張 (Core Value)</div>
-        <div class="value-grid">
-            <div class="value-card">
-                <h4>對學員</h4>
-                <p>提供高效率、高完成率且充滿樂趣的學習體驗，確保紮實掌握技能並順利銜接產業。</p>
-            </div>
-            <div class="value-card">
-                <h4>對講師</h4>
-                <p>提供專注教學、有效獲客並獲得透明化回饋的合作平台，激發其內在動力。</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="info-section">
-        <div class="section-title">策略性核心：雙引擎驅動</div>
+        <div class="brand-section-title">三維課程結構</div>
         
-        <div class="strategy-box">
-            <b>1. 遊戲化教學</b><br>
-            解決學習倦怠。將課程拆解為「新手任務」、「進階挑戰」與「最終Boss」，透過積分、成就徽章將進步具象化，提供持續動力。
-        </div>
+        <ul class="structure-list">
+            <li class="structure-item">
+                <span class="structure-number">1</span> 技術層：剪燙染創新手法
+            </li>
+            <li class="structure-item">
+                <span class="structure-number">2</span> 商業層：創業財務模型 / 線上獲客 SOP
+            </li>
+            <li class="structure-item">
+                <span class="structure-number">3</span> 教學層：如何培訓員工建立標準化流程
+            </li>
+        </ul>
 
-        <div class="strategy-box">
-            <b>2. 導師制</b><br>
-            解決品質不穩。配對實戰經驗導師，提供個人化職涯規劃與心態輔導，構建強大社群網絡。
+        <div class="feature-highlight-box">
+            <span class="highlight-icon">👍</span>
+            <p>獨創<strong>「美髮創業課後練習冊」</strong>讓學員學習並實習。</p>
         </div>
-    </section>
-
-    <section class="info-section">
-        <div class="section-title">三維課程結構</div>
-        <div class="layer-item"><div class="layer-icon">1</div> 技術層：剪燙染創新手法</div>
-        <div class="layer-item"><div class="layer-icon">2</div> 商業層：創業財務模型 / 線上獲客 SOP</div>
-        <div class="layer-item"><div class="layer-icon">3</div> 教學層：如何培訓員工建立標準化流程</div>
-        
-        <p style="margin-top: 30px; background: #322b5f; color: #fff; padding: 20px; text-align: center; letter-spacing: 1px; font-weight: 700; border-radius: 4px;">
-            👍 獨創「美髮創業課後練習冊」讓學員學習並實習。
-        </p>
     </section>
 </div>
