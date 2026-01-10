@@ -1,52 +1,151 @@
 <style>
-    /* 專屬樣式：保持呼吸感與專業表格排版 */
-    .content-inner { padding: 120px 12% 100px 8%; }
-    
-    .brand-heading { position: relative; padding-left: 40px; margin-bottom: 70px; }
-    .brand-heading::before { 
-        content: ""; position: absolute; left: 0; top: 8px; width: 2.5px; height: 110px; background: #000; 
+    /* 1. 整體適配與容器 */
+    .content-inner { 
+        padding: clamp(40px, 10%, 80px) 6% 120px 6%; 
     }
-    .brand-heading h1 { font-size: 3.2rem; margin: 0; letter-spacing: 12px; font-weight: 500; line-height: 1.2; }
+    
+    /* 2. 標題設計：大幅加粗與字重優化 */
+    .brand-heading { 
+        position: relative; 
+        padding-left: 30px; 
+        margin-bottom: 50px; 
+    }
+    .brand-heading::before { 
+        content: ""; 
+        position: absolute; 
+        left: 0; 
+        top: 8px; 
+        width: 4px; /* 加粗裝飾線 */
+        height: 100px; 
+        background: #000; 
+    }
+    .brand-heading h1 { 
+        font-size: clamp(2rem, 8vw, 3.2rem); 
+        margin: 0; 
+        letter-spacing: 10px; 
+        font-weight: 800; /* 加深字重 */
+        color: #000; /* 改為純黑 */
+        line-height: 1.2; 
+    }
     .brand-heading .subtitle { 
-        font-size: 1rem; letter-spacing: 8px; color: #6c5ce7; font-weight: 300; 
-        text-transform: uppercase; margin-top: 15px; display: block;
+        font-size: 1rem; 
+        letter-spacing: 6px; 
+        color: #4834d4; 
+        font-weight: 700; 
+        text-transform: uppercase; 
+        margin-top: 15px; 
+        display: block;
     }
 
+    /* 3. 內文與段落 */
     .intro-text {
-        font-family: 'Noto Sans TC', sans-serif; font-size: 1.15rem; font-weight: 300;
-        max-width: 850px; margin-bottom: 60px; color: #322b5f; letter-spacing: 1.5px;
-        line-height: 2.4;
+        font-family: 'Noto Sans TC', sans-serif; 
+        font-size: 1.2rem; 
+        font-weight: 500;
+        max-width: 850px; 
+        margin-bottom: 60px; 
+        color: #000; /* 改為純黑 */
+        letter-spacing: 1.2px;
+        line-height: 2;
     }
 
     .section-title { 
-        font-size: 1.5rem; margin-bottom: 30px; font-weight: 700; color: #322b5f;
-        letter-spacing: 2px;
+        font-size: 1.6rem; 
+        margin-bottom: 35px; 
+        font-weight: 800; 
+        color: #000;
+        letter-spacing: 1.5px;
+        border-bottom: 3px solid #fbc2eb;
+        display: inline-block;
+        padding-bottom: 5px;
     }
 
-    /* 服務模式表格 */
+    /* 4. 服務模式表格優化 */
     .info-table {
-        width: 100%; border-collapse: collapse; margin-bottom: 60px;
-        font-family: 'Noto Sans TC', sans-serif; font-size: 1rem;
+        width: 100%; 
+        border-collapse: collapse; 
+        margin-bottom: 60px;
+        font-family: 'Noto Sans TC', sans-serif; 
+        font-size: 1.1rem;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
-    .info-table th { text-align: left; padding: 15px; border-bottom: 1px solid #322b5f; opacity: 0.6; font-weight: 400; }
-    .info-table td { padding: 25px 15px; border-bottom: 1px solid rgba(0,0,0,0.05); line-height: 1.8; }
-    .highlight-cell { color: #6c5ce7; font-weight: 700; }
+    .info-table th { 
+        text-align: left; 
+        padding: 20px 15px; 
+        background: #322b5f; 
+        color: #fff; 
+        font-weight: 700; 
+        border: none;
+    }
+    .info-table td { 
+        padding: 25px 15px; 
+        border-bottom: 1px solid #eee; 
+        line-height: 1.8; 
+        color: #000;
+        font-weight: 500;
+    }
+    .highlight-cell { 
+        color: #6c5ce7; 
+        font-weight: 800; 
+        font-size: 1.2rem;
+    }
 
-    /* 費用試算區塊 */
+    /* 5. 費用試算區塊優化 */
     .calculator-area {
-        background: rgba(255, 255, 255, 0.4); padding: 40px; border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.6); margin-bottom: 100px;
-        backdrop-filter: blur(10px);
+        background: #fff; 
+        padding: 45px; 
+        border-radius: 15px;
+        border: 2px solid #6c5ce7; 
+        margin-bottom: 80px;
+        box-shadow: 0 10px 30px rgba(108, 92, 231, 0.1);
     }
-    .calc-row { margin-bottom: 20px; font-size: 1.1rem; }
+    .calc-row { 
+        margin-bottom: 25px; 
+        font-size: 1.15rem; 
+        color: #000; 
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
     .total-display {
-        font-size: 1.8rem; font-weight: 700; color: #6c5ce7; margin-top: 30px;
-        border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px; text-align: right;
+        font-size: 2.2rem; 
+        font-weight: 900; 
+        color: #6c5ce7; 
+        margin-top: 30px;
+        border-top: 2px solid #eee; 
+        padding-top: 25px; 
+        text-align: right;
     }
     .calc-input {
-        padding: 8px; border: 1px solid #6c5ce7; width: 60px; 
-        background: rgba(255,255,255,0.5); text-align: center; border-radius: 4px;
-        font-weight: 700; color: #6c5ce7;
+        padding: 10px; 
+        border: 2px solid #6c5ce7; 
+        width: 80px; 
+        background: #f8f8f8; 
+        text-align: center; 
+        border-radius: 6px;
+        font-weight: 800; 
+        color: #6c5ce7;
+        font-size: 1.1rem;
+    }
+    
+    /* 複選框加大樣式 */
+    input[type="checkbox"] {
+        transform: scale(1.4);
+        margin-right: 15px;
+        accent-color: #6c5ce7;
+    }
+
+    /* 📱 手機版 RWD */
+    @media (max-width: 768px) {
+        .info-table { font-size: 1rem; }
+        .info-table th, .info-table td { padding: 15px 10px; }
+        .calculator-area { padding: 25px; }
+        .total-display { font-size: 1.6rem; }
+        .calc-row { flex-wrap: wrap; }
     }
 </style>
 
@@ -67,6 +166,9 @@
         </div>
 
         <div class="section-title">服務模式與分潤</div>
+        
+        
+
         <table class="info-table">
             <thead>
                 <tr>
@@ -92,13 +194,21 @@
         <div class="section-title">預算規模試算</div>
         <div class="calculator-area">
             <div class="calc-row">
-                預計製作週期：<input type="number" id="months" value="1" min="1" oninput="calculateTotal()" class="calc-input"> 個月
+                <span>預計製作週期：</span>
+                <input type="number" id="months" value="1" min="1" oninput="calculateTotal()" class="calc-input"> 
+                <span>個月</span>
             </div>
             <div class="calc-row">
-                <label style="cursor: pointer;"><input type="checkbox" id="domain" value="3000" onchange="calculateTotal()"> 個人專屬網域申請 (預計 $3,000)</label>
+                <label style="cursor: pointer; display: flex; align-items: center;">
+                    <input type="checkbox" id="domain" value="3000" onchange="calculateTotal()"> 
+                    個人專屬網域申請 (預計 $3,000)
+                </label>
             </div>
             <div class="calc-row">
-                <label style="cursor: pointer;"><input type="checkbox" id="platform" value="15000" onchange="calculateTotal()"> 數位教學平台建置 (預計 $15,000)</label>
+                <label style="cursor: pointer; display: flex; align-items: center;">
+                    <input type="checkbox" id="platform" value="15000" onchange="calculateTotal()"> 
+                    數位教學平台建置 (預計 $15,000)
+                </label>
             </div>
             <div class="total-display">
                 預估總費用：<span id="total-cost">$40,000</span>
@@ -119,5 +229,6 @@
         document.getElementById('total-cost').textContent = '$' + total.toLocaleString();
     }
     // 確保嵌入後也能觸發初始化
+    window.addEventListener('load', calculateTotal);
     setTimeout(calculateTotal, 100);
 </script>
