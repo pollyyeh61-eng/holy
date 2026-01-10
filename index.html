@@ -7,7 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&family=Noto+Sans+TC:wght@300;400&display=swap');
 
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Noto Serif TC', serif; overflow: hidden; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Noto Serif TC', serif; overflow: hidden; background-color: #fff; }
         
         .app-container {
             display: flex; height: 100vh;
@@ -15,35 +15,51 @@
             background-attachment: fixed;
         }
 
-        #content-target { flex: 1; height: 100vh; overflow-y: auto; scrollbar-width: none; transition: opacity 0.4s ease; }
+        /* 內容顯示區塊 */
+        #content-target { 
+            flex: 1; height: 100vh; overflow-y: auto; scrollbar-width: none; 
+            transition: opacity 0.3s ease, transform 0.3s ease; 
+        }
         #content-target::-webkit-scrollbar { display: none; }
 
-        /* --- 電腦版側邊欄 --- */
+        /* --- [電腦版] 側邊欄 --- */
         .nav-sidebar {
-            width: 400px; height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(25px); 
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            width: 350px; height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(25px); 
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .nav-item, .sub-item { cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: baseline; }
-        .nav-item { padding: 16px 60px; color: #322b5f; font-size: 1.1rem; letter-spacing: 3px; }
-        .nav-item.active { border-left: 7px solid #6c5ce7; background: rgba(255, 255, 255, 0.4); }
-        .sub-nav-container { max-height: 0; overflow: hidden; transition: max-height 0.6s ease; background: rgba(108, 92, 231, 0.03); }
-        .nav-group.expanded .sub-nav-container { max-height: 600px; }
-        .sub-item { padding: 10px 60px 10px 85px; font-size: 0.95rem; opacity: 0.6; }
-        .sub-item.active { color: #6c5ce7; opacity: 1; border-left: 4px solid #6c5ce7; }
+        .nav-item { padding: 16px 50px; cursor: pointer; color: #322b5f; letter-spacing: 2px; transition: 0.3s; }
+        .nav-item.active { background: rgba(255,255,255,0.4); border-left: 6px solid #6c5ce7; font-weight: 700; }
 
-        /* --- 手機版專用導航 --- */
-        .mobile-nav { display: none; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(15px); z-index: 2000; }
-        .mobile-nav-list { display: flex; justify-content: space-around; padding: 10px 0; list-style: none; margin: 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .mobile-nav-list div { font-size: 0.85rem; color: #322b5f; padding: 5px 10px; cursor: pointer; }
-        .mobile-nav-list .active { color: #6c5ce7; font-weight: 700; border-bottom: 2px solid #6c5ce7; }
+        /* --- [手機版] 頂部 & 底部導航 (仿 App 設計) --- */
+        .mobile-nav { 
+            display: none; position: fixed; width: 100%; left: 0; 
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); 
+            z-index: 2000; box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        #mobile-top { top: 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        #mobile-bottom { bottom: 0; border-top: 1px solid rgba(0,0,0,0.05); padding-bottom: env(safe-area-inset-bottom); }
 
-        /* --- RWD 切換邏輯 --- */
+        .mobile-nav-list { display: flex; justify-content: space-around; align-items: center; height: 60px; }
+        
+        /* 模擬 App 按鈕效果 */
+        .m-btn { 
+            flex: 1; text-align: center; font-size: 0.85rem; color: #666; 
+            display: flex; flex-direction: column; justify-content: center; height: 100%;
+            transition: all 0.2s ease; cursor: pointer;
+        }
+        .m-btn.active { color: #6c5ce7; font-weight: 700; transform: scale(1.05); }
+        .m-btn:active { background: rgba(108, 92, 231, 0.1); } /* 點擊時的壓感效果 */
+
+        /* --- RWD 響應式佈局切換 --- */
         @media (max-width: 768px) {
-            .app-container { flex-direction: column; }
-            .nav-sidebar { display: none; } /* 手機隱藏側邊欄 */
-            .mobile-nav { display: block; } /* 手機顯示上下欄 */
-            #content-target { height: calc(100vh - 120px); } /* 扣除上下欄高度 */
+            .nav-sidebar { display: none; }
+            .mobile-nav { display: block; }
+            #content-target { 
+                margin-top: 60px; /* 留出頂部空間 */
+                margin-bottom: 70px; /* 留出底部空間 */
+                height: calc(100vh - 130px);
+            }
         }
     </style>
 </head>
@@ -52,10 +68,10 @@
     <div class="app-container">
         <nav class="mobile-nav" id="mobile-top">
             <div class="mobile-nav-list">
-                <div onclick="loadPage('p1.html', this)">首頁</div>
-                <div onclick="loadPage('p2.html', this)">品牌白皮書</div>
-                <div onclick="toggleMobileCourse()">專業課程</div>
-                <div onclick="loadPage('p4.html', this)">美髮書坊</div>
+                <div class="m-btn active" onclick="loadPage('p1.html', this)"><span>首頁</span></div>
+                <div class="m-btn" onclick="loadPage('p2.html', this)"><span>品牌</span></div>
+                <div class="m-btn" onclick="loadPage('p3.html', this)"><span>課程</span></div>
+                <div class="m-btn" onclick="loadPage('p4.html', this)"><span>書坊</span></div>
             </div>
         </nav>
 
@@ -63,33 +79,22 @@
 
         <nav class="mobile-nav" id="mobile-bottom">
             <div class="mobile-nav-list">
-                <div onclick="loadPage('p5.html', this)">募資課程</div>
-                <div onclick="loadPage('p6.html', this)">授權合作</div>
-                <div onclick="loadPage('p7.html', this)">常見問題</div>
-                <div onclick="loadPage('about.html', this)">關於我</div>
+                <div class="m-btn" onclick="loadPage('p5.html', this)"><span>募資</span></div>
+                <div class="m-btn" onclick="loadPage('p6.html', this)"><span>授權</span></div>
+                <div class="m-btn" onclick="loadPage('p7.html', this)"><span>Q&A</span></div>
+                <div class="m-btn" onclick="loadPage('about.html', this)"><span>關於我</span></div>
             </div>
         </nav>
 
         <nav class="nav-sidebar">
             <div class="nav-box">
-                <div onclick="loadPage('p1.html', this)" class="nav-item"><span>首頁</span><span class="nav-page-num">P. 01</span></div>
-                <div onclick="loadPage('p2.html', this)" class="nav-item"><span>品牌白皮書</span><span class="nav-page-num">P. 02</span></div>
-                <div class="nav-group" id="group-p3">
-                    <div onclick="toggleSubNav('group-p3', 'p3.html', this)" class="nav-item"><span>專業課程</span><span class="nav-page-num">P. 03</span></div>
-                    <div class="sub-nav-container">
-                        <div onclick="loadPage('p3_1.html', this)" class="sub-item">二年制專班</div>
-                        <div onclick="loadPage('p3_2.html', this)" class="sub-item">剪髮課程</div>
-                        <div onclick="loadPage('p3_3.html', this)" class="sub-item">燙髮課程</div>
-                        <div onclick="loadPage('p3_4.html', this)" class="sub-item">染髮課程</div>
-                        <div onclick="loadPage('p3_5.html', this)" class="sub-item">講師課程</div>
-                        <div onclick="loadPage('p3_6.html', this)" class="sub-item">創業課程</div>
-                        <div onclick="loadPage('p3_7.html', this)" class="sub-item">寫書課程</div>
-                    </div>
-                </div>
-                <div onclick="loadPage('p4.html', this)" class="nav-item"><span>美髮書坊</span><span class="nav-page-num">P. 04</span></div>
-                <div onclick="loadPage('p5.html', this)" class="nav-item"><span>募資課程</span><span class="nav-page-num">P. 05</span></div>
-                <div onclick="loadPage('p6.html', this)" class="nav-item"><span>授權合作</span><span class="nav-page-num">P. 06</span></div>
-                <div onclick="loadPage('p7.html', this)" class="nav-item"><span>常見問題</span><span class="nav-page-num">P. 07</span></div>
+                <div class="nav-item active" onclick="loadPage('p1.html', this)">首頁 P.01</div>
+                <div class="nav-item" onclick="loadPage('p2.html', this)">品牌白皮書 P.02</div>
+                <div class="nav-item" onclick="loadPage('p3.html', this)">專業課程 P.03</div>
+                <div class="nav-item" onclick="loadPage('p4.html', this)">美髮書坊 P.04</div>
+                <div class="nav-item" onclick="loadPage('p5.html', this)">募資課程 P.05</div>
+                <div class="nav-item" onclick="loadPage('p6.html', this)">授權合作 P.06</div>
+                <div class="nav-item" onclick="loadPage('p7.html', this)">常見問題 P.07</div>
             </div>
         </nav>
     </div>
@@ -97,37 +102,38 @@
     <script>
         async function loadPage(url, element) {
             const target = document.getElementById('content-target');
-            document.querySelectorAll('.nav-item, .sub-item, .mobile-nav-list div').forEach(el => el.classList.remove('active'));
-            if(element) element.classList.add('active');
+            
+            // 1. 更新按鈕選取狀態 (電腦 & 手機同時更新)
+            document.querySelectorAll('.nav-item, .m-btn').forEach(el => {
+                el.classList.remove('active');
+                // 讓電腦版和手機版同步選中相同內容
+                if(el.innerText.includes(element.innerText.replace('<span>','').replace('</span>',''))) {
+                    el.classList.add('active');
+                }
+            });
 
+            // 2. 內容跳轉動畫 (先縮小淡出)
             target.style.opacity = 0;
+            target.style.transform = "translateY(10px)";
+
             try {
                 const response = await fetch(url);
                 const html = await response.text();
+                
                 setTimeout(() => {
                     target.innerHTML = html;
+                    // 3. 內容跳轉出來 (向上淡入)
                     target.style.opacity = 1;
+                    target.style.transform = "translateY(0)";
                     target.scrollTop = 0;
-                }, 300);
+                }, 200);
             } catch (err) {
-                target.innerHTML = "<div style='padding:50px;'>讀取中...</div>";
-                target.style.opacity = 1;
+                console.error("載入失敗:", err);
             }
         }
 
-        function toggleSubNav(groupId, url, element) {
-            const group = document.getElementById(groupId);
-            group.classList.toggle('expanded');
-            loadPage(url, element);
-        }
-
-        // 手機版課程按鈕：可以直接跳到 P3 總覽頁
-        function toggleMobileCourse() {
-            loadPage('p3.html');
-            // 如果手機版需要顯示子選單，可以再加一個彈窗或展開清單
-        }
-
-        window.onload = () => loadPage('p1.html', document.querySelector('.nav-item'));
+        // 初始載入
+        window.onload = () => loadPage('p1.html', document.querySelector('.m-btn'));
     </script>
 </body>
 </html>
