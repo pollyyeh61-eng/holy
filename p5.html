@@ -1,45 +1,26 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <style>
     /* 1. 整體適配與容器 */
-    .content-inner { 
-        padding: clamp(40px, 10%, 80px) 6% 120px 6%; 
-    }
+    body { margin: 0; font-family: -apple-system, sans-serif; background: #fdfdfd; color: #000; }
+    .content-inner { padding: 0 6% 120px 6%; }
 
-    /* 2. 標題與子導航優化 */
-    .brand-heading { 
-        position: relative; 
-        padding-left: 20px; 
-        margin-bottom: 20px; 
-    }
-    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: #000; }
-    
-    .brand-heading h1 { 
-        font-size: clamp(1.8rem, 8vw, 2.5rem); 
-        margin: 0; 
-        letter-spacing: 2px; 
-        font-weight: 800; /* 加深字重 */
-        color: #000; /* 改為純黑 */
-    }
-    .brand-heading .subtitle { 
-        font-size: 0.85rem; 
-        letter-spacing: 3px; 
-        color: #4834d4; 
-        font-weight: 700; 
-        margin-top: 5px;
-        text-transform: uppercase;
-    }
-
-    /* 子頁面導航列 */
+    /* 2. 子導航列：修正為「頁內導航」，移除浮動按鍵 */
     .sub-nav {
         display: flex;
         gap: 12px;
-        margin: 25px 0 40px 0;
+        margin: 0 -6% 25px -6%; 
+        padding: 15px 6%;
         overflow-x: auto;
-        padding-bottom: 12px;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        background: #fff;
+        border-bottom: 2px solid #eee;
+        position: sticky;
+        top: 0;
+        z-index: 2000;
     }
     .sub-nav::-webkit-scrollbar { display: none; }
-
     .sub-nav-item {
         white-space: nowrap;
         padding: 10px 20px;
@@ -47,77 +28,40 @@
         color: #4834d4;
         text-decoration: none;
         border-radius: 50px;
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: 800;
         border: 2px solid #d1c9ff;
-        transition: all 0.3s ease;
-    }
-    .sub-nav-item.active {
-        background: #322b5f;
-        color: #fff;
-        border-color: #322b5f;
-        box-shadow: 0 4px 12px rgba(50, 43, 95, 0.2);
     }
 
-    /* 3. 內容段落樣式 */
-    .info-section { margin-bottom: 60px; max-width: 900px; }
-    
-    .section-title { 
-        font-size: 1.5rem; 
-        margin-bottom: 25px; 
-        font-weight: 800; 
-        color: #000;
-        letter-spacing: 1px; 
-        border-bottom: 3px solid #fbc2eb;
-        display: inline-block; 
-        padding-bottom: 5px;
-    }
+    /* 3. 標題與段落 */
+    .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
+    .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); margin: 0; font-weight: 900; color: #000; }
+    .brand-heading .subtitle { font-size: 0.85rem; letter-spacing: 2px; color: #4834d4; font-weight: 800; }
 
-    .content-text {
-        font-family: 'Noto Sans TC', sans-serif; 
-        font-size: 1.15rem; 
-        font-weight: 500;
-        color: #000; /* 文字加深至純黑 */
-        letter-spacing: 1px;
-        line-height: 2;
-        text-align: justify; 
-        margin-bottom: 40px;
-    }
+    .info-section { margin-bottom: 50px; scroll-margin-top: 100px; }
+    .section-title { font-size: 1.45rem; margin-bottom: 20px; font-weight: 900; color: #000; border-bottom: 4px solid #fbc2eb; display: inline-block; }
+    .content-text { font-size: 1.1rem; font-weight: 600; color: #000; line-height: 1.9; text-align: justify; margin-bottom: 30px; }
 
-    /* 4. 重點標註與標籤 */
-    .highlight-box {
-        background: #f0edff; 
-        border-left: 6px solid #6c5ce7;
-        padding: 30px; 
-        margin: 30px 0; 
-        border-radius: 0 12px 12px 0;
-        box-shadow: 0 4px 15px rgba(108, 92, 231, 0.1);
-    }
-    
-    .future-tag {
-        color: #fff; 
-        background: #6c5ce7;
-        font-weight: 800; 
-        padding: 4px 12px; 
-        border-radius: 4px; 
-        font-size: 0.95rem; 
-        margin-right: 10px;
-    }
+    /* 4. 重點元件 */
+    .highlight-box { background: #f0edff; border-left: 6px solid #6c5ce7; padding: 25px; margin: 25px 0; border-radius: 0 12px 12px 0; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.1); }
+    .future-tag { color: #fff; background: #6c5ce7; font-weight: 800; padding: 4px 12px; border-radius: 4px; font-size: 0.9rem; margin-right: 10px; vertical-align: middle; }
+    .promo-text { font-weight: 900; font-size: 1.8rem; color: #e91e63; text-decoration: underline; }
 
-    .promo-text {
-        font-weight: 900; 
-        font-size: 2rem; 
-        color: #e91e63; /* 突出的優惠顏色 */
-        text-decoration: underline;
-    }
-
-    /* 📱 手機版 RWD 調整 */
+    /* 📱 手機版 RWD */
     @media (max-width: 768px) {
         .content-text { font-size: 1.05rem; line-height: 1.8; }
         .promo-text { font-size: 1.6rem; }
-        .highlight-box { padding: 20px; }
     }
 </style>
+
+<nav class="sub-nav">
+    <a href="#section1" class="sub-nav-item">募資機制</a>
+    <a href="#section2" class="sub-nav-item">核心優點</a>
+    <a href="#section3" class="sub-nav-item">學生回饋</a>
+    <a href="#section4" class="sub-nav-item">優惠方案</a>
+    <a href="#section5" class="sub-nav-item">教材寄送</a>
+</nav>
 
 <div class="content-inner">
     <section class="brand-heading">
@@ -125,46 +69,45 @@
         <span class="subtitle">FUNDRAISING & MARKET INSIGHT</span>
     </section>
 
-    <nav class="sub-nav">
-        <a href="p3.html" class="sub-nav-item">課程說明</a>
-        <a href="p3-1.html" class="sub-nav-item">二年制專班</a>
-        <a href="p3-2.html" class="sub-nav-item">剪髮課程</a>
-        <a href="p3-5.html" class="sub-nav-item">講師培訓</a>
-        <a href="p3-6.html" class="sub-nav-item">創業經營</a>
-        <a href="p3-8.html" class="sub-nav-item active">募資課程</a>
-    </nav>
-
-    <section class="info-section">
+    <section class="info-section" id="section1">
         <div class="section-title">一、募資機制說明</div>
         <div class="content-text">
-            預錄影音課程皆須經過募資階段，讓具有教學能力但卻不敢投入心力、資源的老師，可以在確保最低收入符合預期後，再來籌備課程；同時也透過用戶於募資期間的互動討論，提供老師了解製作方向與內容，讓接下來的課程更符合市場期待，與滿足學習需求。
+            預錄影音課程皆須經過募資階段，讓具有教學能力但卻不敢投入心力、資源的老師，可以在確保最低收入符合預期後，再來籌備課程；同時也讓接下來的課程更符合市場期待，與滿足學習需求。
         </div>
+    </section>
 
+    <section class="info-section" id="section2">
         <div class="section-title">二、募資的特色與優點</div>
         <div class="content-text">
-            更有效率的開課，透過「介紹影片＋課程文案」介紹課程，讓老師可以保障收取自己預期的最低收入，同時瞭解市場需求，確認學習需求後再切中要點提供教學內容。<br>
+            更有效率的開課，透過「介紹影片＋課程文案」讓老師可以保障預期收入，同時確認學習需求後再切中要點提供教學內容。
             
-            <div style="margin-top: 25px; background: rgba(255, 255, 255, 0.6); padding: 20px; border: 1px solid #ddd; border-radius: 12px;">
+            <div style="margin-top: 25px; background: rgba(255, 255, 255, 0.8); padding: 20px; border: 1.5px solid #ddd; border-radius: 12px;">
                 <span class="future-tag">課程預告</span>
-                <strong style="color: #322b5f; font-size: 1.2rem; font-weight: 800;">目前 2 門募資課程預計於 114/12/31 上線。</strong>
+                <strong style="color: #322b5f; font-size: 1.1rem; font-weight: 900;">目前 2 門募資課程預計於 114/12/31 上線。</strong>
             </div>
         </div>
+    </section>
 
+    <section class="info-section" id="section3">
         <div class="section-title">三、學生回饋的管道</div>
         <div class="content-text">
-            課程募資期間，可在課程簡介下方的「留言版」留言給予意見回饋，讓老師更加瞭解每位用戶的的學習需求與偏好，並在製作課程時，增加或調整原規劃之課程內容。
+            募資期間可在簡介下方的「留言版」留言，讓老師瞭解每位用戶的學習偏好，並在製作課程時，彈性調整原規劃之課程內容。
         </div>
+    </section>
 
+    <section class="info-section" id="section4">
         <div class="section-title">四、募資優惠價</div>
         <div class="highlight-box">
-            <div class="content-text" style="margin-bottom: 0; font-weight: 800;">
+            <div class="content-text" style="margin-bottom: 0; font-weight: 900;">
                 預購期間的募資課程皆享有 <span class="promo-text">五折</span> 優惠價格購買。
             </div>
         </div>
+    </section>
 
+    <section class="info-section" id="section5">
         <div class="section-title">五、教材寄送與通知</div>
         <div class="content-text">
-            請於 <strong>蝦皮賣場</strong> 下訂課程，並指定物流方式，下訂後將儘速為您寄送專屬教材。
+            請於 <strong>蝦皮賣場</strong> 下訂課程，並指定物流方式，下訂後將儘速為您寄送專屬教材包。
         </div>
     </section>
 </div>
