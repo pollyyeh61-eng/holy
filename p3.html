@@ -1,13 +1,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <style>
-    /* 1. 整體適配與容器 */
-    .content-inner { 
-        padding: 0 6% 120px 6%; /* 頂部 padding 移至 nav 下方 */
-        background: #fdfdfd;
-    }
+    /* 1. 基礎設定與容器 */
+    body { margin: 0; font-family: -apple-system, sans-serif; background: #fdfdfd; color: #000; }
+    .content-inner { padding: 0 6% 120px 6%; }
     
-    /* 2. 子導覽列：手機頂部固定 */
+    /* 2. 右上角浮動按鍵 (新增) */
+    .floating-nav { 
+        position: fixed; 
+        top: 15px; 
+        right: 15px; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 8px; 
+        z-index: 3000; 
+    }
+    .float-btn { 
+        background: rgba(0, 0, 0, 0.85); 
+        color: #fff !important; 
+        text-decoration: none; 
+        padding: 8px 15px; 
+        border-radius: 50px; 
+        font-size: 0.8rem; 
+        font-weight: 800; 
+        backdrop-filter: blur(5px); 
+        border: 1px solid rgba(255,255,255,0.2); 
+        text-align: center;
+    }
+
+    /* 3. 子導覽列：手機頂部固定 */
     .sub-nav {
         display: flex;
         gap: 12px;
@@ -41,7 +62,7 @@
         border-color: #322b5f;
     }
 
-    /* 3. 標題優化 */
+    /* 4. 標題與內容區塊 */
     .brand-heading { 
         position: relative; 
         padding-left: 20px; 
@@ -49,34 +70,8 @@
         margin-bottom: 30px; 
     }
     .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
-    .brand-heading h1 { 
-        font-size: clamp(1.8rem, 8vw, 2.5rem); 
-        margin: 0; 
-        font-weight: 900; 
-        color: #000; 
-        letter-spacing: 1px;
-    }
-    .brand-heading .subtitle { 
-        font-size: 0.85rem; 
-        letter-spacing: 3px; 
-        color: #4834d4; 
-        font-weight: 800; 
-        text-transform: uppercase;
-        margin-top: 5px;
-    }
-
-    /* 4. 內容區塊與 Concept Box */
-    .info-section { margin-bottom: 40px; }
-    .section-title { 
-        font-size: 1.5rem; 
-        margin-bottom: 20px; 
-        font-weight: 900; 
-        border-bottom: 4px solid #fbc2eb; 
-        display: inline-block; 
-        color: #000; 
-    }
-    
-    p { color: #000 !important; font-size: 1.1rem; line-height: 1.9; font-weight: 600; }
+    .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin: 0; font-weight: 900; letter-spacing: 1px; }
+    .brand-heading .subtitle { font-size: 0.85rem; letter-spacing: 3px; color: #4834d4; font-weight: 800; text-transform: uppercase; margin-top: 5px; }
 
     .concept-box { 
         background: #fff; 
@@ -87,55 +82,28 @@
         border-left: 8px solid #6c5ce7;
         box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
-    .concept-box h4 { margin-top: 0; color: #000; font-size: 1.3rem; font-weight: 900; margin-bottom: 12px; }
-    
+    .concept-box h4 { margin-top: 0; font-size: 1.3rem; font-weight: 900; margin-bottom: 12px; }
+    .concept-box p { font-size: 1.1rem; line-height: 1.9; font-weight: 600; margin: 0; }
     .highlight-text { color: #e91e63; font-weight: 900; border-bottom: 2px solid #e91e63; }
 
-    /* 5. 表格優化：手機端自適應 */
-    .course-table { 
-        width: 100%; 
-        border-collapse: collapse; 
-        background: #fff; 
-        border: 2px solid #000;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-    .course-category { 
-        font-weight: 900; 
-        color: #fff !important; 
-        background: #322b5f; 
-        padding: 15px !important;
-        font-size: 1.2rem;
-        text-align: center;
-    }
-    .course-table td { 
-        padding: 18px 15px; 
-        border-bottom: 1px solid #eee; 
-        color: #000;
-        font-weight: 700;
-    }
-    .result-tag { 
-        display: inline-block; 
-        background: #6c5ce7; 
-        color: #fff; 
-        padding: 4px 10px; 
-        border-radius: 4px; 
-        font-size: 0.8rem; 
-        margin-top: 8px;
-        font-weight: 800;
-    }
+    /* 5. 表格優化 */
+    .section-title { font-size: 1.5rem; margin-bottom: 20px; font-weight: 900; border-bottom: 4px solid #fbc2eb; display: inline-block; }
+    .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; }
+    .course-category { font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; font-size: 1.2rem; text-align: center; }
+    .course-table td { padding: 18px 15px; border-bottom: 1px solid #eee; font-weight: 700; }
+    .result-tag { display: inline-block; background: #6c5ce7; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-top: 8px; font-weight: 800; }
 
     @media (max-width: 768px) {
         .course-table tr { display: flex; flex-direction: column; border-bottom: 2px solid #322b5f; }
         .course-table td { width: 100%; box-sizing: border-box; text-align: left; }
-        .course-table td:nth-child(2) { 
-            background: #f9faff; 
-            padding-top: 0; 
-            padding-bottom: 20px; 
-            color: #444; 
-            font-size: 1rem;
-        }
+        .course-table td:nth-child(2) { background: #f9faff; padding-top: 0; padding-bottom: 20px; color: #444; font-size: 1rem; }
     }
 </style>
+
+<div class="floating-nav">
+    <a href="index.html" class="float-btn">🏠 回首頁</a>
+    <a href="p3.html" class="float-btn">📚 課程</a>
+</div>
 
 <nav class="sub-nav">
     <a href="p3.html" class="sub-nav-item active">課程說明</a>
@@ -157,14 +125,14 @@
     <section class="info-section">
         <div class="concept-box">
             <h4>1. 雙軌學習模式</h4>
-            <p>課程依照學習邏輯循序漸進，從基礎到進階，每一步都環環相扣。無論對創業、講師或寫書感興趣，設計都能讓您穩步前進，免去摸索，確保每個階段都有具體收穫。</p>
+            <p>課程依照學習邏輯循序漸進，從基礎到進階，每一步都環環相扣。設計都能讓您穩步前進，免去摸索，確保每個階段都有具體收穫。</p>
         </div>
 
         <div class="concept-box" style="border-left-color: #fbc2eb;">
-            <h4>2. 線上課程說明</h4>
-            <p>我們相信：<span class="highlight-text">只有做出來的，才是自己的。</span>具體產出目標：</p>
-            <ul style="line-height: 2.2; color: #000; font-weight: 800; font-size: 1.15rem; margin-top: 15px; padding-left: 20px;">
-                <li>創業課程：完成專屬 <span class="highlight-text">創業計劃書</span></li>
+            <h4>2. 實踐導向目標</h4>
+            <p>我們相信：<span class="highlight-text">只有做出來的，才是自己的。</span>具體目標：</p>
+            <ul style="line-height: 2.2; color: #000; font-weight: 800; font-size: 1.1rem; margin-top: 15px; padding-left: 20px;">
+                <li>創業課程：完成 <span class="highlight-text">創業計劃書</span></li>
                 <li>講師課程：設計完整 <span class="highlight-text">教案系統</span></li>
                 <li>寫書課程：完成一本 <span class="highlight-text">個人著作</span></li>
             </ul>
