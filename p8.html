@@ -1,189 +1,176 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <style>
     :root {
-        --iridescent-glow: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
-        --neon-blue: #00d2ff;
-        --pure-white: #ffffff;
+        /* 獨角獸色系：粉紫、天藍、薄荷綠 */
+        --unicorn-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+        --soft-pink: #ffd1ff;
+        --soft-blue: #d1d1ff;
+        --soft-mint: #d1ffd1;
+        --accent-purple: #6c5ce7;
+        --text-dark: #444;
     }
 
-    /* 1. 確保嵌入時背景顏色一致 */
+    /* 1. 背景與容器優化：改為柔和亮色調 */
     .p8-wrapper {
-        background: #050505;
-        color: #fff;
-        min-height: 100%;
-        font-family: 'PingFang TC', 'Noto Sans TC', sans-serif;
+        background: linear-gradient(180deg, #fdfbfb 0%, #ebedee 100%);
+        color: var(--text-dark);
+        min-height: 100vh;
+        font-family: -apple-system, 'PingFang TC', sans-serif;
         padding-bottom: 50px;
     }
 
-    /* 2. 標題設計：對齊白皮書的大幅加粗美學 */
+    /* 2. 標題縮小與氣氛營造 */
     .links-header {
-        padding: clamp(60px, 10%, 100px) 10% 50px;
+        padding: 50px 10% 30px;
         text-align: center;
     }
 
     .links-header h1 {
-        font-size: clamp(2.5rem, 10vw, 4.5rem); /* 大幅放大標題 */
-        font-weight: 900; /* 極粗字重 */
+        font-size: 2.2rem; /* 標題縮小，不再壓迫 */
+        font-weight: 900;
         margin: 0;
-        text-transform: uppercase;
-        letter-spacing: clamp(8px, 3vw, 20px); /* 增加字距展現氣勢 */
-        background: var(--iridescent-glow);
+        letter-spacing: 4px;
+        background: linear-gradient(45deg, #a18cd1 0%, #fbc2eb 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        line-height: 1;
     }
 
-    /* 3. 網格與卡片 */
+    .links-header .tagline {
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: #a18cd1;
+        letter-spacing: 2px;
+        margin-top: 8px;
+    }
+
+    /* 3. 網格縮小與精緻化 */
     .links-matrix {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-        padding: 0 8% 100px;
+        grid-template-columns: repeat(2, 1fr); /* 手機版直接雙欄排列，更精緻 */
+        gap: 15px;
+        padding: 0 6% 60px;
     }
 
     .link-card {
         position: relative;
-        height: 280px; 
-        background: #111;
+        height: 160px; /* 大幅縮減高度 */
+        background: rgba(255, 255, 255, 0.6);
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        border: 1px solid rgba(255,255,255,0.15);
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        justify-content: center;
+        align-items: center;
         text-decoration: none;
-        border-radius: 4px; /* 稍微帶點圓角提升精緻度 */
+        border-radius: 20px; /* 圓角增加親和力 */
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 8px 20px rgba(161, 140, 209, 0.1);
+        transition: all 0.3s ease;
     }
 
-    /* 霓虹邊框效果 */
-    .link-card::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border: 3px solid transparent;
-        background: var(--iridescent-glow) border-box;
-        -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-        mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: destination-out;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: 0.4s;
-    }
-
+    /* 懸浮時的發光效果 */
     .link-card:hover { 
-        transform: translateY(-10px); 
-        border-color: transparent;
-    }
-    .link-card:hover::after { opacity: 1; }
-
-    .card-bg {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center;
-        opacity: 0.4; /* 調低初始透明度，讓文字更清楚 */
-        transition: 0.6s;
-        filter: grayscale(30%);
+        transform: translateY(-5px); 
+        background: #fff;
+        box-shadow: 0 12px 25px rgba(161, 140, 209, 0.2);
     }
 
-    .link-card:hover .card-bg { 
-        opacity: 0.7; 
-        transform: scale(1.1); 
-        filter: grayscale(0%);
-    }
-
-    .card-content {
-        padding: 30px 20px;
-        z-index: 2;
-        background: linear-gradient(transparent, rgba(0,0,0,0.95));
+    .card-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
     }
 
     .card-content h3 { 
         margin: 0; 
-        font-size: 1.4rem; 
-        letter-spacing: 2px; 
-        color: var(--pure-white); 
-        font-weight: 800; /* 加深字重 */
+        font-size: 0.95rem; 
+        color: var(--text-dark); 
+        font-weight: 800;
+        text-align: center;
     }
 
-    .card-content .action-text {
-        display: inline-block;
-        margin-top: 12px;
-        font-size: 0.85rem;
-        color: var(--neon-blue);
-        font-weight: 900;
-        letter-spacing: 1.5px;
+    .card-content .action-tag {
+        display: block;
+        margin-top: 5px;
+        font-size: 0.65rem;
+        color: #a18cd1;
+        font-weight: 700;
+        background: #f0edff;
+        padding: 2px 8px;
+        border-radius: 50px;
+        text-align: center;
     }
 
-    /* 4. 底部標誌 */
+    /* 4. 底部設計 */
     .footer-logo {
         text-align: center;
-        padding: 40px 0;
-        opacity: 0.4;
-        font-size: 0.8rem;
-        letter-spacing: 5px;
-        font-weight: 600;
-        color: #fff;
+        padding: 20px 0;
+        opacity: 0.5;
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+        font-weight: 700;
+        color: #a18cd1;
     }
 
-    /* 📱 手機版調整 */
-    @media (max-width: 768px) {
-        .links-matrix { padding: 0 5% 60px; }
-        .links-header h1 { letter-spacing: 8px; }
-        .link-card { height: 220px; }
+    /* 📱 手機版 RWD 調整 */
+    @media (max-width: 400px) {
+        .links-matrix { grid-template-columns: 1fr; } /* 極小螢幕才切回單欄 */
+        .link-card { height: 140px; }
     }
 </style>
 
 <div class="p8-wrapper">
     <header class="links-header">
         <h1>Connect Us</h1>
+        <div class="tagline">✦ 與活力學院保持連結 ✦</div>
     </header>
 
     <main class="links-matrix">
-        <a href="https://www.youtube.com/@vitalityhair" target="_blank" class="link-card">
-            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800');"></div>
+        <a href="https://www.youtube.com/@vitalityhair" target="_blank" class="link-card" style="background: linear-gradient(to bottom right, #fff, #ffe9e9);">
+            <div class="card-icon">🎬</div>
             <div class="card-content">
-                <h3>YouTube 頻道</h3>
-                <span class="action-text">GO TO CHANNEL →</span>
+                <h3>YouTube</h3>
+                <span class="action-tag">訂閱頻道</span>
             </div>
         </a>
 
-        <a href="#" target="_blank" class="link-card">
-            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=800');"></div>
+        <a href="#" target="_blank" class="link-card" style="background: linear-gradient(to bottom right, #fff, #e9f0ff);">
+            <div class="card-icon">👥</div>
             <div class="card-content">
-                <h3>FB 專屬社團</h3>
-                <span class="action-text">JOIN COMMUNITY →</span>
+                <h3>FB 社團</h3>
+                <span class="action-tag">加入討論</span>
             </div>
         </a>
 
-        <a href="#" target="_blank" class="link-card">
-            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800');"></div>
+        <a href="#" target="_blank" class="link-card" style="background: linear-gradient(to bottom right, #fff, #fff9e9);">
+            <div class="card-icon">🛒</div>
             <div class="card-content">
                 <h3>蝦皮賣場</h3>
-                <span class="action-text">SHOP NOW →</span>
+                <span class="action-tag">選購器材</span>
             </div>
         </a>
 
-        <a href="#" target="_blank" class="link-card">
-            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1595475243510-973f443df890?auto=format&fit=crop&q=80&w=800');"></div>
+        <a href="#" target="_blank" class="link-card" style="background: linear-gradient(to bottom right, #fff, #e9fff0);">
+            <div class="card-icon">📢</div>
             <div class="card-content">
-                <h3>FB 粉絲專頁</h3>
-                <span class="action-text">FOLLOW US →</span>
+                <h3>粉絲專頁</h3>
+                <span class="action-tag">追蹤近況</span>
             </div>
         </a>
 
-        <a href="#" target="_blank" class="link-card">
-            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&q=80&w=800');"></div>
+        <a href="#" target="_blank" class="link-card" style="background: linear-gradient(to bottom right, #fff, #f5e9ff);">
+            <div class="card-icon">💬</div>
             <div class="card-content">
-                <h3>LINE 官方社群</h3>
-                <span class="action-text">LINE GROUP →</span>
+                <h3>LINE 社群</h3>
+                <span class="action-tag">即時互動</span>
             </div>
         </a>
 
-        <a href="mailto:service@hairweb.net" class="link-card">
-            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=800');"></div>
+        <a href="mailto:service@hairweb.net" class="link-card" style="background: linear-gradient(to bottom right, #fff, #f0f0f0);">
+            <div class="card-icon">✉️</div>
             <div class="card-content">
-                <h3>葉老師信箱</h3>
-                <span class="action-text">SEND EMAIL →</span>
+                <h3>諮詢信箱</h3>
+                <span class="action-tag">聯絡我們</span>
             </div>
         </a>
     </main>
