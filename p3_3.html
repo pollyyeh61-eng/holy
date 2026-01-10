@@ -1,14 +1,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <style>
-    /* 1. 全域適配 */
+    /* 1. 基礎設定 */
     body { margin: 0; font-family: -apple-system, sans-serif; background: #fdfdfd; }
-    
-    .content-inner { 
-        padding: 0 6% 120px 6%; 
-    }
+    .content-inner { padding: 0 6% 120px 6%; }
 
-    /* 2. 右上角浮動按鈕 (第二層頁面專屬) */
+    /* 2. 右上角浮動按鍵 (第二層專用) */
     .floating-nav {
         position: fixed;
         top: 15px;
@@ -19,19 +16,19 @@
         z-index: 3000;
     }
     .float-btn {
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.85);
         color: #fff !important;
         text-decoration: none;
-        padding: 7px 14px;
+        padding: 8px 15px;
         border-radius: 50px;
         font-size: 0.8rem;
         font-weight: 800;
         backdrop-filter: blur(5px);
-        text-align: center;
         border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    /* 3. 頂部固定子導覽列 */
+    /* 3. 置頂子導覽列 (橫向滑動) */
     .sub-nav {
         display: flex;
         gap: 12px;
@@ -47,7 +44,6 @@
         z-index: 2000;
     }
     .sub-nav::-webkit-scrollbar { display: none; } 
-
     .sub-nav-item {
         white-space: nowrap;
         padding: 10px 22px;
@@ -59,66 +55,29 @@
         font-weight: 800;
         border: 2px solid #d1c9ff;
     }
-    .sub-nav-item.active {
-        background: #322b5f;
-        color: #fff;
-        border-color: #322b5f;
-    }
+    .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
-    /* 4. 標題與內容 */
-    .brand-heading { 
-        position: relative; 
-        padding-left: 20px; 
-        margin: 20px 0 30px 0; 
-    }
+    /* 4. 標題與視覺 */
+    .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
     .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
-    .brand-heading h1 { 
-        font-size: clamp(1.8rem, 8vw, 2.3rem); 
-        margin: 0; 
-        font-weight: 900; 
-        color: #000; 
-    }
-    .brand-heading .subtitle { 
-        font-size: 0.8rem; 
-        letter-spacing: 2px; 
-        color: #4834d4; 
-        font-weight: 800; 
-        text-transform: uppercase;
-    }
+    .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); margin: 0; font-weight: 900; color: #000; }
+    .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: #4834d4; font-weight: 800; text-transform: uppercase; }
 
-    .info-section { margin-bottom: 50px; }
     .section-title { 
-        font-size: 1.35rem; 
+        font-size: 1.4rem; 
         margin-bottom: 20px; 
         font-weight: 900; 
         color: #000; 
-        border-left: 6px solid #a1c4fd;
-        padding-left: 12px;
+        border-bottom: 4px solid #a1c4fd;
+        display: inline-block;
+        padding-bottom: 5px;
     }
     
-    /* 5. 表格手機端卡片化優化 */
-    .table-container { 
-        background: #fff; 
-        border: 2px solid #000;
-        border-radius: 12px;
-        overflow: hidden;
-    }
+    /* 5. 表格手機端卡片化 */
+    .table-container { background: #fff; border: 2px solid #000; border-radius: 12px; overflow: hidden; margin-bottom: 40px; }
     .course-table { width: 100%; border-collapse: collapse; }
-    .course-table th { 
-        background: #f8faff; 
-        padding: 15px; 
-        text-align: left; 
-        color: #322b5f; 
-        font-weight: 900; 
-        border-bottom: 2px solid #eee;
-    }
-    .course-table td { 
-        padding: 18px 15px; 
-        border-bottom: 1px solid #eee; 
-        color: #000; 
-        font-weight: 600; 
-        line-height: 1.7;
-    }
+    .course-table th { background: #f8faff; padding: 15px; text-align: left; color: #322b5f; font-weight: 900; border-bottom: 2px solid #eee; }
+    .course-table td { padding: 18px 15px; border-bottom: 1px solid #eee; color: #000; font-weight: 700; line-height: 1.6; }
     
     .item-code { font-weight: 900; color: #4834d4; font-size: 1.1rem; }
     .tech-tag { 
@@ -133,47 +92,12 @@
         margin-top: 8px;
     }
 
-    .lab-note {
-        margin-top: 15px;
-        padding: 20px;
-        background: #fffaf0;
-        border-left: 6px solid #fbc2eb;
-        font-size: 1rem;
-        color: #000;
-        font-weight: 600;
-        line-height: 1.7;
-    }
-
-    /* 📱 手機版關鍵 RWD */
     @media (max-width: 768px) {
-        .course-table thead { display: none; } /* 隱藏表頭 */
-        .course-table tr { 
-            display: block; 
-            padding: 20px 15px; 
-            border-bottom: 3px solid #f0f0f0;
-        }
-        .course-table td { 
-            display: block; 
-            padding: 5px 0; 
-            border: none; 
-            width: 100%;
-        }
-        .item-code { 
-            background: #322b5f; 
-            color: #fff; 
-            padding: 2px 10px; 
-            border-radius: 4px;
-            font-size: 0.85rem;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-        .course-table td:nth-child(2) { 
-            font-size: 1.15rem; 
-            font-weight: 800; 
-            color: #000;
-            line-height: 1.4;
-            margin-bottom: 8px;
-        }
+        .course-table thead { display: none; }
+        .course-table tr { display: block; padding: 20px 15px; border-bottom: 3px solid #f0f0f0; }
+        .course-table td { display: block; padding: 5px 0; border: none; width: 100%; }
+        .item-code { background: #322b5f; color: #fff; padding: 2px 10px; border-radius: 4px; font-size: 0.85rem; margin-bottom: 10px; display: inline-block; }
+        .course-table td:nth-child(2) { font-size: 1.15rem; font-weight: 800; color: #000; }
     }
 </style>
 
@@ -198,82 +122,48 @@
     </section>
 
     <section class="info-section">
-        <div class="section-title">燙髮初階：邏輯與冷塑基礎</div>
+        <div class="section-title">燙髮初階課程</div>
         <div class="table-container">
             <table class="course-table">
                 <thead>
-                    <tr>
-                        <th style="width: 60px;">編碼</th>
-                        <th>核心教學內容</th>
-                        <th>技術摘要</th>
-                    </tr>
+                    <tr><th style="width: 60px;">編碼</th><th>課程內容</th><th>重點技術摘要</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="item-code">01</td>
-                        <td>1. 毛髮化學、物理結構分析<br>2. 基本上捲排列 (Standard Wrap)</td>
-                        <td><span class="tech-tag">基礎結構學</span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-code">02</td>
-                        <td>1. 冷塑藥劑特性及熱塑藥性分析<br>2. 疊磚上捲排列 (Brickwork)</td>
-                        <td><span class="tech-tag">藥劑反應分析</span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-code">05</td>
-                        <td>1. 冷塑燙失敗案例原因排除<br>2. 車輪燙技術實作</td>
-                        <td><span class="tech-tag">問題排除</span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-code">09</td>
-                        <td>1. 燙髮設計五要素 (空間、線條等)<br>2. 渣男燙 (流行風格) 實戰</td>
-                        <td><span class="tech-tag">趨勢實戰</span></td>
-                    </tr>
+                    <tr><td class="item-code">1</td><td>1. 毛髮理論 - 化學、物理<br>2. 基本上捲排列</td><td><span class="tech-tag">基礎捲度結構學</span></td></tr>
+                    <tr><td class="item-code">2</td><td>1. 冷、熱塑藥劑特性<br>2. 疊磚上捲排列</td><td><span class="tech-tag">藥劑與毛髮反應</span></td></tr>
+                    <tr><td class="item-code">3</td><td>1. 上捲原理與排列方式<br>2. 扇形上捲排列</td><td><span class="tech-tag">多樣化排列基礎</span></td></tr>
+                    <tr><td class="item-code">4</td><td>1. 冷塑燙優缺點介紹<br>2. 直立上捲排列</td><td><span class="tech-tag">冷塑技術分析</span></td></tr>
+                    <tr><td class="item-code">5</td><td>1. 冷塑燙失敗的原因<br>2. 車輪燙</td><td><span class="tech-tag">失敗案例排除</span></td></tr>
+                    <tr><td class="item-code">6</td><td>1. 冷塑燙流程<br>2. 空心燙</td><td><span class="tech-tag">標準操作流程</span></td></tr>
+                    <tr><td class="item-code">7</td><td>1. 燙髮形象原理<br>2. 扭轉燙</td><td><span class="tech-tag">風格塑造與結構</span></td></tr>
+                    <tr><td class="item-code">8</td><td>1. 男、女孩捲髮差異<br>2. 直立不重疊排列</td><td><span class="tech-tag">性別化髮型應用</span></td></tr>
+                    <tr><td class="item-code">9</td><td>1. 燙髮設計五要素<br>2. 渣男燙實戰</td><td><span class="tech-tag">流行趨勢實戰</span></td></tr>
+                    <tr><td class="item-code">10</td><td>綜合技術驗收 (真人實作)</td><td><span class="tech-tag">綜合技術驗收</span></td></tr>
                 </tbody>
             </table>
-        </div>
-        <div class="lab-note">
-            💡 <b>初階重點：</b> 掌握還原劑與氧化劑的化學變化，訓練穩定的上捲手感與精準判斷。
         </div>
     </section>
 
     <section class="info-section">
-        <div class="section-title">燙髮進階：熱塑與高端矯正</div>
+        <div class="section-title" style="border-bottom-color: #6c5ce7;">燙髮進階課程</div>
         <div class="table-container">
             <table class="course-table">
                 <thead>
-                    <tr>
-                        <th style="width: 60px;">編碼</th>
-                        <th>核心教學內容</th>
-                        <th>專業應用</th>
-                    </tr>
+                    <tr><th style="width: 60px;">編碼</th><th>課程內容</th><th>專業進階應用</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="item-code">01</td>
-                        <td>1. 高階毛髮深入研究<br>2. 縮毛矯正離子燙精細操作</td>
-                        <td><span class="tech-tag">高端髮質管理</span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-code">04</td>
-                        <td>1. 蛋白質熱化 (Denaturation) 過程<br>2. 熱塑直立燙層次控制</td>
-                        <td><span class="tech-tag">熱化反應科學</span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-code">05</td>
-                        <td>1. 熱塑失敗排除與髮質救贖<br>2. 熱塑直立外翻燙 (韓系風)</td>
-                        <td><span class="tech-tag">問題解決</span></td>
-                    </tr>
-                    <tr>
-                        <td class="item-code">09</td>
-                        <td>1. 當代燙髮設計與溝通術<br>2. 人魚燙 (Mermaid Waves) 操作</td>
-                        <td><span class="tech-tag">美感提升</span></td>
-                    </tr>
+                    <tr><td class="item-code">1</td><td>1. 高階化學、物理研究<br>2. 縮毛矯正離子燙操作</td><td><span class="tech-tag">高端髮質管理</span></td></tr>
+                    <tr><td class="item-code">2</td><td>1. 熱塑機操作<br>2. 直立燙操作</td><td><span class="tech-tag">儀器運用實務</span></td></tr>
+                    <tr><td class="item-code">3</td><td>1. 熱塑藥性深度解析<br>2. 玉米鬚燙操作</td><td><span class="tech-tag">藥性深度分析</span></td></tr>
+                    <tr><td class="item-code">4</td><td>1. 蛋白質的熱化過程<br>2. 熱塑直立燙</td><td><span class="tech-tag">熱化反應科學</span></td></tr>
+                    <tr><td class="item-code">5</td><td>1. 熱塑燙失敗原因排除<br>2. 熱塑直立外翻燙</td><td><span class="tech-tag">進階問題解決</span></td></tr>
+                    <tr><td class="item-code">6</td><td>1. 精準熱塑燙流程<br>2. 髮根燙與內扣結合</td><td><span class="tech-tag">精準流程控制</span></td></tr>
+                    <tr><td class="item-code">7</td><td>1. 燙後整理技巧教學<br>2. 直立髮中繞燙</td><td><span class="tech-tag">售後造型指導</span></td></tr>
+                    <tr><td class="item-code">8</td><td>1. 熱塑燙優缺點評估<br>2. 直立平行螺捲</td><td><span class="tech-tag">技術效益評估</span></td></tr>
+                    <tr><td class="item-code">9</td><td>1. 燙髮造型美學設計<br>2. 人魚燙操作</td><td><span class="tech-tag">美感造型提升</span></td></tr>
+                    <tr><td class="item-code">10</td><td>綜合實戰驗收 (真人實作)</td><td><span class="tech-tag">實戰能力展示</span></td></tr>
                 </tbody>
             </table>
-        </div>
-        <div class="lab-note" style="border-left-color: #6c5ce7;">
-            💡 <b>進階重點：</b> 專注於「熱能管理」與「髮質保養」的平衡，創造具備商業價值的柔軟質感。
         </div>
     </section>
 </div>
