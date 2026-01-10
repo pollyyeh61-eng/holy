@@ -1,7 +1,10 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <style>
     /* 1. 整體適配與容器 */
     .content-inner { 
         padding: clamp(40px, 10%, 80px) 6% 120px 6%; 
+        background: #fdfdfd;
     }
 
     /* 2. 標題設計 */
@@ -10,14 +13,14 @@
         padding-left: 20px; 
         margin-bottom: 40px; 
     }
-    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: #000; }
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
     
     .brand-heading h1 { 
         font-size: clamp(1.8rem, 8vw, 2.5rem); 
         margin: 0; 
         letter-spacing: 2px; 
-        font-weight: 800; /* 加深字重 */
-        color: #000; /* 改為純黑 */
+        font-weight: 900; 
+        color: #000; 
     }
     .brand-heading .subtitle { 
         font-size: 0.85rem; 
@@ -35,7 +38,7 @@
         margin-bottom: 30px; 
         font-weight: 800; 
         color: #000;
-        border-bottom: 3px solid #fbc2eb; 
+        border-bottom: 4px solid #fbc2eb; 
         display: inline-block; 
         padding-bottom: 5px; 
         letter-spacing: 1px; 
@@ -44,92 +47,107 @@
     /* 4. 書籍網格系統 */
     .book-grid { 
         display: grid; 
-        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); 
-        gap: 35px; 
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+        gap: 30px; 
         margin: 20px 0; 
     }
     
     .book-card { 
         background: #fff; 
-        padding: 25px; 
-        border: 1px solid #ddd; 
+        padding: 20px; 
+        border: 1px solid #eee; 
         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         text-align: center;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
     }
     .book-card:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(108, 92, 231, 0.15);
         border-color: #6c5ce7;
     }
     
     .book-cover {
         width: 100%;
-        aspect-ratio: 3/4;
-        background: #f8f8f8;
-        margin-bottom: 18px;
-        box-shadow: 3px 6px 15px rgba(0,0,0,0.1);
+        aspect-ratio: 1 / 1.4; /* 標準書封比例 */
+        background: #f0f0f0;
+        margin-bottom: 15px;
+        box-shadow: 5px 8px 15px rgba(0,0,0,0.1);
         display: flex;
         align-items: center;
         justify-content: center;
         overflow: hidden;
-        border-radius: 4px;
-        border: 1px solid #eee;
+        border-radius: 5px;
     }
-    .book-cover img { width: 100%; height: 100%; object-fit: cover; }
+    .book-cover img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        transition: 0.5s;
+    }
+    .book-card:hover .book-cover img { transform: scale(1.05); }
 
     .book-card h4 { 
-        margin: 12px 0 8px 0; 
+        margin: 10px 0 5px 0; 
         color: #000; 
         font-size: 1.1rem; 
         font-weight: 800; 
         line-height: 1.4;
     }
     .book-card p { 
-        font-size: 0.95rem; 
-        color: #333; 
-        margin: 0; 
-        min-height: 2.5em; 
+        font-size: 0.9rem; 
+        color: #666; 
+        margin: 0 0 15px 0; 
+        min-height: 2.4em; 
         font-weight: 500;
+        line-height: 1.4;
     }
     
     .buy-btn {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 10px 24px;
-        background: #000; /* 按鈕改為黑色更顯質感 */
-        color: white;
+        display: block;
+        padding: 12px 0;
+        background: #000; 
+        color: #fff !important;
         text-decoration: none;
         font-size: 0.9rem;
         border-radius: 50px;
         transition: 0.3s;
-        font-weight: 700;
+        font-weight: 800;
         letter-spacing: 1px;
+        margin-top: auto;
     }
     .buy-btn:hover { 
         background: #e91e63; 
-        transform: scale(1.05); 
         box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
     }
 
-    /* 新書標籤 */
+    /* 推薦卡片特殊樣式 */
+    .featured-card {
+        border: 2px solid #6c5ce7 !important;
+        background: #f9f8ff !important;
+    }
     .new-release-tag {
-        font-size: 0.75rem; 
-        letter-spacing: 2px; 
-        color: #6c5ce7; 
+        font-size: 0.7rem; 
+        letter-spacing: 1px; 
+        color: #fff; 
+        background: #6c5ce7;
         font-weight: 800;
-        margin-bottom: 5px;
+        padding: 3px 10px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        display: inline-block;
     }
 
     /* 📱 手機版調整 */
     @media (max-width: 768px) {
-        .book-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .book-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
         .book-card { padding: 15px; }
-        .book-card h4 { font-size: 1rem; }
-        .buy-btn { width: 100%; padding: 10px 0; }
+        .book-card h4 { font-size: 0.95rem; }
+        .book-card p { font-size: 0.85rem; }
     }
-    @media (max-width: 480px) {
+    @media (max-width: 400px) {
         .book-grid { grid-template-columns: 1fr; }
     }
 </style>
@@ -144,28 +162,39 @@
         <div class="section-title">技術類書籍</div>
         <div class="book-grid">
             <div class="book-card">
-                <div class="book-cover"><img src="path/to/cover1.jpg" alt="染髮"></div>
-                <h4>葉老師系列 1：染髮</h4>
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1527799822367-a233b47b0ee6?auto=format&fit=crop&q=80&w=800" alt="染髮">
+                </div>
+                <h4>葉老師系列 1</h4>
                 <p>染髮理論與實務全書</p>
-                <a href="#" class="buy-btn">立即購買</a>
+                <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn">立即購買</a>
             </div>
+
             <div class="book-card">
-                <div class="book-cover"><img src="path/to/cover2.jpg" alt="燙髮"></div>
-                <h4>葉老師系列 2：燙髮</h4>
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=800" alt="燙髮">
+                </div>
+                <h4>葉老師系列 2</h4>
                 <p>結構燙髮技術解析</p>
-                <a href="#" class="buy-btn">立即購買</a>
+                <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn">立即購買</a>
             </div>
+
             <div class="book-card">
-                <div class="book-cover"><img src="path/to/cover3.jpg" alt="剪髮"></div>
-                <h4>葉老師系列 3：剪髮</h4>
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=80&w=800" alt="剪髮">
+                </div>
+                <h4>葉老師系列 3</h4>
                 <p>沙龍商業剪髮系統</p>
-                <a href="#" class="buy-btn">立即購買</a>
+                <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn">立即購買</a>
             </div>
+
             <div class="book-card">
-                <div class="book-cover"><img src="path/to/cover4.jpg" alt="染髮二"></div>
-                <h4>老師系列 4：染髮(二)</h4>
-                <p>高階色彩學與調色術</p>
-                <a href="#" class="buy-btn">立即購買</a>
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1595475243510-973f443df890?auto=format&fit=crop&q=80&w=800" alt="染髮二">
+                </div>
+                <h4>老師系列 4</h4>
+                <p>染髮(二)：高階色彩學</p>
+                <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn">立即購買</a>
             </div>
         </div>
     </section>
@@ -174,25 +203,31 @@
         <div class="section-title">成長類書籍</div>
         <div class="book-grid">
             <div class="book-card">
-                <div class="book-cover"><img src="path/to/cover5.jpg" alt="美髮創業"></div>
-                <h4>葉老師系列 5：美髮創業</h4>
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=800" alt="美髮創業">
+                </div>
+                <h4>葉老師系列 5</h4>
                 <p>從零開始打造個人沙龍</p>
-                <a href="#" class="buy-btn">立即購買</a>
+                <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn">立即購買</a>
             </div>
+
             <div class="book-card">
-                <div class="book-cover"><img src="path/to/cover6.jpg" alt="成為講師"></div>
-                <h4>葉老師系列 6：成為講師</h4>
+                <div class="book-cover">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800" alt="成為講師">
+                </div>
+                <h4>葉老師系列 6</h4>
                 <p>將專業轉化為教學系統</p>
-                <a href="#" class="buy-btn">立即購買</a>
+                <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn">立即購買</a>
             </div>
-            <div class="book-card" style="border: 2px solid #6c5ce7; background: #f0f7ff;">
-                <div class="book-cover" style="background: #fff; flex-direction: column;">
-                    <div class="new-release-tag">NEW RELEASE</div>
-                    <div style="font-weight: 800; color: #6c5ce7; font-size: 1.2rem;">★ 本月推薦</div>
+
+            <div class="book-card featured-card">
+                <div class="book-cover" style="background: #fff; flex-direction: column; padding: 10px;">
+                    <span class="new-release-tag">NEW RELEASE</span>
+                    <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=800" alt="美髮創業指導" style="border-radius: 4px;">
                 </div>
                 <h4>美髮創業指導</h4>
                 <p>葉老師教你美髮創業</p>
-                <a href="#" class="buy-btn" style="background: #e91e63;">立即購買</a>
+                <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn" style="background: #e91e63;">立即購買</a>
             </div>
         </div>
     </section>
