@@ -1,0 +1,126 @@
+<style>
+    /* 局部樣式：專屬於 P.3.2 的細節 */
+    .content-inner { padding: 120px 8% 100px 8%; }
+
+    .brand-heading { position: relative; padding-left: 30px; margin-bottom: 50px; }
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: #000; }
+    .brand-heading h1 { font-size: 2.8rem; margin: 0; letter-spacing: 5px; font-weight: 500; color: #322b5f; }
+    .brand-heading .subtitle { font-size: 0.9rem; letter-spacing: 5px; color: #6c5ce7; font-weight: 700; text-transform: uppercase; }
+
+    .info-section { margin-bottom: 60px; max-width: 950px; }
+    .section-title { 
+        font-size: 1.4rem; margin-bottom: 25px; font-weight: 700; color: #322b5f;
+        border-bottom: 2px solid #fbc2eb; display: inline-block; padding-bottom: 5px; 
+    }
+    
+    /* 課程表格優化 */
+    .table-container { 
+        overflow-x: auto; 
+        background: rgba(255, 255, 255, 0.4); 
+        backdrop-filter: blur(10px); 
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .course-table { width: 100%; border-collapse: collapse; }
+    .course-table th { 
+        background: rgba(108, 92, 231, 0.1); 
+        padding: 18px 15px; 
+        text-align: left; 
+        color: #322b5f; 
+        font-weight: 700; 
+        border-bottom: 2px solid #6c5ce7;
+        white-space: nowrap;
+    }
+    .course-table td { 
+        padding: 15px; 
+        border-bottom: 1px solid rgba(0,0,0,0.05); 
+        vertical-align: middle; 
+        transition: all 0.3s ease;
+        color: #322b5f;
+    }
+    
+    /* 表格列懸停效果 */
+    .course-table tr:hover td { 
+        background: rgba(255, 255, 255, 0.6); 
+        color: #6c5ce7; 
+    }
+
+    .item-code { font-weight: 700; width: 60px; text-align: center; color: #6c5ce7; }
+    .example-tag { 
+        font-size: 0.85rem; 
+        background: rgba(108, 92, 231, 0.1); 
+        padding: 4px 12px; 
+        border-radius: 15px; 
+        color: #6c5ce7;
+    }
+
+    .highlight-note {
+        font-size: 0.9rem;
+        margin-top: 10px;
+        opacity: 0.7;
+        font-style: italic;
+    }
+</style>
+
+<div class="content-inner">
+    <section class="brand-heading">
+        <h1>剪髮課程</h1>
+        <div class="subtitle">PROFESSIONAL CUTTING SYSTEM</div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">剪髮初階課程</div>
+        <div class="table-container">
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th class="item-code">編碼</th>
+                        <th>核心教學內容</th>
+                        <th>髮型範例 (參考)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="item-code">01</td><td>1. 剪髮十大流程<br>2. 羽毛線條高層次髮型</td><td><span class="example-tag">初階-1</span></td></tr>
+                    <tr><td class="item-code">02</td><td>1. 快剪靠打薄技巧<br>2. 瀏海線條層次髮型</td><td><span class="example-tag">初階-2</span></td></tr>
+                    <tr><td class="item-code">03</td><td>1. 剪髮分區與分線<br>2. 水平層次髮型</td><td><span class="example-tag">初階-3</span></td></tr>
+                    <tr><td class="item-code">04</td><td>1. 剪髮六大參數<br>2. 前斜中低層次髮型</td><td><span class="example-tag">初階-4</span></td></tr>
+                    <tr><td class="item-code">05</td><td>1. 剪髮四個基本結構<br>2. 後斜中低層次髮型</td><td><span class="example-tag">初階-5</span></td></tr>
+                    <tr><td class="item-code">06</td><td>1. 認識頭形與骨骼<br>2. 不對稱層次髮型</td><td><span class="example-tag">初階-6</span></td></tr>
+                    <tr><td class="item-code">07</td><td>1. 獨創箱式剪髮-八大層次<br>2. 二區分層次髮型</td><td><span class="example-tag">初階-7</span></td></tr>
+                    <tr><td class="item-code">08</td><td>1. 層次展開圖<br>2. 圓型均等長層次髮型</td><td><span class="example-tag">初階-8</span></td></tr>
+                    <tr><td class="item-code">09</td><td>1. 剪髮的三度空間<br>2. 圓型均等中層次髮型</td><td><span class="example-tag">初階-9</span></td></tr>
+                    <tr><td class="item-code">10</td><td>1. 剪髮設計線與平面形態<br>2. 圓型均等短層次髮型</td><td><span class="example-tag">初階-10</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight-note">※ 初階課程著重於邏輯建立與手刀穩定度訓練。</div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">剪髮進階課程</div>
+        <div class="table-container">
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th class="item-code">編碼</th>
+                        <th>核心教學內容</th>
+                        <th>髮型範例 (參考)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="item-code">01</td><td>1. 百元剪髮與精緻剪髮的差異分析<br>2. 零層次剪髮</td><td><span class="example-tag">進階-1</span></td></tr>
+                    <tr><td class="item-code">02</td><td>1. 女士剪髮要領<br>2. 前斜中低層次剪髮</td><td><span class="example-tag">進階-2</span></td></tr>
+                    <tr><td class="item-code">03</td><td>1. 小孩剪髮要領<br>2. 後斜中低層次剪髮</td><td><span class="example-tag">進階-3</span></td></tr>
+                    <tr><td class="item-code">04</td><td>1. 男士剪髮要領<br>2. 圓型均等層次剪髮</td><td><span class="example-tag">進階-4</span></td></tr>
+                    <tr><td class="item-code">05</td><td>1. 韓式剪髮與台式剪髮的差別<br>2. 男子髮型-零低推剪短層次</td><td><span class="example-tag">進階-5</span></td></tr>
+                    <tr><td class="item-code">06</td><td>1. 剪髮的形象原理<br>2. 男子髮型-零低推剪長層次</td><td><span class="example-tag">進階-6</span></td></tr>
+                    <tr><td class="item-code">07</td><td>1. 去角裁剪調量<br>2. 男子髮型-低推剪長層次</td><td><span class="example-tag">進階-7</span></td></tr>
+                    <tr><td class="item-code">08</td><td>1. 剪刀滑剪調量<br>2. 男子髮型-中推剪短層次</td><td><span class="example-tag">進階-8</span></td></tr>
+                    <tr><td class="item-code">09</td><td>1. 推剪技法<br>2. 男子髮型-高推剪長層次</td><td><span class="example-tag">進階-9</span></td></tr>
+                    <tr><td class="item-code">10</td><td>1. 推剪高度<br>2. 男子髮型-高推剪短層次</td><td><span class="example-tag">進階-10</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight-note">※ 進階課程側重於現場實務應用、男子推剪技法與個人風格建立。</div>
+    </section>
+</div>

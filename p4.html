@@ -1,0 +1,136 @@
+<style>
+    /* 專屬樣式：書架與書籍卡片設計 */
+    .content-inner { padding: 120px 8% 100px 8%; }
+    
+    .brand-heading { position: relative; padding-left: 30px; margin-bottom: 50px; }
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: #000; }
+    .brand-heading h1 { font-size: 2.8rem; margin: 0; letter-spacing: 5px; font-weight: 500; }
+    .brand-heading .subtitle { font-size: 0.9rem; letter-spacing: 5px; color: #6c5ce7; font-weight: 700; }
+
+    .info-section { margin-bottom: 60px; max-width: 1000px; }
+    .section-title { font-size: 1.4rem; margin-bottom: 30px; font-weight: 700; border-bottom: 2px solid #fbc2eb; display: inline-block; padding-bottom: 5px; letter-spacing: 2px; }
+    
+    .book-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+        gap: 30px; 
+        margin: 20px 0; 
+    }
+    
+    .book-card { 
+        background: rgba(255,255,255,0.4); 
+        padding: 20px; 
+        border: 1px solid rgba(255,255,255,0.6); 
+        backdrop-filter: blur(10px); 
+        transition: all 0.4s ease;
+        text-align: center;
+        border-radius: 8px;
+    }
+    .book-card:hover {
+        background: rgba(255,255,255,0.9); 
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(108, 92, 231, 0.15);
+        border-color: #6c5ce7;
+    }
+    
+    .book-cover {
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: #f0f0f0;
+        margin-bottom: 15px;
+        box-shadow: 2px 5px 15px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 4px;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+    .book-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+    .book-card h4 { margin: 10px 0 5px 0; color: #322b5f; font-size: 1.05rem; font-weight: 700; }
+    .book-card p { font-size: 0.8rem; color: #666; margin: 0; min-height: 3em; }
+    
+    .buy-btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 8px 20px;
+        background: #e91e63;
+        color: white;
+        text-decoration: none;
+        font-size: 0.85rem;
+        border-radius: 20px;
+        transition: 0.3s;
+        font-weight: 500;
+    }
+    .buy-btn:hover { background: #322b5f; transform: scale(1.05); }
+
+    /* 新書推薦標籤 */
+    .new-release-tag {
+        font-size: 0.7rem; letter-spacing: 2px; color: #6c5ce7; font-weight: 700; opacity: 0.7;
+    }
+</style>
+
+<div class="content-inner">
+    <section class="brand-heading">
+        <h1>美髮書坊</h1>
+        <div class="subtitle">PROFESSIONAL PUBLICATIONS</div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">技術類書籍</div>
+        <div class="book-grid">
+            <div class="book-card">
+                <div class="book-cover"><img src="path/to/cover1.jpg" alt="染髮"></div>
+                <h4>葉老師系列 1：染髮</h4>
+                <p>染髮理論與實務全書</p>
+                <a href="#" class="buy-btn">點我：購買處</a>
+            </div>
+            <div class="book-card">
+                <div class="book-cover"><img src="path/to/cover2.jpg" alt="燙髮"></div>
+                <h4>葉老師系列 2：燙髮</h4>
+                <p>結構燙髮技術解析</p>
+                <a href="#" class="buy-btn">點我：購買處</a>
+            </div>
+            <div class="book-card">
+                <div class="book-cover"><img src="path/to/cover3.jpg" alt="剪髮"></div>
+                <h4>葉老師系列 3：剪髮</h4>
+                <p>沙龍商業剪髮系統</p>
+                <a href="#" class="buy-btn">點我：購買處</a>
+            </div>
+            <div class="book-card">
+                <div class="book-cover"><img src="path/to/cover4.jpg" alt="染髮二"></div>
+                <h4>老師系列 4：染髮(二)</h4>
+                <p>高階色彩學與調色術</p>
+                <a href="#" class="buy-btn">點我：購買處</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">成長類書籍</div>
+        <div class="book-grid">
+            <div class="book-card">
+                <div class="book-cover"><img src="path/to/cover5.jpg" alt="美髮創業"></div>
+                <h4>葉老師系列 5：美髮創業</h4>
+                <p>從零開始打造個人沙龍</p>
+                <a href="#" class="buy-btn">點我：購買處</a>
+            </div>
+            <div class="book-card">
+                <div class="book-cover"><img src="path/to/cover6.jpg" alt="成為講師"></div>
+                <h4>葉老師系列 6：成為講師</h4>
+                <p>將專業轉化為教學系統</p>
+                <a href="#" class="buy-btn">點我：購買處</a>
+            </div>
+            <div class="book-card">
+                <div class="book-cover" style="background: rgba(108, 92, 231, 0.05); flex-direction: column;">
+                    <div class="new-release-tag">NEW RELEASE</div>
+                    <div style="font-weight: 700; color: #6c5ce7; margin-top: 10px;">新書推薦</div>
+                </div>
+                <h4>美髮創業指導</h4>
+                <p>葉老師教你美髮創業</p>
+                <a href="#" class="buy-btn">點我：購買處</a>
+            </div>
+        </div>
+    </section>
+</div>

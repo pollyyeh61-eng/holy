@@ -1,0 +1,131 @@
+<style>
+    /* 局部樣式：專屬於 P.3.3 的化學與結構感 */
+    .content-inner { padding: 120px 8% 100px 8%; }
+
+    .brand-heading { position: relative; padding-left: 30px; margin-bottom: 50px; }
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: #000; }
+    .brand-heading h1 { font-size: 2.8rem; margin: 0; letter-spacing: 5px; font-weight: 500; color: #322b5f; }
+    .brand-heading .subtitle { font-size: 0.9rem; letter-spacing: 5px; color: #6c5ce7; font-weight: 700; text-transform: uppercase; }
+
+    .info-section { margin-bottom: 60px; max-width: 950px; }
+    .section-title { 
+        font-size: 1.4rem; margin-bottom: 25px; font-weight: 700; color: #322b5f;
+        border-bottom: 2px solid #a1c4fd; display: inline-block; padding-bottom: 5px; 
+    }
+    
+    /* 課程表格設計 */
+    .table-container { 
+        overflow-x: auto; 
+        background: rgba(255, 255, 255, 0.4); 
+        backdrop-filter: blur(10px); 
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .course-table { width: 100%; border-collapse: collapse; }
+    .course-table th { 
+        background: rgba(161, 196, 253, 0.15); 
+        padding: 18px 15px; 
+        text-align: left; 
+        color: #322b5f; 
+        font-weight: 700; 
+        border-bottom: 2px solid #a1c4fd;
+    }
+    .course-table td { 
+        padding: 15px; 
+        border-bottom: 1px solid rgba(0,0,0,0.05); 
+        color: #322b5f;
+        line-height: 1.6;
+    }
+    
+    .course-table tr:hover td { background: rgba(255, 255, 255, 0.6); }
+
+    .item-code { font-weight: 700; width: 60px; text-align: center; color: #6c5ce7; }
+    
+    /* 技術標籤 */
+    .tech-tag { 
+        font-size: 0.85rem; 
+        background: #fff;
+        border: 1px solid #a1c4fd;
+        padding: 3px 10px; 
+        border-radius: 4px; 
+        color: #322b5f;
+        font-weight: 500;
+    }
+
+    .lab-note {
+        margin-top: 15px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        border-left: 4px solid #fbc2eb;
+        font-size: 0.9rem;
+        color: #555;
+    }
+</style>
+
+<div class="content-inner">
+    <section class="brand-heading">
+        <h1>燙髮課程</h1>
+        <div class="subtitle">CHEMICAL & TEXTURE SYSTEM</div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">燙髮初階課程：邏輯與冷塑基礎</div>
+        <div class="table-container">
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th class="item-code">編碼</th>
+                        <th>核心教學內容</th>
+                        <th>技術摘要</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="item-code">01</td><td>1. 毛髮理論 - 化學、物理結構分析<br>2. 基本上捲排列 (Standard Wrap)</td><td><span class="tech-tag">基礎捲度結構學</span></td></tr>
+                    <tr><td class="item-code">02</td><td>1. 冷塑藥劑特性及熱塑藥性分析<br>2. 疊磚上捲排列 (Brickwork)</td><td><span class="tech-tag">藥劑與毛髮反應</span></td></tr>
+                    <tr><td class="item-code">03</td><td>1. 上捲原理與捲子直徑與坡度關係<br>2. 扇形上捲排列 (Fan Wrap)</td><td><span class="tech-tag">多樣化排列基礎</span></td></tr>
+                    <tr><td class="item-code">04</td><td>1. 冷塑燙優缺點與髮質適用性介紹<br>2. 直立上捲排列 (Vertical Wrap)</td><td><span class="tech-tag">冷塑技術分析</span></td></tr>
+                    <tr><td class="item-code">05</td><td>1. 冷塑燙失敗案例原因排除<br>2. 車輪燙技術實作</td><td><span class="tech-tag">失敗案例排除</span></td></tr>
+                    <tr><td class="item-code">06</td><td>1. 標準冷塑燙 SOP 流程管理<br>2. 空心燙 (Pin Curl) 技術</td><td><span class="tech-tag">標準操作流程</span></td></tr>
+                    <tr><td class="item-code">07</td><td>1. 燙髮形象原理與臉型修飾<br>2. 扭轉燙技術應用</td><td><span class="tech-tag">風格塑造與結構</span></td></tr>
+                    <tr><td class="item-code">08</td><td>1. 男女性捲髮美學差異化<br>2. 直立不重疊排列實務</td><td><span class="tech-tag">性別化髮型應用</span></td></tr>
+                    <tr><td class="item-code">09</td><td>1. 燙髮設計五要素 (空間、線條等)<br>2. 渣男燙 (流行風格) 實戰</td><td><span class="tech-tag">流行趨勢實戰</span></td></tr>
+                    <tr><td class="item-code">10</td><td>綜合技術驗收：自由創作 (真人實作)</td><td><span class="tech-tag">技術總體檢</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="lab-note">
+            💡 <b>初階重點：</b> 掌握還原劑與氧化劑的化學變化，訓練穩定的上捲手感與精準的藥劑停留判斷。
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">燙髮進階課程：熱塑與高端矯正</div>
+        <div class="table-container">
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th class="item-code">編碼</th>
+                        <th>核心教學內容</th>
+                        <th>專業進階應用</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="item-code">01</td><td>1. 高階毛髮物理化學深入研究<br>2. 縮毛矯正離子燙精細操作</td><td><span class="tech-tag">高端髮質管理</span></td></tr>
+                    <tr><td class="item-code">02</td><td>1. 熱塑儀器操作安全與溫度控制<br>2. 熱塑直立燙實務操作</td><td><span class="tech-tag">儀器運用實務</span></td></tr>
+                    <tr><td class="item-code">03</td><td>1. 熱塑藥劑氫鍵與鹽鍵反應分析<br>2. 玉米鬚燙與局部支撐技術</td><td><span class="tech-tag">藥性深度分析</span></td></tr>
+                    <tr><td class="item-code">04</td><td>1. 蛋白質的熱化 (Denaturation) 過程<br>2. 熱塑直立燙層次控制</td><td><span class="tech-tag">熱化反應科學</span></td></tr>
+                    <tr><td class="item-code">05</td><td>1. 熱塑燙失敗原因排除與髮質救贖<br>2. 熱塑直立外翻燙 (韓系風)</td><td><span class="tech-tag">進階問題解決</span></td></tr>
+                    <tr><td class="item-code">06</td><td>1. 全方位熱塑燙客製化流程<br>2. 髮根燙與內扣髮型結合應用</td><td><span class="tech-tag">精準流程控制</span></td></tr>
+                    <tr><td class="item-code">07</td><td>1. 燙後保養與整理造型居家指導<br>2. 直立髮中繞燙 (Lazy Curl)</td><td><span class="tech-tag">售後造型指導</span></td></tr>
+                    <tr><td class="item-code">08</td><td>1. 熱塑與冷塑燙髮的商業價值對比<br>2. 直立平行螺捲排列</td><td><span class="tech-tag">技術效益評估</span></td></tr>
+                    <tr><td class="item-code">09</td><td>1. 當代燙髮美學設計與溝通術<br>2. 人魚燙 (Mermaid Waves) 操作</td><td><span class="tech-tag">美感造型提升</span></td></tr>
+                    <tr><td class="item-code">10</td><td>綜合實戰驗收：高階熱塑自由設計 (真人)</td><td><span class="tech-tag">實戰能力展示</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="lab-note">
+            💡 <b>進階重點：</b> 專注於「熱能管理」與「髮質保養」的平衡，學習如何透過熱塑技術創造出具備商業價值的柔軟質感捲度。
+        </div>
+    </section>
+</div>

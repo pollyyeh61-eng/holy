@@ -1,0 +1,139 @@
+<style>
+    /* 局部樣式：專屬於 P.3.4 的藝術色彩感 */
+    .content-inner { padding: 120px 8% 100px 8%; }
+
+    .brand-heading { position: relative; padding-left: 30px; margin-bottom: 50px; }
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: #000; }
+    .brand-heading h1 { font-size: 2.8rem; margin: 0; letter-spacing: 5px; font-weight: 500; color: #322b5f; }
+    .brand-heading .subtitle { font-size: 0.9rem; letter-spacing: 5px; color: #6c5ce7; font-weight: 700; text-transform: uppercase; }
+
+    .info-section { margin-bottom: 60px; max-width: 950px; }
+    .section-title { 
+        font-size: 1.4rem; margin-bottom: 25px; font-weight: 700; color: #322b5f;
+        border-bottom: 2px solid #fbc2eb; display: inline-block; padding-bottom: 5px; 
+    }
+    
+    /* 課程表格設計 - 染髮專屬色調 */
+    .table-container { 
+        overflow-x: auto; 
+        background: rgba(255, 255, 255, 0.4); 
+        backdrop-filter: blur(10px); 
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .course-table { width: 100%; border-collapse: collapse; }
+    .course-table th { 
+        background: rgba(251, 194, 235, 0.2); 
+        padding: 18px 15px; 
+        text-align: left; 
+        color: #322b5f; 
+        font-weight: 700; 
+        border-bottom: 2px solid #fbc2eb;
+    }
+    .course-table td { 
+        padding: 15px; 
+        border-bottom: 1px solid rgba(0,0,0,0.05); 
+        color: #322b5f;
+        line-height: 1.6;
+    }
+    
+    .course-table tr:hover td { background: rgba(255, 255, 255, 0.6); }
+
+    .item-code { font-weight: 700; width: 60px; text-align: center; color: #6c5ce7; }
+    
+    /* 實作重點標籤 */
+    .color-tag { 
+        font-size: 0.85rem; 
+        background: linear-gradient(to right, #fbc2eb, #a1c4fd);
+        padding: 4px 12px; 
+        border-radius: 20px; 
+        color: #fff;
+        font-weight: 500;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .color-wheel-note {
+        margin-top: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.3);
+        border: 1px dashed #fbc2eb;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    .note-text { font-size: 0.95rem; color: #322b5f; flex: 1; }
+</style>
+
+<div class="content-inner">
+    <section class="brand-heading">
+        <h1>染髮課程</h1>
+        <div class="subtitle">ARTISTIC COLORING SYSTEM</div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">染髮初階課程：色彩原理與塗佈技術</div>
+        <div class="table-container">
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th class="item-code">編碼</th>
+                        <th>核心教學內容</th>
+                        <th>實作技術重點</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="item-code">01</td><td>1. 頭髮顏色由來 (麥拉寧色素分析)<br>2. 髮根染髮實作</td><td><span class="color-tag">基礎著色原理</span></td></tr>
+                    <tr><td class="item-code">02</td><td>1. 頭髮生長由來與週期影響<br>2. 髮尾染髮實作</td><td><span class="color-tag">長度色彩銜接</span></td></tr>
+                    <tr><td class="item-code">03</td><td>1. 髮質物理結構 (皮質層與表皮層)<br>2. 二段式染髮實作</td><td><span class="color-tag">結構化染髮流程</span></td></tr>
+                    <tr><td class="item-code">04</td><td>1. 髮質化學結構與雙氧乳作用<br>2. 三段式染髮實作</td><td><span class="color-tag">多段色均勻處理</span></td></tr>
+                    <tr><td class="item-code">05</td><td>1. 染劑原理及永久/半永久定義<br>2. 塊狀染髮實作 (Panel Coloring)</td><td><span class="color-tag">色彩區域佈局</span></td></tr>
+                    <tr><td class="item-code">06</td><td>1. 基色、矯色與補色色彩學原理<br>2. 距齒挑染實作 (Zig-zag)</td><td><span class="color-tag">色彩平衡學</span></td></tr>
+                    <tr><td class="item-code">07</td><td>1. 染劑種類決定染髮流程設計<br>2. 縱向漸層染髮實作 (Vertical Ombre)</td><td><span class="color-tag">層次色彩流動</span></td></tr>
+                    <tr><td class="item-code">08</td><td>1. 染髮著色概念與飽和度控制<br>2. 橫向漸層染髮實作 (Horizontal Melt)</td><td><span class="color-tag">水平色彩變幻</span></td></tr>
+                    <tr><td class="item-code">09</td><td>1. 染髮髮型解析與光影分布<br>2. 漂淺色髮實作 (Bleaching)</td><td><span class="color-tag">高端退色技術</span></td></tr>
+                    <tr><td class="item-code">10</td><td>綜合實務：自由創作 (真人實作)</td><td><span class="color-tag">綜合美感應用</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div class="color-wheel-note">
+        <div class="note-text">
+            <strong>💡 色彩專家提示：</strong> 
+            掌握「色環圖 (Color Wheel)」是成為頂尖染髮師的第一步。了解補色（如紫克黃、綠克紅）的應用，能幫助您精準解決現場惱人的殘留底色問題。
+        </div>
+        
+
+[Image of the color wheel with primary, secondary, and tertiary colors]
+
+    </div>
+
+    <section class="info-section" style="margin-top: 40px;">
+        <div class="section-title">染髮進階課程：高端配色與商業髮藝</div>
+        <div class="table-container">
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th class="item-code">編碼</th>
+                        <th>課程內容</th>
+                        <th>進階藝術應用</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="item-code">01</td><td>膚色判別與對應色彩 (冷暖色調)<br>薄片刮梳染實務</td><td><span class="color-tag">個人色彩鑑定</span></td></tr>
+                    <tr><td class="item-code">02</td><td>色彩概念及高級配色技巧<br>薄片刮梳鋸齒挑染</td><td><span class="color-tag">精緻配色美學</span></td></tr>
+                    <tr><td class="item-code">03</td><td>國際色碼系統的認識與轉換<br>薄片粗鋸齒挑染</td><td><span class="color-tag">全球標準對色</span></td></tr>
+                    <tr><td class="item-code">04</td><td>染膏色度計算與雙氧配比科學<br>薄片細鋸齒挑染</td><td><span class="color-tag">精準調色科學</span></td></tr>
+                    <tr><td class="item-code">05</td><td>互補色處理與色偏校正<br>厚髮片挑染 (Chunky Highlights)</td><td><span class="color-tag">對比色調控</span></td></tr>
+                    <tr><td class="item-code">06</td><td>漂粉褪色原理與髮質防護<br>特殊區域染：耳圈染、瀏海染</td><td><span class="color-tag">區域色彩設計</span></td></tr>
+                    <tr><td class="item-code">07</td><td>蓋白髮的訣竅與多色融合<br>V 線染 (Balayage V-section)</td><td><span class="color-tag">機能型染髮技術</span></td></tr>
+                    <tr><td class="item-code">08</td><td>染髮修飾臉型與修容色彩學<br>階梯染 (Steps Coloring)</td><td><span class="color-tag">視覺輪廓雕塑</span></td></tr>
+                    <tr><td class="item-code">09</td><td>專業色環圖繪製與配方開發<br>小髮束色彩飽和度練習</td><td><span class="color-tag">基礎色彩學紮根</span></td></tr>
+                    <tr><td class="item-code">10</td><td>畢業展演：商業髮藝真人自由設計</td><td><span class="color-tag">商業髮藝展現</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </section>
+</div>

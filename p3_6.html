@@ -1,0 +1,188 @@
+<style>
+    /* 局部樣式：專屬於 P.3.6 的商業經營感 */
+    .content-inner { padding: 120px 8% 100px 8%; }
+
+    .brand-heading { position: relative; padding-left: 30px; margin-bottom: 50px; }
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: #000; }
+    .brand-heading h1 { font-size: 2.8rem; margin: 0; letter-spacing: 5px; font-weight: 500; color: #322b5f; }
+    .brand-heading .subtitle { font-size: 0.9rem; letter-spacing: 5px; color: #6c5ce7; font-weight: 700; text-transform: uppercase; }
+
+    /* 創業引言 */
+    .intro-box { 
+        background: rgba(255, 255, 255, 0.4); 
+        padding: 30px; 
+        margin-bottom: 50px; 
+        border-left: 5px solid #322b5f; 
+        backdrop-filter: blur(5px);
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #444;
+    }
+
+    /* 管理架構矩陣 */
+    .section-title { font-size: 1.4rem; margin-bottom: 25px; font-weight: 700; border-bottom: 2px solid #fbc2eb; display: inline-block; padding-bottom: 5px; }
+    
+    .mindmap-outline {
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 20px; 
+        margin-bottom: 60px;
+    }
+    .outline-card {
+        background: rgba(255, 255, 255, 0.5); 
+        padding: 25px; 
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+        transition: all 0.3s ease; 
+        border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    .outline-card:hover { 
+        transform: translateY(-5px); 
+        background: #fff; 
+        border-color: #6c5ce7; 
+        box-shadow: 0 10px 25px rgba(108, 92, 231, 0.15);
+    }
+    .outline-card h3 { 
+        font-size: 1.1rem; 
+        border-bottom: 2px solid #fbc2eb; 
+        padding-bottom: 10px; 
+        margin-top: 0; 
+        color: #6c5ce7; 
+        display: flex;
+        justify-content: space-between;
+    }
+    .outline-card ul { padding-left: 20px; font-size: 0.95rem; margin-bottom: 0; }
+    .outline-card li { margin-bottom: 5px; color: #555; }
+
+    /* 核心管理強調樣式 */
+    .core-card { 
+        background: linear-gradient(135deg, rgba(161, 196, 253, 0.2) 0%, rgba(194, 233, 251, 0.2) 100%) !important;
+        border: 2px solid #6c5ce7 !important;
+    }
+
+    /* 適合對象列表 */
+    .feature-item { 
+        padding: 18px 25px; 
+        background: rgba(255, 255, 255, 0.3); 
+        margin-bottom: 12px; 
+        display: flex; 
+        align-items: center; 
+        transition: 0.3s; 
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 40px;
+    }
+    .feature-item:hover { 
+        background: #fff; 
+        padding-left: 35px; 
+        color: #6c5ce7; 
+        border-color: #fbc2eb; 
+    }
+    .feature-item b { width: 140px; color: #322b5f; font-size: 1.05rem; }
+
+    /* 深度對談 */
+    .talk-text { 
+        max-width: 850px; 
+        background: rgba(255, 255, 255, 0.3); 
+        padding: 40px; 
+        border-radius: 15px; 
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    .talk-text h2 { color: #322b5f; margin-top: 0; margin-bottom: 25px; font-size: 1.8rem; }
+    .talk-text p { margin-bottom: 20px; font-size: 1.05rem; }
+    .talk-text b { color: #6c5ce7; }
+</style>
+
+<div class="content-inner">
+    <section class="brand-heading">
+        <h1>創業課程</h1>
+        <div class="subtitle">ENTREPRENEURIAL MINDSET</div>
+    </section>
+
+    <div class="intro-box">
+        創業是一段充滿挑戰與機會的旅程。成功不一定需要大量資本，智慧與行動才是關鍵。本課程將幫助您在有限的資源下，透過系統化的管理邏輯，創造無限可能的商業工具。
+    </div>
+
+    <section class="info-section">
+        <div class="section-title">課程大綱：管理邏輯矩陣</div>
+        
+        
+
+        <div class="mindmap-outline">
+            <div class="outline-card">
+                <h3>上外部管理 <small>↑</small></h3>
+                <ul>
+                    <li>顧客價值管理 (CRM)</li>
+                    <li>客情關係經營</li>
+                    <li>精準預約系統</li>
+                </ul>
+            </div>
+
+            <div class="outline-card">
+                <h3>總管理層 <small>◈</small></h3>
+                <ul>
+                    <li>市場價格定位</li>
+                    <li>獲利成本管控</li>
+                    <li>經營績效分析</li>
+                </ul>
+            </div>
+
+            <div class="outline-card">
+                <h3>右外部管理 <small>→</small></h3>
+                <ul>
+                    <li>品牌視覺設計</li>
+                    <li>品牌價值傳遞</li>
+                    <li>口碑影響力</li>
+                </ul>
+            </div>
+
+            <div class="outline-card">
+                <h3>左外部管理 <small>←</small></h3>
+                <ul>
+                    <li>供應商談判</li>
+                    <li>進貨通路管理</li>
+                    <li>異業合作模式</li>
+                </ul>
+            </div>
+
+            <div class="outline-card core-card">
+                <h3>內部管理核心 <small>★</small></h3>
+                <ul>
+                    <li>財務收支透明化</li>
+                    <li>人才培訓與留才</li>
+                    <li>零庫存運作管理</li>
+                </ul>
+            </div>
+
+            <div class="outline-card">
+                <h3>下外部管理 <small>↓</small></h3>
+                <ul>
+                    <li>數位行銷布局</li>
+                    <li>活動策劃執行</li>
+                    <li>社區深耕經營</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">這門課為誰設計？</div>
+        <div class="feature-list">
+            <div class="feature-item"><b>1. 低風險創業</b> 適合資金預算有限，追求穩健起步的人</div>
+            <div class="feature-item"><b>2. 靈活經營者</b> 適合追求斜槓經營或小規模精緻店型的人</div>
+            <div class="feature-item"><b>3. 高效獲利者</b> 適合目標導向，希望快速建立穩定現金流的人</div>
+            <div class="feature-item"><b>4. 數位轉型者</b> 適合想避開削價競爭，運用數位經營突圍的人</div>
+            <div class="feature-item"><b>5. 規模化佈局</b> 適合目前雖小，但未來有志於連鎖擴展的人</div>
+        </div>
+        <p style="margin-top:20px; padding-left: 20px; opacity:0.7; font-style: italic;">
+            ※ 小成本試錯、現金流明確、高成就感，適合現場設計師邁向經營者的第一步。
+        </p>
+    </section>
+
+    <section class="talk-text">
+        <h2>為什麼現在是創業的最好時機？</h2>
+        <p>創業並不只是為了賺錢，它更是一種對自己人生自主權的奪回。</p>
+        <p><b>掌握自主權：</b> 當您的技術與客源達到穩定，就會收到轉型訊號，不再受制於傳統體制的束縛。</p>
+        <p><b>突破收入上限：</b> 上班領薪受限於工時與抽成；創業則是將您的努力直接轉化為經營成果。</p>
+        <p><b>實現個人信念：</b> 創業是讓心中的熱情，透過商業模式從「想像」變為「現實」的過程。</p>
+    </section>
+</div>

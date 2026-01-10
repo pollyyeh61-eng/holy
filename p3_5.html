@@ -1,0 +1,175 @@
+<style>
+    /* 局部樣式：專屬於 P.3.5 的專業教育感 */
+    .content-inner { padding: 120px 8% 100px 8%; }
+
+    .brand-heading { position: relative; padding-left: 30px; margin-bottom: 50px; }
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: #000; }
+    .brand-heading h1 { font-size: 2.8rem; margin: 0; letter-spacing: 5px; font-weight: 500; color: #322b5f; }
+    .brand-heading .subtitle { font-size: 0.9rem; letter-spacing: 5px; color: #6c5ce7; font-weight: 700; text-transform: uppercase; }
+
+    /* 轉型宣言 */
+    .manifesto-box {
+        background: rgba(108, 92, 231, 0.1); 
+        border-left: 5px solid #6c5ce7;
+        padding: 30px; 
+        margin-bottom: 50px; 
+        backdrop-filter: blur(10px);
+        border-radius: 0 8px 8px 0;
+    }
+    .manifesto-box p { margin: 10px 0; font-size: 1.15rem; color: #322b5f; }
+    .highlight { color: #6c5ce7; font-weight: 700; border-bottom: 2px solid #fbc2eb; }
+
+    /* 課程大綱章節標題 */
+    .info-section { margin-bottom: 50px; max-width: 1000px; }
+    .section-title { 
+        font-size: 1.3rem; margin-bottom: 20px; font-weight: 700; color: #322b5f;
+        display: flex; align-items: center; gap: 10px;
+    }
+    .section-title::after { content: ""; flex: 1; height: 1px; background: rgba(108, 92, 231, 0.2); }
+    
+    /* 網格列表 */
+    .course-grid {
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+        gap: 15px; 
+        margin-top: 10px;
+    }
+    .course-card {
+        background: rgba(255, 255, 255, 0.4); 
+        padding: 15px 20px; 
+        border-radius: 6px;
+        display: flex; 
+        align-items: center; 
+        transition: all 0.3s ease; 
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        cursor: default;
+    }
+    .course-card:hover {
+        background: #fff; 
+        color: #6c5ce7; 
+        transform: translateY(-3px); 
+        box-shadow: 0 5px 15px rgba(108, 92, 231, 0.1);
+        border-color: #6c5ce7;
+    }
+    .course-card .num { 
+        font-weight: 800; 
+        width: 30px; 
+        color: #6c5ce7; 
+        opacity: 0.6; 
+        font-size: 0.8rem; 
+        font-family: 'Dancing Script', cursive; 
+    }
+
+    /* 結語區塊 */
+    .cta-section {
+        text-align: center; 
+        padding: 80px 0; 
+        margin-top: 40px; 
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+    }
+    .apply-btn {
+        display: inline-block; 
+        margin-top: 25px; 
+        padding: 18px 60px; 
+        background: #322b5f; 
+        color: #fff;
+        text-decoration: none; 
+        letter-spacing: 5px; 
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        border-radius: 50px; 
+        font-weight: 700;
+        box-shadow: 0 10px 20px rgba(50, 43, 95, 0.2);
+    }
+    .apply-btn:hover { 
+        background: #6c5ce7; 
+        transform: scale(1.1); 
+        box-shadow: 0 15px 30px rgba(108, 92, 231, 0.3);
+    }
+</style>
+
+<div class="content-inner">
+    <section class="brand-heading">
+        <h1>講師課程</h1>
+        <div class="subtitle">BEYOND HAIR DESIGN, BE A MENTOR</div>
+    </section>
+
+    <section class="manifesto-box">
+        <p><span class="highlight">你為什麼需要轉型？</span></p>
+        <p>從現場設計師邁向專業講師，不僅是職稱的改變，更是影響力的擴張。透過知識的傳遞，實現時間自由與事業的高度。本課程旨在將您的實戰經驗轉化為系統化的教學能量。</p>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">核心素養：講師的起點</div>
+        <div class="course-grid">
+            <div class="course-card"><span class="num">01</span>轉型講師心法</div>
+            <div class="course-card"><span class="num">02</span>破解轉型誤區</div>
+            <div class="course-card"><span class="num">03</span>職業講師素養</div>
+            <div class="course-card"><span class="num">04</span>核心能力建構</div>
+            <div class="course-card"><span class="num">05</span>高效講課技巧</div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">表達藝術：舞台掌控力</div>
+        <div class="course-grid">
+            <div class="course-card"><span class="num">06</span>肢體語言表達</div>
+            <div class="course-card"><span class="num">07</span>現場時間管理</div>
+            <div class="course-card"><span class="num">08</span>自我時間效能</div>
+            <div class="course-card"><span class="num">09</span>引人入勝的開場</div>
+            <div class="course-card"><span class="num">10</span>餘音繞樑的結尾</div>
+            <div class="course-card"><span class="num">11</span>系統化教學邏輯</div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">形象包裝：建立專業品牌</div>
+        <div class="course-grid">
+            <div class="course-card"><span class="num">12</span>演說體態管理</div>
+            <div class="course-card"><span class="num">13</span>舞台穿著美學</div>
+            <div class="course-card"><span class="num">14</span>個人形象管理</div>
+            <div class="course-card"><span class="num">15</span>美感品味修養</div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">學員洞察：因材施教</div>
+        <div class="course-grid">
+            <div class="course-card"><span class="num">16</span>挖掘學生真需求</div>
+            <div class="course-card"><span class="num">17</span>辨識學生類型</div>
+            <div class="course-card"><span class="num">18</span>行為特性分析</div>
+            <div class="course-card"><span class="num">19</span>多元學習路徑</div>
+            <div class="course-card"><span class="num">20</span>學習風格心理檢測</div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">教室經營：互動與秩序</div>
+        <div class="course-grid">
+            <div class="course-card"><span class="num">21</span>課堂討論引導</div>
+            <div class="course-card"><span class="num">22</span>精準提問技巧</div>
+            <div class="course-card"><span class="num">23</span>獲取答案的原則</div>
+            <div class="course-card"><span class="num">24</span>學員問答應對</div>
+            <div class="course-card"><span class="num">25</span>課堂秩序維護</div>
+            <div class="course-card"><span class="num">26</span>班級幹部機制</div>
+            <div class="course-card"><span class="num">27</span>現場突發應變</div>
+            <div class="course-card"><span class="num">28</span>學員私下互動</div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">情境營造：沈浸式學習</div>
+        <div class="course-grid">
+            <div class="course-card"><span class="num">29</span>訓練環境氛圍</div>
+            <div class="course-card"><span class="num">30</span>克服講台恐懼</div>
+            <div class="course-card"><span class="num">31</span>階段性學習目標</div>
+            <div class="course-card"><span class="num">32</span>高效互動抗瞌睡</div>
+            <div class="course-card"><span class="num">33</span>體驗式活動設計</div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div style="font-size: 1.5rem; color: #322b5f; letter-spacing: 3px;">準備好要成為下一個美髮界名師了嗎？</div>
+        <a href="#" class="apply-btn">立即預約轉型評估</a>
+    </section>
+</div>

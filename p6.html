@@ -1,0 +1,123 @@
+<style>
+    /* 專屬樣式：保持呼吸感與專業表格排版 */
+    .content-inner { padding: 120px 12% 100px 8%; }
+    
+    .brand-heading { position: relative; padding-left: 40px; margin-bottom: 70px; }
+    .brand-heading::before { 
+        content: ""; position: absolute; left: 0; top: 8px; width: 2.5px; height: 110px; background: #000; 
+    }
+    .brand-heading h1 { font-size: 3.2rem; margin: 0; letter-spacing: 12px; font-weight: 500; line-height: 1.2; }
+    .brand-heading .subtitle { 
+        font-size: 1rem; letter-spacing: 8px; color: #6c5ce7; font-weight: 300; 
+        text-transform: uppercase; margin-top: 15px; display: block;
+    }
+
+    .intro-text {
+        font-family: 'Noto Sans TC', sans-serif; font-size: 1.15rem; font-weight: 300;
+        max-width: 850px; margin-bottom: 60px; color: #322b5f; letter-spacing: 1.5px;
+        line-height: 2.4;
+    }
+
+    .section-title { 
+        font-size: 1.5rem; margin-bottom: 30px; font-weight: 700; color: #322b5f;
+        letter-spacing: 2px;
+    }
+
+    /* 服務模式表格 */
+    .info-table {
+        width: 100%; border-collapse: collapse; margin-bottom: 60px;
+        font-family: 'Noto Sans TC', sans-serif; font-size: 1rem;
+    }
+    .info-table th { text-align: left; padding: 15px; border-bottom: 1px solid #322b5f; opacity: 0.6; font-weight: 400; }
+    .info-table td { padding: 25px 15px; border-bottom: 1px solid rgba(0,0,0,0.05); line-height: 1.8; }
+    .highlight-cell { color: #6c5ce7; font-weight: 700; }
+
+    /* 費用試算區塊 */
+    .calculator-area {
+        background: rgba(255, 255, 255, 0.4); padding: 40px; border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.6); margin-bottom: 100px;
+        backdrop-filter: blur(10px);
+    }
+    .calc-row { margin-bottom: 20px; font-size: 1.1rem; }
+    .total-display {
+        font-size: 1.8rem; font-weight: 700; color: #6c5ce7; margin-top: 30px;
+        border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px; text-align: right;
+    }
+    .calc-input {
+        padding: 8px; border: 1px solid #6c5ce7; width: 60px; 
+        background: rgba(255,255,255,0.5); text-align: center; border-radius: 4px;
+        font-weight: 700; color: #6c5ce7;
+    }
+</style>
+
+<div class="content-inner">
+    <section class="brand-heading">
+        <h1>授權合作</h1>
+        <span class="subtitle">PARTNERSHIP & TRANSFORMATION</span>
+    </section>
+
+    <section class="intro-text">
+        我們的授權合作定位是以「職涯轉型」為核心的賦能計劃。不只是提供製作技術，更協助講師建立一套有系統、有回饋、有支持的長效數位資產路徑。
+    </section>
+
+    <section class="info-section">
+        <div class="section-title">核心定位：教育顧問與內容轉型</div>
+        <div class="intro-text" style="margin-bottom: 40px;">
+            專注於協助美髮師傅轉型為教育顧問與內容創作者。我們將您的專業技術轉化為數位資產，透過線上課程提升品牌影響力，實現跨越區域與時間的非線性收益。
+        </div>
+
+        <div class="section-title">服務模式與分潤</div>
+        <table class="info-table">
+            <thead>
+                <tr>
+                    <th style="width: 30%;">服務模式</th>
+                    <th>服務說明</th>
+                    <th style="width: 25%;">費用預算</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight-cell">一站式專案承包</td>
+                    <td>包含課程規劃設計、專業影音製作、平台技術支持與品牌行銷延伸。</td>
+                    <td class="highlight-cell">$40,000 / 月</td>
+                </tr>
+                <tr>
+                    <td class="highlight-cell">線上課程分潤</td>
+                    <td>已上架或募資中課程，如：沙龍經營學、成為講師、學寫書系列。</td>
+                    <td class="highlight-cell">分潤 20%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section-title">預算規模試算</div>
+        <div class="calculator-area">
+            <div class="calc-row">
+                預計製作週期：<input type="number" id="months" value="1" min="1" oninput="calculateTotal()" class="calc-input"> 個月
+            </div>
+            <div class="calc-row">
+                <label style="cursor: pointer;"><input type="checkbox" id="domain" value="3000" onchange="calculateTotal()"> 個人專屬網域申請 (預計 $3,000)</label>
+            </div>
+            <div class="calc-row">
+                <label style="cursor: pointer;"><input type="checkbox" id="platform" value="15000" onchange="calculateTotal()"> 數位教學平台建置 (預計 $15,000)</label>
+            </div>
+            <div class="total-display">
+                預估總費用：<span id="total-cost">$40,000</span>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function calculateTotal() {
+        const MONTHLY_FEE = 40000;
+        const DOMAIN_FEE = 3000;
+        const PLATFORM_FEE = 15000;
+        let months = parseInt(document.getElementById('months').value) || 1;
+        let total = months * MONTHLY_FEE;
+        if (document.getElementById('domain').checked) total += DOMAIN_FEE;
+        if (document.getElementById('platform').checked) total += PLATFORM_FEE;
+        document.getElementById('total-cost').textContent = '$' + total.toLocaleString();
+    }
+    // 確保嵌入後也能觸發初始化
+    setTimeout(calculateTotal, 100);
+</script>

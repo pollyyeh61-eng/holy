@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>活力美髮學堂 | 品牌中心</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&family=Noto+Sans+TC:wght@300;400&display=swap');
+
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Noto Serif TC', serif; overflow: hidden; }
+        
+        /* 統一漸層背景 */
+        .app-container {
+            display: flex; height: 100vh;
+            background: white linear-gradient(105deg, #fff 0%, #fff 25%, #fceae6 40%, #fbc2eb 60%, #a1c4fd 85%, #c2e9fb 100%);
+            background-attachment: fixed;
+        }
+
+        /* 左側內容區 */
+        #content-target {
+            flex: 1; height: 100vh; overflow-y: auto; scrollbar-width: none;
+            transition: opacity 0.3s ease;
+        }
+        #content-target::-webkit-scrollbar { display: none; }
+
+        /* 右側導航列 */
+        .nav-sidebar {
+            width: 400px; height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(25px); border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-box { overflow-y: auto; scrollbar-width: none; padding: 40px 0; }
+        .nav-box::-webkit-scrollbar { display: none; }
+
+        /* 第一層選單項目 */
+        .nav-item { 
+            padding: 16px 60px;
+            text-decoration: none; color: #322b5f; font-size: 1.1rem; 
+            display: flex; align-items: baseline; justify-content: space-between;
+            transition: all 0.3s ease; letter-spacing: 3px; font-weight: 300; cursor: pointer;
+        }
+        
+        .nav-page-num { 
+            font-size: 0.9rem; opacity: 0.5; font-style: italic; 
+            font-family: 'Times New Roman', serif; margin-left: 20px;
+        }
+
+        .nav-item:hover { background: rgba(255, 255, 255, 0.3); }
+
+        .nav-item.active { 
+            background: rgba(255, 255, 255, 0.4); font-weight: 500; 
+            border-left: 7px solid #6c5ce7; padding-left: 53px;
+        }
+        .nav-item.active .nav-page-num { opacity: 1; color: #6c5ce7; font-weight: 700; }
+
+        /* 💡 二層子選單樣式 */
+        .sub-nav-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(108, 92, 231, 0.03);
+        }
+        
+        /* 展開狀態由 JavaScript 切換 */
+        .expanded .sub-nav-container {
+            max-height: 500px; /* 足夠容納 7 個項目的高度 */
+        }
+
+        .sub-item {
+            padding: 12px 60px 12px 80px; /* 增加左側縮排 */
+            text-decoration: none; color: #322b5f; font-size: 0.95rem;
+            display: flex; align-items: baseline; justify-content: space-between;
+            transition: all 0.3s ease; letter-spacing: 2px; font-weight: 300; cursor: pointer;
+            opacity: 0.6;
+        }
+
+        .sub-item:hover { opacity: 1; background: rgba(255, 255, 255, 0.5); padding-left: 85px; }
+
+        .sub-item.active { 
+            opacity: 1; color: #6c5ce7; font-weight: 500;
+            border-left: 4px solid #6c5ce7; padding-left: 76px;
+        }
+        
+        .sub-num { font-size: 0.8rem; font-style: italic; opacity: 0.8; }
+
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <main id="content-target"></main>
+
+        <nav class="nav-sidebar">
+            <div class="nav-box">
+                <div style="padding: 0 60px; margin-bottom: 20px; opacity: 0.5; letter-spacing: 5px; font-size: 0.65rem;">CONTENTS</div>
+                
+                <div onclick="loadPage('p1.html', this)" class="nav-item"><span>首頁</span><span class="nav-page-num">P. 01</span></div>
+                <div onclick="loadPage('p2.html', this)" class="nav-item"><span>品牌白皮書</span><span class="nav-page-num">P. 02</span></div>
+                
+                <div class="nav-group" id="group-p3">
+                    <div onclick="toggleSubNav('group-p3', 'p3.html', this)" class="nav-item">
+                        <span>專業課程</span><span class="nav-page-num">P. 03</span>
+                    </div>
+                    <div class="sub-nav-container">
+                        <div onclick="loadPage('p3_1.html', this)" class="sub-item"><span>二年制專班</span><span class="sub-num">P. 03.1</span></div>
+                        <div onclick="loadPage('p3_2.html', this)" class="sub-item"><span>剪髮課程</span><span class="sub-num">P. 03.2</span></div>
+                        <div onclick="loadPage('p3_3.html', this)" class="sub-item"><span>燙髮課程</span><span class="sub-num">P. 03.3</span></div>
+                        <div onclick="loadPage('p3_4.html', this)" class="sub-item"><span>染髮課程</span><span class="sub-num">P. 03.4</span></div>
+                        <div onclick="loadPage('p3_5.html', this)" class="sub-item"><span>講師課程</span><span class="sub-num">P. 03.5</span></div>
+                        <div onclick="loadPage('p3_6.html', this)" class="sub-item"><span>創業課程</span><span class="sub-num">P. 03.6</span></div>
+                        <div onclick="loadPage('p3_7.html', this)" class="sub-item"><span>寫書課程</span><span class="sub-num">P. 03.7</span></div>
+                    </div>
+                </div>
+
+                <div onclick="loadPage('p4.html', this)" class="nav-item"><span>美髮書坊</span><span class="nav-page-num">P. 04</span></div>
+                <div onclick="loadPage('p5.html', this)" class="nav-item"><span>募資課程</span><span class="nav-page-num">P. 05</span></div>
+                <div onclick="loadPage('p6.html', this)" class="nav-item"><span>授權合作</span><span class="nav-page-num">P. 06</span></div>
+                <div onclick="loadPage('p7.html', this)" class="nav-item"><span>常見問題</span><span class="nav-page-num">P. 07</span></div>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        // 切換子選單展開/縮回
+        function toggleSubNav(groupId, url, element) {
+            const group = document.getElementById(groupId);
+            const isExpanded = group.classList.contains('expanded');
+            
+            // 如果還沒展開，則展開它
+            if (!isExpanded) {
+                // 先關閉其他可能展開的 group (若未來有 P4 子頁面可擴充)
+                document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('expanded'));
+                group.classList.add('expanded');
+            }
+            
+            // 同時載入 P3 主頁面
+            loadPage(url, element);
+        }
+
+        async function loadPage(url, element) {
+            const target = document.getElementById('content-target');
+            
+            // 處理導航列 Active 狀態 (同時找 nav-item 和 sub-item)
+            document.querySelectorAll('.nav-item, .sub-item').forEach(nav => nav.classList.remove('active'));
+            if(element) element.classList.add('active');
+
+            target.style.opacity = 0;
+
+            try {
+                const response = await fetch(url);
+                const html = await response.text();
+                
+                setTimeout(() => {
+                    target.innerHTML = html;
+                    target.style.opacity = 1;
+                    target.scrollTop = 0;
+                }, 300);
+            } catch (err) {
+                target.innerHTML = "<div style='padding: 100px; opacity: 0.5;'>頁面讀取中或路徑錯誤...</div>";
+                target.style.opacity = 1;
+            }
+        }
+
+        // 預設加載首頁
+        window.onload = () => {
+            // 這裡設定啟動時要顯示哪一頁，例如 p1.html
+            const firstItem = document.querySelector('.nav-item');
+            loadPage('p1.html', firstItem); 
+        };
+    </script>
+</body>
+</html>
