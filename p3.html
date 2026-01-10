@@ -4,11 +4,11 @@
         padding: clamp(40px, 10%, 80px) 6% 120px 6%; 
     }
     
-    /* 2. 標題優化 */
+    /* 2. 標題與子導航優化 */
     .brand-heading { 
         position: relative; 
         padding-left: 20px; 
-        margin-bottom: 30px; 
+        margin-bottom: 20px; 
     }
     .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: #000; }
     
@@ -27,6 +27,37 @@
         margin-top: 5px;
     }
 
+    /* 子頁面導航列：支援手機橫向滑動 */
+    .sub-nav {
+        display: flex;
+        gap: 12px;
+        margin: 25px 0 40px 0;
+        overflow-x: auto;
+        padding-bottom: 12px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox 隱藏捲軸 */
+    }
+    .sub-nav::-webkit-scrollbar { display: none; } /* Chrome 隱藏捲軸 */
+
+    .sub-nav-item {
+        white-space: nowrap;
+        padding: 10px 20px;
+        background: #f0edff;
+        color: #4834d4;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 800;
+        border: 2px solid #d1c9ff;
+        transition: all 0.3s ease;
+    }
+    .sub-nav-item.active {
+        background: #322b5f;
+        color: #fff;
+        border-color: #322b5f;
+        box-shadow: 0 4px 12px rgba(50, 43, 95, 0.2);
+    }
+
     /* 3. 內容段落與區塊 */
     .info-section { margin-bottom: 40px; max-width: 850px; }
     .section-title { 
@@ -41,7 +72,7 @@
     
     p { 
         color: #000000 !important; 
-        font-size: 1.05rem; 
+        font-size: 1.1rem; 
         line-height: 1.8; 
         font-weight: 450; 
     }
@@ -52,15 +83,14 @@
         border-radius: 6px; 
         border-left: 6px solid #6c5ce7; 
         margin-bottom: 25px; 
-        border-right: 1px solid #ddd;
-        border-top: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
+        border: 1px solid #ddd;
+        border-left: 6px solid #6c5ce7;
     }
-    .concept-box h4 { margin-top: 0; color: #2e1fad; font-size: 1.2rem; font-weight: 800; }
+    .concept-box h4 { margin-top: 0; color: #2e1fad; font-size: 1.25rem; font-weight: 800; }
     
     .highlight-text { color: #d63031; font-weight: 800; border-bottom: 1px solid #d63031; }
 
-    /* 4. 表格手機版優化：核心調整 */
+    /* 4. 表格優化 */
     .course-table { 
         width: 100%; 
         border-collapse: collapse; 
@@ -71,7 +101,7 @@
     .course-category { 
         font-weight: 800; 
         color: #fff !important; 
-        font-size: 1.1rem; 
+        font-size: 1.15rem; 
         background: #322b5f; 
         padding: 12px 15px !important;
     }
@@ -87,26 +117,25 @@
         display: inline-block; 
         background: #6c5ce7; 
         color: #fff; 
-        padding: 2px 12px; 
+        padding: 4px 12px; 
         border-radius: 4px; 
         font-size: 0.85rem; 
-        margin-top: 5px; 
+        margin-top: 8px; 
         font-weight: 700;
     }
 
     /* 📱 手機版 RWD 調整 */
     @media (max-width: 768px) {
-        /* 將表格轉為塊狀顯示，避免寬度溢出 */
         .course-table, .course-table tbody, .course-table tr, .course-table td {
             display: block;
             width: 100%;
         }
         .course-table tr { margin-bottom: 10px; border-bottom: 2px solid #322b5f; }
-        .course-table td { text-align: left; box-sizing: border-box; padding: 10px 15px; }
-        .course-table td:last-child { background: #f9f9f9; font-size: 0.95rem; color: #444; }
+        .course-table td { text-align: left; box-sizing: border-box; padding: 12px 15px; }
+        .course-table td:last-child { background: #f9f9f9; font-size: 1rem; color: #000; font-weight: 600; }
         
         .concept-box { padding: 20px; }
-        .brand-heading h1 { letter-spacing: 1px; }
+        .sub-nav { margin-bottom: 30px; }
     }
 </style>
 
@@ -116,74 +145,58 @@
         <div class="subtitle">VITALITY ACADEMY COURSES</div>
     </section>
 
+    <nav class="sub-nav">
+        <a href="p3.html" class="sub-nav-item active">課程說明</a>
+        <a href="p3-1.html" class="sub-nav-item">二年制專班</a>
+        <a href="p3-2.html" class="sub-nav-item">剪髮課程</a>
+        <a href="#" class="sub-nav-item">燙染/證照</a>
+    </nav>
+
     <section class="info-section">
         <div class="concept-box">
             <h4>1. 雙軌學習模式</h4>
-            <p>課程依照學習邏輯循序漸進，從基礎概念到進階實戰，每一步都環環相扣。這意味著每位學員都能清楚掌握自己的學習里程碑，一步步累積能力與信心。無論對創業、講師或寫書的主題感興趣，課程設計都能讓您穩步前進，免去摸索，確保每個階段都有具體收穫。</p>
+            <p>課程依照學習邏輯循序漸進，從基礎到進階，每一步都環環相扣。無論對創業、講師或寫書感興趣，設計都能讓您穩步前進，免去摸索，確保每個階段都有具體收穫。</p>
         </div>
     </section>
 
     <section class="info-section">
         <div class="concept-box" style="border-left-color: #fbc2eb;">
             <h4>2. 線上課程說明</h4>
-            <p>在我們的課程設計中，每一門課程都不只是學習知識，更是創造成果。我們相信：<span class="highlight-text">只有做出來的，才是自己的。</span>我們安排了具體產出目標：</p>
-            <ul style="line-height: 2; color: #000; font-weight: 500; font-size: 1.05rem;">
-                <li>在<strong>創業課</strong>中，完成專屬<span class="highlight-text">創業計劃書</span>。</li>
-                <li>在<strong>講師課</strong>中，設計一份完整的<span class="highlight-text">教案</span>。</li>
-                <li>在<strong>寫書課</strong>裡，完成一本<span class="highlight-text">你自己的書</span>。</li>
+            <p>我們相信：<span class="highlight-text">只有做出來的，才是自己的。</span>具體產出目標：</p>
+            <ul style="line-height: 2.2; color: #000; font-weight: 700; font-size: 1.1rem; margin-top: 10px;">
+                <li>創業課：完成專屬<span class="highlight-text">創業計劃書</span></li>
+                <li>講師課：設計完整<span class="highlight-text">教案系統</span></li>
+                <li>寫書課：完成一本<span class="highlight-text">個人著作</span></li>
             </ul>
         </div>
     </section>
 
     <section class="info-section">
-        <div class="section-title">三、課程架構</div>
+        <div class="section-title">三、課程架構表</div>
         <table class="course-table">
-            <tr>
-                <td colspan="2" class="course-category">一、技術技能類 (預錄+實體)</td>
-            </tr>
-            <tr>
-                <td>1. 美髮技術基礎課</td>
-                <td>10 堂 × 每堂 6 節</td>
-            </tr>
-            <tr>
-                <td>2. 美髮技術進階課</td>
-                <td>10 堂 × 每堂 6 節</td>
-            </tr>
-            <tr>
-                <td>3. 丙級美髮證照班</td>
-                <td>10 堂 × 每堂 6 節</td>
-            </tr>
-            <tr>
-                <td>4. 乙級美髮證照班</td>
-                <td>10 堂 × 每堂 6 節</td>
-            </tr>
+            <tr><td colspan="2" class="course-category">一、技術技能類 (預錄+實體)</td></tr>
+            <tr><td>1. 美髮技術基礎課</td><td>10 堂 × 每堂 6 節</td></tr>
+            <tr><td>2. 美髮技術進階課</td><td>10 堂 × 每堂 6 節</td></tr>
+            <tr><td>3. 丙級/乙級證照班</td><td>輔導考取國家級證照</td></tr>
 
-            <tr>
-                <td colspan="2" class="course-category">二、專業升級類 (預錄+直播)</td>
-            </tr>
+            <tr><td colspan="2" class="course-category">二、專業升級類 (預錄+直播)</td></tr>
             <tr>
                 <td>5. 講師培訓課 <div class="result-tag">產出：完整教案</div></td>
-                <td>10 節 <br><small>定位高端，含舞台表達、教案設計</small></td>
+                <td>10 節 / 含舞台表達、教案設計</td>
             </tr>
             <tr>
                 <td>6. 創業規劃課 <div class="result-tag">產出：創業計劃書</div></td>
-                <td>10 節 <br><small>含商業模式、財務結構、控股規劃</small></td>
-            </tr>
-            <tr>
-                <td>7. 顧問服務</td>
-                <td>10 節 <br><small>1對1深度指導，彈性客製</small></td>
+                <td>10 節 / 含商業模式、財務結構</td>
             </tr>
 
-            <tr>
-                <td colspan="2" class="course-category">三、內容產出類 (預錄+直播)</td>
-            </tr>
+            <tr><td colspan="2" class="course-category">三、內容產出類 (預錄+直播)</td></tr>
             <tr>
                 <td>8. 寫書課 <div class="result-tag">產出：個人著作</div></td>
-                <td>10 節 <br><small>定位為 IP 建立與個人品牌</small></td>
+                <td>10 節 / 個人品牌 IP 建立</td>
             </tr>
             <tr>
                 <td>9. 錄製課</td>
-                <td>10 節 <br><small>教導剪輯、攝影、課程包裝</small></td>
+                <td>10 節 / 剪輯、攝影、包裝</td>
             </tr>
         </table>
     </section>
