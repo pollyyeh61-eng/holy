@@ -1,64 +1,132 @@
 <style>
-    /* 局部樣式：專屬於 P.3.2 的細節 */
-    .content-inner { padding: 120px 8% 100px 8%; }
+    /* 1. 基礎適配 */
+    .content-inner { 
+        padding: clamp(40px, 10%, 80px) 6% 120px 6%; 
+    }
 
-    .brand-heading { position: relative; padding-left: 30px; margin-bottom: 50px; }
-    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: #000; }
-    .brand-heading h1 { font-size: 2.8rem; margin: 0; letter-spacing: 5px; font-weight: 500; color: #322b5f; }
-    .brand-heading .subtitle { font-size: 0.9rem; letter-spacing: 5px; color: #6c5ce7; font-weight: 700; text-transform: uppercase; }
+    /* 2. 標題優化 */
+    .brand-heading { 
+        position: relative; 
+        padding-left: 20px; 
+        margin-bottom: 30px; 
+    }
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: #000; }
+    
+    .brand-heading h1 { 
+        font-size: clamp(1.8rem, 8vw, 2.5rem); 
+        margin: 0; 
+        letter-spacing: 2px; 
+        font-weight: 800; 
+        color: #000; 
+    }
+    .brand-heading .subtitle { 
+        font-size: 0.8rem; 
+        letter-spacing: 3px; 
+        color: #4834d4; 
+        font-weight: 700; 
+    }
 
-    .info-section { margin-bottom: 60px; max-width: 950px; }
+    /* 3. 區塊與標題強度 */
+    .info-section { margin-bottom: 50px; max-width: 950px; }
     .section-title { 
-        font-size: 1.4rem; margin-bottom: 25px; font-weight: 700; color: #322b5f;
-        border-bottom: 2px solid #fbc2eb; display: inline-block; padding-bottom: 5px; 
+        font-size: 1.3rem; 
+        margin-bottom: 20px; 
+        font-weight: 800; 
+        color: #000;
+        border-bottom: 3px solid #fbc2eb; 
+        display: inline-block; 
+        padding-bottom: 5px; 
     }
     
-    /* 課程表格優化 */
+    /* 4. 表格手機版優化 (轉為卡片清單) */
     .table-container { 
-        overflow-x: auto; 
-        background: rgba(255, 255, 255, 0.4); 
-        backdrop-filter: blur(10px); 
+        background: #fff; 
         border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border: 1px solid #000;
+        overflow: hidden;
     }
     .course-table { width: 100%; border-collapse: collapse; }
+    
     .course-table th { 
-        background: rgba(108, 92, 231, 0.1); 
-        padding: 18px 15px; 
-        text-align: left; 
-        color: #322b5f; 
-        font-weight: 700; 
-        border-bottom: 2px solid #6c5ce7;
-        white-space: nowrap;
-    }
-    .course-table td { 
+        background: #322b5f; 
         padding: 15px; 
-        border-bottom: 1px solid rgba(0,0,0,0.05); 
-        vertical-align: middle; 
-        transition: all 0.3s ease;
-        color: #322b5f;
+        text-align: left; 
+        color: #fff; 
+        font-weight: 800; 
     }
     
-    /* 表格列懸停效果 */
-    .course-table tr:hover td { 
-        background: rgba(255, 255, 255, 0.6); 
-        color: #6c5ce7; 
+    .course-table td { 
+        padding: 15px; 
+        border-bottom: 1px solid #eee; 
+        color: #000;
+        font-weight: 500;
+        line-height: 1.6;
     }
 
-    .item-code { font-weight: 700; width: 60px; text-align: center; color: #6c5ce7; }
+    .item-code { 
+        font-weight: 800; 
+        color: #4834d4; 
+        width: 40px; 
+        text-align: center; 
+        font-size: 1.1rem;
+    }
+    
     .example-tag { 
-        font-size: 0.85rem; 
-        background: rgba(108, 92, 231, 0.1); 
-        padding: 4px 12px; 
-        border-radius: 15px; 
-        color: #6c5ce7;
+        font-size: 0.8rem; 
+        background: #f0edff; 
+        padding: 4px 10px; 
+        border-radius: 4px; 
+        color: #4834d4;
+        font-weight: 700;
+        border: 1px solid #d1c9ff;
     }
 
     .highlight-note {
-        font-size: 0.9rem;
-        margin-top: 10px;
-        opacity: 0.7;
-        font-style: italic;
+        font-size: 0.95rem;
+        margin-top: 15px;
+        color: #d63031;
+        font-weight: 700;
+    }
+
+    /* 📱 手機版 RWD 核心調整 */
+    @media (max-width: 768px) {
+        .content-inner { padding-top: 30px; }
+        
+        /* 隱藏表頭，改用卡片式清單 */
+        .course-table thead { display: none; }
+        .course-table tr { 
+            display: flex; 
+            flex-wrap: wrap; 
+            padding: 15px; 
+            border-bottom: 2px solid #322b5f;
+            align-items: center;
+        }
+        .course-table td { 
+            display: block; 
+            padding: 5px; 
+            border: none; 
+            width: 100%;
+        }
+        
+        /* 讓編號與標籤在同一排 */
+        .item-code { 
+            width: auto; 
+            margin-right: 10px; 
+            background: #322b5f; 
+            color: #fff; 
+            padding: 2px 8px; 
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        /* 核心內容加粗 */
+        .course-table td:nth-child(2) { 
+            font-size: 1.05rem; 
+            font-weight: 700; 
+            margin: 5px 0;
+        }
+        
+        .example-tag { display: inline-block; margin-top: 5px; }
     }
 </style>
 
@@ -76,7 +144,7 @@
                     <tr>
                         <th class="item-code">編碼</th>
                         <th>核心教學內容</th>
-                        <th>髮型範例 (參考)</th>
+                        <th>髮型範例</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -104,16 +172,16 @@
                     <tr>
                         <th class="item-code">編碼</th>
                         <th>核心教學內容</th>
-                        <th>髮型範例 (參考)</th>
+                        <th>髮型範例</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td class="item-code">01</td><td>1. 百元剪髮與精緻剪髮的差異分析<br>2. 零層次剪髮</td><td><span class="example-tag">進階-1</span></td></tr>
+                    <tr><td class="item-code">01</td><td>1. 百元剪髮與精緻剪髮差異分析<br>2. 零層次剪髮</td><td><span class="example-tag">進階-1</span></td></tr>
                     <tr><td class="item-code">02</td><td>1. 女士剪髮要領<br>2. 前斜中低層次剪髮</td><td><span class="example-tag">進階-2</span></td></tr>
                     <tr><td class="item-code">03</td><td>1. 小孩剪髮要領<br>2. 後斜中低層次剪髮</td><td><span class="example-tag">進階-3</span></td></tr>
                     <tr><td class="item-code">04</td><td>1. 男士剪髮要領<br>2. 圓型均等層次剪髮</td><td><span class="example-tag">進階-4</span></td></tr>
-                    <tr><td class="item-code">05</td><td>1. 韓式剪髮與台式剪髮的差別<br>2. 男子髮型-零低推剪短層次</td><td><span class="example-tag">進階-5</span></td></tr>
-                    <tr><td class="item-code">06</td><td>1. 剪髮的形象原理<br>2. 男子髮型-零低推剪長層次</td><td><span class="example-tag">進階-6</span></td></tr>
+                    <tr><td class="item-code">05</td><td>1. 韓式剪髮與台式剪髮差別<br>2. 男子髮型-零低推剪短層次</td><td><span class="example-tag">進階-5</span></td></tr>
+                    <tr><td class="item-code">06</td><td>1. 剪髮形象原理<br>2. 男子髮型-零低推剪長層次</td><td><span class="example-tag">進階-6</span></td></tr>
                     <tr><td class="item-code">07</td><td>1. 去角裁剪調量<br>2. 男子髮型-低推剪長層次</td><td><span class="example-tag">進階-7</span></td></tr>
                     <tr><td class="item-code">08</td><td>1. 剪刀滑剪調量<br>2. 男子髮型-中推剪短層次</td><td><span class="example-tag">進階-8</span></td></tr>
                     <tr><td class="item-code">09</td><td>1. 推剪技法<br>2. 男子髮型-高推剪長層次</td><td><span class="example-tag">進階-9</span></td></tr>
@@ -121,6 +189,6 @@
                 </tbody>
             </table>
         </div>
-        <div class="highlight-note">※ 進階課程側重於現場實務應用、男子推剪技法與個人風格建立。</div>
+        <div class="highlight-note">※ 進階課程側重於現場實務應用與男子推剪技法。</div>
     </section>
 </div>
