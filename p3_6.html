@@ -1,26 +1,90 @@
 <style>
-    /* 局部樣式：專屬於 P.3.6 的商業經營感 */
-    .content-inner { padding: 120px 8% 100px 8%; }
-
-    .brand-heading { position: relative; padding-left: 30px; margin-bottom: 50px; }
-    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: #000; }
-    .brand-heading h1 { font-size: 2.8rem; margin: 0; letter-spacing: 5px; font-weight: 500; color: #322b5f; }
-    .brand-heading .subtitle { font-size: 0.9rem; letter-spacing: 5px; color: #6c5ce7; font-weight: 700; text-transform: uppercase; }
-
-    /* 創業引言 */
-    .intro-box { 
-        background: rgba(255, 255, 255, 0.4); 
-        padding: 30px; 
-        margin-bottom: 50px; 
-        border-left: 5px solid #322b5f; 
-        backdrop-filter: blur(5px);
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: #444;
+    /* 1. 整體適配與容器 */
+    .content-inner { 
+        padding: clamp(40px, 10%, 80px) 6% 120px 6%; 
     }
 
-    /* 管理架構矩陣 */
-    .section-title { font-size: 1.4rem; margin-bottom: 25px; font-weight: 700; border-bottom: 2px solid #fbc2eb; display: inline-block; padding-bottom: 5px; }
+    /* 2. 標題與子導航優化 */
+    .brand-heading { 
+        position: relative; 
+        padding-left: 20px; 
+        margin-bottom: 20px; 
+    }
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: #000; }
+    
+    .brand-heading h1 { 
+        font-size: clamp(1.8rem, 8vw, 2.5rem); 
+        margin: 0; 
+        letter-spacing: 2px; 
+        font-weight: 800; /* 加深字重 */
+        color: #000; /* 改為純黑 */
+    }
+    .brand-heading .subtitle { 
+        font-size: 0.85rem; 
+        letter-spacing: 3px; 
+        color: #4834d4; 
+        font-weight: 700; 
+        margin-top: 5px;
+        text-transform: uppercase;
+    }
+
+    /* 子頁面導航列 */
+    .sub-nav {
+        display: flex;
+        gap: 12px;
+        margin: 25px 0 40px 0;
+        overflow-x: auto;
+        padding-bottom: 12px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .sub-nav::-webkit-scrollbar { display: none; }
+
+    .sub-nav-item {
+        white-space: nowrap;
+        padding: 10px 20px;
+        background: #f0edff;
+        color: #4834d4;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 800;
+        border: 2px solid #d1c9ff;
+        transition: all 0.3s ease;
+    }
+    .sub-nav-item.active {
+        background: #322b5f;
+        color: #fff;
+        border-color: #322b5f;
+        box-shadow: 0 4px 12px rgba(50, 43, 95, 0.2);
+    }
+
+    /* 3. 創業引言 */
+    .intro-box { 
+        background: #fff; 
+        padding: 30px; 
+        margin-bottom: 50px; 
+        border-left: 6px solid #000; 
+        border-right: 1px solid #eee;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #000; /* 加深文字 */
+        font-weight: 500;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    /* 4. 管理架構矩陣 */
+    .section-title { 
+        font-size: 1.45rem; 
+        margin-bottom: 30px; 
+        font-weight: 800; 
+        color: #000; 
+        border-bottom: 3px solid #fbc2eb; 
+        display: inline-block; 
+        padding-bottom: 5px; 
+    }
     
     .mindmap-outline {
         display: grid; 
@@ -29,67 +93,80 @@
         margin-bottom: 60px;
     }
     .outline-card {
-        background: rgba(255, 255, 255, 0.5); 
+        background: #fff; 
         padding: 25px; 
         border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
         transition: all 0.3s ease; 
-        border: 1px solid rgba(255, 255, 255, 0.6);
+        border: 1px solid #ddd;
     }
     .outline-card:hover { 
         transform: translateY(-5px); 
-        background: #fff; 
         border-color: #6c5ce7; 
         box-shadow: 0 10px 25px rgba(108, 92, 231, 0.15);
     }
     .outline-card h3 { 
-        font-size: 1.1rem; 
+        font-size: 1.15rem; 
         border-bottom: 2px solid #fbc2eb; 
-        padding-bottom: 10px; 
+        padding-bottom: 12px; 
         margin-top: 0; 
-        color: #6c5ce7; 
+        color: #000; /* 改為純黑 */
+        font-weight: 800;
         display: flex;
         justify-content: space-between;
     }
-    .outline-card ul { padding-left: 20px; font-size: 0.95rem; margin-bottom: 0; }
-    .outline-card li { margin-bottom: 5px; color: #555; }
+    .outline-card ul { padding-left: 18px; font-size: 1rem; margin-bottom: 0; }
+    .outline-card li { margin-bottom: 8px; color: #000; font-weight: 500; }
 
-    /* 核心管理強調樣式 */
+    /* 核心管理強調 */
     .core-card { 
-        background: linear-gradient(135deg, rgba(161, 196, 253, 0.2) 0%, rgba(194, 233, 251, 0.2) 100%) !important;
+        background: #f0f7ff !important;
         border: 2px solid #6c5ce7 !important;
     }
 
     /* 適合對象列表 */
     .feature-item { 
-        padding: 18px 25px; 
-        background: rgba(255, 255, 255, 0.3); 
-        margin-bottom: 12px; 
+        padding: 18px 30px; 
+        background: #fff; 
+        margin-bottom: 15px; 
         display: flex; 
         align-items: center; 
         transition: 0.3s; 
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 40px;
+        border: 1px solid #ddd;
+        border-radius: 50px;
+        color: #000;
+        font-weight: 500;
     }
     .feature-item:hover { 
-        background: #fff; 
-        padding-left: 35px; 
-        color: #6c5ce7; 
-        border-color: #fbc2eb; 
+        background: #f0edff; 
+        border-color: #6c5ce7; 
+        padding-left: 40px;
     }
-    .feature-item b { width: 140px; color: #322b5f; font-size: 1.05rem; }
+    .feature-item b { width: 150px; color: #6c5ce7; font-size: 1.1rem; font-weight: 800; }
 
-    /* 深度對談 */
+    /* 深度對談區塊 */
     .talk-text { 
-        max-width: 850px; 
-        background: rgba(255, 255, 255, 0.3); 
-        padding: 40px; 
-        border-radius: 15px; 
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        max-width: 900px; 
+        background: #fff; 
+        padding: 45px; 
+        border-radius: 20px; 
+        border: 1px solid #eee;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
-    .talk-text h2 { color: #322b5f; margin-top: 0; margin-bottom: 25px; font-size: 1.8rem; }
-    .talk-text p { margin-bottom: 20px; font-size: 1.05rem; }
-    .talk-text b { color: #6c5ce7; }
+    .talk-text h2 { color: #000; margin-top: 0; margin-bottom: 30px; font-size: 2rem; font-weight: 800; }
+    .talk-text p { margin-bottom: 20px; font-size: 1.1rem; color: #000; font-weight: 500; line-height: 1.8; }
+    .talk-text b { color: #6c5ce7; font-weight: 800; }
+
+    /* 📱 手機版 RWD 調整 */
+    @media (max-width: 992px) {
+        .mindmap-outline { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+        .mindmap-outline { grid-template-columns: 1fr; }
+        .feature-item { flex-direction: column; align-items: flex-start; border-radius: 15px; }
+        .feature-item b { margin-bottom: 5px; width: 100%; }
+        .talk-text { padding: 30px 20px; }
+    }
 </style>
 
 <div class="content-inner">
@@ -97,6 +174,15 @@
         <h1>創業課程</h1>
         <div class="subtitle">ENTREPRENEURIAL MINDSET</div>
     </section>
+
+    <nav class="sub-nav">
+        <a href="p3.html" class="sub-nav-item">課程說明</a>
+        <a href="p3-1.html" class="sub-nav-item">二年制專班</a>
+        <a href="p3-2.html" class="sub-nav-item">剪髮課程</a>
+        <a href="p3-3.html" class="sub-nav-item">燙染/證照</a>
+        <a href="p3-5.html" class="sub-nav-item">講師培訓</a>
+        <a href="p3-6.html" class="sub-nav-item active">創業經營</a>
+    </nav>
 
     <div class="intro-box">
         創業是一段充滿挑戰與機會的旅程。成功不一定需要大量資本，智慧與行動才是關鍵。本課程將幫助您在有限的資源下，透過系統化的管理邏輯，創造無限可能的商業工具。
@@ -173,7 +259,7 @@
             <div class="feature-item"><b>4. 數位轉型者</b> 適合想避開削價競爭，運用數位經營突圍的人</div>
             <div class="feature-item"><b>5. 規模化佈局</b> 適合目前雖小，但未來有志於連鎖擴展的人</div>
         </div>
-        <p style="margin-top:20px; padding-left: 20px; opacity:0.7; font-style: italic;">
+        <p style="margin-top:20px; padding-left: 20px; color: #000; opacity:0.8; font-style: italic; font-weight: 600;">
             ※ 小成本試錯、現金流明確、高成就感，適合現場設計師邁向經營者的第一步。
         </p>
     </section>
