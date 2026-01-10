@@ -1,123 +1,47 @@
 <style>
-    /* 1. 整體適配 */
-    .content-inner { 
-        padding: clamp(40px, 10%, 80px) 6% 120px 6%; 
-    }
+    /* 局部樣式：對齊 P.3.1 的專屬美感 */
+    .content-inner { padding: 120px 8% 100px 8%; }
     
-    /* 2. 標題優化 */
-    .brand-heading { 
-        position: relative; 
-        padding-left: 20px; 
-        margin-bottom: 30px; 
-    }
-    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: #000; }
-    
-    .brand-heading h1 { 
-        font-size: clamp(1.8rem, 8vw, 2.5rem); 
-        margin: 0; 
-        letter-spacing: 2px; 
-        font-weight: 800; 
-        color: #000; 
-    }
-    .brand-heading .subtitle { 
-        font-size: 0.8rem; 
-        letter-spacing: 3px; 
-        color: #4834d4; 
-        font-weight: 700; 
-    }
+    .brand-heading { position: relative; padding-left: 30px; margin-bottom: 50px; }
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: #000; }
+    .brand-heading h1 { font-size: 2.8rem; margin: 0; letter-spacing: 5px; font-weight: 500; color: #322b5f; }
+    .brand-heading .subtitle { font-size: 0.9rem; letter-spacing: 5px; color: #6c5ce7; font-weight: 700; text-transform: uppercase; }
 
-    /* 3. 內文與標題強度 */
-    .info-section { margin-bottom: 40px; max-width: 900px; }
+    .info-section { margin-bottom: 60px; max-width: 900px; }
     .section-title { 
-        font-size: 1.3rem; 
-        margin-bottom: 20px; 
-        font-weight: 800; 
-        color: #000;
-        border-bottom: 3px solid #fbc2eb; 
-        display: inline-block; 
-        padding-bottom: 5px; 
+        font-size: 1.4rem; margin-bottom: 25px; font-weight: 700; color: #322b5f;
+        border-bottom: 2px solid #fbc2eb; display: inline-block; padding-bottom: 5px; 
     }
     
-    p { 
-        color: #000000 !important; 
-        font-size: 1.05rem; 
-        line-height: 1.8; 
-        font-weight: 450; 
-    }
-
-    /* 4. 卡片佈局優化 */
-    .grid-container { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-        gap: 15px; 
-        margin: 20px 0; 
-    }
+    .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+    
     .card { 
-        background: rgba(255,255,255,0.7); 
-        padding: 20px; 
-        border: 1px solid #ccc; 
-        border-radius: 6px;
-        backdrop-filter: blur(10px);
+        background: rgba(255,255,255,0.4); padding: 25px; border: 1px solid rgba(255,255,255,0.6); 
+        backdrop-filter: blur(10px); transition: all 0.3s ease; border-radius: 4px;
     }
-    .card h4 { margin: 0 0 10px 0; color: #4834d4; font-size: 1.15rem; font-weight: 800; }
-    .card p { margin: 0; font-size: 1rem; color: #000; opacity: 1; }
+    .card:hover {
+        background: rgba(255,255,255,0.8); transform: translateY(-8px);
+        border-color: #6c5ce7; box-shadow: 0 15px 30px rgba(108, 92, 231, 0.15);
+    }
+    .card h4 { margin: 0 0 10px 0; color: #6c5ce7; font-size: 1.1rem; }
+    .card p { margin: 0; font-size: 0.95rem; color: #322b5f; opacity: 0.9; }
 
-    /* 5. 養成路徑圖 (手機自動調整) */
+    /* 養成路徑圖 */
     .pathway { 
-        background: #1a1a2e; 
-        color: #fff; 
-        padding: clamp(20px, 5%, 40px); 
-        border-radius: 12px; 
-        margin-top: 20px; 
-        text-align: center; 
+        background: #1a1a2e; color: #fff; padding: 40px; border-radius: 8px; 
+        margin-top: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
-    .path-step { 
-        margin-bottom: 10px; 
-        padding: 15px; 
-        border: 1px dashed rgba(255,255,255,0.4); 
-        font-size: 1rem;
-    }
-    .path-step b { color: #fbc2eb; font-size: 1.1rem; }
-    .arrow { font-size: 1.2rem; margin: 5px 0; color: #fbc2eb; }
+    .path-step { margin-bottom: 15px; padding: 20px; border: 1px dashed rgba(255,255,255,0.3); transition: 0.3s; }
+    .path-step:hover { background: rgba(255,255,255,0.1); border-style: solid; border-color: #fbc2eb; }
+    .arrow { font-size: 1.5rem; margin: 10px 0; color: #fbc2eb; }
 
-    /* 專業分流區域：手機版垂直排隊 */
-    .branch-container {
-        display: flex; 
-        justify-content: space-around; 
-        gap: 15px; 
-        margin-top: 10px;
-    }
-    .branch-item {
-        flex: 1; 
-        border: 1px solid #6c5ce7; 
-        padding: 15px; 
-        background: rgba(108,92,231,0.2);
-    }
-
-    /* 6. 表格手機版優化 */
-    .table-wrapper { width: 100%; }
-    table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #000; }
-    th { background: #322b5f; padding: 12px; text-align: left; color: #fff; font-weight: 800; }
-    td { padding: 12px; border-bottom: 1px solid #eee; color: #000; font-weight: 500; }
+    /* 表格優化 */
+    .table-wrapper { overflow-x: auto; margin-top: 20px; }
+    table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.3); }
+    th { background: rgba(108, 92, 231, 0.1); padding: 18px; text-align: left; border-bottom: 2px solid #6c5ce7; color: #322b5f; }
+    td { padding: 18px; border-bottom: 1px solid rgba(0,0,0,0.05); color: #322b5f; }
     
-    .highlight-text { color: #d63031; font-weight: 800; }
-
-    /* 📱 手機版調整 */
-    @media (max-width: 768px) {
-        .content-inner { padding-top: 30px; }
-        .grid-container { grid-template-columns: 1fr; }
-        .branch-container { flex-direction: column; } /* 分流改為垂直 */
-        
-        /* 表格轉塊狀 */
-        table, thead, tbody, th, td, tr { display: block; width: 100%; }
-        thead tr { position: absolute; top: -9999px; left: -9999px; }
-        tr { border: 1px solid #322b5f; margin-bottom: 10px; }
-        td { border: none; position: relative; padding-left: 40%; text-align: left; }
-        td:before { 
-            content: attr(data-label); 
-            position: absolute; left: 10px; font-weight: 800; color: #322b5f;
-        }
-    }
+    .highlight-text { color: #6c5ce7; font-weight: 700; }
 </style>
 
 <div class="content-inner">
@@ -152,28 +76,16 @@
         <div class="table-wrapper">
             <table>
                 <thead>
-                    <tr><th>學年階段</th><th>核心訓練內容</th><th>學費估算</th></tr>
+                    <tr><th>學年階段</th><th>核心訓練內容</th><th>學費估算 (10週)</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td data-label="學年階段">第一年 (必修)</td>
-                        <td data-label="核心內容">剪/燙/染基礎原理 + 丙級檢定輔導</td>
-                        <td data-label="學費估算">NT$ 30,000</td>
-                    </tr>
-                    <tr>
-                        <td data-label="學年階段">第二年 (必修)</td>
-                        <td data-label="核心內容">剪/燙/染商業進階 + 乙級檢定輔導</td>
-                        <td data-label="學費估算">NT$ 30,000 - 60,000</td>
-                    </tr>
-                    <tr>
-                        <td data-label="學年階段">第三年 (選修)</td>
-                        <td data-label="核心內容">分流專長：講師培訓 / 創業經營直播課</td>
-                        <td data-label="學費估算">NT$ 60,000</td>
-                    </tr>
+                    <tr><td>第一年 (必修)</td><td>剪/燙/染基礎原理 + 美髮丙級檢定輔導</td><td>NT$ 30,000</td></tr>
+                    <tr><td>第二年 (必修)</td><td>剪/燙/染商業進階 + 美髮乙級檢定輔導</td><td>NT$ 30,000 ~ 60,000</td></tr>
+                    <tr><td>第三年 (選修)</td><td>分流專長：講師培訓 / 創業經營直播課</td><td>NT$ 60,000</td></tr>
                 </tbody>
             </table>
         </div>
-        <p style="font-size: 0.85rem; margin-top: 15px; color: #666; font-weight: 700;">* 招生季別：春(3-5月)、夏(6-8月)、秋(9-11月)、冬(12-2月)</p>
+        <p style="font-size: 0.85rem; margin-top: 15px; opacity: 0.7;">* 招生季別：春(3-5月)、夏(6-8月)、秋(9-11月)、冬(12-2月)</p>
     </section>
 
     <section class="info-section">
@@ -181,16 +93,15 @@
         <div class="pathway">
             <div class="path-step"><b>起點：零基礎新手 / 現場助理</b><br>啟動對美髮專業熱情的啟蒙期</div>
             <div class="arrow">▼</div>
-            <div class="path-step"><b>1️⃣ 基礎創業班 (1年)</b><br>核心目標：考取證照，成為初階設計師</div>
+            <div class="path-step"><b>1️⃣ 基礎創業班 (1年)</b><br>核心目標：考取證照，成為具備基本功的初階設計師</div>
             <div class="arrow">▼</div>
-            <div class="path-step"><b>2️⃣ 技術進階班 (1年)</b><br>核心目標：掌握高層次技術，成為沙龍核心</div>
+            <div class="path-step"><b>2️⃣ 技術進階班 (1年)</b><br>核心目標：掌握高層次技術，成為沙龍核心高階設計師</div>
             <div class="arrow">▼ 專業分流發展</div>
-            
-            <div class="branch-container">
-                <div class="branch-item">
+            <div style="display: flex; justify-content: space-around; gap: 20px; margin-top: 10px;">
+                <div style="flex: 1; border: 1px solid #6c5ce7; padding: 15px; background: rgba(108,92,231,0.15);">
                     <b style="color: #a1c4fd;">A. 教育講師</b><br><small>教案設計、台風表達、技術傳承</small>
                 </div>
-                <div class="branch-item" style="border-color: #fbc2eb;">
+                <div style="flex: 1; border: 1px solid #fbc2eb; padding: 15px; background: rgba(251,194,235,0.15);">
                     <b style="color: #fbc2eb;">B. 品牌創業</b><br><small>經營管理、行銷規劃、品牌打造</small>
                 </div>
             </div>
