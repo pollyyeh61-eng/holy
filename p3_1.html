@@ -1,149 +1,143 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>二年制專班 | 專業課程</title>
 
-<style>
-    /* 基礎變數 */
-    :root {
-        --primary-purple: #6c5ce7;
-        --soft-purple: #f0edff;
-        --accent-pink: #e91e63;
-        --pure-black: #000000;
-        --glass-white: rgba(255, 255, 255, 0.85);
-    }
+    <link rel="icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png">
 
-    /* 2. 浮動導覽 (右上角) */
-    .floating-nav {
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        z-index: 2000;
-    }
-    .nav-btn {
-        background: rgba(0, 0, 0, 0.8);
-        color: #fff !important;
-        text-decoration: none;
-        padding: 8px 16px;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        font-weight: 800;
-        backdrop-filter: blur(5px);
-        border: 1px solid rgba(255,255,255,0.2);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+    <style>
+        /* 基礎變數 */
+        :root {
+            --primary-purple: #6c5ce7;
+            --soft-purple: #f0edff;
+            --accent-pink: #e91e63;
+            --pure-black: #000000;
+            --glass-white: rgba(255, 255, 255, 0.95);
+        }
 
-    /* 3. 頁面引導導航 (橫向捲動) */
-    .anchor-nav {
-        display: flex;
-        gap: 10px;
-        margin: 20px 0;
-        overflow-x: auto;
-        padding: 5px 0 15px 0;
-        scrollbar-width: none;
-        position: sticky;
-        top: 0;
-        background: rgba(255,255,255,0.9);
-        z-index: 900;
-    }
-    .anchor-nav::-webkit-scrollbar { display: none; }
-    .anchor-item {
-        white-space: nowrap;
-        background: var(--soft-purple);
-        color: var(--primary-purple);
-        padding: 10px 18px;
-        border-radius: 12px;
-        font-weight: 800;
-        font-size: 0.95rem;
-        text-decoration: none;
-        border: 1.5px solid var(--primary-purple);
-    }
+        body { margin: 0; font-family: -apple-system, sans-serif; background: #fdfdfd; color: #000; }
 
-    /* 4. 內容排版 */
-    .content-inner { padding: 70px 6% 100px 6%; box-sizing: border-box; }
-    
-    .brand-heading h1 { 
-        font-size: 2.2rem; 
-        font-weight: 900; 
-        color: var(--pure-black); 
-        margin: 0;
-        line-height: 1.2;
-    }
+        /* 2. 修正：右側中間浮動導覽 */
+        .floating-nav {
+            position: fixed;
+            top: 50%; /* 垂直居中 */
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 2px; /* 按鈕緊湊排列 */
+            z-index: 10000; /* 確保最高層級 */
+        }
+        
+        .nav-btn {
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff !important;
+            text-decoration: none;
+            padding: 15px 10px;
+            border-radius: 12px 0 0 12px; /* 左側圓角 */
+            font-size: 0.85rem;
+            font-weight: 800;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-right: none;
+            text-align: center;
+            writing-mode: vertical-rl; /* 文字垂直排列 */
+            letter-spacing: 2px;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+        }
 
-    .section-title { 
-        font-size: 1.5rem; 
-        font-weight: 900; 
-        color: var(--pure-black);
-        margin: 45px 0 20px 0;
-        border-bottom: 4px solid #fbc2eb;
-        display: inline-block;
-    }
+        /* 3. 頁面引導導航 (橫向捲動) */
+        .anchor-nav {
+            display: flex;
+            gap: 10px;
+            padding: 15px 6%;
+            overflow-x: auto;
+            scrollbar-width: none;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 900;
+            border-bottom: 1px solid #eee;
+        }
+        .anchor-nav::-webkit-scrollbar { display: none; }
+        .anchor-item {
+            white-space: nowrap;
+            background: var(--soft-purple);
+            color: var(--primary-purple);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: 1.5px solid var(--primary-purple);
+        }
 
-    .content-text {
-        font-size: 1.15rem;
-        font-weight: 600;
-        color: var(--pure-black);
-        line-height: 1.8;
-        margin-bottom: 20px;
-    }
+        /* 4. 內容排版 */
+        .content-inner { padding: 30px 6% 120px 6%; box-sizing: border-box; }
+        
+        .brand-heading h1 { 
+            font-size: 2.2rem; font-weight: 900; color: var(--pure-black); margin: 0;
+        }
 
-    /* 5. 淺色高對比色塊 (解決字體不清) */
-    .light-card {
-        background: var(--glass-white);
-        border: 2px solid var(--primary-purple);
-        padding: 20px;
-        border-radius: 15px;
-        margin: 20px 0;
-        box-shadow: 0 5px 15px rgba(108, 92, 231, 0.1);
-        backdrop-filter: blur(10px);
-    }
-    .light-card h4 { 
-        margin: 0 0 10px 0; 
-        color: var(--primary-purple); 
-        font-size: 1.2rem; 
-        font-weight: 900;
-    }
-    .light-card p { 
-        margin: 0; 
-        color: var(--pure-black) !important; 
-        font-weight: 700;
-        font-size: 1.05rem;
-    }
+        .section-title { 
+            font-size: 1.5rem; font-weight: 900; color: var(--pure-black);
+            margin: 45px 0 20px 0; border-bottom: 4px solid #fbc2eb;
+            display: inline-block;
+        }
 
-    /* 6. 價格與課程清單 */
-    .course-price-item {
-        background: #fff;
-        border: 1px solid #ddd;
-        padding: 15px;
-        border-radius: 12px;
-        margin-bottom: 12px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .price-tag { color: var(--accent-pink); font-weight: 900; font-size: 1.1rem; }
+        .content-text {
+            font-size: 1.1rem; font-weight: 600; color: var(--pure-black);
+            line-height: 1.8; margin-bottom: 20px;
+        }
 
-    /* 養成路徑圖視覺 */
-    .path-step {
-        text-align: center;
-        padding: 20px;
-        background: var(--soft-purple);
-        border-radius: 15px;
-        margin: 15px 0;
-        border: 1px dashed var(--primary-purple);
-    }
-    .arrow { font-size: 1.5rem; color: var(--primary-purple); margin: 10px 0; }
+        /* 5. 卡片設計 */
+        .light-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-left: 6px solid var(--primary-purple);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .light-card h4 { margin: 0 0 10px 0; color: var(--primary-purple); font-size: 1.2rem; font-weight: 900;}
+        .light-card p { margin: 0; color: #444; font-weight: 600;}
 
-    @media (max-width: 480px) {
-        .brand-heading h1 { font-size: 1.8rem; }
-        .nav-btn { padding: 6px 12px; font-size: 0.8rem; }
-    }
-</style>
+        /* 6. 價格列表 */
+        .course-price-item {
+            background: #fff; border-bottom: 1px solid #eee;
+            padding: 15px 0; display: flex; justify-content: space-between;
+        }
+        .price-tag { color: var(--accent-pink); font-weight: 900; }
+
+        /* 路徑圖 */
+        .path-step {
+            text-align: center; padding: 20px; background: var(--soft-purple);
+            border-radius: 15px; margin: 15px 0; border: 1px dashed var(--primary-purple);
+        }
+        .arrow { text-align: center; font-size: 1.5rem; color: var(--primary-purple); }
+
+        @media (max-width: 480px) {
+            .brand-heading h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
 
 <div class="floating-nav">
-    <a href="index.html" class="nav-btn">🏠 首頁</a>
-    <a href="p3.html" class="nav-btn">📚 課程</a>
+    <a href="index.html" class="nav-btn">🏠回首頁</a>
+    <a href="p3.html" class="nav-btn" style="background:var(--primary-purple)">📚回課程</a>
 </div>
+
+<nav class="anchor-nav">
+    <a href="#reason" class="anchor-item">💡 設置原因</a>
+    <a href="#target" class="anchor-item">👤 適合誰唸</a>
+    <a href="#price" class="anchor-item">💰 期程收費</a>
+    <a href="#path" class="anchor-item">🚀 養成路徑</a>
+</nav>
 
 <div class="content-inner">
     <header class="brand-heading">
@@ -151,84 +145,45 @@
         <p style="color:var(--primary-purple); font-weight:800; margin-top:5px;">預錄課程 + 實體課程</p>
     </header>
 
-    <nav class="anchor-nav">
-        <a href="#reason" class="anchor-item">💡 設置原因</a>
-        <a href="#target" class="anchor-item">👤 適合誰唸</a>
-        <a href="#price" class="anchor-item">💰 期程收費</a>
-        <a href="#path" class="anchor-item">🚀 養成路徑</a>
-    </nav>
-
     <section id="reason">
         <div class="section-title">一、設置原因</div>
         <div class="light-card">
             <h4>1. 系統化培訓</h4>
-            <p>美髮專業技術需要長期累積，二年制能完整涵蓋基礎 → 進階 → 講師／創業的路徑。</p>
+            <p>完整涵蓋基礎 → 進階 → 講師／創業的路徑。</p>
         </div>
         <div class="light-card">
             <h4>2. 人才養成週期</h4>
-            <p>養成專業設計師平均需 1.5–2 年，讓學員畢業即可直接投入職場。</p>
-        </div>
-        <div class="light-card">
-            <h4>3. 分階段目標</h4>
-            <p>以學期為單位，逐步累積：基礎證照 → 作品集 → 創業企劃書。</p>
-        </div>
-        <div class="light-card">
-            <h4>4. 學習＋實習並進</h4>
-            <p>設計「教學 + 現場實習」模式，培養即戰力，縮短職場適應期。</p>
+            <p>養成設計師需 1.5–2 年，畢業即可接客。</p>
         </div>
     </section>
 
     <section id="target">
         <div class="section-title">二、適合什麼人唸</div>
         <div class="content-text">
-            • <strong>零基礎新手</strong>：想轉職美髮行業、追求系統學習者。<br>
-            • <strong>助理升設計師</strong>：缺乏系統培訓、想快速升級的助理。<br>
-            • <strong>技術再進修</strong>：已有基礎，想精進經營與管理觀念者。<br>
-            • <strong>創業預備軍</strong>：想從員工轉型老闆，建立商業模式者。<br>
-            • <strong>國際留學族</strong>：想出國工作，需完整專業履歷者。
+            • <strong>零基礎新手</strong>：追求系統學習者。<br>
+            • <strong>助理升設計師</strong>：想快速升級者。<br>
+            • <strong>創業預備軍</strong>：想建立商業模式者。
         </div>
     </section>
 
     <section id="price">
         <div class="section-title">三、期程與收費</div>
-        <div class="light-card" style="border-left: 5px solid var(--accent-pink);">
-            <p><strong>必修 2 年 + 選修 1 年</strong><br>
-            每週一次 (6小時) | 每期 10 週</p>
-        </div>
-
-        <h4 style="margin:20px 0 10px 0; font-weight:900;">第一年必修課程</h4>
-        <div class="course-price-item"><span>L1 剪髮基礎班</span> <span class="price-tag">$30,000</span></div>
-        <div class="course-price-item"><span>L2 燙髮基礎班</span> <span class="price-tag">$30,000</span></div>
-        <div class="course-price-item"><span>L3 染髮基礎班</span> <span class="price-tag">$30,000</span></div>
-        <div class="course-price-item"><span>L4 丙級檢定班</span> <span class="price-tag">$30,000</span></div>
-
-        <h4 style="margin:20px 0 10px 0; font-weight:900;">第二年必修課程</h4>
-        <div class="course-price-item"><span>L1-L3 技術進階班</span> <span class="price-tag">$30,000/期</span></div>
-        <div class="course-price-item"><span>L4 乙級檢定班</span> <span class="price-tag">$60,000</span></div>
+        <div class="course-price-item"><span>第一年必修課程</span> <span class="price-tag">$120,000</span></div>
+        <div class="course-price-item"><span>第二年必修課程</span> <span class="price-tag">$90,000起</span></div>
     </section>
 
     <section id="path">
-        <div class="section-title">四、學員養成路徑圖</div>
-        
-        
-
-        <div class="path-step">
-            <strong>1. 基礎創業期 (1年)</strong>
-            <p>目標：成為初階設計師</p>
-        </div>
+        <div class="section-title">四、學員養成路徑</div>
+        <div class="path-step"><strong>1. 基礎創業期 (1年)</strong></div>
         <div class="arrow">↓</div>
-        <div class="path-step">
-            <strong>2. 技術進階期 (1年)</strong>
-            <p>目標：升級高階設計師</p>
-        </div>
+        <div class="path-step"><strong>2. 技術進階期 (1年)</strong></div>
         <div class="arrow">↓</div>
         <div style="display:flex; gap:10px;">
-            <div class="path-step" style="flex:1; border-color:var(--accent-pink);">
-                <strong>A 路徑</strong><br>成為講師
-            </div>
-            <div class="path-step" style="flex:1; border-color:var(--accent-pink);">
-                <strong>B 路徑</strong><br>創業開店
-            </div>
+            <div class="path-step" style="flex:1;">成為講師</div>
+            <div class="path-step" style="flex:1;">創業開店</div>
         </div>
     </section>
 </div>
+
+</body>
+</html>
