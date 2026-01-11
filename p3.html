@@ -6,31 +6,37 @@
     <title>專業課程說明 | 活力美髮學院</title>
 
     <style>
-        /* 1. 基礎設定 */
+        /* 基礎設定 */
         body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
         .content-inner { padding: 0 6% 120px 6%; }
         
-        /* 2. 【絕對鎖定】僅保留右下角回頂部按鈕 */
+        /* 【絕對鎖定】右側回首頁 */
+        #fixed-home-btn { 
+            position: fixed !important; 
+            top: 50% !important; 
+            right: 0 !important; 
+            transform: translateY(-50%) !important; 
+            z-index: 2147483647 !important;
+        }
+        .float-btn-home { 
+            background: rgba(0, 0, 0, 0.9); color: #fff !important; text-decoration: none; 
+            padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.9rem; font-weight: 800; 
+            writing-mode: vertical-rl; letter-spacing: 2px; display: block;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* 【絕對鎖定】右下角回頂部 */
         #fixed-top-btn {
             position: fixed !important; 
             bottom: 30px !important; 
             right: 20px !important; 
-            width: 55px; 
-            height: 55px; 
-            background: #322b5f; 
-            color: #fff !important;
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            text-decoration: none; 
-            font-size: 1.5rem; 
-            z-index: 2147483647 !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
-            border: 2px solid rgba(255,255,255,0.3);
+            width: 55px; height: 55px; background: #322b5f; color: #fff !important;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; font-size: 1.5rem; z-index: 2147483647 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.3);
         }
 
-        /* 3. 網格目錄 (隨內容捲動) */
+        /* 頂部 8 格網格目錄 (隨內容捲動) */
         .sub-nav-container { background: #fff; border-bottom: 2px solid #eee; padding: 20px 4%; margin-bottom: 25px; }
         .sub-nav-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
         .sub-nav-item {
@@ -40,7 +46,7 @@
         }
         .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
-        /* 4. 內容樣式 */
+        /* 內容樣式 */
         .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
         .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
         .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin: 0; font-weight: 900; }
@@ -60,6 +66,10 @@
     </style>
 </head>
 <body>
+
+<div id="fixed-home-btn">
+    <a href="index.html" class="float-btn-home">🏠回首頁</a>
+</div>
 
 <a href="#" id="fixed-top-btn">▲</a>
 
@@ -127,16 +137,17 @@
 </div>
 
 <script>
-    // 強化回頂部按鈕的鎖定邏輯
-    function forceFixTopButton() {
+    function forceFixButtons() {
+        var h = document.getElementById('fixed-home-btn');
         var t = document.getElementById('fixed-top-btn');
-        if(t) {
+        if(h && t) {
+            document.body.appendChild(h);
             document.body.appendChild(t);
         }
     }
-    window.addEventListener('load', forceFixTopButton);
-    window.addEventListener('pageshow', forceFixTopButton);
-    setInterval(forceFixTopButton, 1000);
+    window.addEventListener('load', forceFixButtons);
+    window.addEventListener('pageshow', forceFixButtons);
+    setInterval(forceFixButtons, 1000);
 </script>
 
 </body>
