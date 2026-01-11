@@ -6,33 +6,11 @@
     <title>專業課程說明 | 活力美髮學院</title>
 
     <style>
-        /* 基礎設定 */
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
-        .content-inner { padding: 0 6% 120px 6%; }
+        /* 基礎設定 - 移除捲動行為設定以確保相容性 */
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; line-height: 1.6; }
+        .content-inner { padding: 0 6% 80px 6%; }
         
-        /* 【絕對鎖定】右下角回頂部按鈕樣式 */
-        #fixed-top-btn {
-            position: fixed !important; 
-            bottom: 30px !important; 
-            right: 20px !important; 
-            width: 55px !important; 
-            height: 55px !important; 
-            background: #322b5f !important; 
-            color: #ffffff !important;
-            border-radius: 50% !important; 
-            display: flex !important; 
-            align-items: center !important; 
-            justify-content: center !important;
-            text-decoration: none !important; 
-            font-size: 1.5rem !important; 
-            z-index: 999999 !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
-            border: 2px solid rgba(255,255,255,0.3);
-            cursor: pointer;
-            transform: translateZ(0); /* 解決手機瀏覽器渲染層級問題 */
-        }
-
-        /* 頂部 8 格網格目錄 */
+        /* 頂部 8 格網格目錄 - 這是最穩定的標準流布局 */
         .sub-nav-container { background: #fff; border-bottom: 2px solid #eee; padding: 20px 4%; margin-bottom: 25px; }
         .sub-nav-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
         .sub-nav-item {
@@ -43,30 +21,30 @@
         .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
         /* 內容與理念樣式 */
-        .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
-        .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
+        .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; border-left: 5px solid #000; }
         .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin: 0; font-weight: 900; }
         
         .concept-box { 
-            background: #fff; padding: 25px; border-radius: 12px; margin-bottom: 30px; 
-            border: 1.5px solid #ddd; border-left: 8px solid #6c5ce7; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: #fff; padding: 25px; border-radius: 12px; margin-bottom: 25px; 
+            border: 1.5px solid #ddd; border-left: 8px solid #6c5ce7; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .concept-box h4 { margin-top: 0; font-size: 1.3rem; font-weight: 900; margin-bottom: 12px; }
-        .concept-box p { font-size: 1.1rem; line-height: 1.9; font-weight: 600; margin: 0; }
-        .highlight-text { color: #e91e63; font-weight: 900; border-bottom: 2px solid #e91e63; }
+        .concept-box p { font-size: 1.1rem; font-weight: 600; margin: 0; }
+        .highlight-text { color: #e91e63; font-weight: 900; }
 
         .section-title { font-size: 1.5rem; margin-bottom: 20px; font-weight: 900; border-bottom: 4px solid #fbc2eb; display: inline-block; }
         
         /* 課程架構表樣式 */
-        .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; }
-        .course-category { font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; font-size: 1.1rem; text-align: center; }
-        .course-table td { padding: 18px 15px; border-bottom: 1px solid #eee; font-weight: 700; line-height: 1.5; }
-        .result-tag { display: inline-block; background: #6c5ce7; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-top: 8px; font-weight: 800; }
+        .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; margin-bottom: 30px; }
+        .course-category { font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; text-align: center; }
+        .course-table td { padding: 18px 15px; border-bottom: 1px solid #eee; font-weight: 700; }
+        .result-tag { display: inline-block; background: #6c5ce7; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-top: 8px; }
 
+        /* 手機版優化 */
         @media (max-width: 768px) {
             .sub-nav-grid { grid-template-columns: repeat(2, 1fr); }
             .course-table tr { display: flex; flex-direction: column; border-bottom: 2px solid #322b5f; }
-            .course-table td { width: 100%; text-align: left; box-sizing: border-box; }
+            .course-table td { width: 100%; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -98,7 +76,7 @@
 
     <div class="concept-box" style="border-left-color: #fbc2eb;">
         <h4>2. 實踐導向目標</h4>
-        <p>我們相信：<span class="highlight-text">只有做出來的，才是自己的。</span>具體目標：</p>
+        <p>我們相信：<span class="highlight-text">只有做出來的，才是自己的。</span></p>
         <ul style="line-height: 2.2; color: #000; font-weight: 800; font-size: 1.1rem; margin-top: 15px; padding-left: 20px;">
             <li>創業課程：完成 <span class="highlight-text">創業計劃書</span></li>
             <li>講師課程：設計完整 <span class="highlight-text">教案系統</span></li>
@@ -117,60 +95,24 @@
             <tr><td>2. 剪髮 / 燙髮 / 染髮</td><td>單項技術深度進階演練</td></tr>
             <tr><td>3. 國家級證照輔導</td><td>丙級/乙級專業技術證照班</td></tr>
         </tbody>
-
         <thead>
             <tr><td colspan="2" class="course-category" style="background: #4834d4;">二、專業升級類 (預錄+直播)</td></tr>
         </thead>
         <tbody>
-            <tr>
-                <td>5. 講師培訓課程 <br><div class="result-tag">產出：完整教案</div></td>
-                <td>10 節 / 含舞台表達、教案設計</td>
-            </tr>
-            <tr>
-                <td>6. 創業規劃課程 <br><div class="result-tag">產出：創業計劃書</div></td>
-                <td>10 節 / 含商業模式、財務結構</td>
-            </tr>
+            <tr><td>5. 講師培訓課程 <br><div class="result-tag">產出：完整教案</div></td><td>10 節 / 含舞台表達、教案設計</td></tr>
+            <tr><td>6. 創業規劃課程 <br><div class="result-tag">產出：創業計劃書</div></td><td>10 節 / 含商業模式、財務結構</td></tr>
         </tbody>
-
         <thead>
             <tr><td colspan="2" class="course-category" style="background: #6c5ce7;">三、內容產出類 (預錄+直播)</td></tr>
         </thead>
         <tbody>
-            <tr>
-                <td>8. 寫書課 <br><div class="result-tag">產出：個人著作</div></td>
-                <td>10 節 / 個人品牌 IP 建立</td>
-            </tr>
-            <tr>
-                <td>9. 影音製作課</td>
-                <td>10 節 / 剪輯、攝影、包裝實務</td>
-            </tr>
+            <tr><td>8. 寫書課 <br><div class="result-tag">產出：個人著作</div></td><td>10 節 / 個人品牌 IP 建立</td></tr>
+            <tr><td>9. 影音製作課</td><td>10 節 / 剪輯、攝影、包裝實務</td></tr>
         </tbody>
     </table>
-    
-    <div style="height: 300px;"></div>
+
+    <p style="text-align: center; color: #888; font-size: 0.9rem;">— 活力美髮學院 專業課程系統 —</p>
 </div>
-
-<script>
-    // 救援腳本：解決按鈕不浮動或點擊無效的問題
-    function rescueTopButton() {
-        var btn = document.getElementById('fixed-top-btn');
-        if (btn) {
-            // 強制將按鈕移動到 body 的最底層，防止被父元素 CSS 影響
-            if (btn.parentElement !== document.body) {
-                document.body.appendChild(btn);
-            }
-            // 點擊事件：強制平滑回到最上方
-            btn.onclick = function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            };
-        }
-    }
-
-    window.addEventListener('load', rescueTopButton);
-    window.addEventListener('pageshow', rescueTopButton);
-    setInterval(rescueTopButton, 1000); // 每一秒檢查一次，防止按鈕走丟
-</script>
 
 </body>
 </html>
-
