@@ -1,50 +1,106 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>講師培訓課程 | 活力美髮學院</title>
 
-<style>
-    /* 1. 基礎設定 */
-    body { margin: 0; font-family: -apple-system, sans-serif; background: #fdfdfd; color: #000; }
-    .content-inner { padding: 0 6% 120px 6%; }
+    <link rel="icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png">
 
-    /* 2. 右上角浮動按鍵 */
-    .floating-nav { position: fixed; top: 15px; right: 15px; display: flex; flex-direction: column; gap: 8px; z-index: 3000; }
-    .float-btn { background: rgba(0, 0, 0, 0.85); color: #fff !important; text-decoration: none; padding: 8px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2); }
+    <style>
+        /* 1. 基礎設定 */
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; }
+        .content-inner { padding: 20px 6% 120px 6%; }
 
-    /* 3. 置頂子導覽列 */
-    .sub-nav { display: flex; gap: 12px; margin: 0 -6% 25px -6%; padding: 15px 6%; overflow-x: auto; -webkit-overflow-scrolling: touch; background: #fff; border-bottom: 2px solid #eee; position: sticky; top: 0; z-index: 2000; }
-    .sub-nav::-webkit-scrollbar { display: none; } 
-    .sub-nav-item { white-space: nowrap; padding: 10px 22px; background: #f0edff; color: #4834d4; text-decoration: none; border-radius: 50px; font-size: 0.95rem; font-weight: 800; border: 2px solid #d1c9ff; }
-    .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
+        /* 2. 右側中間垂直標籤 */
+        .floating-nav {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            z-index: 10000;
+        }
+        .float-btn {
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff !important;
+            text-decoration: none;
+            padding: 15px 10px;
+            border-radius: 12px 0 0 12px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-right: none;
+            text-align: center;
+            writing-mode: vertical-rl;
+            letter-spacing: 2px;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+        }
 
-    /* 4. 標題與宣言 */
-    .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
-    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
-    .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); margin: 0; font-weight: 900; }
-    .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: #6c5ce7; font-weight: 800; }
+        /* 3. 置頂子導覽列 */
+        .sub-nav {
+            display: flex;
+            gap: 12px;
+            padding: 15px 6%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            background: #fff;
+            border-bottom: 2px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+        }
+        .sub-nav::-webkit-scrollbar { display: none; } 
+        .sub-nav-item {
+            white-space: nowrap;
+            padding: 10px 22px;
+            background: #f0edff;
+            color: #4834d4;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            border: 2px solid #d1c9ff;
+        }
+        .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
-    .manifesto-box { background: rgba(108, 92, 231, 0.08); border-left: 6px solid #6c5ce7; padding: 25px; margin: 30px 0 50px 0; border-radius: 0 12px 12px 0; }
-    .manifesto-box p { margin: 10px 0; font-size: 1.1rem; font-weight: 600; line-height: 1.7; color: #333; }
-    .highlight { color: #6c5ce7; font-weight: 900; border-bottom: 2px solid #fbc2eb; }
+        /* 4. 標題與宣言 */
+        .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
+        .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
+        .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); margin: 0; font-weight: 900; }
+        .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: #6c5ce7; font-weight: 800; text-transform: uppercase; }
 
-    /* 5. 課程網格與卡片 */
-    .section-title { font-size: 1.35rem; margin-bottom: 20px; font-weight: 900; display: flex; align-items: center; gap: 10px; }
-    .section-title::after { content: ""; flex: 1; height: 2px; background: rgba(108, 92, 231, 0.15); }
-    
-    .course-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 40px; }
-    .course-card { background: #fff; padding: 16px 20px; border-radius: 10px; border: 1.5px solid #eee; display: flex; align-items: center; font-weight: 700; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-    .course-card .num { color: #6c5ce7; font-weight: 900; width: 35px; font-size: 0.9rem; border-right: 1.5px solid #eee; margin-right: 15px; }
+        .manifesto-box { background: rgba(108, 92, 231, 0.08); border-left: 6px solid #6c5ce7; padding: 25px; margin: 30px 0 50px 0; border-radius: 0 12px 12px 0; }
+        .manifesto-box p { margin: 10px 0; font-size: 1.1rem; font-weight: 600; line-height: 1.7; color: #333; }
+        .highlight { color: #6c5ce7; font-weight: 900; border-bottom: 2px solid #fbc2eb; }
 
-    /* 6. 結語按鈕 */
-    .cta-section { text-align: center; padding: 60px 20px; background: #f8faff; border-radius: 20px; margin-top: 20px; }
-    .apply-btn { display: inline-block; padding: 18px 40px; background: #322b5f; color: #fff !important; text-decoration: none; border-radius: 50px; font-weight: 900; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(50,43,95,0.2); transition: 0.3s; width: 85%; box-sizing: border-box; }
+        /* 5. 課程網格 */
+        .section-title { font-size: 1.35rem; margin-bottom: 20px; font-weight: 900; display: flex; align-items: center; gap: 10px; }
+        .section-title::after { content: ""; flex: 1; height: 2px; background: rgba(108, 92, 231, 0.15); }
+        
+        .course-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 40px; }
+        .course-card { background: #fff; padding: 14px 18px; border-radius: 10px; border: 1px solid #eee; display: flex; align-items: center; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .course-card .num { color: #6c5ce7; font-weight: 900; width: 35px; font-size: 0.85rem; border-right: 1.5px solid #eee; margin-right: 15px; }
 
-    @media (min-width: 768px) {
-        .course-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-</style>
+        /* 6. 結語按鈕 */
+        .cta-section { text-align: center; padding: 50px 20px; background: #f8faff; border-radius: 20px; margin-top: 20px; }
+        .apply-btn { display: inline-block; padding: 18px 40px; background: #322b5f; color: #fff !important; text-decoration: none; border-radius: 50px; font-weight: 900; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(50,43,95,0.2); width: 85%; box-sizing: border-box; }
+
+        @media (min-width: 768px) {
+            .course-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
 
 <div class="floating-nav">
-    <a href="index.html" class="float-btn">🏠 首頁</a>
-    <a href="p3.html" class="float-btn">📚 課程</a>
+    <a href="index.html" class="float-btn">🏠回首頁</a>
+    <a href="p3.html" class="float-btn" style="background:#322b5f">📚回課程</a>
 </div>
 
 <nav class="sub-nav">
@@ -57,14 +113,14 @@
 </nav>
 
 <div class="content-inner">
-    <section class="brand-heading">
-        <h1>講師課程</h1>
+    <header class="brand-heading">
+        <h1>講師培訓課程</h1>
         <div class="subtitle">BEYOND HAIR DESIGN, BE A MENTOR</div>
-    </section>
+    </header>
 
     <section class="manifesto-box">
         <p><span class="highlight">你為什麼需要轉型？</span></p>
-        <p>從現場設計師邁向專業講師，不僅是職稱的改變，更是影響力的擴張。實現時間自由與事業高度，將實戰經驗轉化為系統化教學能量。</p>
+        <p>從現場設計師邁向專業講師，是影響力的擴張。實現時間自由，將實戰經驗轉化為系統化教學能量。</p>
     </section>
 
     <section class="info-section">
@@ -124,6 +180,9 @@
 
     <section class="cta-section">
         <div style="font-size: 1.3rem; color: #000; font-weight: 900; margin-bottom: 20px; line-height: 1.4;">準備好要成為下一個<br>美髮界名師了嗎？</div>
-        <a href="#" class="apply-btn">立即預約轉型評估</a>
+        <a href="https://line.me/ti/p/yourid" class="apply-btn">立即預約轉型評估</a>
     </section>
 </div>
+
+</body>
+</html>
