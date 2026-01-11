@@ -10,15 +10,26 @@
         body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
         .content-inner { padding: 0 6% 120px 6%; }
         
-        /* 【絕對鎖定】僅保留右下角回頂部 */
+        /* 【絕對鎖定】右下角回頂部按鈕樣式 */
         #fixed-top-btn {
             position: fixed !important; 
             bottom: 30px !important; 
             right: 20px !important; 
-            width: 55px; height: 55px; background: #322b5f; color: #fff !important;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            text-decoration: none; font-size: 1.5rem; z-index: 2147483647 !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.3);
+            width: 55px !important; 
+            height: 55px !important; 
+            background: #322b5f !important; 
+            color: #ffffff !important;
+            border-radius: 50% !important; 
+            display: flex !important; 
+            align-items: center !important; 
+            justify-content: center !important;
+            text-decoration: none !important; 
+            font-size: 1.5rem !important; 
+            z-index: 999999 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
+            border: 2px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transform: translateZ(0); /* 解決手機瀏覽器渲染層級問題 */
         }
 
         /* 頂部 8 格網格目錄 */
@@ -31,7 +42,7 @@
         }
         .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
-        /* 內容樣式 */
+        /* 內容與理念樣式 */
         .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
         .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
         .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin: 0; font-weight: 900; }
@@ -45,21 +56,23 @@
         .highlight-text { color: #e91e63; font-weight: 900; border-bottom: 2px solid #e91e63; }
 
         .section-title { font-size: 1.5rem; margin-bottom: 20px; font-weight: 900; border-bottom: 4px solid #fbc2eb; display: inline-block; }
+        
+        /* 課程架構表樣式 */
         .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; }
-        .course-category { font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; font-size: 1.2rem; text-align: center; }
-        .course-table td { padding: 18px 15px; border-bottom: 1px solid #eee; font-weight: 700; }
+        .course-category { font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; font-size: 1.1rem; text-align: center; }
+        .course-table td { padding: 18px 15px; border-bottom: 1px solid #eee; font-weight: 700; line-height: 1.5; }
         .result-tag { display: inline-block; background: #6c5ce7; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-top: 8px; font-weight: 800; }
 
         @media (max-width: 768px) {
             .sub-nav-grid { grid-template-columns: repeat(2, 1fr); }
             .course-table tr { display: flex; flex-direction: column; border-bottom: 2px solid #322b5f; }
-            .course-table td { width: 100%; text-align: left; }
+            .course-table td { width: 100%; text-align: left; box-sizing: border-box; }
         }
     </style>
 </head>
 <body>
 
-<a href="#" id="fixed-top-btn">▲</a>
+<div id="fixed-top-btn">▲</div>
 
 <div class="sub-nav-container">
     <div class="sub-nav-grid">
@@ -140,16 +153,24 @@
 </div>
 
 <script>
-    // 強化鎖定：確保回頂部按鈕不隨捲動消失
-    function forceFixButtons() {
-        var t = document.getElementById('fixed-top-btn');
-        if(t) {
-            document.body.appendChild(t);
+    // 救援腳本：解決按鈕不浮動或點擊無效的問題
+    function rescueTopButton() {
+        var btn = document.getElementById('fixed-top-btn');
+        if (btn) {
+            // 強制將按鈕移動到 body 的最底層，防止被父元素 CSS 影響
+            if (btn.parentElement !== document.body) {
+                document.body.appendChild(btn);
+            }
+            // 點擊事件：強制平滑回到最上方
+            btn.onclick = function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
         }
     }
-    window.addEventListener('load', forceFixButtons);
-    window.addEventListener('pageshow', forceFixButtons);
-    setInterval(forceFixButtons, 1000);
+
+    window.addEventListener('load', rescueTopButton);
+    window.addEventListener('pageshow', rescueTopButton);
+    setInterval(rescueTopButton, 1000); // 每一秒檢查一次，防止按鈕走丟
 </script>
 
 </body>
