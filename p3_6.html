@@ -36,10 +36,23 @@
             writing-mode: vertical-rl; letter-spacing: 2px; text-align: center;
         }
 
-        .container { padding: 40px 6% 120px 6%; max-width: 1000px; margin: auto; }
+        /* 頁內導覽列 (頂部) */
+        .anchor-nav { 
+            display: flex; gap: 10px; padding: 15px 6%; overflow-x: auto; 
+            position: sticky; top: 0; background: rgba(255,255,255,0.95); 
+            z-index: 900; border-bottom: 1px solid #eee; backdrop-filter: blur(10px);
+        }
+        .anchor-nav::-webkit-scrollbar { display: none; }
+        .anchor-item { 
+            white-space: nowrap; background: var(--soft-indigo); color: var(--primary-indigo); 
+            padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.85rem; 
+            text-decoration: none; border: 1px solid var(--primary-indigo);
+        }
+
+        .container { padding: 20px 6% 120px 6%; max-width: 1000px; margin: auto; }
 
         /* 標題與視覺 */
-        .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 40px 0; }
+        .brand-heading { position: relative; padding-left: 20px; margin: 30px 0 30px 0; }
         .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: var(--primary-indigo); }
         .brand-heading h1 { font-size: 2.2rem; font-weight: 900; margin: 0; color: #000; }
         .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: var(--primary-indigo); font-weight: 800; text-transform: uppercase; }
@@ -52,7 +65,7 @@
         }
         .highlight-text { color: var(--primary-indigo); font-weight: 900; border-bottom: 2px solid var(--highlight-pink); }
 
-        /* 管理架構圖 (與 P3.5 的邏輯矩陣風格統一) */
+        /* 管理架構圖 */
         .section-title { 
             font-size: 1.4rem; margin: 40px 0 25px 0; font-weight: 900; 
             border-bottom: 4px solid var(--highlight-pink); display: inline-block; padding-bottom: 5px; 
@@ -63,9 +76,7 @@
             padding: 30px; position: relative; margin-bottom: 50px;
             box-shadow: 0 10px 30px rgba(72, 52, 212, 0.08);
         }
-        
         .grid-header { text-align: center; color: var(--primary-indigo); font-weight: 900; font-size: 1.2rem; margin-bottom: 20px; }
-        
         .main-layout { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 15px; }
         .side-card { 
             border: 1.5px solid var(--soft-indigo); background: var(--soft-indigo);
@@ -73,20 +84,13 @@
             justify-content: center; align-items: center; color: var(--primary-indigo); font-weight: 900;
         }
         .center-stack { display: flex; flex-direction: column; gap: 12px; }
-        .sub-card { 
-            border: 1.5px solid #eee; padding: 15px; border-radius: 12px; background: #fff;
-            transition: 0.3s;
-        }
-        .sub-card:hover { border-color: var(--primary-indigo); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .sub-card { border: 1.5px solid #eee; padding: 15px; border-radius: 12px; background: #fff; }
         .sub-card b { display: block; text-align: center; color: var(--primary-indigo); margin-bottom: 8px; }
         .sub-card ul { margin: 0; padding-left: 20px; font-size: 0.9rem; font-weight: 600; color: #555; }
 
         /* 適合對象 */
         .suitability-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .suit-item { 
-            background: #fff; padding: 20px; border-radius: 15px; 
-            border: 1.5px solid #eee; font-weight: 600;
-        }
+        .suit-item { background: #fff; padding: 20px; border-radius: 15px; border: 1.5px solid #eee; font-weight: 600; }
         .suit-item b { color: var(--primary-indigo); display: block; margin-bottom: 5px; font-size: 1.1rem; }
 
         /* 深度分享區 */
@@ -95,11 +99,9 @@
             border: 1.5px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); margin-top: 50px;
         }
         .talk-text h2 { font-size: 1.6rem; font-weight: 900; color: var(--dark-space); margin-bottom: 25px; }
-        .talk-text p { margin-bottom: 15px; font-weight: 500; }
 
         @media (max-width: 768px) {
             .main-layout { grid-template-columns: 1fr; }
-            .side-card { padding: 15px; }
         }
     </style>
 </head>
@@ -110,8 +112,15 @@
     <a href="p3_0.html" class="float-btn" style="background:var(--primary-indigo)">📚回課程</a>
 </div>
 
+<nav class="anchor-nav">
+    <a href="#intro" class="anchor-item">💡 創業心法</a>
+    <a href="#matrix" class="anchor-item">📊 管理矩陣</a>
+    <a href="#target" class="anchor-item">👥 適合對象</a>
+    <a href="#insight" class="anchor-item">✨ 為什麼創業</a>
+</nav>
+
 <div class="container">
-    <header class="brand-heading">
+    <header class="brand-heading" id="intro">
         <h1>創業經營課程</h1>
         <div class="subtitle">Management Framework & Practice</div>
     </header>
@@ -120,46 +129,32 @@
         創業是一段充滿挑戰與機會的旅程，今天所學的每一個策略與技巧，都是幫助大家在有限的資源下創造無限可能的工具。請記住，<span class="highlight-text">成功不一定需要大量資本，智慧與行動才是創業的關鍵。</span>
     </div>
 
-    <section>
+    <section id="matrix">
         <div class="section-title">核心架構：管理權威矩陣</div>
         <div class="management-grid">
             <div class="grid-header">▲ 價格管理</div>
-            
             <div class="main-layout">
                 <div class="side-card">
                     <span>左外部管理</span>
                     <small style="font-weight:600; margin-top:5px;">供應商管理</small>
                 </div>
-
                 <div class="center-stack">
-                    <div class="sub-card">
-                        <b>上外部管理</b>
-                        <ul><li>銷售管理、客情管理、預約管理</li></ul>
-                    </div>
+                    <div class="sub-card"><b>上外部管理</b><ul><li>銷售管理、客情管理、預約管理</li></ul></div>
                     <div class="sub-card" style="background: var(--soft-indigo); border-color: var(--primary-indigo);">
-                        <b>內部管理</b>
-                        <ul><li>財務管理、人才管理、庫存管理</li></ul>
+                        <b>內部管理</b><ul><li>財務管理、人才管理、庫存管理</li></ul>
                     </div>
-                    <div class="sub-card">
-                        <b>下外部管理</b>
-                        <ul><li>行銷管理、活動管理、社區管理</li></ul>
-                    </div>
+                    <div class="sub-card"><b>下外部管理</b><ul><li>行銷管理、活動管理、社區管理</li></ul></div>
                 </div>
-
                 <div class="side-card" style="background: #fff; border-color: var(--primary-indigo);">
                     <span>右外部管理</span>
                     <small style="font-weight:600; margin-top:5px;">品牌管理</small>
                 </div>
             </div>
-
             <div class="grid-header" style="margin-top:20px; margin-bottom:0;">▼ 成本管理</div>
-            
-            <div style="position: absolute; left: 10px; top: 50%; writing-mode: vertical-rl; color: #ccc; font-size: 0.7rem; letter-spacing: 2px;">PREFACE MANAGEMENT</div>
-            <div style="position: absolute; right: 10px; top: 50%; writing-mode: vertical-rl; color: #ccc; font-size: 0.7rem; letter-spacing: 2px;">HOLDING STRATEGY</div>
         </div>
     </section>
 
-    <section>
+    <section id="target">
         <div class="section-title">這門課為誰設計？</div>
         <div class="suitability-list">
             <div class="suit-item"><b>1. 風險創業</b>適合資金有限的人</div>
@@ -173,17 +168,13 @@
         </div>
     </section>
 
-    <section class="talk-text">
+    <section class="talk-text" id="insight">
         <h2>為什麼我們必須創業？</h2>
         <p>也許您會問：「創業這麼辛苦，為什麼不安安穩穩領薪水就好？」但我想告訴您，<span class="highlight-text">創業並不只是為了賺錢，它更是一種對自己人生負責的選擇。</span></p>
-        
-        <p>首先，<b>創業讓我們掌握自主權</b>。當您學習到某一個程度，就會發現沒有東西讓您學習了，而那就是轉型的訊號，不再受制於老闆、制度，想做到什麼程度，自己來決定。</p>
-        
-        <p>第二，<b>創業能突破收入的天花板</b>。上班領薪水總是有上限；而創業，努力多一點、眼光遠一點，成果可以超越想像。</p>
-        
-        <p>第三，<b>創業是實現夢想的途徑</b>。每個人心裡都有一個熱情，創業就是讓這個夢想從想像變成現實的過程。</p>
-        
-        <p>更重要的是，<b>創業能創造影響力</b>。您不僅是在為自己賺錢，同時也在服務客戶、帶動產業、幫助團隊，甚至改變一個社會。</p>
+        <p>首先，<b>創業讓我們掌握自主權</b>。當您學習到某一個程度，就會發現轉型的訊號在告訴您，要為自己工作了。</p>
+        <p>第二，<b>創業能突破收入的天花板</b>。上班領薪水總是有上限；而創業，成果可以超越想像。</p>
+        <p>第三，<b>創業是實現夢想的途徑</b>。創業就是讓熱情從想像變成現實的過程。</p>
+        <p>更重要的是，<b>創業能創造影響力</b>。您不僅是在為自己賺錢，同時也在服務客戶、改變社會。</p>
     </section>
 
     <div style="text-align: center; color: #999; font-size: 0.85rem; margin-top: 80px;">
