@@ -3,38 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>剪髮課程大綱 | 專業技術培訓</title>
+    <title>二年制專班 | 專業課程期程</title>
 
+    <link rel="icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png" type="image/png">
+    
     <style>
         :root {
             --primary-purple: #6c5ce7;
             --soft-purple: #f0edff;
             --accent-pink: #e91e63;
-            --dark-blue: #322b5f;
+            --pure-black: #000000;
         }
 
         body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; }
 
-        /* 浮動導覽與頂部導覽保持一致 */
-        .floating-nav { position: fixed; top: 50%; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; gap: 2px; z-index: 10000; }
-        .nav-btn { background: rgba(0, 0, 0, 0.85); color: #fff !important; text-decoration: none; padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.85rem; font-weight: 800; writing-mode: vertical-rl; letter-spacing: 2px; }
+        /* 浮動導覽 (右側) */
+        .floating-nav {
+            position: fixed; top: 50%; right: 0; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 2px; z-index: 10000;
+        }
+        .nav-btn {
+            background: rgba(0, 0, 0, 0.85); color: #fff !important; text-decoration: none;
+            padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.85rem; font-weight: 800;
+            writing-mode: vertical-rl; letter-spacing: 2px; box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+        }
 
-        .anchor-nav { display: flex; gap: 10px; padding: 15px 6%; overflow-x: auto; position: sticky; top: 0; background: #fff; z-index: 900; border-bottom: 1px solid #eee; }
+        /* 錨點導航 (頂部) */
+        .anchor-nav {
+            display: flex; gap: 10px; padding: 15px 6%; overflow-x: auto;
+            position: sticky; top: 0; background: #fff; z-index: 900; border-bottom: 1px solid #eee;
+        }
         .anchor-nav::-webkit-scrollbar { display: none; }
-        .anchor-item { white-space: nowrap; background: var(--soft-purple); color: var(--primary-purple); padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; text-decoration: none; border: 1.5px solid var(--primary-purple); }
+        .anchor-item {
+            white-space: nowrap; background: var(--soft-purple); color: var(--primary-purple);
+            padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.9rem;
+            text-decoration: none; border: 1.5px solid var(--primary-purple);
+        }
 
         .content-inner { padding: 30px 6% 120px 6%; box-sizing: border-box; }
         .brand-heading h1 { font-size: 2.2rem; font-weight: 900; margin: 0; }
         .section-title { font-size: 1.5rem; font-weight: 900; margin: 45px 0 20px 0; border-bottom: 4px solid #fbc2eb; display: inline-block; }
 
-        /* 課程表樣式 */
-        .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; margin-bottom: 30px; font-size: 0.95rem; }
-        .table-header { background: var(--dark-blue); color: #fff; text-align: center; font-weight: 900; padding: 12px; }
-        .course-table td { padding: 12px; border: 1px solid #ddd; font-weight: 700; vertical-align: middle; }
-        .lesson-no { width: 15%; text-align: center; background: var(--soft-purple); color: var(--dark-blue); }
-        .lesson-content { width: 85%; line-height: 1.6; }
+        /* 卡片設計 */
+        .info-card {
+            background: #fff; border: 1px solid #eee; border-left: 6px solid var(--primary-purple);
+            padding: 20px; border-radius: 12px; margin: 15px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .info-card h4 { margin: 0 0 10px 0; color: var(--primary-purple); font-weight: 900; }
+        .info-card p, .info-card li { margin: 5px 0; font-weight: 600; color: #333; list-style: none; }
 
-        @media (max-width: 480px) { .brand-heading h1 { font-size: 1.8rem; } .course-table { font-size: 0.85rem; } }
+        /* 課表清單 */
+        .course-list { background: #fff; border: 2px solid #000; border-radius: 8px; overflow: hidden; margin-top: 15px; }
+        .course-list-header { background: #322b5f; color: #fff; padding: 12px; font-weight: 900; text-align: center; }
+        .course-row { display: flex; justify-content: space-between; padding: 15px; border-bottom: 1px solid #eee; font-weight: 700; }
+        .course-row:last-child { border-bottom: none; }
+        .tag-blue { background: #e3f2fd; color: #1976d2; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+
+        /* 提醒區塊 */
+        .note-box { background: #fff9db; padding: 15px; border-radius: 8px; border: 1px solid #fab005; margin-top: 10px; font-size: 0.95rem; font-weight: 700; }
+
+        @media (max-width: 480px) { .brand-heading h1 { font-size: 1.8rem; } }
     </style>
 </head>
 <body>
@@ -45,61 +73,83 @@
 </div>
 
 <nav class="anchor-nav">
-    <a href="#basic" class="anchor-item">🐣 初階：基礎與男髮</a>
-    <a href="#advanced" class="anchor-item">🦅 進階：女髮與層次</a>
+    <a href="#schedule" class="anchor-item">📅 上課期程</a>
+    <a href="#year1" class="anchor-item">❶ 第一年</a>
+    <a href="#year2" class="anchor-item">❷ 第二年</a>
+    <a href="#year3" class="anchor-item">❸ 第三年</a>
 </nav>
 
 <div class="content-inner">
     <header class="brand-heading">
-        <h1>剪髮技術全大綱</h1>
-        <p style="color:var(--primary-purple); font-weight:800; margin-top:5px;">初階手感建構 + 進階風格定製</p>
+        <h1>二年制專班</h1>
+        <p style="color:var(--primary-purple); font-weight:800; margin-top:5px;">(預錄課程 + 實體課程)</p>
     </header>
 
-    <section id="basic">
-        <div class="section-title">一、剪髮初階課程 (10 堂)</div>
-        <table class="course-table">
-            <thead>
-                <tr><th colspan="2" class="table-header">基礎架構與男士商業髮型</th></tr>
-            </thead>
-            <tbody>
-                <tr><td class="lesson-no">1</td><td class="lesson-content">自我介紹與精油解壓的神經分析 + 專業洗髮實務</td></tr>
-                <tr><td class="lesson-no">2</td><td class="lesson-content">女士剪髮架構 + 高層次長髮與質感調整</td></tr>
-                <tr><td class="lesson-no">3</td><td class="lesson-content">小孩剪髮架構 + 清爽短髮層次修剪</td></tr>
-                <tr><td class="lesson-no">4</td><td class="lesson-content">男士剪髮架構 + 基本商業髮型練習</td></tr>
-                <tr><td class="lesson-no">5</td><td class="lesson-content">韓式髮型與台式髮型的差別 + 男子髮型：極短推剪層次</td></tr>
-                <tr><td class="lesson-no">6</td><td class="lesson-content">骨骼的形象美學分析 + 男子髮型：潮流短髮與線條</td></tr>
-                <tr><td class="lesson-no">7</td><td class="lesson-content">走向線條的判讀 + 男子髮型：質感長髮層次</td></tr>
-                <tr><td class="lesson-no">8</td><td class="lesson-content">刀刃與角度控制 + 男子髮型：中階商業層次</td></tr>
-                <tr><td class="lesson-no">9</td><td class="lesson-content">修剪與流速控制 + 男子髮型：潮流韓式短髮</td></tr>
-                <tr><td class="lesson-no">10</td><td class="lesson-content">流體美學設計 + 男子髮型：混合層次剪裁</td></tr>
-            </tbody>
-        </table>
+    <section id="schedule">
+        <div class="section-title">一、修業年限與期程</div>
+        <div class="info-card">
+            <h4>修業年限</h4>
+            <p>• 2 年必修 + 1 年選修</p>
+            <p>• 期程：每期 10 週</p>
+            <p>• 頻率：每週一次課程 (6小時)</p>
+        </div>
+        <div class="info-card" style="border-left-color: var(--accent-pink);">
+            <h4>招生資訊 (每三個月一期)</h4>
+            <p>• 春季班：3月 - 5月</p>
+            <p>• 夏季班：6月 - 8月</p>
+            <p>• 秋季班：9月 - 11月</p>
+            <p>• 冬季班：12月 - 2月</p>
+        </div>
+        <div class="info-card">
+            <h4>教學特色</h4>
+            <p>• <strong>老師即時指導</strong>：確保學習內容落實到技術。</p>
+            <p>• <strong>成果可視化</strong>：每期安排作品發表或專題展。</p>
+        </div>
     </section>
 
-    <section id="advanced">
-        <div class="section-title">二、剪髮進階課程 (10 堂)</div>
-        <table class="course-table">
-            <thead>
-                <tr><th colspan="2" class="table-header" style="background:var(--primary-purple);">高階層次結構與女裝風格</th></tr>
-            </thead>
-            <tbody>
-                <tr><td class="lesson-no">1</td><td class="lesson-content">剪髮十大流程 + 羽毛線條高層次髮型</td></tr>
-                <tr><td class="lesson-no">2</td><td class="lesson-content">修飾與打薄技巧 + 瀏海線條層次髮型</td></tr>
-                <tr><td class="lesson-no">3</td><td class="lesson-content">髮量分配與控制 + 水平層次髮型</td></tr>
-                <tr><td class="lesson-no">4</td><td class="lesson-content">剪髮六大參數 + 高層次中長髮髮型</td></tr>
-                <tr><td class="lesson-no">5</td><td class="lesson-content">幾何基本結構 + 中層次短髮髮型</td></tr>
-                <tr><td class="lesson-no">6</td><td class="lesson-content">臉型與角度控制 + 不對稱層次髮型</td></tr>
-                <tr><td class="lesson-no">7</td><td class="lesson-content">揭開韓式剪裁八大重點 + 二區分量層次髮型</td></tr>
-                <tr><td class="lesson-no">8</td><td class="lesson-content">層次感的運用 + 輕薄透氣高層次髮型</td></tr>
-                <tr><td class="lesson-no">9</td><td class="lesson-content">曲線與立體感運用 + 質感中層次長髮髮型</td></tr>
-                <tr><td class="lesson-no">10</td><td class="lesson-content">剪裁設計與平面形態 + 商業時尚極短髮型</td></tr>
-            </tbody>
-        </table>
+    <section id="year1">
+        <div class="section-title">二、第一年必修課程</div>
+        <div class="course-list">
+            <div class="course-list-header">基礎技術建構期</div>
+            <div class="course-row"><span>L1：剪髮基礎班</span><span class="tag-blue">10 週</span></div>
+            <div class="course-row"><span>L2：燙髮基礎班</span><span class="tag-blue">10 週</span></div>
+            <div class="course-row"><span>L3：染髮基礎班</span><span class="tag-blue">10 週</span></div>
+            <div class="course-row"><span>L4：丙級檢定班</span><span class="tag-blue">10 週</span></div>
+        </div>
+        <div class="note-box">
+            📍 <strong>線下技術練習：</strong><br>
+            時間：上午 9-12 或 下午 2-5<br>
+            說明：導師陪同指導，需填寫預約表排時間。
+        </div>
     </section>
 
-    <div style="text-align: center; color: #888; font-size: 0.9rem; margin-top: 50px;">
-        — 以上內容根據活力美髮學院專業教材編製 —
-    </div>
+    <section id="year2">
+        <div class="section-title">三、第二年必修課程</div>
+        <div class="course-list">
+            <div class="course-list-header" style="background:#4834d4;">專業技術進階期</div>
+            <div class="course-row"><span>L1：剪髮進階班</span><span class="tag-blue">10 週</span></div>
+            <div class="course-row"><span>L2：燙髮進階班</span><span class="tag-blue">10 週</span></div>
+            <div class="course-row"><span>L3：染髮進階班</span><span class="tag-blue">10 週</span></div>
+            <div class="course-row"><span>L4：乙級檢定班</span><span class="tag-blue">10 週</span></div>
+        </div>
+        <div class="note-box">
+            📍 <strong>上課方式：</strong> 線上預錄課程搭配線下技術練習。
+        </div>
+    </section>
+
+    <section id="year3">
+        <div class="section-title">四、第三年選修 (分流)</div>
+        <div class="info-card" style="border-left-color: #6c5ce7;">
+            <h4>L1：講師分流班 (直播)</h4>
+            <p>期程：10 節課</p>
+            <p>核心：教案設計、講台表達培訓</p>
+        </div>
+        <div class="info-card" style="border-left-color: #20bf6b;">
+            <h4>L2：創業分流班 (直播)</h4>
+            <p>期程：10 節課</p>
+            <p>核心：創業計劃書撰寫、個人品牌打造</p>
+        </div>
+    </section>
 </div>
 
 </body>
