@@ -10,10 +10,10 @@
 
     <style>
         /* 1. 基礎設定 */
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; }
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
         .content-inner { padding: 20px 6% 120px 6%; }
 
-        /* 2. 右側中間垂直標籤 */
+        /* 2. 右側中間垂直標籤 (跨頁導航) */
         .floating-nav {
             position: fixed;
             top: 50%;
@@ -41,7 +41,7 @@
             box-shadow: -2px 0 10px rgba(0,0,0,0.2);
         }
 
-        /* 3. 置頂子導覽列 */
+        /* 3. 置頂子導覽列 (頁內錨點跳轉) */
         .sub-nav {
             display: flex;
             gap: 12px;
@@ -67,7 +67,6 @@
             font-weight: 800;
             border: 2px solid #d1c9ff;
         }
-        .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
         /* 4. 標題與視覺 */
         .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
@@ -76,7 +75,7 @@
         .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: #6c5ce7; font-weight: 800; text-transform: uppercase; }
 
         .section-title { 
-            font-size: 1.35rem; margin-bottom: 20px; font-weight: 900; 
+            font-size: 1.35rem; margin-top: 40px; margin-bottom: 20px; font-weight: 900; 
             border-bottom: 4px solid #fbc2eb; display: inline-block; padding-bottom: 5px;
         }
         
@@ -122,12 +121,9 @@
 </div>
 
 <nav class="sub-nav">
-    <a href="p3.html" class="sub-nav-item">課程說明</a>
-    <a href="p3_1.html" class="sub-nav-item">二年制專班</a>
-    <a href="p3_2.html" class="sub-nav-item">剪髮課程</a>
-    <a href="p3_3.html" class="sub-nav-item">燙髮課程</a>
-    <a href="p3_4.html" class="sub-nav-item active">染髮課程</a>
-    <a href="p3_5.html" class="sub-nav-item">講師/創業</a>
+    <a href="#basic" class="sub-nav-item">初階染髮</a>
+    <a href="#advanced" class="sub-nav-item">進階染髮</a>
+    <a href="#expert" class="sub-nav-item">色彩專家提示</a>
 </nav>
 
 <div class="content-inner">
@@ -136,7 +132,7 @@
         <div class="subtitle">ARTISTIC COLORING SYSTEM</div>
     </header>
 
-    <section class="info-section">
+    <section id="basic" class="info-section">
         <div class="section-title">初階：色彩原理與塗佈技術</div>
         <div class="table-container">
             <table class="course-table">
@@ -155,14 +151,15 @@
         </div>
     </section>
 
-    <div class="color-wheel-note">
+    <div id="expert" class="color-wheel-note">
+        
         <div class="note-text">
-            <strong>💡 色彩專家提示：</strong><br>
+            <strong>💡 色彩專家提示：</strong><br><br>
             掌握「色環圖」是成為頂尖染髮師的第一步。了解補色（如紫克黃、綠克紅）的應用，能幫助您精準解決現場惱人的殘留底色問題。
         </div>
     </div>
 
-    <section class="info-section">
+    <section id="advanced" class="info-section">
         <div class="section-title" style="border-bottom-color: #a1c4fd;">進階：高端配色與商業髮藝</div>
         <div class="table-container">
             <table class="course-table">
