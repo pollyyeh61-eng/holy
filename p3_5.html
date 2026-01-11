@@ -10,10 +10,10 @@
 
     <style>
         /* 1. 基礎設定 */
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; }
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
         .content-inner { padding: 20px 6% 120px 6%; }
 
-        /* 2. 右側中間垂直標籤 */
+        /* 2. 右側中間垂直標籤 (跨頁導航) */
         .floating-nav {
             position: fixed;
             top: 50%;
@@ -41,7 +41,7 @@
             box-shadow: -2px 0 10px rgba(0,0,0,0.2);
         }
 
-        /* 3. 置頂子導覽列 */
+        /* 3. 置頂子導覽列 (頁內錨點跳轉) */
         .sub-nav {
             display: flex;
             gap: 12px;
@@ -67,7 +67,6 @@
             font-weight: 800;
             border: 2px solid #d1c9ff;
         }
-        .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
         /* 4. 標題與宣言 */
         .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
@@ -80,7 +79,7 @@
         .highlight { color: #6c5ce7; font-weight: 900; border-bottom: 2px solid #fbc2eb; }
 
         /* 5. 課程網格 */
-        .section-title { font-size: 1.35rem; margin-bottom: 20px; font-weight: 900; display: flex; align-items: center; gap: 10px; }
+        .section-title { font-size: 1.35rem; margin-top: 40px; margin-bottom: 20px; font-weight: 900; display: flex; align-items: center; gap: 10px; }
         .section-title::after { content: ""; flex: 1; height: 2px; background: rgba(108, 92, 231, 0.15); }
         
         .course-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 40px; }
@@ -104,12 +103,11 @@
 </div>
 
 <nav class="sub-nav">
-    <a href="p3.html" class="sub-nav-item">課程說明</a>
-    <a href="p3_1.html" class="sub-nav-item">二年制專班</a>
-    <a href="p3_2.html" class="sub-nav-item">剪髮課程</a>
-    <a href="p3_3.html" class="sub-nav-item">燙髮課程</a>
-    <a href="p3_4.html" class="sub-nav-item">染髮課程</a>
-    <a href="p3_5.html" class="sub-nav-item active">講師培訓</a>
+    <a href="#core" class="sub-nav-item">核心素養</a>
+    <a href="#stage" class="sub-nav-item">表達藝術</a>
+    <a href="#branding" class="sub-nav-item">形象專業</a>
+    <a href="#student" class="sub-nav-item">學員洞察</a>
+    <a href="#classroom" class="sub-nav-item">教室經營</a>
 </nav>
 
 <div class="content-inner">
@@ -123,7 +121,7 @@
         <p>從現場設計師邁向專業講師，是影響力的擴張。實現時間自由，將實戰經驗轉化為系統化教學能量。</p>
     </section>
 
-    <section class="info-section">
+    <section id="core" class="info-section">
         <div class="section-title">核心素養：講師的起點</div>
         <div class="course-grid">
             <div class="course-card"><span class="num">01</span>轉型講師心法</div>
@@ -134,7 +132,7 @@
         </div>
     </section>
 
-    <section class="info-section">
+    <section id="stage" class="info-section">
         <div class="section-title">表達藝術：舞台掌控力</div>
         <div class="course-grid">
             <div class="course-card"><span class="num">06</span>肢體語言表達</div>
@@ -146,7 +144,7 @@
         </div>
     </section>
 
-    <section class="info-section">
+    <section id="branding" class="info-section">
         <div class="section-title">形象包裝：專業品牌</div>
         <div class="course-grid">
             <div class="course-card"><span class="num">12</span>演說體態管理</div>
@@ -156,7 +154,7 @@
         </div>
     </section>
 
-    <section class="info-section">
+    <section id="student" class="info-section">
         <div class="section-title">學員洞察：因材施教</div>
         <div class="course-grid">
             <div class="course-card"><span class="num">16</span>挖掘學生真需求</div>
@@ -167,7 +165,7 @@
         </div>
     </section>
 
-    <section class="info-section">
+    <section id="classroom" class="info-section">
         <div class="section-title">教室經營：互動與秩序</div>
         <div class="course-grid">
             <div class="course-card"><span class="num">21</span>課堂討論引導</div>
