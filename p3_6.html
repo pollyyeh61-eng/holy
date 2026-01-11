@@ -10,10 +10,10 @@
 
     <style>
         /* 1. 基礎設定 */
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; }
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
         .content-inner { padding: 20px 6% 120px 6%; }
 
-        /* 2. 右側中間垂直標籤 */
+        /* 2. 右側中間垂直標籤 (跨頁導航) */
         .floating-nav {
             position: fixed;
             top: 50%;
@@ -41,7 +41,7 @@
             box-shadow: -2px 0 10px rgba(0,0,0,0.2);
         }
 
-        /* 3. 置頂子導覽列 */
+        /* 3. 置頂子導覽列 (頁內跳轉) */
         .sub-nav {
             display: flex;
             gap: 12px;
@@ -67,7 +67,6 @@
             font-weight: 800;
             border: 2px solid #d1c9ff;
         }
-        .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
         /* 4. 標題與視覺 */
         .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
@@ -84,7 +83,7 @@
 
         /* 5. 管理矩陣網格 */
         .section-title { 
-            font-size: 1.35rem; margin-bottom: 25px; font-weight: 900; 
+            font-size: 1.35rem; margin-top: 50px; margin-bottom: 25px; font-weight: 900; 
             border-bottom: 4px solid #fbc2eb; display: inline-block; padding-bottom: 5px; 
         }
         
@@ -131,13 +130,9 @@
 </div>
 
 <nav class="sub-nav">
-    <a href="p3.html" class="sub-nav-item">課程說明</a>
-    <a href="p3_1.html" class="sub-nav-item">二年制專班</a>
-    <a href="p3_2.html" class="sub-nav-item">剪髮課程</a>
-    <a href="p3_3.html" class="sub-nav-item">燙髮課程</a>
-    <a href="p3_4.html" class="sub-nav-item">染髮課程</a>
-    <a href="p3_5.html" class="sub-nav-item">講師培訓</a>
-    <a href="p3_6.html" class="sub-nav-item active">創業經營</a>
+    <a href="#matrix" class="sub-nav-item">管理邏輯矩陣</a>
+    <a href="#target" class="sub-nav-item">適合對象</a>
+    <a href="#advantage" class="sub-nav-item">創業優勢</a>
 </nav>
 
 <div class="content-inner">
@@ -150,8 +145,9 @@
         創業是一段挑戰與機會並存的旅程。成功不一定需要大量資本，本課程將透過系統化管理邏輯，幫您用有限資源創造無限可能。
     </div>
 
-    <section class="info-section">
+    <section id="matrix" class="info-section">
         <div class="section-title">管理邏輯矩陣</div>
+        
         <div class="mindmap-outline">
             <div class="outline-card">
                 <h3>外部管理 (上) <small>↑</small></h3>
@@ -188,7 +184,7 @@
         </div>
     </section>
 
-    <section class="info-section">
+    <section id="target" class="info-section">
         <div class="section-title">這門課為誰設計？</div>
         <div class="feature-list">
             <div class="feature-item"><b>1. 低風險創業</b><span>適合資金預算有限，追求穩健起步的人</span></div>
@@ -201,7 +197,7 @@
         </p>
     </section>
 
-    <section class="talk-text">
+    <section id="advantage" class="talk-text" style="margin-top: 50px;">
         <h2>為什麼現在是創業的最好時機？</h2>
         <p>創業不只是為了賺錢，更是為了<b>奪回人生自主權</b>。</p>
         <p>當您的技術與客源達到穩定，就是轉型訊號。創業能讓您不再受限於工時與抽成，將每一分努力直接轉化為經營成果。</p>
