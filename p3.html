@@ -16,7 +16,7 @@
             top: 50% !important; 
             right: 0 !important; 
             transform: translateY(-50%) !important; 
-            z-index: 2147483647 !important; /* 使用瀏覽器最大層級值 */
+            z-index: 2147483647 !important;
         }
         .float-btn-home { 
             background: rgba(0, 0, 0, 0.9); color: #fff !important; text-decoration: none; 
@@ -46,17 +46,12 @@
         }
         .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
-        /* 5. 內容樣式 (還原完整版) */
+        /* 5. 內容樣式 */
         .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
         .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
         .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin: 0; font-weight: 900; }
-        
-        .concept-box { 
-            background: #fff; padding: 25px; border-radius: 12px; margin-bottom: 30px; 
-            border: 1.5px solid #ddd; border-left: 8px solid #6c5ce7; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
+        .concept-box { background: #fff; padding: 25px; border-radius: 12px; margin-bottom: 30px; border: 1.5px solid #ddd; border-left: 8px solid #6c5ce7; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .highlight-text { color: #e91e63; font-weight: 900; border-bottom: 2px solid #e91e63; }
-
         .section-title { font-size: 1.5rem; margin-bottom: 20px; font-weight: 900; border-bottom: 4px solid #fbc2eb; display: inline-block; }
         .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; }
         .course-category { font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; text-align: center; }
@@ -70,30 +65,11 @@
         }
     </style>
 </head>
-    <script>
-    function fixButtons() {
-        // 找到那兩個按鈕的 ID
-        var homeBtn = document.getElementById('fixed-home-btn');
-        var topBtn = document.getElementById('fixed-top-btn');
-        
-        if (homeBtn && topBtn) {
-            // 強制將它們移動到 <body> 的最後面，脫離所有可能的干擾容器
-            document.body.appendChild(homeBtn);
-            document.body.appendChild(topBtn);
-        }
-    }
-
-    // 1. 頁面載入完成時執行
-    window.addEventListener('load', fixButtons);
-    // 2. 為了保險，頁面顯示時（包含按回退鍵回來）再執行一次
-    window.addEventListener('pageshow', fixButtons);
-</script>
 <body>
 
 <div id="fixed-home-btn">
     <a href="index.html" class="float-btn-home">🏠回首頁</a>
 </div>
-
 <a href="#" id="fixed-top-btn">▲</a>
 
 <div class="sub-nav-container">
@@ -117,12 +93,12 @@
 
     <div class="concept-box">
         <h4>1. 雙軌學習模式</h4>
-        <p>課程依照學習邏輯循序漸進，從基礎到進階，每一步都環環相扣。設計都能讓您穩步前進，免去摸索，確保每個階段都有具體收穫。</p>
+        <p>課程依照學習邏輯循序漸進，從基礎到進階，每一步都環環相扣。</p>
     </div>
 
     <div class="concept-box" style="border-left-color: #fbc2eb;">
         <h4>2. 實踐導向目標</h4>
-        <p>我們相信：<span class="highlight-text">只有做出來的，才是自己的。</span>具體目標：</p>
+        <p>我們相信：<span class="highlight-text">只有做出來的，才是自己的。</span></p>
         <ul style="line-height: 2.2; font-weight: 800; font-size: 1.1rem; padding-left: 20px;">
             <li>創業課程：完成 <span class="highlight-text">創業計劃書</span></li>
             <li>講師課程：設計完整 <span class="highlight-text">教案系統</span></li>
@@ -160,15 +136,20 @@
 </div>
 
 <script>
-    // 確保按鈕永遠位於 body 的最底層（也就是視覺的最上層）
-    window.onload = function() {
+    function forceFixButtons() {
         var h = document.getElementById('fixed-home-btn');
         var t = document.getElementById('fixed-top-btn');
-        document.body.appendChild(h);
-        document.body.appendChild(t);
-    };
+        if(h && t) {
+            document.body.appendChild(h);
+            document.body.appendChild(t);
+        }
+    }
+    // 監聽所有可能的進入方式
+    window.addEventListener('load', forceFixButtons);
+    window.addEventListener('pageshow', forceFixButtons);
+    // 每隔一秒檢查一次，防止某些手機瀏覽器動態修改 DOM
+    setInterval(forceFixButtons, 1000);
 </script>
 
 </body>
 </html>
-
