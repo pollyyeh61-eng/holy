@@ -5,27 +5,32 @@
     body { margin: 0; font-family: -apple-system, sans-serif; background: #fdfdfd; color: #000; }
     .content-inner { padding: 0 6% 120px 6%; }
     
-    /* 2. 右上角浮動按鍵 (新增) */
+    /* 2. 右側中間浮動按鍵 (修正位置) */
     .floating-nav { 
         position: fixed; 
-        top: 15px; 
-        right: 15px; 
+        top: 50%; /* 垂直居中 */
+        right: 0; /* 貼齊右側 */
+        transform: translateY(-50%); /* 精準對齊中點 */
         display: flex; 
         flex-direction: column; 
-        gap: 8px; 
-        z-index: 3000; 
+        z-index: 10000; /* 層級最高，確保不被任何東西遮擋 */
     }
+    
     .float-btn { 
         background: rgba(0, 0, 0, 0.85); 
         color: #fff !important; 
         text-decoration: none; 
-        padding: 8px 15px; 
-        border-radius: 50px; 
-        font-size: 0.8rem; 
+        padding: 12px 10px; /* 寬度略窄，高度適中 */
+        border-radius: 12px 0 0 12px; /* 左側圓角 */
+        font-size: 0.85rem; 
         font-weight: 800; 
         backdrop-filter: blur(5px); 
         border: 1px solid rgba(255,255,255,0.2); 
+        border-right: none;
         text-align: center;
+        writing-mode: vertical-rl; /* 讓文字垂直排列，更省空間 */
+        letter-spacing: 2px;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.2);
     }
 
     /* 3. 子導覽列：手機頂部固定 */
@@ -101,7 +106,7 @@
 </style>
 
 <div class="floating-nav">
-    <a href="index.html" class="float-btn">🏠 回首頁</a>
+    <a href="index.html" class="float-btn">🏠回首頁</a>
 </div>
 
 <nav class="sub-nav">
@@ -172,4 +177,3 @@
         </table>
     </section>
 </div>
-
