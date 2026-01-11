@@ -3,185 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>講師培訓課程 | 活力美髮學院</title>
+    <title>講師培訓課程 | 講師素養技能</title>
 
     <link rel="icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png" type="image/png">
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png">
-
+    
     <style>
-        /* 1. 基礎設定 */
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
-        .content-inner { padding: 20px 6% 120px 6%; }
-
-        /* 2. 右側中間垂直標籤 (跨頁導航) */
-        .floating-nav {
-            position: fixed;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            z-index: 10000;
-        }
-        .float-btn {
-            background: rgba(0, 0, 0, 0.85);
-            color: #fff !important;
-            text-decoration: none;
-            padding: 15px 10px;
-            border-radius: 12px 0 0 12px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-right: none;
-            text-align: center;
-            writing-mode: vertical-rl;
-            letter-spacing: 2px;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+        :root {
+            --primary-purple: #6c5ce7;
+            --soft-purple: #f0edff;
+            --accent-pink: #e91e63;
+            --dark-blue: #322b5f;
+            --deep-gold: #d4a017;
         }
 
-        /* 3. 置頂子導覽列 (頁內錨點跳轉) */
-        .sub-nav {
-            display: flex;
-            gap: 12px;
-            padding: 15px 6%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            background: #fff;
-            border-bottom: 2px solid #eee;
-            position: sticky;
-            top: 0;
-            z-index: 2000;
-        }
-        .sub-nav::-webkit-scrollbar { display: none; } 
-        .sub-nav-item {
-            white-space: nowrap;
-            padding: 10px 22px;
-            background: #f0edff;
-            color: #4834d4;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 800;
-            border: 2px solid #d1c9ff;
-        }
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; }
 
-        /* 4. 標題與宣言 */
-        .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
-        .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
-        .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); margin: 0; font-weight: 900; }
-        .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: #6c5ce7; font-weight: 800; text-transform: uppercase; }
+        /* 浮動導覽 */
+        .floating-nav { position: fixed; top: 50%; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; gap: 2px; z-index: 10000; }
+        .nav-btn { background: rgba(0, 0, 0, 0.85); color: #fff !important; text-decoration: none; padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.85rem; font-weight: 800; writing-mode: vertical-rl; letter-spacing: 2px; }
 
-        .manifesto-box { background: rgba(108, 92, 231, 0.08); border-left: 6px solid #6c5ce7; padding: 25px; margin: 30px 0 50px 0; border-radius: 0 12px 12px 0; }
-        .manifesto-box p { margin: 10px 0; font-size: 1.1rem; font-weight: 600; line-height: 1.7; color: #333; }
-        .highlight { color: #6c5ce7; font-weight: 900; border-bottom: 2px solid #fbc2eb; }
-
-        /* 5. 課程網格 */
-        .section-title { font-size: 1.35rem; margin-top: 40px; margin-bottom: 20px; font-weight: 900; display: flex; align-items: center; gap: 10px; }
-        .section-title::after { content: ""; flex: 1; height: 2px; background: rgba(108, 92, 231, 0.15); }
+        /* 內容區塊 */
+        .content-inner { padding: 30px 6% 120px 6%; box-sizing: border-box; }
         
-        .course-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 40px; }
-        .course-card { background: #fff; padding: 14px 18px; border-radius: 10px; border: 1px solid #eee; display: flex; align-items: center; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .course-card .num { color: #6c5ce7; font-weight: 900; width: 35px; font-size: 0.85rem; border-right: 1.5px solid #eee; margin-right: 15px; }
+        /* 頂部橫幅設計 */
+        .hero-section { text-align: center; margin-bottom: 40px; }
+        .poto-img { width: 120px; height: auto; border-radius: 50%; border: 3px solid var(--primary-purple); margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .brand-heading h1 { font-size: 2.2rem; font-weight: 900; margin: 0; }
 
-        /* 6. 結語按鈕 */
-        .cta-section { text-align: center; padding: 50px 20px; background: #f8faff; border-radius: 20px; margin-top: 20px; }
-        .apply-btn { display: inline-block; padding: 18px 40px; background: #322b5f; color: #fff !important; text-decoration: none; border-radius: 50px; font-weight: 900; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(50,43,95,0.2); width: 85%; box-sizing: border-box; }
+        .section-title { font-size: 1.5rem; font-weight: 900; margin: 40px 0 20px 0; border-bottom: 4px solid #fbc2eb; display: inline-block; }
 
-        @media (min-width: 768px) {
-            .course-grid { grid-template-columns: repeat(2, 1fr); }
+        /* 課程模組格線 */
+        .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .module-card {
+            background: #fff; border: 1.5px solid #eee; border-radius: 15px; padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; overflow: hidden;
         }
+        .module-card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 6px; height: 100%;
+            background: var(--primary-purple);
+        }
+        .module-card h4 { margin: 0 0 15px 0; font-size: 1.25rem; font-weight: 900; color: var(--dark-blue); }
+        .module-card ul { padding: 0; margin: 0; list-style: none; }
+        .module-card li { 
+            padding: 8px 0; border-bottom: 1px solid #f5f5f5; font-weight: 600; color: #444; 
+            display: flex; align-items: flex-start;
+        }
+        .module-card li::before { content: "•"; color: var(--primary-purple); margin-right: 10px; font-weight: 900; }
+        .module-card li:last-child { border-bottom: none; }
+
+        .highlight-box { 
+            background: var(--soft-purple); border-radius: 12px; padding: 20px; 
+            margin-top: 40px; border: 1px dashed var(--primary-purple); text-align: center;
+        }
+
+        @media (max-width: 480px) { .brand-heading h1 { font-size: 1.8rem; } }
     </style>
 </head>
 <body>
 
 <div class="floating-nav">
-    <a href="index.html" class="float-btn">🏠回首頁</a>
-    <a href="p3_0.html" class="float-btn" style="background:#322b5f">📚回課程</a>
+    <a href="index.html" class="nav-btn">🏠回首頁</a>
+    <a href="p3_0.html" class="nav-btn" style="background:var(--primary-purple)">📚回課程</a>
 </div>
 
-<nav class="sub-nav">
-    <a href="#core" class="sub-nav-item">核心素養</a>
-    <a href="#stage" class="sub-nav-item">表達藝術</a>
-    <a href="#branding" class="sub-nav-item">形象專業</a>
-    <a href="#student" class="sub-nav-item">學員洞察</a>
-    <a href="#classroom" class="sub-nav-item">教室經營</a>
-</nav>
-
 <div class="content-inner">
-    <header class="brand-heading">
-        <h1>講師培訓課程</h1>
-        <div class="subtitle">BEYOND HAIR DESIGN, BE A MENTOR</div>
+    <header class="hero-section">
+        <img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto2.png" alt="專業導師" class="poto-img">
+        <div class="brand-heading">
+            <h1>講師培訓課程</h1>
+            <p style="color:var(--primary-purple); font-weight:800; margin-top:5px; letter-spacing: 1px;">TRAIN THE TRAINER SYSTEM</p>
+        </div>
     </header>
 
-    <section class="manifesto-box">
-        <p><span class="highlight">你為什麼需要轉型？</span></p>
-        <p>從現場設計師邁向專業講師，是影響力的擴張。實現時間自由，將實戰經驗轉化為系統化教學能量。</p>
-    </section>
-
-    <section id="core" class="info-section">
-        <div class="section-title">核心素養：講師的起點</div>
-        <div class="course-grid">
-            <div class="course-card"><span class="num">01</span>轉型講師心法</div>
-            <div class="course-card"><span class="num">02</span>破解轉型誤區</div>
-            <div class="course-card"><span class="num">03</span>職業講師素養</div>
-            <div class="course-card"><span class="num">04</span>核心能力建構</div>
-            <div class="course-card"><span class="num">05</span>高效講課技巧</div>
+    <div class="module-grid">
+        <div class="module-card">
+            <h4>一、講師素養技能</h4>
+            <ul>
+                <li>轉型講師與轉型誤區</li>
+                <li>核心素養與講師能力</li>
+                <li>全方位講課技巧</li>
+            </ul>
         </div>
-    </section>
 
-    <section id="stage" class="info-section">
-        <div class="section-title">表達藝術：舞台掌控力</div>
-        <div class="course-grid">
-            <div class="course-card"><span class="num">06</span>肢體語言表達</div>
-            <div class="course-card"><span class="num">07</span>現場時間管理</div>
-            <div class="course-card"><span class="num">08</span>自我時間效能</div>
-            <div class="course-card"><span class="num">09</span>引人入勝的開場</div>
-            <div class="course-card"><span class="num">10</span>餘音繞樑的結尾</div>
-            <div class="course-card"><span class="num">11</span>系統化教學邏輯</div>
+        <div class="module-card" style="border-left-color: var(--accent-pink);">
+            <h4>二、講師肢體表達</h4>
+            <ul>
+                <li>肢體語言與自我時間管理</li>
+                <li>黃金開場與完美結尾技巧</li>
+                <li>如何有效引導教學</li>
+            </ul>
         </div>
-    </section>
 
-    <section id="branding" class="info-section">
-        <div class="section-title">形象包裝：專業品牌</div>
-        <div class="course-grid">
-            <div class="course-card"><span class="num">12</span>演說體態管理</div>
-            <div class="course-card"><span class="num">13</span>舞台穿著美學</div>
-            <div class="course-card"><span class="num">14</span>個人形象管理</div>
-            <div class="course-card"><span class="num">15</span>美感品味修養</div>
+        <div class="module-card" style="border-left-color: var(--deep-gold);">
+            <h4>三、講師形象管理</h4>
+            <ul>
+                <li>專業體態與穿著管理</li>
+                <li>品牌形象與品味管理</li>
+            </ul>
         </div>
-    </section>
 
-    <section id="student" class="info-section">
-        <div class="section-title">學員洞察：因材施教</div>
-        <div class="course-grid">
-            <div class="course-card"><span class="num">16</span>挖掘學生真需求</div>
-            <div class="course-card"><span class="num">17</span>辨識學生類型</div>
-            <div class="course-card"><span class="num">18</span>行為特性分析</div>
-            <div class="course-card"><span class="num">19</span>多元學習路徑</div>
-            <div class="course-card"><span class="num">20</span>學習風格心理檢測</div>
+        <div class="module-card">
+            <h4>四、學生類型檢測</h4>
+            <ul>
+                <li>學生需求與類型分析</li>
+                <li>學習風格與特性檢測</li>
+            </ul>
         </div>
-    </section>
 
-    <section id="classroom" class="info-section">
-        <div class="section-title">教室經營：互動與秩序</div>
-        <div class="course-grid">
-            <div class="course-card"><span class="num">21</span>課堂討論引導</div>
-            <div class="course-card"><span class="num">22</span>精準提問技巧</div>
-            <div class="course-card"><span class="num">24</span>學員問答應對</div>
-            <div class="course-card"><span class="num">27</span>現場突發應變</div>
-            <div class="course-card"><span class="num">28</span>學員私下互動</div>
+        <div class="module-card" style="border-left-color: var(--accent-pink);">
+            <h4>五、課堂秩序管理</h4>
+            <ul>
+                <li>課堂討論與提問技巧</li>
+                <li>回答學員問題與獲取答案原則</li>
+                <li>現場秩序控制與私聊處理</li>
+            </ul>
         </div>
-    </section>
 
-    <section class="cta-section">
-        <div style="font-size: 1.3rem; color: #000; font-weight: 900; margin-bottom: 20px; line-height: 1.4;">準備好要成為下一個<br>美髮界名師了嗎？</div>
-        <a href="https://line.me/ti/p/yourid" class="apply-btn">立即預約轉型評估</a>
-    </section>
+        <div class="module-card" style="border-left-color: var(--deep-gold);">
+            <h4>六、營造培訓情境</h4>
+            <ul>
+                <li>訓練情境氛圍營造</li>
+                <li>克服講台恐懼心理</li>
+                <li>設計不打瞌睡的課程互動</li>
+                <li>課程階段目標設定</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <p style="font-weight: 900; color: var(--dark-blue); font-size: 1.1rem; margin: 0;">
+            🚀 結業目標：完成個人專屬「完整教案系統」一套
+        </p>
+    </div>
+
+    <div style="text-align: center; color: #888; font-size: 0.9rem; margin-top: 50px;">
+        — 活力美髮學院 講師認證體系 —
+    </div>
 </div>
 
 </body>
 </html>
-
