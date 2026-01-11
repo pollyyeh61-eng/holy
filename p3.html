@@ -70,6 +70,24 @@
         }
     </style>
 </head>
+    <script>
+    function fixButtons() {
+        // 找到那兩個按鈕的 ID
+        var homeBtn = document.getElementById('fixed-home-btn');
+        var topBtn = document.getElementById('fixed-top-btn');
+        
+        if (homeBtn && topBtn) {
+            // 強制將它們移動到 <body> 的最後面，脫離所有可能的干擾容器
+            document.body.appendChild(homeBtn);
+            document.body.appendChild(topBtn);
+        }
+    }
+
+    // 1. 頁面載入完成時執行
+    window.addEventListener('load', fixButtons);
+    // 2. 為了保險，頁面顯示時（包含按回退鍵回來）再執行一次
+    window.addEventListener('pageshow', fixButtons);
+</script>
 <body>
 
 <div id="fixed-home-btn">
@@ -153,3 +171,4 @@
 
 </body>
 </html>
+
