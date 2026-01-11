@@ -3,121 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>寫書課程 | 活力美髮學院</title>
+    <title>寫書與知識變現課程 | 活力美髮學院</title>
 
     <link rel="icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png" type="image/png">
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png">
-
+    
     <style>
-        /* 1. 基礎設定 */
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
+        :root {
+            --primary-indigo: #4834d4;
+            --soft-indigo: #f0edff;
+            --author-gold: #c69c6d;
+            --dark-space: #1e272e;
+        }
+
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #333; scroll-behavior: smooth; }
         .content-inner { padding: 20px 6% 120px 6%; }
 
-        /* 2. 右側中間垂直標籤 (跨頁導航) */
-        .floating-nav {
-            position: fixed;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            z-index: 10000;
-        }
-        .float-btn {
-            background: rgba(0, 0, 0, 0.85);
-            color: #fff !important;
-            text-decoration: none;
-            padding: 15px 10px;
-            border-radius: 12px 0 0 12px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-right: none;
-            text-align: center;
-            writing-mode: vertical-rl;
-            letter-spacing: 2px;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
-        }
+        /* 導覽標籤 */
+        .floating-nav { position: fixed; top: 50%; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; gap: 2px; z-index: 10000; }
+        .float-btn { background: rgba(0, 0, 0, 0.85); color: #fff !important; text-decoration: none; padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.85rem; font-weight: 800; writing-mode: vertical-rl; letter-spacing: 2px; }
 
-        /* 3. 置頂子導覽列 (頁內錨點跳轉) */
-        .sub-nav {
-            display: flex;
-            gap: 12px;
-            padding: 15px 6%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            background: #fff;
-            border-bottom: 2px solid #eee;
-            position: sticky;
-            top: 0;
-            z-index: 2000;
-        }
-        .sub-nav::-webkit-scrollbar { display: none; } 
-        .sub-nav-item {
-            white-space: nowrap;
-            padding: 10px 22px;
-            background: #f0edff;
-            color: #4834d4;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 800;
-            border: 2px solid #d1c9ff;
-        }
+        /* 標題視覺 */
+        .brand-heading { position: relative; padding-left: 20px; margin: 40px 0 30px 0; }
+        .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: var(--primary-indigo); }
+        .brand-heading h1 { font-size: 2.2rem; margin: 0; font-weight: 900; color: var(--dark-space); }
+        .brand-heading .subtitle { font-size: 0.9rem; letter-spacing: 3px; color: var(--primary-indigo); font-weight: 800; }
 
-        /* 4. 標題與視覺 */
-        .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
-        .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
-        .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); margin: 0; font-weight: 900; }
-        .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: #6c5ce7; font-weight: 800; text-transform: uppercase; }
+        /* 為什麼需要這門課區塊 */
+        .why-section { background: var(--dark-space); color: #fff; padding: 40px 30px; border-radius: 20px; margin-bottom: 50px; }
+        .why-section h2 { color: var(--author-gold); margin-top: 0; font-size: 1.5rem; }
+        .core-value { border-top: 1px solid #444; margin-top: 20px; padding-top: 20px; color: #d1d1d1; }
+        .highlight-gold { color: var(--author-gold); font-weight: 800; }
 
-        .intro-box { 
-            background: #fff; padding: 25px; margin-bottom: 40px; 
-            border-left: 6px solid #322b5f; border: 1px solid #eee;
-            border-radius: 4px; font-size: 1.1rem; line-height: 1.7; font-weight: 600; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-        }
+        /* 學習目標卡片 */
+        .section-title { font-size: 1.4rem; margin: 40px 0 20px 0; font-weight: 900; border-bottom: 4px solid var(--soft-indigo); display: inline-block; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .goal-item { background: #fff; padding: 20px; border-radius: 15px; border: 1.5px solid #eee; display: flex; gap: 15px; align-items: flex-start; }
+        .goal-num { background: var(--primary-indigo); color: #fff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; }
+        .goal-text b { display: block; margin-bottom: 5px; color: var(--primary-indigo); font-size: 1.1rem; }
 
-        /* 5. 寫書邏輯矩陣 */
-        .section-title { 
-            font-size: 1.35rem; margin-top: 50px; margin-bottom: 25px; font-weight: 900; 
-            border-bottom: 4px solid #fbc2eb; display: inline-block; padding-bottom: 5px; 
-        }
-        
-        .mindmap-outline { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 50px; }
-        .outline-card { background: #fff; padding: 20px; border-radius: 12px; border: 1.5px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-        .outline-card h3 { 
-            font-size: 1.1rem; margin: 0 0 12px 0; font-weight: 900; 
-            display: flex; justify-content: space-between; border-bottom: 1px solid #f0f0f0; 
-            padding-bottom: 8px; color: #322b5f; 
-        }
-        .outline-card ul { padding-left: 18px; margin: 0; }
-        .outline-card li { margin-bottom: 8px; font-weight: 600; font-size: 0.95rem; color: #444; }
-        .core-card { background: #f0f7ff; border: 2px solid #6c5ce7; }
-
-        /* 6. 特色清單 */
-        .feature-item { 
-            padding: 15px 20px; background: #fff; margin-bottom: 12px; 
-            border: 1.5px solid #eee; border-radius: 15px; display: flex; flex-direction: column; 
-        }
-        .feature-item b { color: #6c5ce7; font-size: 1.1rem; font-weight: 900; margin-bottom: 4px; }
-        .feature-item span { font-weight: 600; font-size: 0.95rem; color: #333; }
-
-        /* 7. 深度對談 */
-        .talk-text { 
-            background: #fff; padding: 30px 20px; border-radius: 20px; 
-            border: 1.5px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); 
-        }
-        .talk-text h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; line-height: 1.4; }
-        .talk-text p { font-size: 1rem; line-height: 1.8; font-weight: 500; margin-bottom: 15px; }
+        /* 六大章節排版 */
+        .chapter-list { background: var(--soft-indigo); padding: 30px; border-radius: 20px; }
+        .chapter-item { background: #fff; padding: 15px 25px; border-radius: 10px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; font-weight: 700; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .chapter-no { color: var(--primary-indigo); font-style: italic; margin-right: 15px; }
 
         @media (min-width: 768px) {
-            .mindmap-outline { grid-template-columns: repeat(2, 1fr); }
-            .feature-item { flex-direction: row; align-items: center; border-radius: 50px; }
-            .feature-item b { width: 150px; margin-bottom: 0; }
+            .goal-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -125,82 +55,66 @@
 
 <div class="floating-nav">
     <a href="index.html" class="float-btn">🏠回首頁</a>
-    <a href="p3_0.html" class="float-btn" style="background:#322b5f">📚回課程</a>
+    <a href="p3_0.html" class="float-btn" style="background:var(--primary-indigo)">📚回課程</a>
 </div>
-
-<nav class="sub-nav">
-    <a href="#strategy" class="sub-nav-item">著作權威矩陣</a>
-    <a href="#target" class="sub-nav-item">適合對象</a>
-    <a href="#influence" class="sub-nav-item">影響力價值</a>
-</nav>
 
 <div class="content-inner">
     <header class="brand-heading">
         <h1>寫書課程</h1>
-        <div class="subtitle">AUTHORSHIP & PERSONAL IP</div>
+        <div class="subtitle">AUTHORSHIP & KNOWLEDGE MONETIZATION</div>
     </header>
 
-    <div class="intro-box">
-        出書是設計師建立權威、沉澱技術的終極階段。不只是文字的紀錄，更是將您的美學靈魂系統化，讓您的專業跨越時空，產生更長遠的影響力。
+    <section class="why-section">
+        <h2>為什麼需要這門課？</h2>
+        <p>共通目標：將知識傳遞轉化為有效學習體驗，解決<span class="highlight-gold">「學員沒興趣」「自己沒自信」「目標不明確」</span>三大核心問題。</p>
+        <div class="core-value">
+            <p>• <b>核心價值：</b>不只教「寫書」或「教學」，而是打造<span class="highlight-gold">「知識變現的生態系」</span>。</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-title">學習目標</div>
+        <div class="goal-grid">
+            <div class="goal-item">
+                <div class="goal-num">1</div>
+                <div class="goal-text"><b>打造可複製的課程</b>學習「用自己的書教學」，將隱性知識系統化，打造專業教學體系。</div>
+            </div>
+            <div class="goal-item">
+                <div class="goal-num">2</div>
+                <div class="goal-text"><b>強化個人品牌</b>透過「寫書內化專業」，書籍將成為提升學員信任感的強大基礎。</div>
+            </div>
+            <div class="goal-item">
+                <div class="goal-num">3</div>
+                <div class="goal-text"><b>收入來源多元化</b>結合出書、線上課程、企業合作，創造持續性的被動收益。</div>
+            </div>
+            <div class="goal-item">
+                <div class="goal-num">4</div>
+                <div class="goal-text"><b>守住知識產權</b>開發自有課程，即使離開職位仍能保有長期的知識產權收益。</div>
+            </div>
+            <div class="goal-item" style="grid-column: span 1;">
+                <div class="goal-num">5</div>
+                <div class="goal-text"><b>寶貴的專業傳承</b>將一生絕學轉為文字，影響後輩設計師並延續您的職業價值。</div>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin-top: 50px;">
+        <div class="section-title">課程內容：六大章節</div>
+        <div class="chapter-list">
+            <div class="chapter-item"><span><span class="chapter-no">CH 01</span> 用自己的書教學</span> <small>✨</small></div>
+            <div class="chapter-item"><span><span class="chapter-no">CH 02</span> 寫書能內化自己</span> <small>🧠</small></div>
+            <div class="chapter-item"><span><span class="chapter-no">CH 03</span> 寫書的寶貴傳承</span> <small>📜</small></div>
+            <div class="chapter-item"><span><span class="chapter-no">CH 04</span> 講師的收入來源</span> <small>💰</small></div>
+            <div class="chapter-item"><span><span class="chapter-no">CH 05</span> 如何守住收入</span> <small>🛡️</small></div>
+            <div class="chapter-item"><span><span class="chapter-no">CH 06</span> 講師的永續發展</span> <small>🚀</small></div>
+        </div>
+    </section>
+
+    <div style="text-align: center; color: #888; font-size: 0.9rem; margin-top: 80px; padding: 20px; border-top: 1px solid #eee;">
+        在這個碎片化時代，一本書是您最長久的名片。<br>
+        — 活力美髮學院 專業作家養成計畫 —
     </div>
-
-    <section id="strategy" class="info-section">
-        <div class="section-title">課程大綱：著作權威矩陣</div>
-        
-        <div class="mindmap-outline">
-            <div class="outline-card">
-                <h3>內容策略 (上) <small>✍️</small></h3>
-                <ul>
-                    <li>定位讀者與市場需求</li>
-                    <li>核心技術理論化</li>
-                    <li>撰寫吸睛的大綱結構</li>
-                </ul>
-            </div>
-            <div class="outline-card core-card">
-                <h3>系統化核心 <small>📖</small></h3>
-                <ul>
-                    <li>邏輯性章節佈局</li>
-                    <li>視覺攝影與排版建議</li>
-                    <li>品牌價值的高度濃縮</li>
-                </ul>
-            </div>
-            <div class="outline-card">
-                <h3>出版流程 <small>🚀</small></h3>
-                <ul>
-                    <li>實體與電子書出版路徑</li>
-                    <li>出版社溝通技巧</li>
-                    <li>自媒體聯動行銷</li>
-                </ul>
-            </div>
-            <div class="outline-card">
-                <h3>IP 延伸 (下) <small>💎</small></h3>
-                <ul>
-                    <li>書籍周邊課程開發</li>
-                    <li>巡迴講座與簽書會</li>
-                    <li>跨領域品牌授權</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="target" class="info-section">
-        <div class="section-title">這門課為誰設計？</div>
-        <div class="feature-list">
-            <div class="feature-item"><b>1. 資深設計師</b><span>希望將多年心法標準化，傳承給下一代。</span></div>
-            <div class="feature-item"><b>2. 品牌經營者</b><span>想建立品牌護城河，提升在業界的權威性。</span></div>
-            <div class="feature-item"><b>3. 教育講師群</b><span>需要一本「聖經」教材來優化教學體系。</span></div>
-            <div class="feature-item"><b>4. 個人 IP 追求者</b><span>想成為美髮界具備思想高度的意見領袖。</span></div>
-        </div>
-    </section>
-
-    <section id="influence" class="talk-text" style="margin-top: 50px;">
-        <h2>為什麼「書」是最好的名片？</h2>
-        <p>在這個資訊碎片化的時代，唯有透過<b>系統性的論述</b>，才能展現真正的深度。</p>
-        <p>一本書不僅能讓您進入書店、圖書館，更能讓您進入高端客戶的視野。當別人還在解釋技術，您只需遞出一本書，專業感便不言而喻。</p>
-        <p><b>建立影響力：</b> 將技術變成一種流傳下去的思想學說。</p>
-    </section>
 </div>
 
 </body>
 </html>
-
