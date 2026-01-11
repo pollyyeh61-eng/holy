@@ -10,22 +10,7 @@
         body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
         .content-inner { padding: 0 6% 120px 6%; }
         
-        /* 【絕對鎖定】右側回首頁 */
-        #fixed-home-btn { 
-            position: fixed !important; 
-            top: 50% !important; 
-            right: 0 !important; 
-            transform: translateY(-50%) !important; 
-            z-index: 2147483647 !important;
-        }
-        .float-btn-home { 
-            background: rgba(0, 0, 0, 0.9); color: #fff !important; text-decoration: none; 
-            padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.9rem; font-weight: 800; 
-            writing-mode: vertical-rl; letter-spacing: 2px; display: block;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        /* 【絕對鎖定】右下角回頂部 */
+        /* 【絕對鎖定】僅保留右下角回頂部 */
         #fixed-top-btn {
             position: fixed !important; 
             bottom: 30px !important; 
@@ -36,7 +21,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.3);
         }
 
-        /* 頂部 8 格網格目錄 (隨內容捲動) */
+        /* 頂部 8 格網格目錄 */
         .sub-nav-container { background: #fff; border-bottom: 2px solid #eee; padding: 20px 4%; margin-bottom: 25px; }
         .sub-nav-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
         .sub-nav-item {
@@ -50,11 +35,18 @@
         .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
         .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
         .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin: 0; font-weight: 900; }
-        .concept-box { background: #fff; padding: 25px; border-radius: 12px; margin-bottom: 30px; border: 1.5px solid #ddd; border-left: 8px solid #6c5ce7; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        
+        .concept-box { 
+            background: #fff; padding: 25px; border-radius: 12px; margin-bottom: 30px; 
+            border: 1.5px solid #ddd; border-left: 8px solid #6c5ce7; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .concept-box h4 { margin-top: 0; font-size: 1.3rem; font-weight: 900; margin-bottom: 12px; }
+        .concept-box p { font-size: 1.1rem; line-height: 1.9; font-weight: 600; margin: 0; }
         .highlight-text { color: #e91e63; font-weight: 900; border-bottom: 2px solid #e91e63; }
+
         .section-title { font-size: 1.5rem; margin-bottom: 20px; font-weight: 900; border-bottom: 4px solid #fbc2eb; display: inline-block; }
         .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; }
-        .course-category { font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; text-align: center; }
+        .course-category { font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; font-size: 1.2rem; text-align: center; }
         .course-table td { padding: 18px 15px; border-bottom: 1px solid #eee; font-weight: 700; }
         .result-tag { display: inline-block; background: #6c5ce7; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-top: 8px; font-weight: 800; }
 
@@ -66,7 +58,6 @@
     </style>
 </head>
 <body>
-
 
 <a href="#" id="fixed-top-btn">▲</a>
 
@@ -91,13 +82,13 @@
 
     <div class="concept-box">
         <h4>1. 雙軌學習模式</h4>
-        <p>課程依照學習邏輯循序漸進，從基礎到進階，每一步都環環相扣。</p>
+        <p>課程依照學習邏輯循序漸進，從基礎到進階，每一步都環環相扣。設計都能讓您穩步前進，免去摸索，確保每個階段都有具體收穫。</p>
     </div>
 
     <div class="concept-box" style="border-left-color: #fbc2eb;">
         <h4>2. 實踐導向目標</h4>
-        <p>我們相信：<span class="highlight-text">只有做出來的，才是自己的。</span></p>
-        <ul style="line-height: 2.2; font-weight: 800; font-size: 1.1rem; padding-left: 20px;">
+        <p>我們相信：<span class="highlight-text">只有做出來的，才是自己的。</span>具體目標：</p>
+        <ul style="line-height: 2.2; color: #000; font-weight: 800; font-size: 1.1rem; margin-top: 15px; padding-left: 20px;">
             <li>創業課程：完成 <span class="highlight-text">創業計劃書</span></li>
             <li>講師課程：設計完整 <span class="highlight-text">教案系統</span></li>
             <li>寫書課程：完成一本 <span class="highlight-text">個人著作</span></li>
@@ -105,40 +96,54 @@
     </div>
 
     <div class="section-title">三、課程架構表</div>
+    
     <table class="course-table">
         <thead>
-            <tr><td colspan="2" class="course-category">一、技術技能類</td></tr>
+            <tr><td colspan="2" class="course-category">一、技術技能類 (預錄+實體)</td></tr>
         </thead>
         <tbody>
             <tr><td>1. 二年制專班內容</td><td>核心技術全系統建構</td></tr>
             <tr><td>2. 剪髮 / 燙髮 / 染髮</td><td>單項技術深度進階演練</td></tr>
             <tr><td>3. 國家級證照輔導</td><td>丙級/乙級專業技術證照班</td></tr>
         </tbody>
+
         <thead>
-            <tr><td colspan="2" class="course-category" style="background: #4834d4;">二、專業升級類</td></tr>
+            <tr><td colspan="2" class="course-category" style="background: #4834d4;">二、專業升級類 (預錄+直播)</td></tr>
         </thead>
         <tbody>
-            <tr><td>5. 講師培訓課程 <br><div class="result-tag">產出：完整教案</div></td><td>10 節 / 含舞台表達、教案設計</td></tr>
-            <tr><td>6. 創業規劃課程 <br><div class="result-tag">產出：創業計劃書</div></td><td>10 節 / 含商業模式、財務結構</td></tr>
+            <tr>
+                <td>5. 講師培訓課程 <br><div class="result-tag">產出：完整教案</div></td>
+                <td>10 節 / 含舞台表達、教案設計</td>
+            </tr>
+            <tr>
+                <td>6. 創業規劃課程 <br><div class="result-tag">產出：創業計劃書</div></td>
+                <td>10 節 / 含商業模式、財務結構</td>
+            </tr>
         </tbody>
+
         <thead>
-            <tr><td colspan="2" class="course-category" style="background: #6c5ce7;">三、內容產出類</td></tr>
+            <tr><td colspan="2" class="course-category" style="background: #6c5ce7;">三、內容產出類 (預錄+直播)</td></tr>
         </thead>
         <tbody>
-            <tr><td>8. 寫書課 <br><div class="result-tag">產出：個人著作</div></td><td>10 節 / 個人品牌 IP 建立</td></tr>
-            <tr><td>9. 影音製作課</td><td>10 節 / 剪輯、攝影、包裝實務</td></tr>
+            <tr>
+                <td>8. 寫書課 <br><div class="result-tag">產出：個人著作</div></td>
+                <td>10 節 / 個人品牌 IP 建立</td>
+            </tr>
+            <tr>
+                <td>9. 影音製作課</td>
+                <td>10 節 / 剪輯、攝影、包裝實務</td>
+            </tr>
         </tbody>
     </table>
     
-    <div style="height: 500px;"></div>
+    <div style="height: 300px;"></div>
 </div>
 
 <script>
+    // 強化鎖定：確保回頂部按鈕不隨捲動消失
     function forceFixButtons() {
-        var h = document.getElementById('fixed-home-btn');
         var t = document.getElementById('fixed-top-btn');
-        if(h && t) {
-            document.body.appendChild(h);
+        if(t) {
             document.body.appendChild(t);
         }
     }
@@ -149,4 +154,3 @@
 
 </body>
 </html>
-
