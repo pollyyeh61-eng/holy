@@ -3,53 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>創業經營課程 | 管理架構與實務</title>
+    <title>創業經營課程 | 活力美髮學院</title>
     
     <style>
         :root {
-            --gold: #d4a017;
-            --light-gold: #ffcc33;
-            --bg-black: #0a0a0a;
-            --box-bg: rgba(255, 255, 255, 0.05);
-            --border-color: #444;
+            /* 獨角獸核心色系 */
+            --uni-purple: #a29bfe;
+            --uni-pink: #fd79a8;
+            --uni-blue: #74b9ff;
+            --uni-gold: #e1b12c;
+            --bg-soft: #fbfaff;
+            --glass: rgba(255, 255, 255, 0.8);
         }
 
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #111; color: #eee; line-height: 1.6; }
+        body { 
+            margin: 0; 
+            font-family: -apple-system, "Microsoft JhengHei", sans-serif; 
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); 
+            color: #444; 
+            line-height: 1.8; 
+        }
 
         /* 浮動導覽 */
         .floating-nav { position: fixed; top: 50%; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; gap: 2px; z-index: 10000; }
-        .nav-btn { background: rgba(255, 255, 255, 0.9); color: #000 !important; text-decoration: none; padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.85rem; font-weight: 800; writing-mode: vertical-rl; letter-spacing: 2px; }
+        .nav-btn { background: var(--glass); color: var(--uni-purple) !important; text-decoration: none; padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.85rem; font-weight: 800; writing-mode: vertical-rl; letter-spacing: 2px; border: 1px solid var(--uni-purple); backdrop-filter: blur(5px); }
 
         .container { padding: 40px 6%; max-width: 1000px; margin: auto; }
 
-        /* 管理架構圖模擬 (還原圖片內容) */
-        .management-frame {
-            border: 2px solid var(--border-color); padding: 20px; position: relative;
-            background: var(--bg-black); text-align: center; margin: 40px 0;
-            border-radius: 8px;
+        /* 語錄區塊 */
+        .speech-section { 
+            background: #fff; 
+            padding: 30px; 
+            border-radius: 20px; 
+            margin-bottom: 40px; 
+            border-left: 8px solid var(--uni-pink); 
+            box-shadow: 0 10px 20px rgba(253, 121, 168, 0.1);
         }
-        .frame-label-top { color: var(--gold); font-weight: bold; margin-bottom: 15px; }
-        .frame-label-bottom { color: var(--gold); font-weight: bold; margin-top: 15px; }
+        .highlight-text { color: var(--uni-pink); font-weight: 900; background: linear-gradient(transparent 70%, #ffeaa7 0%); }
+
+        /* 管理架構圖 (獨角獸色系還原) */
+        .management-frame {
+            border: 3px solid var(--uni-purple); 
+            padding: 25px; 
+            position: relative;
+            background: #fff; 
+            text-align: center; 
+            margin: 50px 0;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(162, 155, 254, 0.15);
+        }
+        .frame-label-top { color: var(--uni-purple); font-weight: 900; margin-bottom: 20px; font-size: 1.2rem; }
+        .frame-label-bottom { color: var(--uni-purple); font-weight: 900; margin-top: 20px; font-size: 1.2rem; }
         
         .main-layout { display: flex; gap: 15px; align-items: stretch; }
         .side-col { 
-            flex: 1; border: 1px solid var(--gold); padding: 40px 10px; 
-            display: flex; flex-direction: column; justify-content: center;
-            color: var(--gold); font-weight: bold; font-size: 0.9rem;
+            flex: 1; 
+            border: 2px solid var(--uni-blue); 
+            padding: 30px 10px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+            color: var(--uni-blue); 
+            font-weight: 900; 
+            background: #f0f7ff;
+            border-radius: 12px;
         }
         .center-col { flex: 2; display: flex; flex-direction: column; gap: 15px; }
-        .sub-box { border: 1px solid var(--gold); padding: 15px; text-align: left; }
-        .sub-box-title { color: var(--gold); font-weight: bold; font-size: 0.95rem; margin-bottom: 8px; text-align: center; }
-        .sub-box ul { margin: 0; padding-left: 20px; list-style: decimal; font-size: 0.85rem; color: #ccc; }
+        .sub-box { border: 2px solid var(--uni-pink); padding: 15px; text-align: left; border-radius: 12px; background: #fffafb; }
+        .sub-box-title { color: var(--uni-pink); font-weight: 900; font-size: 1rem; margin-bottom: 10px; text-align: center; }
+        .sub-box ul { margin: 0; padding-left: 20px; list-style: none; }
+        .sub-box li { font-size: 0.9rem; font-weight: 700; color: #666; position: relative; padding-left: 15px; }
+        .sub-box li::before { content: "✨"; position: absolute; left: -5px; font-size: 0.8rem; }
 
-        /* 文字內容樣式 */
-        .speech-section { background: var(--box-bg); padding: 30px; border-radius: 15px; margin-bottom: 30px; border-left: 5px solid var(--gold); }
-        .speech-section h2 { color: var(--light-gold); font-size: 1.5rem; margin-top: 0; }
-        .highlight-text { color: var(--light-gold); font-weight: bold; }
-        
-        .suitability-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .suit-item { background: #222; padding: 15px; border-radius: 8px; border: 1px solid #333; }
-        .suit-title { color: var(--light-gold); font-weight: 800; display: block; margin-bottom: 5px; }
+        /* 適合對象 */
+        .suitability-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+        .suit-item { 
+            background: #fff; 
+            padding: 20px; 
+            border-radius: 15px; 
+            border: 1px solid #eee; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: 0.3s;
+        }
+        .suit-item:hover { transform: translateY(-5px); border-color: var(--uni-pink); }
+        .suit-title { color: var(--uni-pink); font-weight: 900; display: block; margin-bottom: 8px; border-bottom: 2px solid #ffeaa7; }
+
+        /* 深度分享區 */
+        .essay-content { background: #fff; padding: 40px; border-radius: 30px; margin-top: 50px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+        .essay-content h2 { color: var(--uni-purple); font-weight: 900; border-left: 10px solid var(--uni-blue); padding-left: 15px; }
+        .essay-content p { margin-bottom: 20px; font-weight: 600; }
 
         @media (max-width: 600px) {
             .main-layout { flex-direction: column; }
@@ -61,7 +103,7 @@
 
 <div class="floating-nav">
     <a href="index.html" class="nav-btn">🏠回首頁</a>
-    <a href="p3_0.html" class="nav-btn" style="background:var(--gold)">📚回課程</a>
+    <a href="p3_0.html" class="nav-btn" style="background:var(--uni-purple); color:#fff !important;">📚回課程</a>
 </div>
 
 <div class="container">
@@ -70,12 +112,12 @@
     </div>
 
     <div class="management-frame">
-        <div class="frame-label-top">價格管理</div>
+        <div class="frame-label-top">【 價格管理 】</div>
         
         <div class="main-layout">
             <div class="side-col">
                 <div>左外部管理</div>
-                <div style="font-size: 0.8rem; margin-top: 5px;">供應商管理</div>
+                <div style="font-size: 0.8rem; margin-top: 5px; opacity: 0.8;">供應商管理</div>
             </div>
 
             <div class="center-col">
@@ -87,16 +129,16 @@
                         <li>預約管理</li>
                     </ul>
                 </div>
-                <div class="sub-box">
-                    <div class="sub-box-title">內部管理</div>
+                <div class="sub-box" style="border-color: var(--uni-purple); background: #f8f7ff;">
+                    <div class="sub-box-title" style="color: var(--uni-purple);">內部管理</div>
                     <ul>
                         <li>財務管理</li>
                         <li>人才管理</li>
                         <li>庫存管理</li>
                     </ul>
                 </div>
-                <div class="sub-box">
-                    <div class="sub-box-title">下外部管理</div>
+                <div class="sub-box" style="border-color: var(--uni-blue); background: #f0f7ff;">
+                    <div class="sub-box-title" style="color: var(--uni-blue);">下外部管理</div>
                     <ul>
                         <li>行銷管理</li>
                         <li>活動管理</li>
@@ -105,20 +147,20 @@
                 </div>
             </div>
 
-            <div class="side-col">
+            <div class="side-col" style="border-color: var(--uni-pink); color: var(--uni-pink); background: #fff5f7;">
                 <div>右外部管理</div>
-                <div style="font-size: 0.8rem; margin-top: 5px;">品牌管理</div>
+                <div style="font-size: 0.8rem; margin-top: 5px; opacity: 0.8;">品牌管理</div>
             </div>
         </div>
 
-        <div class="frame-label-bottom">成本管理</div>
+        <div class="frame-label-bottom">【 成本管理 】</div>
         
-        <div style="position: absolute; left: -30px; top: 50%; transform: rotate(-90deg); color: #666; font-size: 0.7rem;">前言 管理層</div>
-        <div style="position: absolute; right: -30px; top: 50%; transform: rotate(90deg); color: #666; font-size: 0.7rem;">控股層</div>
+        <div style="position: absolute; left: -30px; top: 50%; transform: rotate(-90deg); color: var(--uni-purple); font-size: 0.75rem; font-weight: 800;">PREFACE 管理層</div>
+        <div style="position: absolute; right: -30px; top: 50%; transform: rotate(90deg); color: var(--uni-pink); font-size: 0.75rem; font-weight: 800;">HOLDING 控股層</div>
     </div>
 
     <section>
-        <h2 style="color: var(--light-gold); border-bottom: 2px solid var(--gold); display: inline-block;">什麼人適合上這門課程</h2>
+        <h2 style="color: var(--uni-purple); font-weight: 900;">🦄 什麼人適合上這門課程</h2>
         <div class="suitability-list" style="margin-top: 20px;">
             <div class="suit-item"><span class="suit-title">1. 風險創業</span>適合資金有限的人</div>
             <div class="suit-item"><span class="suit-title">2. 靈活經營</span>適合想兼職或小規模的人</div>
@@ -126,27 +168,27 @@
             <div class="suit-item"><span class="suit-title">4. 數位化經營</span>適合想避開傳統競爭的人</div>
             <div class="suit-item"><span class="suit-title">5. 可擴展性</span>適合未來想做大的人</div>
         </div>
-        <p style="background: #332b00; padding: 10px; border-radius: 5px; margin-top: 15px; font-weight: bold; text-align: center;">
+        <p style="background: linear-gradient(90deg, #fd79a8, #a29bfe); color: #fff; padding: 15px; border-radius: 50px; margin-top: 25px; font-weight: bold; text-align: center; box-shadow: 0 5px 15px rgba(162, 155, 254, 0.3);">
             💡 小成本試錯，兼職、斜槓、小創業都適用，現金流明確，成就感高。
         </p>
     </section>
 
-    <section style="margin-top: 50px;">
-        <h2 style="color: var(--light-gold);">我想跟大家聊一個問題：為什麼我們必須創業？</h2>
+    <section class="essay-content">
+        <h2>為什麼我們必須創業？</h2>
         <p>也許您會問：「創業這麼辛苦，為什麼不安安穩穩領薪水就好？」但我想告訴您，<span class="highlight-text">創業並不只是為了賺錢，它更是一種對自己人生負責的選擇。</span></p>
         
         <p>首先，<span class="highlight-text">創業讓我們掌握自主權</span>。當您學習到某一個程度，就會發現沒有東西讓您學習了，而那就是轉型的訊號，在告訴您，要為自己工作了，不再受制於老闆、制度，想怎麼做、想做到什麼程度，自己來決定。</p>
         
         <p>第二，<span class="highlight-text">創業能突破收入的天花板</span>。上班領薪水，再怎麼樣薪水總是有上限；而創業，努力多一點、眼光遠一點，成果可以超越想像。</p>
         
-        <p>第三，<span class="highlight-text">創業是實現夢想的途徑</span>。每個人心裡都有一個熱情、一個信念，也許是想開一家溫暖的店、做出一個改變世界的產品，創業就是讓這個夢想從想像變成現實的過程。</p>
+        <p>第三，<span class="highlight-text">創業是實現夢夢的途徑</span>。每個人心裡都有一個熱情、一個信念，也許是想開一家溫暖的店、做出一個改變世界的產品，創業就是讓這個夢想從想像變成現實的過程。</p>
         
         <p>還有，市場上充滿機會，每天都有無數的需求、痛點、空白等著被解決，如果我們不去抓住，別人就會搶先一步。</p>
         
         <p>更重要的是，<span class="highlight-text">創業能創造影響力</span>。您不僅是在為自己賺錢，同時也在服務客戶、帶動產業、幫助團隊，甚至改變一個社會。</p>
     </section>
 
-    <div style="text-align: center; color: #666; font-size: 0.8rem; margin-top: 60px; border-top: 1px solid #333; padding-top: 20px;">
+    <div style="text-align: center; color: var(--uni-purple); font-size: 0.9rem; margin-top: 60px; padding-top: 20px; font-weight: 800;">
         — 活力美髮學院 創業輔導系統 —
     </div>
 </div>
