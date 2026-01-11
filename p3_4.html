@@ -3,181 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>染髮課程 | 活力美髮學院</title>
-
-    <link rel="icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png" type="image/png">
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png">
+    <title>染髮課程大綱 | 專業技術培訓</title>
 
     <style>
-        /* 1. 基礎設定 */
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
-        .content-inner { padding: 20px 6% 120px 6%; }
-
-        /* 2. 右側中間垂直標籤 (跨頁導航) */
-        .floating-nav {
-            position: fixed;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            z-index: 10000;
-        }
-        .float-btn {
-            background: rgba(0, 0, 0, 0.85);
-            color: #fff !important;
-            text-decoration: none;
-            padding: 15px 10px;
-            border-radius: 12px 0 0 12px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-right: none;
-            text-align: center;
-            writing-mode: vertical-rl;
-            letter-spacing: 2px;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+        :root {
+            --primary-purple: #6c5ce7;
+            --soft-purple: #f0edff;
+            --accent-pink: #e91e63;
+            --dark-blue: #322b5f;
+            --amber: #f39c12;
         }
 
-        /* 3. 置頂子導覽列 (頁內錨點跳轉) */
-        .sub-nav {
-            display: flex;
-            gap: 12px;
-            padding: 15px 6%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            background: #fff;
-            border-bottom: 2px solid #eee;
-            position: sticky;
-            top: 0;
-            z-index: 2000;
-        }
-        .sub-nav::-webkit-scrollbar { display: none; } 
-        .sub-nav-item {
-            white-space: nowrap;
-            padding: 10px 22px;
-            background: #f0edff;
-            color: #4834d4;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 800;
-            border: 2px solid #d1c9ff;
-        }
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; }
 
-        /* 4. 標題與視覺 */
-        .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
-        .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
-        .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); margin: 0; font-weight: 900; }
-        .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: #6c5ce7; font-weight: 800; text-transform: uppercase; }
+        /* 浮動導覽 */
+        .floating-nav { position: fixed; top: 50%; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; gap: 2px; z-index: 10000; }
+        .nav-btn { background: rgba(0, 0, 0, 0.85); color: #fff !important; text-decoration: none; padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.85rem; font-weight: 800; writing-mode: vertical-rl; letter-spacing: 2px; }
 
-        .section-title { 
-            font-size: 1.35rem; margin-top: 40px; margin-bottom: 20px; font-weight: 900; 
-            border-bottom: 4px solid #fbc2eb; display: inline-block; padding-bottom: 5px;
-        }
-        
-        /* 5. 表格卡片化 */
-        .table-container { background: #fff; border: 2px solid #000; border-radius: 12px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .course-table { width: 100%; border-collapse: collapse; }
-        .course-table th { background: #fff5fa; padding: 15px; text-align: left; color: #000; font-weight: 900; border-bottom: 2px solid #fbc2eb; }
-        .course-table td { padding: 18px 15px; border-bottom: 1px solid #eee; font-weight: 700; line-height: 1.6; }
-        
-        .item-code { font-weight: 900; color: #6c5ce7; font-size: 1.1rem; }
-        
-        /* 漸層標籤 */
-        .color-tag { 
-            display: inline-block; font-size: 0.8rem; 
-            background: linear-gradient(135deg, #fbc2eb 0%, #a1c4fd 100%);
-            padding: 5px 14px; border-radius: 20px; color: #fff;
-            font-weight: 800; margin-top: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+        /* 錨點導航 */
+        .anchor-nav { display: flex; gap: 10px; padding: 15px 6%; overflow-x: auto; position: sticky; top: 0; background: #fff; z-index: 900; border-bottom: 1px solid #eee; }
+        .anchor-nav::-webkit-scrollbar { display: none; }
+        .anchor-item { white-space: nowrap; background: var(--soft-purple); color: var(--primary-purple); padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; text-decoration: none; border: 1.5px solid var(--primary-purple); }
 
-        /* 💡 色彩提示框 */
-        .color-wheel-note {
-            margin: 30px 0; padding: 25px; background: #fff;
-            border: 2px dashed #fbc2eb; border-radius: 15px;
-            text-align: center;
-        }
-        .note-text { font-size: 1rem; color: #333; font-weight: 600; line-height: 1.7; }
-        .note-text strong { color: #d63384; font-size: 1.1rem; }
+        .content-inner { padding: 30px 6% 120px 6%; box-sizing: border-box; }
+        .brand-heading h1 { font-size: 2.2rem; font-weight: 900; margin: 0; }
+        .section-title { font-size: 1.5rem; font-weight: 900; margin: 45px 0 20px 0; border-bottom: 4px solid #fbc2eb; display: inline-block; }
 
-        @media (max-width: 768px) {
-            .course-table thead { display: none; }
-            .course-table tr { display: block; padding: 20px 15px; border-bottom: 3px solid #f9f9f9; }
-            .course-table td { display: block; padding: 5px 0; border: none; width: 100%; }
-            .item-code { background: #6c5ce7; color: #fff; padding: 2px 10px; border-radius: 4px; font-size: 0.85rem; margin-bottom: 10px; display: inline-block; }
-            .course-table td:nth-child(2) { font-size: 1.15rem; font-weight: 800; }
-        }
+        /* 課程表樣式 */
+        .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; margin-bottom: 30px; font-size: 0.95rem; }
+        .table-header { background: var(--dark-blue); color: #fff; text-align: center; font-weight: 900; padding: 12px; }
+        .course-table td { padding: 12px; border: 1px solid #ddd; font-weight: 700; vertical-align: middle; }
+        .lesson-no { width: 15%; text-align: center; background: var(--soft-purple); color: var(--dark-blue); }
+        .lesson-content { width: 85%; line-height: 1.6; }
+
+        /* 成果卡片 */
+        .result-box { background: #fff; border-left: 6px solid var(--amber); padding: 20px; border-radius: 12px; margin: 15px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .result-box h4 { margin: 0 0 8px 0; color: var(--amber); font-weight: 900; }
+
+        @media (max-width: 480px) { .brand-heading h1 { font-size: 1.8rem; } .course-table { font-size: 0.85rem; } }
     </style>
 </head>
 <body>
 
 <div class="floating-nav">
-    <a href="index.html" class="float-btn">🏠回首頁</a>
-    <a href="p3_0.html" class="float-btn" style="background:#6c5ce7">📚回課程</a>
+    <a href="index.html" class="nav-btn">🏠回首頁</a>
+    <a href="p3_0.html" class="nav-btn" style="background:var(--primary-purple)">📚回課程</a>
 </div>
 
-<nav class="sub-nav">
-    <a href="#basic" class="sub-nav-item">初階染髮</a>
-    <a href="#advanced" class="sub-nav-item">進階染髮</a>
-    <a href="#expert" class="sub-nav-item">色彩專家提示</a>
+<nav class="anchor-nav">
+    <a href="#basic" class="anchor-item">🎨 染髮初階：色彩原理</a>
+    <a href="#advanced" class="anchor-item">🌈 染髮進階：高階漂染</a>
 </nav>
 
 <div class="content-inner">
     <header class="brand-heading">
-        <h1>染髮課程</h1>
-        <div class="subtitle">ARTISTIC COLORING SYSTEM</div>
+        <h1>染髮技術全大綱</h1>
+        <p style="color:var(--amber); font-weight:800; margin-top:5px;">色彩物理分析 + 系統化上色實務</p>
     </header>
 
-    <section id="basic" class="info-section">
-        <div class="section-title">初階：色彩原理與塗佈技術</div>
-        <div class="table-container">
-            <table class="course-table">
-                <thead>
-                    <tr><th style="width: 60px;">編碼</th><th>核心教學內容</th><th>實作技術重點</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td class="item-code">01</td><td>1. 頭髮顏色由來 (麥拉寧色素)<br>2. 髮根染髮實作</td><td><span class="color-tag">基礎著色原理</span></td></tr>
-                    <tr><td class="item-code">02</td><td>1. 頭髮生長由來與週期影響<br>2. 髮尾染髮實作</td><td><span class="color-tag">長度色彩銜接</span></td></tr>
-                    <tr><td class="item-code">03</td><td>1. 髮質物理結構 (皮質/表皮層)<br>2. 二段式染髮實作</td><td><span class="color-tag">結構化染髮流程</span></td></tr>
-                    <tr><td class="item-code">06</td><td>1. 基色、矯色與補色原理<br>2. 距齒挑染實作 (Zig-zag)</td><td><span class="color-tag">色彩平衡學</span></td></tr>
-                    <tr><td class="item-code">09</td><td>1. 染髮髮型解析與光影分布<br>2. 漂淺色髮實作 (Bleaching)</td><td><span class="color-tag">高端退色技術</span></td></tr>
-                    <tr><td class="item-code">10</td><td>綜合實務：自由創作 (真人實作)</td><td><span class="color-tag">綜合美感應用</span></td></tr>
-                </tbody>
-            </table>
-        </div>
+    <section id="basic">
+        <div class="section-title">一、染髮初階課程 (10 堂)</div>
+        <table class="course-table">
+            <thead>
+                <tr><th colspan="2" class="table-header">色彩科學與一段/多段式染法</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="lesson-no">1</td><td class="lesson-content">1.頭髮顏色的由來<br>2.髮根補染製作</td></tr>
+                <tr><td class="lesson-no">2</td><td class="lesson-content">1.頭髮生長由來<br>2.髮尾深染製作</td></tr>
+                <tr><td class="lesson-no">3</td><td class="lesson-content">1.頭髮物理結構<br>2.一段式染髮製作</td></tr>
+                <tr><td class="lesson-no">4</td><td class="lesson-content">1.頭髮化學結構<br>2.二段式染髮製作</td></tr>
+                <tr><td class="lesson-no">5</td><td class="lesson-content">1.染劑原理及定義<br>2.三段式染髮製作</td></tr>
+                <tr><td class="lesson-no">6</td><td class="lesson-content">1.基色、暖色與補色原理<br>2.刷補蓋白髮實務</td></tr>
+                <tr><td class="lesson-no">7</td><td class="lesson-content">1.染料鏈接與定色過濾技術<br>2.雙向高層次上色製作</td></tr>
+                <tr><td class="lesson-no">8</td><td class="lesson-content">1.染髮色相環運用<br>2.飽和均勻色製作</td></tr>
+                <tr><td class="lesson-no">9</td><td class="lesson-content">1.色彩視覺解析<br>2.冷調色系染髮製作</td></tr>
+                <tr><td class="lesson-no">10</td><td class="lesson-content">自由創作(真人)</td></tr>
+            </tbody>
+        </table>
     </section>
 
-    <div id="expert" class="color-wheel-note">
-        
-        <div class="note-text">
-            <strong>💡 色彩專家提示：</strong><br><br>
-            掌握「色環圖」是成為頂尖染髮師的第一步。了解補色（如紫克黃、綠克紅）的應用，能幫助您精準解決現場惱人的殘留底色問題。
-        </div>
+    <section id="advanced">
+        <div class="section-title">二、染髮進階課程 (10 堂)</div>
+        <table class="course-table">
+            <thead>
+                <tr><th colspan="2" class="table-header" style="background:var(--primary-purple);">高階色彩修正與創意漂染設計</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="lesson-no">1</td><td class="lesson-content">膚色判別與對應色彩<br>底色與刷染技術</td></tr>
+                <tr><td class="lesson-no">2</td><td class="lesson-content">色彩概論與配色技巧<br>底色與挑染視覺對照</td></tr>
+                <tr><td class="lesson-no">3</td><td class="lesson-content">國際色標的認識<br>漸層刷色飽和染髮</td></tr>
+                <tr><td class="lesson-no">4</td><td class="lesson-content">色彩混合對比<br>單片網狀噴漆染髮</td></tr>
+                <tr><td class="lesson-no">5</td><td class="lesson-content">五戒色處理<br>厚層片染實務</td></tr>
+                <tr><td class="lesson-no">6</td><td class="lesson-content">漂染髮色原理<br>線狀染髮→耳圈染上色製作</td></tr>
+                <tr><td class="lesson-no">7</td><td class="lesson-content">混合髮的決策<br>V型染髮</td></tr>
+                <tr><td class="lesson-no">8</td><td class="lesson-content">染髮色彩維型<br>階梯式染髮</td></tr>
+                <tr><td class="lesson-no">9</td><td class="lesson-content">色彩視覺移動<br>三區區分區塊染</td></tr>
+                <tr><td class="lesson-no">10</td><td class="lesson-content">自由創作(真人)</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div class="result-box">
+        <h4>學習核心價值</h4>
+        <p>• 徹底掌握「一段、二段、三段式」染髮的化學鏈接原理。</p>
+        <p>• 攻克高難度「五戒色」與冷調色系色彩修正。</p>
+        <p>• 實作當前最流行之「耳圈染」、「區塊染」與「漸層刷色」技術。</p>
     </div>
 
-    <section id="advanced" class="info-section">
-        <div class="section-title" style="border-bottom-color: #a1c4fd;">進階：高端配色與商業髮藝</div>
-        <div class="table-container">
-            <table class="course-table">
-                <thead>
-                    <tr><th style="width: 60px;">編碼</th><th>課程內容</th><th>進階藝術應用</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td class="item-code">01</td><td>膚色判別與對應色彩 (冷暖調)<br>薄片刮梳染實務</td><td><span class="color-tag">個人色彩鑑定</span></td></tr>
-                    <tr><td class="item-code">04</td><td>染膏色度計算與雙氧配比<br>薄片細鋸齒挑染</td><td><span class="color-tag">精準調色科學</span></td></tr>
-                    <tr><td class="item-code">06</td><td>漂粉褪色原理與髮質防護<br>特殊區域染：耳圈、瀏海染</td><td><span class="color-tag">區域色彩設計</span></td></tr>
-                    <tr><td class="item-code">07</td><td>蓋白髮訣竅與多色融合<br>V 線染 (Balayage)</td><td><span class="color-tag">機能型技術</span></td></tr>
-                    <tr><td class="item-code">10</td><td>畢業展演：商業髮藝自由設計</td><td><span class="color-tag">商業髮藝展現</span></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+    <div style="text-align: center; color: #888; font-size: 0.9rem; margin-top: 50px;">
+        — 活力美髮學院 專業色彩培訓系統 —
+    </div>
 </div>
 
 </body>
 </html>
-
