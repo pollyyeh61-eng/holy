@@ -3,66 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>二年制專班 | 專業課程期程</title>
+    <title>二年制專班 | 活力美髮學院</title>
 
     <link rel="icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png" type="image/png">
     
     <style>
         :root {
             --primary-purple: #6c5ce7;
+            --dark-blue: #322b5f;
             --soft-purple: #f0edff;
             --accent-pink: #e91e63;
-            --pure-black: #000000;
+            --gray-bg: #f8f9fa;
         }
 
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; }
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fff; color: #333; line-height: 1.6; }
 
-        /* 浮動導覽 (右側) */
-        .floating-nav {
-            position: fixed; top: 50%; right: 0; transform: translateY(-50%);
-            display: flex; flex-direction: column; gap: 2px; z-index: 10000;
-        }
-        .nav-btn {
-            background: rgba(0, 0, 0, 0.85); color: #fff !important; text-decoration: none;
-            padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.85rem; font-weight: 800;
-            writing-mode: vertical-rl; letter-spacing: 2px; box-shadow: -2px 0 10px rgba(0,0,0,0.2);
-        }
+        /* 導覽 */
+        .floating-nav { position: fixed; top: 50%; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; gap: 2px; z-index: 10000; }
+        .nav-btn { background: rgba(0, 0, 0, 0.85); color: #fff !important; text-decoration: none; padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.85rem; font-weight: 800; writing-mode: vertical-rl; letter-spacing: 2px; }
 
-        /* 錨點導航 (頂部) */
-        .anchor-nav {
-            display: flex; gap: 10px; padding: 15px 6%; overflow-x: auto;
-            position: sticky; top: 0; background: #fff; z-index: 900; border-bottom: 1px solid #eee;
-        }
+        .anchor-nav { display: flex; gap: 10px; padding: 15px 6%; overflow-x: auto; position: sticky; top: 0; background: #fff; z-index: 900; border-bottom: 1px solid #eee; }
         .anchor-nav::-webkit-scrollbar { display: none; }
-        .anchor-item {
-            white-space: nowrap; background: var(--soft-purple); color: var(--primary-purple);
-            padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.9rem;
-            text-decoration: none; border: 1.5px solid var(--primary-purple);
-        }
+        .anchor-item { white-space: nowrap; background: var(--soft-purple); color: var(--primary-purple); padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.85rem; text-decoration: none; border: 1px solid var(--primary-purple); }
 
         .content-inner { padding: 30px 6% 120px 6%; box-sizing: border-box; }
-        .brand-heading h1 { font-size: 2.2rem; font-weight: 900; margin: 0; }
-        .section-title { font-size: 1.5rem; font-weight: 900; margin: 45px 0 20px 0; border-bottom: 4px solid #fbc2eb; display: inline-block; }
+        .brand-heading h1 { font-size: 2.2rem; font-weight: 900; margin: 0; color: var(--dark-blue); }
+        .section-title { font-size: 1.5rem; font-weight: 900; margin: 40px 0 20px 0; border-bottom: 4px solid #fbc2eb; display: inline-block; }
 
-        /* 卡片設計 */
-        .info-card {
-            background: #fff; border: 1px solid #eee; border-left: 6px solid var(--primary-purple);
-            padding: 20px; border-radius: 12px; margin: 15px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        .info-card h4 { margin: 0 0 10px 0; color: var(--primary-purple); font-weight: 900; }
-        .info-card p, .info-card li { margin: 5px 0; font-weight: 600; color: #333; list-style: none; }
+        /* 通用卡片 */
+        .info-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 20px; margin: 15px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .info-card h4 { margin: 0 0 10px 0; color: var(--primary-purple); font-weight: 900; border-left: 4px solid var(--primary-purple); padding-left: 10px; }
+        .info-card ul { padding-left: 20px; margin: 0; }
+        .info-card li { margin-bottom: 8px; font-weight: 600; font-size: 0.95rem; }
 
-        /* 課表清單 */
-        .course-list { background: #fff; border: 2px solid #000; border-radius: 8px; overflow: hidden; margin-top: 15px; }
-        .course-list-header { background: #322b5f; color: #fff; padding: 12px; font-weight: 900; text-align: center; }
-        .course-row { display: flex; justify-content: space-between; padding: 15px; border-bottom: 1px solid #eee; font-weight: 700; }
-        .course-row:last-child { border-bottom: none; }
-        .tag-blue { background: #e3f2fd; color: #1976d2; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+        /* 路徑圖樣式 */
+        .pathway { background: var(--gray-bg); padding: 30px 20px; border-radius: 20px; text-align: center; }
+        .step-box { background: #fff; border: 2px solid var(--dark-blue); padding: 15px; border-radius: 10px; margin: 10px auto; max-width: 300px; position: relative; }
+        .arrow { font-size: 1.5rem; color: var(--primary-purple); margin: 5px 0; }
+        .split-path { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
+        .path-a, .path-b { flex: 1; background: #fff; border: 2px dashed var(--primary-purple); padding: 10px; border-radius: 10px; font-size: 0.85rem; }
 
-        /* 提醒區塊 */
-        .note-box { background: #fff9db; padding: 15px; border-radius: 8px; border: 1px solid #fab005; margin-top: 10px; font-size: 0.95rem; font-weight: 700; }
+        /* 價格表 */
+        .price-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-weight: 700; }
+        .price-table td { padding: 12px; border-bottom: 1px solid #eee; }
+        .price-tag { color: var(--accent-pink); text-align: right; }
 
-        @media (max-width: 480px) { .brand-heading h1 { font-size: 1.8rem; } }
+        @media (max-width: 480px) { .brand-heading h1 { font-size: 1.8rem; } .split-path { flex-direction: column; } }
     </style>
 </head>
 <body>
@@ -73,83 +59,95 @@
 </div>
 
 <nav class="anchor-nav">
-    <a href="#schedule" class="anchor-item">📅 上課期程</a>
-    <a href="#year1" class="anchor-item">❶ 第一年</a>
-    <a href="#year2" class="anchor-item">❷ 第二年</a>
-    <a href="#year3" class="anchor-item">❸ 第三年</a>
+    <a href="#reason" class="anchor-item">💡 設置原因</a>
+    <a href="#who" class="anchor-item">👥 適合對象</a>
+    <a href="#price" class="anchor-item">💰 期程收費</a>
+    <a href="#path" class="anchor-item">🗺️ 養成路徑</a>
 </nav>
 
 <div class="content-inner">
     <header class="brand-heading">
-        <h1>二年制專班</h1>
-        <p style="color:var(--primary-purple); font-weight:800; margin-top:5px;">(預錄課程 + 實體課程)</p>
+        <h1>二年制專業人才專班</h1>
+        <p style="color:var(--primary-purple); font-weight:800; margin-top:5px;">全方位美髮職涯養成系統</p>
     </header>
 
-    <section id="schedule">
-        <div class="section-title">一、修業年限與期程</div>
+    <section id="reason">
+        <div class="section-title">一、設置原因</div>
         <div class="info-card">
-            <h4>修業年限</h4>
-            <p>• 2 年必修 + 1 年選修</p>
-            <p>• 期程：每期 10 週</p>
-            <p>• 頻率：每週一次課程 (6小時)</p>
-        </div>
-        <div class="info-card" style="border-left-color: var(--accent-pink);">
-            <h4>招生資訊 (每三個月一期)</h4>
-            <p>• 春季班：3月 - 5月</p>
-            <p>• 夏季班：6月 - 8月</p>
-            <p>• 秋季班：9月 - 11月</p>
-            <p>• 冬季班：12月 - 2月</p>
+            <h4>系統化培訓</h4>
+            <p>美髮技術需長期累積，二年制涵蓋「基礎→進階→講師/創業」，避免片段學習，掌握全方位能力。</p>
         </div>
         <div class="info-card">
-            <h4>教學特色</h4>
-            <p>• <strong>老師即時指導</strong>：確保學習內容落實到技術。</p>
-            <p>• <strong>成果可視化</strong>：每期安排作品發表或專題展。</p>
+            <h4>符合產業標準</h4>
+            <p>養成專業設計師平均需 1.5–2 年。本專班縮短職場適應期，畢業即具備即戰力。</p>
+        </div>
+        <div class="info-card">
+            <h4>產學資源整合</h4>
+            <p>結合實習模式與品牌合作，累積實務經驗，提供畢業後的就業與創業資源。</p>
         </div>
     </section>
 
-    <section id="year1">
-        <div class="section-title">二、第一年必修課程</div>
-        <div class="course-list">
-            <div class="course-list-header">基礎技術建構期</div>
-            <div class="course-row"><span>L1：剪髮基礎班</span><span class="tag-blue">10 週</span></div>
-            <div class="course-row"><span>L2：燙髮基礎班</span><span class="tag-blue">10 週</span></div>
-            <div class="course-row"><span>L3：染髮基礎班</span><span class="tag-blue">10 週</span></div>
-            <div class="course-row"><span>L4：丙級檢定班</span><span class="tag-blue">10 週</span></div>
-        </div>
-        <div class="note-box">
-            📍 <strong>線下技術練習：</strong><br>
-            時間：上午 9-12 或 下午 2-5<br>
-            說明：導師陪同指導，需填寫預約表排時間。
+    <section id="who">
+        <div class="section-title">二、適合什麼人來唸</div>
+        <div class="info-card" style="background:var(--soft-purple);">
+            <ul>
+                <li><strong>零基礎新手：</strong>對時尚有興趣、想轉職，追求系統性學習者。</li>
+                <li><strong>助理升級：</strong>已在沙龍 1-2 年，缺乏系統培訓想快速升設計師者。</li>
+                <li><strong>技術再進修：</strong>想精進剪染燙，並學習顧客經營與管理。</li>
+                <li><strong>創業預備軍：</strong>想從員工轉型老闆，學習完整經營行銷系統。</li>
+                <li><strong>國際留學族：</strong>欲累積專業履歷，增加海外工作機會。</li>
+            </ul>
         </div>
     </section>
 
-    <section id="year2">
-        <div class="section-title">三、第二年必修課程</div>
-        <div class="course-list">
-            <div class="course-list-header" style="background:#4834d4;">專業技術進階期</div>
-            <div class="course-row"><span>L1：剪髮進階班</span><span class="tag-blue">10 週</span></div>
-            <div class="course-row"><span>L2：燙髮進階班</span><span class="tag-blue">10 週</span></div>
-            <div class="course-row"><span>L3：染髮進階班</span><span class="tag-blue">10 週</span></div>
-            <div class="course-row"><span>L4：乙級檢定班</span><span class="tag-blue">10 週</span></div>
-        </div>
-        <div class="note-box">
-            📍 <strong>上課方式：</strong> 線上預錄課程搭配線下技術練習。
+    <section id="price">
+        <div class="section-title">三、期程與收費</div>
+        <div class="info-card">
+            <h4>修業資訊</h4>
+            <p>• 2 年必修 + 1 年選修<br>• 每期 10 週，每週一次課程 (6小時)<br>• 招生：春秋夏冬四季開班</p>
+            
+            <p style="margin-top:20px; color:var(--primary-purple); font-weight:900;">[ 第一年必修 ]</p>
+            <table class="price-table">
+                <tr><td>剪/燙/染基礎班 (各10週)</td><td class="price-tag">NT$30,000 /期</td></tr>
+                <tr><td>丙級檢定班 (10週)</td><td class="price-tag">NT$30,000</td></tr>
+            </table>
+
+            <p style="margin-top:20px; color:var(--primary-purple); font-weight:900;">[ 第二年必修 ]</p>
+            <table class="price-table">
+                <tr><td>剪/燙/染進階班 (各10週)</td><td class="price-tag">NT$30,000 /期</td></tr>
+                <tr><td>乙級檢定班 (10週)</td><td class="price-tag">NT$60,000</td></tr>
+            </table>
+
+            <p style="margin-top:20px; color:var(--primary-purple); font-weight:900;">[ 第三年選修 ]</p>
+            <table class="price-table">
+                <tr><td>講師/創業分流班 (10節直播)</td><td class="price-tag">NT$60,000</td></tr>
+            </table>
         </div>
     </section>
 
-    <section id="year3">
-        <div class="section-title">四、第三年選修 (分流)</div>
-        <div class="info-card" style="border-left-color: #6c5ce7;">
-            <h4>L1：講師分流班 (直播)</h4>
-            <p>期程：10 節課</p>
-            <p>核心：教案設計、講台表達培訓</p>
-        </div>
-        <div class="info-card" style="border-left-color: #20bf6b;">
-            <h4>L2：創業分流班 (直播)</h4>
-            <p>期程：10 節課</p>
-            <p>核心：創業計劃書撰寫、個人品牌打造</p>
+    <section id="path">
+        <div class="section-title">四、學員養成路徑圖</div>
+        <div class="pathway">
+            <div class="step-box"><b>起點：零基礎 / 助理</b><br><small>對美髮感興趣之社會新鮮人</small></div>
+            <div class="arrow">⬇️</div>
+            <div class="step-box" style="border-color:var(--primary-purple);"><b>基礎創業班 (第1年)</b><br><small>剪染燙基礎 + 丙級證照</small></div>
+            <div class="arrow">⬇️</div>
+            <div class="step-box" style="border-color:var(--accent-pink);"><b>技術進階班 (第2年)</b><br><small>強化設計思維 + 乙級證照</small></div>
+            <div class="arrow">⬇️</div>
+            <div class="split-path">
+                <div class="path-a">
+                    <b>A 路徑：教育講師</b><br><small>教案設計與演說<br>出路：美髮名師</small>
+                </div>
+                <div class="path-b">
+                    <b>B 路徑：品牌經營</b><br><small>財務行銷與管理<br>出路：沙龍創業者</small>
+                </div>
+            </div>
         </div>
     </section>
+
+    <div style="text-align: center; color: #888; font-size: 0.9rem; margin-top: 50px;">
+        — 活力美髮學院 專業二年制教育系統 —
+    </div>
 </div>
 
 </body>
