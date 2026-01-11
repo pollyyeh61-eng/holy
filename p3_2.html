@@ -10,13 +10,13 @@
 
     <style>
         /* 1. 基礎設定 */
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; }
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
         .content-inner { padding: 20px 6% 120px 6%; }
 
-        /* 2. 修正：右側中間側邊標籤 (全域統一位置) */
+        /* 2. 右側中間側邊標籤 (負責跳轉頁面) */
         .floating-nav {
             position: fixed;
-            top: 50%; /* 垂直置中 */
+            top: 50%;
             right: 0;
             transform: translateY(-50%);
             display: flex;
@@ -29,19 +29,19 @@
             color: #fff !important;
             text-decoration: none;
             padding: 15px 10px;
-            border-radius: 12px 0 0 12px; /* 左側圓角 */
+            border-radius: 12px 0 0 12px;
             font-size: 0.85rem;
             font-weight: 800;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255,255,255,0.2);
             border-right: none;
             text-align: center;
-            writing-mode: vertical-rl; /* 文字直式排列 */
+            writing-mode: vertical-rl;
             letter-spacing: 2px;
             box-shadow: -2px 0 10px rgba(0,0,0,0.2);
         }
 
-        /* 3. 置頂子導覽列 */
+        /* 3. 置頂子導覽列 (負責本頁內跳轉) */
         .sub-nav {
             display: flex;
             gap: 12px;
@@ -67,7 +67,6 @@
             font-weight: 800;
             border: 2px solid #d1c9ff;
         }
-        .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
         /* 4. 標題與視覺 */
         .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
@@ -76,7 +75,7 @@
         .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: #4834d4; font-weight: 800; text-transform: uppercase; }
 
         .section-title { 
-            font-size: 1.4rem; margin-bottom: 20px; font-weight: 900; 
+            font-size: 1.4rem; margin-top: 40px; margin-bottom: 20px; font-weight: 900; 
             border-bottom: 4px solid #fbc2eb; display: inline-block; padding-bottom: 5px;
         }
         
@@ -110,12 +109,9 @@
 </div>
 
 <nav class="sub-nav">
-    <a href="p3.html" class="sub-nav-item">課程說明</a>
-    <a href="p3_1.html" class="sub-nav-item">二年制專班</a>
-    <a href="p3_2.html" class="sub-nav-item active">剪髮課程</a>
-    <a href="p3_3.html" class="sub-nav-item">燙髮課程</a>
-    <a href="p3_4.html" class="sub-nav-item">染髮課程</a>
-    <a href="p3_5.html" class="sub-nav-item">講師/創業</a>
+    <a href="#basic" class="sub-nav-item">初階課程大綱</a>
+    <a href="#advanced" class="sub-nav-item">進階課程大綱</a>
+    <a href="#logic" class="sub-nav-item">剪髮核心邏輯</a>
 </nav>
 
 <div class="content-inner">
@@ -124,7 +120,7 @@
         <div class="subtitle">PRECISION CUTTING SYSTEM</div>
     </header>
 
-    <section class="info-section">
+    <section id="basic" class="info-section">
         <div class="section-title">剪髮初階課程</div>
         <div class="table-container">
             <table class="course-table">
@@ -147,7 +143,7 @@
         </div>
     </section>
 
-    <section class="info-section">
+    <section id="advanced" class="info-section">
         <div class="section-title" style="border-bottom-color: #6c5ce7;">剪髮進階課程</div>
         <div class="table-container">
             <table class="course-table">
@@ -168,6 +164,12 @@
                 </tbody>
             </table>
         </div>
+    </section>
+
+    <section id="logic" style="padding: 30px; background: #f8faff; border-radius: 15px; margin-top: 20px;">
+        <h3 style="margin-top:0;">💡 剪髮設計邏輯</h3>
+        <p style="font-weight:600; line-height:1.7;">所有的美感都來自於幾何的精密運算。透過本課程，你將學會如何觀察頭骨結構，並運用點、線、面創造出平衡且具備商業價值的髮型。</p>
+        
     </section>
 </div>
 
