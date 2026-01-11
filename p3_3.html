@@ -10,10 +10,10 @@
 
     <style>
         /* 1. 基礎設定 */
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; }
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
         .content-inner { padding: 20px 6% 120px 6%; }
 
-        /* 2. 右側中間側邊標籤 (全域統一) */
+        /* 2. 右側中間側邊標籤 (跨頁跳轉) */
         .floating-nav {
             position: fixed;
             top: 50%;
@@ -41,7 +41,7 @@
             box-shadow: -2px 0 10px rgba(0,0,0,0.2);
         }
 
-        /* 3. 置頂子導覽列 */
+        /* 3. 置頂子導覽列 (頁內錨點跳轉) */
         .sub-nav {
             display: flex;
             gap: 12px;
@@ -67,7 +67,6 @@
             font-weight: 800;
             border: 2px solid #d1c9ff;
         }
-        .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
         /* 4. 標題與視覺 */
         .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
@@ -76,7 +75,7 @@
         .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: #4834d4; font-weight: 800; text-transform: uppercase; }
 
         .section-title { 
-            font-size: 1.4rem; margin-bottom: 20px; font-weight: 900; 
+            font-size: 1.4rem; margin-top: 40px; margin-bottom: 20px; font-weight: 900; 
             border-bottom: 4px solid #a1c4fd; display: inline-block; padding-bottom: 5px;
         }
         
@@ -110,12 +109,9 @@
 </div>
 
 <nav class="sub-nav">
-    <a href="p3.html" class="sub-nav-item">課程說明</a>
-    <a href="p3_1.html" class="sub-nav-item">二年制專班</a>
-    <a href="p3_2.html" class="sub-nav-item">剪髮課程</a>
-    <a href="p3_3.html" class="sub-nav-item active">燙髮課程</a>
-    <a href="p3_4.html" class="sub-nav-item">染髮課程</a>
-    <a href="p3_5.html" class="sub-nav-item">講師/創業</a>
+    <a href="#basic" class="sub-nav-item">初階燙髮大綱</a>
+    <a href="#advanced" class="sub-nav-item">進階燙髮大綱</a>
+    <a href="#concept" class="sub-nav-item">燙髮原理概論</a>
 </nav>
 
 <div class="content-inner">
@@ -124,7 +120,7 @@
         <div class="subtitle">CHEMICAL & TEXTURE SYSTEM</div>
     </header>
 
-    <section class="info-section">
+    <section id="basic" class="info-section">
         <div class="section-title">燙髮初階課程</div>
         <div class="table-container">
             <table class="course-table">
@@ -147,7 +143,7 @@
         </div>
     </section>
 
-    <section class="info-section">
+    <section id="advanced" class="info-section">
         <div class="section-title" style="border-bottom-color: #6c5ce7;">燙髮進階課程</div>
         <div class="table-container">
             <table class="course-table">
@@ -164,12 +160,4 @@
                     <tr><td class="item-code">7</td><td>1. 燙後整理技巧教學<br>2. 直立髮中繞燙</td><td><span class="tech-tag">售後造型指導</span></td></tr>
                     <tr><td class="item-code">8</td><td>1. 熱塑燙優缺點評估<br>2. 直立平行螺捲</td><td><span class="tech-tag">技術效益評估</span></td></tr>
                     <tr><td class="item-code">9</td><td>1. 燙髮造型美學設計<br>2. 人魚燙操作</td><td><span class="tech-tag">美感造型提升</span></td></tr>
-                    <tr><td class="item-code">10</td><td>綜合實戰驗收 (真人實作)</td><td><span class="tech-tag">實戰能力展示</span></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-</div>
-
-</body>
-</html>
+                    <tr><td class="item-code">10</td><td>綜合實戰驗收 (真人實作
