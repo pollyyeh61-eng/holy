@@ -1,124 +1,139 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>專業課程說明 | 活力美髮學院</title>
 
-<style>
-    /* 1. 基礎設定與容器 */
-    body { margin: 0; font-family: -apple-system, sans-serif; background: #fdfdfd; color: #000; }
-    .content-inner { padding: 0 6% 120px 6%; }
-    
-    /* 2. 右側中間浮動按鍵 (修正位置) */
-    .floating-nav { 
-        position: fixed; 
-        top: 50%; /* 垂直居中 */
-        right: 0; /* 貼齊右側 */
-        transform: translateY(-50%); /* 精準對齊中點 */
-        display: flex; 
-        flex-direction: column; 
-        z-index: 10000; /* 層級最高，確保不被任何東西遮擋 */
-    }
-    
-    .float-btn { 
-        background: rgba(0, 0, 0, 0.85); 
-        color: #fff !important; 
-        text-decoration: none; 
-        padding: 12px 10px; /* 寬度略窄，高度適中 */
-        border-radius: 12px 0 0 12px; /* 左側圓角 */
-        font-size: 0.85rem; 
-        font-weight: 800; 
-        backdrop-filter: blur(5px); 
-        border: 1px solid rgba(255,255,255,0.2); 
-        border-right: none;
-        text-align: center;
-        writing-mode: vertical-rl; /* 讓文字垂直排列，更省空間 */
-        letter-spacing: 2px;
-        box-shadow: -2px 0 10px rgba(0,0,0,0.2);
-    }
+    <link rel="icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png">
 
-    /* 3. 子導覽列：手機頂部固定 */
-    .sub-nav {
-        display: flex;
-        gap: 12px;
-        margin: 0 -6% 25px -6%; 
-        padding: 15px 6%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        background: #fff;
-        border-bottom: 2px solid #eee;
-        position: sticky;
-        top: 0;
-        z-index: 2000;
-    }
-    .sub-nav::-webkit-scrollbar { display: none; } 
+    <style>
+        /* 1. 基礎設定與容器 */
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
+        .content-inner { padding: 0 6% 120px 6%; }
+        
+        /* 2. 右側中間浮動按鍵 */
+        .floating-nav { 
+            position: fixed; 
+            top: 50%; 
+            right: 0; 
+            transform: translateY(-50%); 
+            display: flex; 
+            flex-direction: column; 
+            z-index: 10000; 
+        }
+        .float-btn { 
+            background: rgba(0, 0, 0, 0.85); 
+            color: #fff !important; 
+            text-decoration: none; 
+            padding: 12px 10px; 
+            border-radius: 12px 0 0 12px; 
+            font-size: 0.85rem; 
+            font-weight: 800; 
+            backdrop-filter: blur(5px); 
+            border: 1px solid rgba(255,255,255,0.2); 
+            border-right: none;
+            text-align: center;
+            writing-mode: vertical-rl;
+            letter-spacing: 2px;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+        }
 
-    .sub-nav-item {
-        white-space: nowrap;
-        padding: 10px 22px;
-        background: #f0edff;
-        color: #4834d4;
-        text-decoration: none;
-        border-radius: 50px;
-        font-size: 0.95rem;
-        font-weight: 800;
-        border: 2px solid #d1c9ff;
-    }
-    .sub-nav-item.active {
-        background: #322b5f;
-        color: #fff;
-        border-color: #322b5f;
-    }
+        /* 3. 優化：全覽式網格導航 (解決 8 個按鈕太隱密的問題) */
+        .sub-nav-container {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 2000;
+            border-bottom: 2px solid #eee;
+            padding: 12px 4%;
+            margin-bottom: 25px;
+        }
+        .sub-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 平板/電腦 4 欄 */
+            gap: 8px;
+        }
+        .sub-nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 2px;
+            background: #f0edff;
+            color: #4834d4;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            border: 1.5px solid #d1c9ff;
+            text-align: center;
+            transition: 0.2s;
+        }
+        .sub-nav-item.active {
+            background: #322b5f;
+            color: #fff;
+            border-color: #322b5f;
+        }
 
-    /* 4. 標題與內容區塊 */
-    .brand-heading { 
-        position: relative; 
-        padding-left: 20px; 
-        margin-top: 10px;
-        margin-bottom: 30px; 
-    }
-    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
-    .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin: 0; font-weight: 900; letter-spacing: 1px; }
-    .brand-heading .subtitle { font-size: 0.85rem; letter-spacing: 3px; color: #4834d4; font-weight: 800; text-transform: uppercase; margin-top: 5px; }
+        /* 4. 標題與內容區塊 */
+        .brand-heading { 
+            position: relative; 
+            padding-left: 20px; 
+            margin-top: 20px;
+            margin-bottom: 30px; 
+        }
+        .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
+        .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin: 0; font-weight: 900; letter-spacing: 1px; }
+        .brand-heading .subtitle { font-size: 0.85rem; letter-spacing: 3px; color: #4834d4; font-weight: 800; text-transform: uppercase; margin-top: 5px; }
 
-    .concept-box { 
-        background: #fff; 
-        padding: 25px; 
-        border-radius: 12px; 
-        margin-bottom: 30px; 
-        border: 1.5px solid #ddd;
-        border-left: 8px solid #6c5ce7;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    }
-    .concept-box h4 { margin-top: 0; font-size: 1.3rem; font-weight: 900; margin-bottom: 12px; }
-    .concept-box p { font-size: 1.1rem; line-height: 1.9; font-weight: 600; margin: 0; }
-    .highlight-text { color: #e91e63; font-weight: 900; border-bottom: 2px solid #e91e63; }
+        .concept-box { 
+            background: #fff; 
+            padding: 25px; 
+            border-radius: 12px; 
+            margin-bottom: 30px; 
+            border: 1.5px solid #ddd;
+            border-left: 8px solid #6c5ce7;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .concept-box h4 { margin-top: 0; font-size: 1.3rem; font-weight: 900; margin-bottom: 12px; }
+        .concept-box p { font-size: 1.1rem; line-height: 1.9; font-weight: 600; margin: 0; }
+        .highlight-text { color: #e91e63; font-weight: 900; border-bottom: 2px solid #e91e63; }
 
-    /* 5. 表格優化 */
-    .section-title { font-size: 1.5rem; margin-bottom: 20px; font-weight: 900; border-bottom: 4px solid #fbc2eb; display: inline-block; }
-    .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; }
-    .course-category { font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; font-size: 1.2rem; text-align: center; }
-    .course-table td { padding: 18px 15px; border-bottom: 1px solid #eee; font-weight: 700; }
-    .result-tag { display: inline-block; background: #6c5ce7; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-top: 8px; font-weight: 800; }
+        /* 5. 表格優化 */
+        .section-title { font-size: 1.5rem; margin-bottom: 20px; font-weight: 900; border-bottom: 4px solid #fbc2eb; display: inline-block; }
+        .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; }
+        .course-category { font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; font-size: 1.2rem; text-align: center; }
+        .course-table td { padding: 18px 15px; border-bottom: 1px solid #eee; font-weight: 700; }
+        .result-tag { display: inline-block; background: #6c5ce7; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-top: 8px; font-weight: 800; }
 
-    @media (max-width: 768px) {
-        .course-table tr { display: flex; flex-direction: column; border-bottom: 2px solid #322b5f; }
-        .course-table td { width: 100%; box-sizing: border-box; text-align: left; }
-        .course-table td:nth-child(2) { background: #f9faff; padding-top: 0; padding-bottom: 20px; color: #444; font-size: 1rem; }
-    }
-</style>
+        /* 手機端調整 */
+        @media (max-width: 600px) {
+            .sub-nav-grid { grid-template-columns: repeat(2, 1fr); } /* 手機 2 欄 x 4 列 */
+            .course-table tr { display: flex; flex-direction: column; border-bottom: 2px solid #322b5f; }
+            .course-table td { width: 100%; box-sizing: border-box; text-align: left; }
+            .course-table td:nth-child(2) { background: #f9faff; padding-top: 0; padding-bottom: 20px; color: #444; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
 
 <div class="floating-nav">
     <a href="index.html" class="float-btn">🏠回首頁</a>
 </div>
 
-<nav class="sub-nav">
-    <a href="p3.html" class="sub-nav-item active">課程說明</a>
-    <a href="p3_1.html" class="sub-nav-item">二年制專班</a>
-    <a href="p3_2.html" class="sub-nav-item">剪髮課程</a>
-    <a href="p3_3.html" class="sub-nav-item">燙髮課程</a>
-    <a href="p3_4.html" class="sub-nav-item">染髮課程</a>
-    <a href="p3_5.html" class="sub-nav-item">講師課程</a>
-    <a href="p3_6.html" class="sub-nav-item">創業課程</a>
-    <a href="p3_7.html" class="sub-nav-item">寫書課程</a>
-</nav>
+<div class="sub-nav-container">
+    <div class="sub-nav-grid">
+        <a href="p3.html" class="sub-nav-item active">課程說明</a>
+        <a href="p3_1.html" class="sub-nav-item">二年專班</a>
+        <a href="p3_2.html" class="sub-nav-item">剪髮課程</a>
+        <a href="p3_3.html" class="sub-nav-item">燙髮課程</a>
+        <a href="p3_4.html" class="sub-nav-item">染髮課程</a>
+        <a href="p3_5.html" class="sub-nav-item">講師培訓</a>
+        <a href="p3_6.html" class="sub-nav-item">創業經營</a>
+        <a href="p3_7.html" class="sub-nav-item">寫書出版</a>
+    </div>
+</div>
 
 <div class="content-inner">
     <section class="brand-heading">
@@ -145,6 +160,7 @@
 
     <section class="info-section">
         <div class="section-title">三、課程架構表</div>
+        
         <table class="course-table">
             <thead>
                 <tr><td colspan="2" class="course-category">一、技術技能類 (預錄+實體)</td></tr>
@@ -177,3 +193,6 @@
         </table>
     </section>
 </div>
+
+</body>
+</html>
