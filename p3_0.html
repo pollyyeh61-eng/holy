@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>專業課程說明 | 活力美髮學院</title>
+
+    <style>
+        /* 基礎設定 */
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
+        .content-inner { padding: 0 6% 120px 6%; }
+        
+        /* 【絕對鎖定】右側回首頁 */
+        #fixed-home-btn { 
+            position: fixed !important; 
+            top: 50% !important; 
+            right: 0 !important; 
+            transform: translateY(-50%) !important; 
+            z-index: 2147483647 !important;
+        }
+        .float-btn-home { 
+            background: rgba(0, 0, 0, 0.9); color: #fff !important; text-decoration: none; 
+            padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.9rem; font-weight: 800; 
+            writing-mode: vertical-rl; letter-spacing: 2px; display: block;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* 【絕對鎖定】右下角回頂部 */
+        #fixed-top-btn {
+            position: fixed !important; 
+            bottom: 30px !important; 
+            right: 20px !important; 
+            width: 55px; height: 55px; background: #322b5f; color: #fff !important;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; font-size: 1.5rem; z-index: 2147483647 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        /* 頂部 8 格網格目錄 (隨內容捲動) */
+        .sub-nav-container { background: #fff; border-bottom: 2px solid #eee; padding: 20px 4%; margin-bottom: 25px; }
+        .sub-nav-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .sub-nav-item {
+            display: flex; align-items: center; justify-content: center; padding: 12px 2px;
+            background: #f0edff; color: #4834d4; text-decoration: none; border-radius: 8px;
+            font-size: 0.85rem; font-weight: 800; border: 1.5px solid #d1c9ff; text-align: center;
+        }
+        .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
+
+        /* 內容樣式 */
+        .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
+        .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
+        .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin: 0; font-weight: 900; }
+        .concept-box { background: #fff; padding: 25px; border-radius: 12px; margin-bottom: 30px; border: 1.5px solid #ddd; border-left: 8px solid #6c5ce7; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .highlight-text { color: #e91e63; font-weight: 900; border-bottom: 2px solid #e91e63; }
+        .section-title { font-size: 1.5rem; margin-bottom: 20px; font-weight: 900; border-bottom: 4px solid #fbc2eb; display: inline-block; }
+        .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; }
+        .course-category { font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; text-align: center; }
+        .course-table td { padding: 18px 15px; border-bottom: 1px solid #eee; font-weight: 700; }
+        .result-tag { display: inline-block; background: #6c5ce7; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-top: 8px; font-weight: 800; }
+
+        @media (max-width: 768px) {
+            .sub-nav-grid { grid-template-columns: repeat(2, 1fr); }
+            .course-table tr { display: flex; flex-direction: column; border-bottom: 2px solid #322b5f; }
+            .course-table td { width: 100%; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="fixed-home-btn">
+    <a href="index.html" class="float-btn-home">🏠回首頁</a>
+</div>
+
+<a href="#" id="fixed-top-btn">▲</a>
+
+<div class="sub-nav-container">
+    <div class="sub-nav-grid">
+        <a href="p3.html" class="sub-nav-item active">課程說明</a>
+        <a href="p3_1.html" class="sub-nav-item">二年專班</a>
+        <a href="p3_2.html" class="sub-nav-item">剪髮課程</a>
+        <a href="p3_3.html" class="sub-nav-item">燙髮課程</a>
+        <a href="p3_4.html" class="sub-nav-item">染髮課程</a>
+        <a href="p3_5.html" class="sub-nav-item">講師培訓</a>
+        <a href="p3_6.html" class="sub-nav-item">創業經營</a>
+        <a href="p3_7.html" class="sub-nav-item">寫書出版</a>
+    </div>
+</div>
+
+<div class="content-inner">
+    <section class="brand-heading">
+        <h1>專業課程說明</h1>
+        <p style="color: #4834d4; font-weight: 800; letter-spacing: 2px; margin: 5px 0 0 0;">VITALITY ACADEMY COURSES</p>
+    </section>
+
+    <div class="concept-box">
+        <h4>1. 雙軌學習模式</h4>
+        <p>課程依照學習邏輯循序漸進，從基礎到進階，每一步都環環相扣。</p>
+    </div>
+
+    <div class="concept-box" style="border-left-color: #fbc2eb;">
+        <h4>2. 實踐導向目標</h4>
+        <p>我們相信：<span class="highlight-text">只有做出來的，才是自己的。</span></p>
+        <ul style="line-height: 2.2; font-weight: 800; font-size: 1.1rem; padding-left: 20px;">
+            <li>創業課程：完成 <span class="highlight-text">創業計劃書</span></li>
+            <li>講師課程：設計完整 <span class="highlight-text">教案系統</span></li>
+            <li>寫書課程：完成一本 <span class="highlight-text">個人著作</span></li>
+        </ul>
+    </div>
+
+    <div class="section-title">三、課程架構表</div>
+    <table class="course-table">
+        <thead>
+            <tr><td colspan="2" class="course-category">一、技術技能類</td></tr>
+        </thead>
+        <tbody>
+            <tr><td>1. 二年制專班內容</td><td>核心技術全系統建構</td></tr>
+            <tr><td>2. 剪髮 / 燙髮 / 染髮</td><td>單項技術深度進階演練</td></tr>
+            <tr><td>3. 國家級證照輔導</td><td>丙級/乙級專業技術證照班</td></tr>
+        </tbody>
+        <thead>
+            <tr><td colspan="2" class="course-category" style="background: #4834d4;">二、專業升級類</td></tr>
+        </thead>
+        <tbody>
+            <tr><td>5. 講師培訓課程 <br><div class="result-tag">產出：完整教案</div></td><td>10 節 / 含舞台表達、教案設計</td></tr>
+            <tr><td>6. 創業規劃課程 <br><div class="result-tag">產出：創業計劃書</div></td><td>10 節 / 含商業模式、財務結構</td></tr>
+        </tbody>
+        <thead>
+            <tr><td colspan="2" class="course-category" style="background: #6c5ce7;">三、內容產出類</td></tr>
+        </thead>
+        <tbody>
+            <tr><td>8. 寫書課 <br><div class="result-tag">產出：個人著作</div></td><td>10 節 / 個人品牌 IP 建立</td></tr>
+            <tr><td>9. 影音製作課</td><td>10 節 / 剪輯、攝影、包裝實務</td></tr>
+        </tbody>
+    </table>
+    
+    <div style="height: 500px;"></div>
+</div>
+
+<script>
+    function forceFixButtons() {
+        var h = document.getElementById('fixed-home-btn');
+        var t = document.getElementById('fixed-top-btn');
+        if(h && t) {
+            document.body.appendChild(h);
+            document.body.appendChild(t);
+        }
+    }
+    window.addEventListener('load', forceFixButtons);
+    window.addEventListener('pageshow', forceFixButtons);
+    setInterval(forceFixButtons, 1000);
+</script>
+
+</body>
+</html>
