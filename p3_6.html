@@ -1,59 +1,133 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>創業經營課程 | 活力美髮學院</title>
 
-<style>
-    /* 1. 基礎設定 */
-    body { margin: 0; font-family: -apple-system, sans-serif; background: #fdfdfd; color: #000; }
-    .content-inner { padding: 0 6% 120px 6%; }
+    <link rel="icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png">
 
-    /* 2. 右上角浮動按鍵 */
-    .floating-nav { position: fixed; top: 15px; right: 15px; display: flex; flex-direction: column; gap: 8px; z-index: 3000; }
-    .float-btn { background: rgba(0, 0, 0, 0.85); color: #fff !important; text-decoration: none; padding: 8px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2); }
+    <style>
+        /* 1. 基礎設定 */
+        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; }
+        .content-inner { padding: 20px 6% 120px 6%; }
 
-    /* 3. 置頂子導覽列 */
-    .sub-nav { display: flex; gap: 12px; margin: 0 -6% 25px -6%; padding: 15px 6%; overflow-x: auto; -webkit-overflow-scrolling: touch; background: #fff; border-bottom: 2px solid #eee; position: sticky; top: 0; z-index: 2000; }
-    .sub-nav::-webkit-scrollbar { display: none; } 
-    .sub-nav-item { white-space: nowrap; padding: 10px 22px; background: #f0edff; color: #4834d4; text-decoration: none; border-radius: 50px; font-size: 0.95rem; font-weight: 800; border: 2px solid #d1c9ff; }
-    .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
+        /* 2. 右側中間垂直標籤 */
+        .floating-nav {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            z-index: 10000;
+        }
+        .float-btn {
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff !important;
+            text-decoration: none;
+            padding: 15px 10px;
+            border-radius: 12px 0 0 12px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-right: none;
+            text-align: center;
+            writing-mode: vertical-rl;
+            letter-spacing: 2px;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+        }
 
-    /* 4. 標題與引言 */
-    .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
-    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
-    .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); margin: 0; font-weight: 900; }
-    .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: #4834d4; font-weight: 800; }
+        /* 3. 置頂子導覽列 */
+        .sub-nav {
+            display: flex;
+            gap: 12px;
+            padding: 15px 6%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            background: #fff;
+            border-bottom: 2px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+        }
+        .sub-nav::-webkit-scrollbar { display: none; } 
+        .sub-nav-item {
+            white-space: nowrap;
+            padding: 10px 22px;
+            background: #f0edff;
+            color: #4834d4;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            border: 2px solid #d1c9ff;
+        }
+        .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
-    .intro-box { background: #fff; padding: 25px; margin-bottom: 40px; border-left: 6px solid #000; border: 1px solid #eee; border-left: 6px solid #322b5f; border-radius: 4px; font-size: 1.1rem; line-height: 1.7; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        /* 4. 標題與視覺 */
+        .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
+        .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
+        .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); margin: 0; font-weight: 900; }
+        .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: #4834d4; font-weight: 800; text-transform: uppercase; }
 
-    /* 5. 管理矩陣卡片 */
-    .section-title { font-size: 1.35rem; margin-bottom: 25px; font-weight: 900; border-bottom: 4px solid #fbc2eb; display: inline-block; padding-bottom: 5px; }
-    
-    .mindmap-outline { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 50px; }
-    .outline-card { background: #fff; padding: 20px; border-radius: 12px; border: 1.5px solid #eee; transition: 0.3s; }
-    .outline-card h3 { font-size: 1.1rem; margin: 0 0 12px 0; font-weight: 900; display: flex; justify-content: space-between; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; color: #322b5f; }
-    .outline-card ul { padding-left: 18px; margin: 0; }
-    .outline-card li { margin-bottom: 6px; font-weight: 600; font-size: 0.95rem; color: #444; }
-    .core-card { background: #f0f7ff; border: 2px solid #6c5ce7; }
+        .intro-box { 
+            background: #fff; padding: 25px; margin-bottom: 40px; 
+            border-left: 6px solid #322b5f; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;
+            border-radius: 4px; font-size: 1.1rem; line-height: 1.7; font-weight: 600; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+        }
 
-    /* 6. 特色項目列表 */
-    .feature-item { padding: 15px 20px; background: #fff; margin-bottom: 12px; border: 1.5px solid #eee; border-radius: 15px; display: flex; flex-direction: column; transition: 0.3s; }
-    .feature-item b { color: #6c5ce7; font-size: 1.1rem; font-weight: 900; margin-bottom: 4px; }
-    .feature-item span { font-weight: 600; font-size: 0.95rem; color: #333; }
+        /* 5. 管理矩陣網格 */
+        .section-title { 
+            font-size: 1.35rem; margin-bottom: 25px; font-weight: 900; 
+            border-bottom: 4px solid #fbc2eb; display: inline-block; padding-bottom: 5px; 
+        }
+        
+        .mindmap-outline { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 50px; }
+        .outline-card { background: #fff; padding: 20px; border-radius: 12px; border: 1.5px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .outline-card h3 { 
+            font-size: 1.1rem; margin: 0 0 12px 0; font-weight: 900; 
+            display: flex; justify-content: space-between; border-bottom: 1px solid #f0f0f0; 
+            padding-bottom: 8px; color: #322b5f; 
+        }
+        .outline-card ul { padding-left: 18px; margin: 0; }
+        .outline-card li { margin-bottom: 8px; font-weight: 600; font-size: 0.95rem; color: #444; }
+        .core-card { background: #f0f7ff; border: 2px solid #6c5ce7; }
 
-    /* 7. 深度對談區塊 */
-    .talk-text { background: #fff; padding: 30px 20px; border-radius: 20px; border: 1.5px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
-    .talk-text h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; line-height: 1.4; }
-    .talk-text p { font-size: 1rem; line-height: 1.8; font-weight: 500; margin-bottom: 15px; }
-    .talk-text b { color: #6c5ce7; font-weight: 900; }
+        /* 6. 特色項目列表 */
+        .feature-item { 
+            padding: 15px 20px; background: #fff; margin-bottom: 12px; 
+            border: 1.5px solid #eee; border-radius: 15px; display: flex; flex-direction: column; 
+        }
+        .feature-item b { color: #6c5ce7; font-size: 1.1rem; font-weight: 900; margin-bottom: 4px; }
+        .feature-item span { font-weight: 600; font-size: 0.95rem; color: #333; }
 
-    @media (min-width: 768px) {
-        .mindmap-outline { grid-template-columns: repeat(2, 1fr); }
-        .feature-item { flex-direction: row; align-items: center; border-radius: 50px; }
-        .feature-item b { width: 150px; margin-bottom: 0; }
-    }
-</style>
+        /* 7. 深度對談區塊 */
+        .talk-text { 
+            background: #fff; padding: 30px 20px; border-radius: 20px; 
+            border: 1.5px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); 
+        }
+        .talk-text h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; line-height: 1.4; }
+        .talk-text p { font-size: 1rem; line-height: 1.8; font-weight: 500; margin-bottom: 15px; }
+        .talk-text b { color: #6c5ce7; font-weight: 900; }
+
+        @media (min-width: 768px) {
+            .mindmap-outline { grid-template-columns: repeat(2, 1fr); }
+            .feature-item { flex-direction: row; align-items: center; border-radius: 50px; }
+            .feature-item b { width: 150px; margin-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
 
 <div class="floating-nav">
-    <a href="index.html" class="float-btn">🏠 首頁</a>
-    <a href="p3.html" class="float-btn">📚 課程</a>
+    <a href="index.html" class="float-btn">🏠回首頁</a>
+    <a href="p3.html" class="float-btn" style="background:#322b5f">📚回課程</a>
 </div>
 
 <nav class="sub-nav">
@@ -67,17 +141,17 @@
 </nav>
 
 <div class="content-inner">
-    <section class="brand-heading">
+    <header class="brand-heading">
         <h1>創業經營</h1>
         <div class="subtitle">ENTREPRENEURIAL MINDSET</div>
-    </section>
+    </header>
 
     <div class="intro-box">
         創業是一段挑戰與機會並存的旅程。成功不一定需要大量資本，本課程將透過系統化管理邏輯，幫您用有限資源創造無限可能。
     </div>
 
     <section class="info-section">
-        <div class="section-title">課程大綱：管理邏輯矩陣</div>
+        <div class="section-title">管理邏輯矩陣</div>
         <div class="mindmap-outline">
             <div class="outline-card">
                 <h3>外部管理 (上) <small>↑</small></h3>
@@ -134,3 +208,6 @@
         <p><b>實現信念：</b> 讓熱情透過商業模式，從想像變為現實。</p>
     </section>
 </div>
+
+</body>
+</html>
