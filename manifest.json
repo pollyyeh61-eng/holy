@@ -11,15 +11,22 @@
       "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
-      "icons": [
+"screenshots": [
   {
-    "src": "/icon-512.png",
-    "sizes": "1024x1024",
+    "src": "screenshot1.png",
+    "sizes": "1080x1920",
     "type": "image/png",
-    "purpose": "any"
+    "form_factor": "narrow",
+    "label": "手機版畫面"
+  },
+  {
+    "src": "screenshot2.png",
+    "sizes": "1920x1080",
+    "type": "image/png",
+    "form_factor": "wide",
+    "label": "電腦版畫面"
   }
 ]
     }
   ]
-
 }
