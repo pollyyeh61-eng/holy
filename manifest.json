@@ -12,6 +12,12 @@
       "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "screenshots": [
@@ -20,15 +26,14 @@
       "sizes": "1024x1024",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "活力美髮學堂桌面版"
+      "label": "活力美髮學堂"
     },
     {
       "src": "icon-512.png",
       "sizes": "1024x1024",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "活力美髮學堂手機版"
+      "label": "活力美髮學堂"
     }
   ]
 }
-
