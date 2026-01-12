@@ -1,6 +1,6 @@
 {
   "name": "活力美髮學堂官網",
-  "short_name": "活力美髮",
+  "short_name": "活力美髮學堂",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -31,3 +31,4 @@
     }
   ]
 }
+
