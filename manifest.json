@@ -1,0 +1,16 @@
+{
+  "name": "活力美髮學堂官網",
+  "short_name": "活力美髮學堂官網",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "lang": "zh-TW",
+  "icons": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
