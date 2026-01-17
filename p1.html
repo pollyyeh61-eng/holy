@@ -1,18 +1,19 @@
-<div><br class="Apple-interchange-newline">
-<style>
+<div style="width: 100%; text-align: center;"> <style>
     /* 1. 調整整體內距與置中 */
     .content-inner { 
         padding: clamp(40px, 10%, 80px) 6% 120px 6%; 
-        max-width: 1000px; /* 設定最大寬度以利置中 */
-        margin: 0 auto;    /* 電腦版水平置中 */
+        max-width: 900px;    /* 稍微縮小最大寬度，視覺更集中 */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block;
+        text-align: left;    /* 容器置中後，內部文字恢復左對齊閱讀 */
     }
 
-    /* 2. 標題區域優化 */
+    /* 2. 標題區域 */
     .brand-heading { 
         position: relative; 
         padding-left: 20px; 
         margin-bottom: 30px; 
-        text-align: left; /* 保持標題文字左對齊 */
     }
     .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: #000; }
     
@@ -31,7 +32,10 @@
     }
 
     /* 3. 內文樣式 */
-    .info-section { margin-bottom: 40px; max-width: 800px; }
+    .info-section { 
+        margin-bottom: 40px; 
+        width: 100%; /* 確保寬度填滿置中的容器 */
+    }
     
     p { 
         color: #000000 !important; 
@@ -54,14 +58,14 @@
     /* 4. 職涯路徑卡片 */
     .path-grid { 
         display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-        gap: 15px; 
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        gap: 20px; 
         margin-top: 25px; 
     }
     .path-card { 
         background: rgba(255,255,255,0.7); 
-        padding: 20px; 
-        border: 1px solid #ccc; 
+        padding: 25px; 
+        border: 1px solid #ddd; 
         backdrop-filter: blur(10px); 
     }
     .path-card h4 { 
@@ -73,13 +77,15 @@
 
     /* 5. 手機版特別修正 */
     @media (max-width: 768px) {
-        .content-inner { padding-top: 30px; } 
+        .content-inner { 
+            padding: 30px 5% 80px 5%; 
+        } 
         .brand-heading { padding-left: 15px; }
         .path-grid { grid-template-columns: 1fr; } 
         
         /* 手機版字體加粗一級 */
         p { 
-            font-weight: 600; 
+            font-weight: 600 !important; 
         }
     }
 </style>
