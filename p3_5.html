@@ -6,25 +6,27 @@
     <title>講師培訓班 | 活力美髮學院</title>
 
     <link rel="icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary-indigo: #4834d4;
             --soft-indigo: #f0edff;
             --highlight-pink: #fbc2eb;
-            --text-gray: #444;
+            --text-gray: #333;
         }
 
+        /* 1. 基礎設定 - 同步首頁規範 */
         body { 
             margin: 0; 
-            font-family: -apple-system, "Microsoft JhengHei", sans-serif; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
             background: #fdfdfd; 
             color: var(--text-gray); 
             line-height: 1.8; 
             scroll-behavior: smooth;
         }
 
-        /* 浮動導覽 (右側) */
+        /* 2. 浮動導覽 (右側) */
         .floating-nav { 
             position: fixed; top: 50%; right: 0; transform: translateY(-50%); 
             display: flex; flex-direction: column; gap: 2px; z-index: 10000; 
@@ -35,54 +37,84 @@
             writing-mode: vertical-rl; letter-spacing: 2px; text-align: center;
         }
 
-        /* 頁內導覽列 (頂部) */
+        /* 3. 頁內導覽列 (頂部) */
         .anchor-nav { 
             display: flex; gap: 10px; padding: 15px 6%; overflow-x: auto; 
             position: sticky; top: 0; background: rgba(255,255,255,0.95); 
-            z-index: 900; border-bottom: 1px solid #eee; backdrop-filter: blur(10px);
+            z-index: 900; border-bottom: 2px solid #eee; backdrop-filter: blur(10px);
         }
         .anchor-nav::-webkit-scrollbar { display: none; }
         .anchor-item { 
             white-space: nowrap; background: var(--soft-indigo); color: var(--primary-indigo); 
-            padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.85rem; 
+            padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.95rem; 
             text-decoration: none; border: 1px solid var(--primary-indigo);
         }
 
-        .container { padding: 20px 6% 120px 6%; max-width: 1000px; margin: auto; }
+        .container { padding: 30px 6% 120px 6%; max-width: 1000px; margin: auto; box-sizing: border-box; }
 
-        /* 標題與視覺 */
+        /* 4. 標題與視覺 - 對齊襯線加粗 */
         .brand-heading { position: relative; padding-left: 20px; margin: 30px 0 30px 0; }
         .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: var(--primary-indigo); }
-        .brand-heading h1 { font-size: 2.2rem; font-weight: 900; margin: 0; color: #000; }
-        .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: var(--primary-indigo); font-weight: 800; text-transform: uppercase; }
+        .brand-heading h1 { 
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            margin: 0; 
+            color: #000; 
+        }
+        .brand-heading .subtitle { 
+            font-size: 0.9rem; 
+            letter-spacing: 2px; 
+            color: var(--primary-indigo); 
+            font-weight: 800; 
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
 
-        /* 課程特色 */
+        /* 5. 章節標題 */
         .section-title { 
-            font-size: 1.4rem; margin: 40px 0 20px 0; font-weight: 900; 
-            border-bottom: 4px solid var(--highlight-pink); display: inline-block; padding-bottom: 5px; 
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem; 
+            margin: 45px 0 25px 0; 
+            font-weight: 900; 
+            border-bottom: 4px solid var(--highlight-pink); 
+            display: inline-block; 
+            padding-bottom: 4px; 
+            color: #000;
         }
 
+        /* 6. 特色卡片與內文 */
         .feature-card { 
-            background: #fff; padding: 25px; border-radius: 20px; 
-            border: 1.5px solid #eee; box-shadow: 0 10px 25px rgba(0,0,0,0.03); margin-bottom: 25px;
+            background: #fff; padding: 30px; border-radius: 20px; 
+            border: 1.5px solid #eee; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 25px;
         }
+        .feature-card p { font-size: 1.1rem; margin: 0; }
         .highlight-text { color: var(--primary-indigo); font-weight: 900; border-bottom: 2px solid var(--highlight-pink); }
 
-        /* 五大核心模塊 Grid */
-        .module-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        /* 7. 五大核心模塊 Grid */
+        .module-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
         .module-item { 
-            background: #fff; padding: 20px; border-radius: 15px; border: 1.5px solid #eee; 
+            background: #fff; padding: 25px; border-radius: 15px; border: 1.5px solid #eee; 
             display: flex; gap: 15px; align-items: flex-start; transition: 0.3s;
         }
         .module-item:hover { transform: translateY(-3px); border-color: var(--primary-indigo); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .module-num { 
-            background: var(--primary-indigo); color: #fff; width: 28px; height: 28px; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; font-size: 0.8rem;
+            background: var(--primary-indigo); color: #fff; width: 32px; height: 32px; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; font-size: 0.9rem;
         }
-        .module-text b { color: var(--primary-indigo); display: block; margin-bottom: 5px; font-size: 1.05rem; }
+        .module-text { font-size: 1.05rem; color: #444; }
+        .module-text b { 
+            font-family: 'Noto Serif TC', serif;
+            color: var(--primary-indigo); display: block; margin-bottom: 8px; font-size: 1.2rem; 
+        }
 
         @media (min-width: 768px) {
             .module-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .brand-heading h1 { font-size: 1.8rem; }
+            .section-title { font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -109,7 +141,7 @@
         <div class="section-title">一、成為美髮產業的教育引領者</div>
         <div class="feature-card">
             <p style="margin-top:0;"><b>培訓願景：</b>將您的專業技術，轉化為具備「教學影響力」的結構化課程。解決<span class="highlight-text">「會做不會教」</span>的痛點，打造個人教學 IP。</p>
-            <p style="margin-bottom:0; padding-top:15px; border-top:1px dashed #ddd;">
+            <p style="margin-bottom:0; padding-top:20px; border-top:1px dashed #ddd; margin-top: 20px;">
                 <b>教學特色：</b>不只是演講，而是透過<span class="highlight-text">「教案設計」與「講台表達」</span>的雙向訓練，讓您成為受歡迎的專業名師。
             </p>
         </div>
@@ -143,16 +175,16 @@
 
     <section id="benefit">
         <div class="section-title">三、這門課程能帶給您什麼？</div>
-        <div class="feature-card" style="background: var(--soft-indigo); border-color: var(--primary-indigo);">
-            <ul style="margin:0; padding-left: 20px; font-weight: 700;">
-                <li><b>職涯躍遷：</b>從第一線技術人員轉型為「教育者」，開闢第二成長曲線。</li>
-                <li><b>收入翻倍：</b>除了沙龍收入，增加演講、內部培訓、線上課程等變現渠道。</li>
-                <li><b>業界聲望：</b>透過系統化教學建立威信，成為同業與學員眼中的專家。</li>
+        <div class="feature-card" style="background: var(--soft-indigo); border: 2px solid var(--primary-indigo);">
+            <ul style="margin:0; padding-left: 20px; font-weight: 500; font-size: 1.1rem; line-height: 2;">
+                <li><b style="color:var(--primary-indigo)">職涯躍遷：</b>從第一線技術人員轉型為「教育者」，開闢第二成長曲線。</li>
+                <li><b style="color:var(--primary-indigo)">收入翻倍：</b>除了沙龍收入，增加演講、內部培訓、線上課程等變現渠道。</li>
+                <li><b style="color:var(--primary-indigo)">業界聲望：</b>透過系統化教學建立威信，成為同業與學員眼中的專家。</li>
             </ul>
         </div>
     </section>
 
-    <div style="text-align: center; color: #999; font-size: 0.85rem; margin-top: 80px;">
+    <div style="text-align: center; color: #999; font-size: 0.9rem; margin-top: 100px;">
         — 活力美髮學院 講師認證系統 —
     </div>
 </div>
