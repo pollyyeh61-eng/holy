@@ -1,8 +1,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
     /* 1. 整體適配與容器 */
-    body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #fdfdfd; color: #000; }
+    body { 
+        margin: 0; 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+        background: #fdfdfd; 
+        color: #000; 
+    }
     .content-inner { padding: 0 6% 120px 6%; }
 
     /* 2. 子導航列 */
@@ -29,29 +36,64 @@
         text-decoration: none;
         border-radius: 50px;
         font-size: 0.95rem;
-        font-weight: 600; /* 調降：由 800 -> 600 */
+        font-weight: 500;
         border: 2px solid #d1c9ff;
     }
 
-    /* 3. 標題與段落 */
+    /* 3. 標題設定：改為襯線體 (Serif) */
     .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
-    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
-    .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); margin: 0; font-weight: 700; color: #000; } /* 調降：由 900 -> 700 */
-    .brand-heading .subtitle { font-size: 0.85rem; letter-spacing: 2px; color: #4834d4; font-weight: 600; } /* 調降：由 800 -> 600 */
+    .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: #000; }
+    
+    .brand-heading h1 { 
+        font-family: 'Noto Serif TC', "Apple LiSung", "Songti TC", "新細明體", serif; /* 襯線體設定 */
+        font-size: clamp(1.8rem, 8vw, 2.3rem); 
+        margin: 0; 
+        font-weight: 400; /* 截圖中的字並不粗，使用 400 或 500 最接近 */
+        letter-spacing: 2px;
+        color: #000; 
+    }
+    
+    .brand-heading .subtitle { 
+        font-family: -apple-system, sans-serif; /* 副標維持無襯線比較清晰 */
+        font-size: 0.8rem; 
+        letter-spacing: 3px; 
+        color: #4834d4; 
+        font-weight: 500; 
+        text-transform: uppercase;
+    }
 
     .info-section { margin-bottom: 50px; scroll-margin-top: 100px; }
-    .section-title { font-size: 1.45rem; margin-bottom: 20px; font-weight: 700; color: #000; border-bottom: 4px solid #fbc2eb; display: inline-block; } /* 調降：由 900 -> 700 */
-    .content-text { font-size: 1.1rem; font-weight: 500; color: #000; line-height: 1.9; text-align: justify; margin-bottom: 30px; } /* 調降：由 600 -> 500 */
+    
+    /* 小節標題也改為襯線體 */
+    .section-title { 
+        font-family: 'Noto Serif TC', serif;
+        font-size: 1.4rem; 
+        margin-bottom: 20px; 
+        font-weight: 700; 
+        color: #000; 
+        border-bottom: 3px solid #fbc2eb; 
+        display: inline-block; 
+        padding-bottom: 4px;
+    }
+
+    .content-text { 
+        font-size: 1.05rem; 
+        font-weight: 400; 
+        color: #333; 
+        line-height: 2; 
+        text-align: justify; 
+        margin-bottom: 30px; 
+    }
 
     /* 4. 重點元件 */
-    .highlight-box { background: #f0edff; border-left: 6px solid #6c5ce7; padding: 25px; margin: 25px 0; border-radius: 0 12px 12px 0; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.1); }
-    .future-tag { color: #fff; background: #6c5ce7; font-weight: 600; padding: 4px 12px; border-radius: 4px; font-size: 0.9rem; margin-right: 10px; vertical-align: middle; }
-    .promo-text { font-weight: 700; font-size: 1.8rem; color: #e91e63; text-decoration: underline; } /* 調降：由 900 -> 700 */
+    .highlight-box { background: #f0edff; border-left: 6px solid #6c5ce7; padding: 25px; margin: 25px 0; border-radius: 0 12px 12px 0; }
+    .future-tag { color: #fff; background: #6c5ce7; font-weight: 500; padding: 4px 12px; border-radius: 4px; font-size: 0.85rem; margin-right: 10px; vertical-align: middle; }
+    .promo-text { font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 1.8rem; color: #e91e63; text-decoration: underline; }
 
     /* 📱 手機版 RWD */
     @media (max-width: 768px) {
-        .content-text { font-size: 1.05rem; line-height: 1.8; }
-        .promo-text { font-size: 1.6rem; }
+        .content-text { font-size: 1rem; line-height: 1.8; }
+        .promo-text { font-size: 1.5rem; }
     }
 </style>
 
@@ -66,7 +108,7 @@
 <div class="content-inner">
     <section class="brand-heading">
         <h1>募資課程</h1>
-        <span class="subtitle">FUNDRAISING & MARKET INSIGHT</span>
+        <div class="subtitle">FUNDRAISING & MARKET INSIGHT</div>
     </section>
 
     <section class="info-section" id="section1">
@@ -83,31 +125,17 @@
             
             <div style="margin-top: 25px; background: rgba(255, 255, 255, 0.8); padding: 20px; border: 1.5px solid #ddd; border-radius: 12px;">
                 <span class="future-tag">課程預告</span>
-                <strong style="color: #322b5f; font-size: 1.1rem; font-weight: 700;">目前 2 門募資課程預計於 114/12/31 上線。</strong>
+                <strong style="color: #322b5f; font-size: 1.1rem; font-family: 'Noto Serif TC', serif; font-weight: 700;">目前 2 門募資課程預計於 114/12/31 上線。</strong>
             </div>
-        </div>
-    </section>
-
-    <section class="info-section" id="section3">
-        <div class="section-title">三、學生回饋的管道</div>
-        <div class="content-text">
-            募資期間可在簡介下方的「留言版」留言，讓老師瞭解每位用戶的學習偏好，並在製作課程時，彈性調整原規劃之課程內容。
         </div>
     </section>
 
     <section class="info-section" id="section4">
         <div class="section-title">四、募資優惠價</div>
         <div class="highlight-box">
-            <div class="content-text" style="margin-bottom: 0; font-weight: 700;">
+            <div class="content-text" style="margin-bottom: 0; font-weight: 500;">
                 預購期間的募資課程皆享有 <span class="promo-text">五折</span> 優惠價格購買。
             </div>
-        </div>
-    </section>
-
-    <section class="info-section" id="section5">
-        <div class="section-title">五、教材寄送與通知</div>
-        <div class="content-text">
-            請於 <strong>蝦皮賣場</strong> 下訂課程，並指定物流方式，下訂後將儘速為您寄送專屬教材包。
         </div>
     </section>
 </div>
