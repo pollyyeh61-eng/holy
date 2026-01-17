@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>染髮課程大綱 | 專業技術培訓</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --primary-purple: #6c5ce7;
@@ -14,33 +16,78 @@
             --amber: #f39c12;
         }
 
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; }
+        /* 1. 基礎設定 - 同步首頁規範 */
+        body { 
+            margin: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+            background: #fdfdfd; 
+            color: #000; 
+            line-height: 1.6;
+        }
 
-        /* 浮動導覽 */
+        /* 2. 浮動導覽 (功能完整保留) */
         .floating-nav { position: fixed; top: 50%; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; gap: 2px; z-index: 10000; }
         .nav-btn { background: rgba(0, 0, 0, 0.85); color: #fff !important; text-decoration: none; padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.85rem; font-weight: 800; writing-mode: vertical-rl; letter-spacing: 2px; }
 
-        /* 錨點導航 */
-        .anchor-nav { display: flex; gap: 10px; padding: 15px 6%; overflow-x: auto; position: sticky; top: 0; background: #fff; z-index: 900; border-bottom: 1px solid #eee; }
+        /* 3. 錨點導航樣式同步 */
+        .anchor-nav { display: flex; gap: 10px; padding: 15px 6%; overflow-x: auto; position: sticky; top: 0; background: #fff; z-index: 900; border-bottom: 2px solid #eee; }
         .anchor-nav::-webkit-scrollbar { display: none; }
-        .anchor-item { white-space: nowrap; background: var(--soft-purple); color: var(--primary-purple); padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; text-decoration: none; border: 1.5px solid var(--primary-purple); }
+        .anchor-item { white-space: nowrap; background: var(--soft-purple); color: var(--primary-purple); padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.95rem; text-decoration: none; border: 1px solid var(--primary-purple); }
 
+        /* 4. 標題與版面配置 */
         .content-inner { padding: 30px 6% 120px 6%; box-sizing: border-box; }
-        .brand-heading h1 { font-size: 2.2rem; font-weight: 900; margin: 0; }
-        .section-title { font-size: 1.5rem; font-weight: 900; margin: 45px 0 20px 0; border-bottom: 4px solid #fbc2eb; display: inline-block; }
+        
+        .brand-heading h1 { 
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            margin: 0; 
+            color: #000;
+        }
+        
+        .section-title { 
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem; 
+            font-weight: 900; 
+            margin: 45px 0 20px 0; 
+            border-bottom: 4px solid #fbc2eb; 
+            display: inline-block;
+            padding-bottom: 4px;
+        }
 
-        /* 課程表樣式 */
-        .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; margin-bottom: 30px; font-size: 0.95rem; }
-        .table-header { background: var(--dark-blue); color: #fff; text-align: center; font-weight: 900; padding: 12px; }
-        .course-table td { padding: 12px; border: 1px solid #ddd; font-weight: 700; vertical-align: middle; }
-        .lesson-no { width: 15%; text-align: center; background: var(--soft-purple); color: var(--dark-blue); }
-        .lesson-content { width: 85%; line-height: 1.6; }
+        /* 5. 課程表樣式優化 */
+        .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; margin-bottom: 30px; }
+        .table-header { 
+            font-family: 'Noto Serif TC', serif;
+            background: var(--dark-blue); color: #fff; text-align: center; font-weight: 900; padding: 15px; font-size: 1.2rem;
+        }
+        .course-table td { 
+            padding: 15px 12px; border: 1px solid #ddd; 
+            font-family: -apple-system, sans-serif;
+            font-size: 1.05rem; font-weight: 500; vertical-align: middle; 
+        }
+        .lesson-no { 
+            width: 15%; text-align: center; background: var(--soft-purple); color: var(--dark-blue); font-weight: 800; 
+        }
+        .lesson-content { width: 85%; line-height: 1.8; color: #222; }
 
-        /* 成果卡片 */
-        .result-box { background: #fff; border-left: 6px solid var(--amber); padding: 20px; border-radius: 12px; margin: 15px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .result-box h4 { margin: 0 0 8px 0; color: var(--amber); font-weight: 900; }
+        /* 6. 成果卡片樣式 */
+        .result-box { 
+            background: #fff; border-left: 8px solid var(--amber); padding: 25px; border-radius: 12px; margin: 25px 0; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+        .result-box h4 { 
+            font-family: 'Noto Serif TC', serif;
+            margin: 0 0 12px 0; color: var(--amber); font-weight: 900; font-size: 1.3rem;
+        }
+        .result-box p { margin: 8px 0; font-size: 1.1rem; color: #333; }
 
-        @media (max-width: 480px) { .brand-heading h1 { font-size: 1.8rem; } .course-table { font-size: 0.85rem; } }
+        @media (max-width: 768px) { 
+            .brand-heading h1 { font-size: 1.8rem; } 
+            .section-title { font-size: 1.3rem; }
+            .course-table td { padding: 12px 10px; font-size: 0.95rem; }
+            .lesson-no { width: 20%; }
+        }
     </style>
 </head>
 <body>
@@ -58,7 +105,7 @@
 <div class="content-inner">
     <header class="brand-heading">
         <h1>染髮技術全大綱</h1>
-        <p style="color:var(--amber); font-weight:800; margin-top:5px;">色彩物理分析 + 系統化上色實務</p>
+        <p style="color:var(--amber); font-weight:800; margin-top:5px; letter-spacing: 1px;">色彩物理分析 + 系統化上色實務</p>
     </header>
 
     <section id="basic">
@@ -77,7 +124,7 @@
                 <tr><td class="lesson-no">7</td><td class="lesson-content">1.染料鏈接與定色過濾技術<br>2.雙向高層次上色製作</td></tr>
                 <tr><td class="lesson-no">8</td><td class="lesson-content">1.染髮色相環運用<br>2.飽和均勻色製作</td></tr>
                 <tr><td class="lesson-no">9</td><td class="lesson-content">1.色彩視覺解析<br>2.冷調色系染髮製作</td></tr>
-                <tr><td class="lesson-no">10</td><td class="lesson-content">自由創作(真人)</td></tr>
+                <tr><td class="lesson-no">10</td><td class="lesson-content">自由創作 (真人操作)</td></tr>
             </tbody>
         </table>
     </section>
@@ -98,7 +145,7 @@
                 <tr><td class="lesson-no">7</td><td class="lesson-content">混合髮的決策<br>V型染髮</td></tr>
                 <tr><td class="lesson-no">8</td><td class="lesson-content">染髮色彩維型<br>階梯式染髮</td></tr>
                 <tr><td class="lesson-no">9</td><td class="lesson-content">色彩視覺移動<br>三區區分區塊染</td></tr>
-                <tr><td class="lesson-no">10</td><td class="lesson-content">自由創作(真人)</td></tr>
+                <tr><td class="lesson-no">10</td><td class="lesson-content">自由創作 (真人操作)</td></tr>
             </tbody>
         </table>
     </section>
@@ -110,7 +157,7 @@
         <p>• 實作當前最流行之「耳圈染」、「區塊染」與「漸層刷色」技術。</p>
     </div>
 
-    <div style="text-align: center; color: #888; font-size: 0.9rem; margin-top: 50px;">
+    <div style="text-align: center; color: #888; font-size: 0.9rem; margin-top: 80px;">
         — 活力美髮學院 專業色彩培訓系統 —
     </div>
 </div>
