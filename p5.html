@@ -2,10 +2,10 @@
 
 <style>
     /* 1. 整體適配與容器 */
-    body { margin: 0; font-family: -apple-system, sans-serif; background: #fdfdfd; color: #000; }
+    body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #fdfdfd; color: #000; }
     .content-inner { padding: 0 6% 120px 6%; }
 
-    /* 2. 子導航列：修正為「頁內導航」，移除浮動按鍵 */
+    /* 2. 子導航列 */
     .sub-nav {
         display: flex;
         gap: 12px;
@@ -29,24 +29,24 @@
         text-decoration: none;
         border-radius: 50px;
         font-size: 0.95rem;
-        font-weight: 800;
+        font-weight: 600; /* 調降：由 800 -> 600 */
         border: 2px solid #d1c9ff;
     }
 
     /* 3. 標題與段落 */
     .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
     .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
-    .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); margin: 0; font-weight: 900; color: #000; }
-    .brand-heading .subtitle { font-size: 0.85rem; letter-spacing: 2px; color: #4834d4; font-weight: 800; }
+    .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); margin: 0; font-weight: 700; color: #000; } /* 調降：由 900 -> 700 */
+    .brand-heading .subtitle { font-size: 0.85rem; letter-spacing: 2px; color: #4834d4; font-weight: 600; } /* 調降：由 800 -> 600 */
 
     .info-section { margin-bottom: 50px; scroll-margin-top: 100px; }
-    .section-title { font-size: 1.45rem; margin-bottom: 20px; font-weight: 900; color: #000; border-bottom: 4px solid #fbc2eb; display: inline-block; }
-    .content-text { font-size: 1.1rem; font-weight: 600; color: #000; line-height: 1.9; text-align: justify; margin-bottom: 30px; }
+    .section-title { font-size: 1.45rem; margin-bottom: 20px; font-weight: 700; color: #000; border-bottom: 4px solid #fbc2eb; display: inline-block; } /* 調降：由 900 -> 700 */
+    .content-text { font-size: 1.1rem; font-weight: 500; color: #000; line-height: 1.9; text-align: justify; margin-bottom: 30px; } /* 調降：由 600 -> 500 */
 
     /* 4. 重點元件 */
     .highlight-box { background: #f0edff; border-left: 6px solid #6c5ce7; padding: 25px; margin: 25px 0; border-radius: 0 12px 12px 0; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.1); }
-    .future-tag { color: #fff; background: #6c5ce7; font-weight: 800; padding: 4px 12px; border-radius: 4px; font-size: 0.9rem; margin-right: 10px; vertical-align: middle; }
-    .promo-text { font-weight: 900; font-size: 1.8rem; color: #e91e63; text-decoration: underline; }
+    .future-tag { color: #fff; background: #6c5ce7; font-weight: 600; padding: 4px 12px; border-radius: 4px; font-size: 0.9rem; margin-right: 10px; vertical-align: middle; }
+    .promo-text { font-weight: 700; font-size: 1.8rem; color: #e91e63; text-decoration: underline; } /* 調降：由 900 -> 700 */
 
     /* 📱 手機版 RWD */
     @media (max-width: 768px) {
@@ -83,7 +83,7 @@
             
             <div style="margin-top: 25px; background: rgba(255, 255, 255, 0.8); padding: 20px; border: 1.5px solid #ddd; border-radius: 12px;">
                 <span class="future-tag">課程預告</span>
-                <strong style="color: #322b5f; font-size: 1.1rem; font-weight: 900;">目前 2 門募資課程預計於 114/12/31 上線。</strong>
+                <strong style="color: #322b5f; font-size: 1.1rem; font-weight: 700;">目前 2 門募資課程預計於 114/12/31 上線。</strong>
             </div>
         </div>
     </section>
@@ -98,7 +98,7 @@
     <section class="info-section" id="section4">
         <div class="section-title">四、募資優惠價</div>
         <div class="highlight-box">
-            <div class="content-text" style="margin-bottom: 0; font-weight: 900;">
+            <div class="content-text" style="margin-bottom: 0; font-weight: 700;">
                 預購期間的募資課程皆享有 <span class="promo-text">五折</span> 優惠價格購買。
             </div>
         </div>
