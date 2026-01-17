@@ -5,12 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>專業課程說明 | 活力美髮學院</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+
     <style>
-        /* 基礎設定 */
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fdfdfd; color: #000; scroll-behavior: smooth; }
+        /* 1. 基礎設定 - 同步首頁規範 */
+        body { 
+            margin: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+            background: #fdfdfd; 
+            color: #000; 
+            line-height: 1.6; 
+            scroll-behavior: smooth;
+        }
         .content-inner { padding: 0 6% 120px 6%; }
         
-        /* 【絕對鎖定】右側回首頁 */
+        /* 2. 固定按鈕樣式 (功能完整保留) */
         #fixed-home-btn { 
             position: fixed !important; 
             top: 50% !important; 
@@ -24,8 +33,6 @@
             writing-mode: vertical-rl; letter-spacing: 2px; display: block;
             box-shadow: -2px 0 10px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2);
         }
-
-        /* 【絕對鎖定】右下角回頂部 */
         #fixed-top-btn {
             position: fixed !important; 
             bottom: 30px !important; 
@@ -36,32 +43,72 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.3);
         }
 
-        /* 頂部 8 格網格目錄 (隨內容捲動) */
+        /* 3. 網格目錄 - 統一字號與粗細 */
         .sub-nav-container { background: #fff; border-bottom: 2px solid #eee; padding: 20px 4%; margin-bottom: 25px; }
         .sub-nav-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
         .sub-nav-item {
             display: flex; align-items: center; justify-content: center; padding: 12px 2px;
             background: #f0edff; color: #4834d4; text-decoration: none; border-radius: 8px;
-            font-size: 0.85rem; font-weight: 800; border: 1.5px solid #d1c9ff; text-align: center;
+            font-size: 1rem; font-weight: 600; border: 1.5px solid #d1c9ff; text-align: center;
         }
         .sub-nav-item.active { background: #322b5f; color: #fff; border-color: #322b5f; }
 
-        /* 內容樣式 */
-        .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
+        /* 4. 標題樣式 - 對齊首頁襯線加粗 */
+        .brand-heading { position: relative; padding-left: 20px; margin: 40px 0 30px 0; }
         .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
-        .brand-heading h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin: 0; font-weight: 900; }
-        .concept-box { background: #fff; padding: 25px; border-radius: 12px; margin-bottom: 30px; border: 1.5px solid #ddd; border-left: 8px solid #6c5ce7; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .highlight-text { color: #e91e63; font-weight: 900; border-bottom: 2px solid #e91e63; }
-        .section-title { font-size: 1.5rem; margin-bottom: 20px; font-weight: 900; border-bottom: 4px solid #fbc2eb; display: inline-block; }
+        
+        .brand-heading h1 { 
+            font-family: 'Noto Serif TC', serif; 
+            font-size: 2.2rem; 
+            margin: 0; font-weight: 900; letter-spacing: 1px;
+        }
+        .brand-heading .subtitle-text { 
+            color: #4834d4; font-weight: 800; letter-spacing: 2px; margin: 5px 0 0 0; font-size: 0.85rem; text-transform: uppercase;
+        }
+
+        .section-title { 
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem; 
+            margin: 40px 0 20px 0; 
+            font-weight: 900; 
+            border-bottom: 4px solid #fbc2eb; 
+            display: inline-block; padding-bottom: 4px;
+        }
+
+        /* 5. 內容區塊 - 統一內文字體尺寸與粗度 */
+        .concept-box { 
+            background: #fff; padding: 25px; border-radius: 12px; margin-bottom: 30px; 
+            border: 1.5px solid #ddd; border-left: 8px solid #6c5ce7; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+        .concept-box h4 { 
+            font-family: 'Noto Serif TC', serif;
+            margin-top: 0; font-size: 1.4rem; font-weight: 900; margin-bottom: 12px; 
+        }
+        .concept-box p, .concept-box li { 
+            font-family: -apple-system, sans-serif;
+            font-size: 1.1rem; font-weight: 400; color: #222; 
+        }
+        .highlight-text { color: #e91e63; font-weight: 700; border-bottom: 2px solid #e91e63; }
+
+        /* 6. 課程架構表 */
         .course-table { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid #000; }
-        .course-category { font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; text-align: center; }
-        .course-table td { padding: 18px 15px; border-bottom: 1px solid #eee; font-weight: 700; }
-        .result-tag { display: inline-block; background: #6c5ce7; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-top: 8px; font-weight: 800; }
+        .course-category { 
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900; color: #fff !important; background: #322b5f; padding: 15px !important; text-align: center; font-size: 1.2rem;
+        }
+        .course-table td { 
+            padding: 18px 15px; border-bottom: 1px solid #eee; 
+            font-family: -apple-system, sans-serif;
+            font-size: 1.05rem; font-weight: 500; 
+        }
+        .result-tag { display: inline-block; background: #6c5ce7; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; margin-top: 8px; font-weight: 600; }
 
         @media (max-width: 768px) {
             .sub-nav-grid { grid-template-columns: repeat(2, 1fr); }
+            .brand-heading h1 { font-size: 1.8rem; }
+            .section-title { font-size: 1.3rem; }
             .course-table tr { display: flex; flex-direction: column; border-bottom: 2px solid #322b5f; }
-            .course-table td { width: 100%; text-align: left; }
+            .course-table td { width: 100%; text-align: left; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -89,7 +136,7 @@
 <div class="content-inner">
     <section class="brand-heading">
         <h1>專業課程說明</h1>
-        <p style="color: #4834d4; font-weight: 800; letter-spacing: 2px; margin: 5px 0 0 0;">VITALITY ACADEMY COURSES</p>
+        <div class="subtitle-text">VITALITY ACADEMY COURSES</div>
     </section>
 
     <div class="concept-box">
@@ -100,7 +147,7 @@
     <div class="concept-box" style="border-left-color: #fbc2eb;">
         <h4>2. 實踐導向目標</h4>
         <p>我們相信：<span class="highlight-text">只有做出來的，才是自己的。</span></p>
-        <ul style="line-height: 2.2; font-weight: 800; font-size: 1.1rem; padding-left: 20px;">
+        <ul style="line-height: 2.2; margin-top: 15px; padding-left: 20px;">
             <li>創業課程：完成 <span class="highlight-text">創業計劃書</span></li>
             <li>講師課程：設計完整 <span class="highlight-text">教案系統</span></li>
             <li>寫書課程：完成一本 <span class="highlight-text">個人著作</span></li>
@@ -133,7 +180,8 @@
         </tbody>
     </table>
     
-    <div style="height: 500px;"></div>
+    <div style="height: 100px;"></div>
+    <p style="text-align: center; color: #888; font-size: 0.9rem;">— 活力美髮學院 專業課程系統 —</p>
 </div>
 
 <script>
