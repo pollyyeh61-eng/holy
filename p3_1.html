@@ -6,6 +6,7 @@
     <title>二年制專班 | 活力美髮學院</title>
 
     <link rel="icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -16,39 +17,74 @@
             --gray-bg: #f8f9fa;
         }
 
-        body { margin: 0; font-family: -apple-system, "Microsoft JhengHei", sans-serif; background: #fff; color: #333; line-height: 1.6; }
+        /* 1. 基礎設定 - 同步首頁 */
+        body { 
+            margin: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+            background: #fff; 
+            color: #333; 
+            line-height: 1.6; 
+        }
 
-        /* 導覽 */
+        /* 2. 導覽按鈕 (功能保留) */
         .floating-nav { position: fixed; top: 50%; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; gap: 2px; z-index: 10000; }
         .nav-btn { background: rgba(0, 0, 0, 0.85); color: #fff !important; text-decoration: none; padding: 15px 10px; border-radius: 12px 0 0 12px; font-size: 0.85rem; font-weight: 800; writing-mode: vertical-rl; letter-spacing: 2px; }
 
-        .anchor-nav { display: flex; gap: 10px; padding: 15px 6%; overflow-x: auto; position: sticky; top: 0; background: #fff; z-index: 900; border-bottom: 1px solid #eee; }
+        .anchor-nav { display: flex; gap: 10px; padding: 15px 6%; overflow-x: auto; position: sticky; top: 0; background: #fff; z-index: 900; border-bottom: 2px solid #eee; }
         .anchor-nav::-webkit-scrollbar { display: none; }
-        .anchor-item { white-space: nowrap; background: var(--soft-purple); color: var(--primary-purple); padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.85rem; text-decoration: none; border: 1px solid var(--primary-purple); }
+        .anchor-item { white-space: nowrap; background: var(--soft-purple); color: var(--primary-purple); padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.95rem; text-decoration: none; border: 1px solid var(--primary-purple); }
 
+        /* 3. 標題樣式 - 對齊襯線加粗 */
         .content-inner { padding: 30px 6% 120px 6%; box-sizing: border-box; }
-        .brand-heading h1 { font-size: 2.2rem; font-weight: 900; margin: 0; color: var(--dark-blue); }
-        .section-title { font-size: 1.5rem; font-weight: 900; margin: 40px 0 20px 0; border-bottom: 4px solid #fbc2eb; display: inline-block; }
+        
+        .brand-heading h1 { 
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            margin: 0; 
+            color: #000; 
+        }
+        
+        .section-title { 
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem; 
+            font-weight: 900; 
+            margin: 40px 0 20px 0; 
+            border-bottom: 4px solid #fbc2eb; 
+            display: inline-block;
+            color: #000;
+        }
 
-        /* 通用卡片 */
-        .info-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 20px; margin: 15px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .info-card h4 { margin: 0 0 10px 0; color: var(--primary-purple); font-weight: 900; border-left: 4px solid var(--primary-purple); padding-left: 10px; }
+        /* 4. 通用卡片與內文 */
+        .info-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 25px; margin: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .info-card h4 { 
+            font-family: 'Noto Serif TC', serif;
+            margin: 0 0 15px 0; color: var(--dark-blue); font-weight: 900; font-size: 1.3rem; border-left: 5px solid var(--primary-purple); padding-left: 12px; 
+        }
+        .info-card p, .info-card li { font-size: 1.1rem; color: #333; font-weight: 400; }
         .info-card ul { padding-left: 20px; margin: 0; }
-        .info-card li { margin-bottom: 8px; font-weight: 600; font-size: 0.95rem; }
+        .info-card li { margin-bottom: 12px; line-height: 1.8; }
 
-        /* 路徑圖樣式 */
-        .pathway { background: var(--gray-bg); padding: 30px 20px; border-radius: 20px; text-align: center; }
-        .step-box { background: #fff; border: 2px solid var(--dark-blue); padding: 15px; border-radius: 10px; margin: 10px auto; max-width: 300px; position: relative; }
-        .arrow { font-size: 1.5rem; color: var(--primary-purple); margin: 5px 0; }
-        .split-path { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
-        .path-a, .path-b { flex: 1; background: #fff; border: 2px dashed var(--primary-purple); padding: 10px; border-radius: 10px; font-size: 0.85rem; }
+        /* 5. 路徑圖樣式 (視覺優化) */
+        .pathway { background: var(--gray-bg); padding: 40px 20px; border-radius: 20px; text-align: center; border: 1px solid #eee; }
+        .step-box { background: #fff; border: 2px solid var(--dark-blue); padding: 18px; border-radius: 12px; margin: 10px auto; max-width: 320px; position: relative; }
+        .step-box b { font-size: 1.15rem; color: var(--dark-blue); }
+        .arrow { font-size: 1.8rem; color: var(--primary-purple); margin: 8px 0; }
+        .split-path { display: flex; gap: 15px; justify-content: center; margin-top: 15px; }
+        .path-a, .path-b { flex: 1; background: #fff; border: 2px dashed var(--primary-purple); padding: 15px; border-radius: 12px; }
+        .path-a b, .path-b b { font-size: 1.1rem; color: var(--primary-purple); }
 
-        /* 價格表 */
-        .price-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-weight: 700; }
-        .price-table td { padding: 12px; border-bottom: 1px solid #eee; }
-        .price-tag { color: var(--accent-pink); text-align: right; }
+        /* 6. 價格表 */
+        .price-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        .price-table td { padding: 15px 12px; border-bottom: 1px solid #eee; font-size: 1.05rem; font-weight: 500; }
+        .price-tag { color: var(--accent-pink); text-align: right; font-weight: 800; font-size: 1.1rem; }
 
-        @media (max-width: 480px) { .brand-heading h1 { font-size: 1.8rem; } .split-path { flex-direction: column; } }
+        @media (max-width: 768px) { 
+            .brand-heading h1 { font-size: 1.8rem; } 
+            .section-title { font-size: 1.3rem; }
+            .split-path { flex-direction: column; align-items: center; } 
+            .path-a, .path-b { width: 90%; }
+        }
     </style>
 </head>
 <body>
@@ -68,7 +104,7 @@
 <div class="content-inner">
     <header class="brand-heading">
         <h1>二年制專業人才專班</h1>
-        <p style="color:var(--primary-purple); font-weight:800; margin-top:5px;">全方位美髮職涯養成系統</p>
+        <p style="color:var(--primary-purple); font-weight:800; margin-top:5px; letter-spacing: 1px;">全方位美髮職涯養成系統</p>
     </header>
 
     <section id="reason">
@@ -89,8 +125,8 @@
 
     <section id="who">
         <div class="section-title">二、適合什麼人來唸</div>
-        <div class="info-card" style="background:var(--soft-purple);">
-            <ul>
+        <div class="info-card" style="background:var(--soft-purple); border: none;">
+            <ul style="list-style-type: '✔  ';">
                 <li><strong>零基礎新手：</strong>對時尚有興趣、想轉職，追求系統性學習者。</li>
                 <li><strong>助理升級：</strong>已在沙龍 1-2 年，缺乏系統培訓想快速升設計師者。</li>
                 <li><strong>技術再進修：</strong>想精進剪染燙，並學習顧客經營與管理。</li>
@@ -106,19 +142,19 @@
             <h4>修業資訊</h4>
             <p>• 2 年必修 + 1 年選修<br>• 每期 10 週，每週一次課程 (6小時)<br>• 招生：春秋夏冬四季開班</p>
             
-            <p style="margin-top:20px; color:var(--primary-purple); font-weight:900;">[ 第一年必修 ]</p>
+            <p style="margin-top:30px; color:var(--dark-blue); font-weight:900; font-size: 1.15rem; border-bottom: 2px solid var(--soft-purple); padding-bottom: 5px;">[ 第一年必修 ]</p>
             <table class="price-table">
                 <tr><td>剪/燙/染基礎班 (各10週)</td><td class="price-tag">NT$30,000 /期</td></tr>
                 <tr><td>丙級檢定班 (10週)</td><td class="price-tag">NT$30,000</td></tr>
             </table>
 
-            <p style="margin-top:20px; color:var(--primary-purple); font-weight:900;">[ 第二年必修 ]</p>
+            <p style="margin-top:30px; color:var(--dark-blue); font-weight:900; font-size: 1.15rem; border-bottom: 2px solid var(--soft-purple); padding-bottom: 5px;">[ 第二年必修 ]</p>
             <table class="price-table">
                 <tr><td>剪/燙/染進階班 (各10週)</td><td class="price-tag">NT$30,000 /期</td></tr>
                 <tr><td>乙級檢定班 (10週)</td><td class="price-tag">NT$60,000</td></tr>
             </table>
 
-            <p style="margin-top:20px; color:var(--primary-purple); font-weight:900;">[ 第三年選修 ]</p>
+            <p style="margin-top:30px; color:var(--dark-blue); font-weight:900; font-size: 1.15rem; border-bottom: 2px solid var(--soft-purple); padding-bottom: 5px;">[ 第三年選修 ]</p>
             <table class="price-table">
                 <tr><td>講師/創業分流班 (10節直播)</td><td class="price-tag">NT$60,000</td></tr>
             </table>
@@ -130,9 +166,9 @@
         <div class="pathway">
             <div class="step-box"><b>起點：零基礎 / 助理</b><br><small>對美髮感興趣之社會新鮮人</small></div>
             <div class="arrow">⬇️</div>
-            <div class="step-box" style="border-color:var(--primary-purple);"><b>基礎創業班 (第1年)</b><br><small>剪染燙基礎 + 丙級證照</small></div>
+            <div class="step-box" style="border-color:var(--primary-purple); border-width: 3px;"><b>基礎創業班 (第1年)</b><br><small>剪染燙基礎 + 丙級證照</small></div>
             <div class="arrow">⬇️</div>
-            <div class="step-box" style="border-color:var(--accent-pink);"><b>技術進階班 (第2年)</b><br><small>強化設計思維 + 乙級證照</small></div>
+            <div class="step-box" style="border-color:var(--accent-pink); border-width: 3px;"><b>技術進階班 (第2年)</b><br><small>強化設計思維 + 乙級證照</small></div>
             <div class="arrow">⬇️</div>
             <div class="split-path">
                 <div class="path-a">
@@ -145,7 +181,7 @@
         </div>
     </section>
 
-    <div style="text-align: center; color: #888; font-size: 0.9rem; margin-top: 50px;">
+    <div style="text-align: center; color: #888; font-size: 0.9rem; margin-top: 80px;">
         — 活力美髮學院 專業二年制教育系統 —
     </div>
 </div>
