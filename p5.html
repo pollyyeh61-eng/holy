@@ -3,93 +3,74 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 
 <style>
-    /* 1. 整體適配 */
+    /* 1. 基礎設定：比照首頁 */
     body { 
         margin: 0; 
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
         background: #fdfdfd; 
         color: #000; 
+        line-height: 1.6;
     }
     .content-inner { padding: 0 6% 120px 6%; }
 
-    /* 2. 子導航列 */
+    /* 2. 導航列文字：統一尺寸 */
     .sub-nav {
-        display: flex;
-        gap: 12px;
-        margin: 0 -6% 25px -6%; 
-        padding: 15px 6%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        background: #fff;
-        border-bottom: 2px solid #eee;
-        position: sticky;
-        top: 0;
-        z-index: 2000;
+        display: flex; gap: 12px; margin: 0 -6% 25px -6%; 
+        padding: 15px 6%; overflow-x: auto; -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; background: #fff; border-bottom: 2px solid #eee;
+        position: sticky; top: 0; z-index: 2000;
     }
     .sub-nav::-webkit-scrollbar { display: none; }
     .sub-nav-item {
-        white-space: nowrap;
-        padding: 10px 20px;
-        background: #f0edff;
-        color: #4834d4;
-        text-decoration: none;
-        border-radius: 50px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        border: 2px solid #d1c9ff;
+        white-space: nowrap; padding: 10px 20px;
+        background: #f0edff; color: #4834d4; text-decoration: none;
+        border-radius: 50px; font-size: 1rem; 
+        font-weight: 600; border: 2px solid #d1c9ff;
     }
 
-    /* 3. 標題與段落：套用加粗襯線體 */
-    .brand-heading { position: relative; padding-left: 20px; margin: 20px 0 30px 0; }
+    /* 3. 標題與段落：完全對齊首頁層次 */
+    .brand-heading { position: relative; padding-left: 20px; margin: 40px 0 30px 0; }
     .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%; background: #000; }
     
+    /* 大標題：加粗襯線體 (與活力美髮學堂一致) */
     .brand-heading h1 { 
-        font-family: 'Noto Serif TC', "Apple LiSung", "Songti TC", "新細明體", serif; 
-        font-size: clamp(1.8rem, 8vw, 2.3rem); 
-        margin: 0; 
-        font-weight: 900; /* 設定極粗標題 */
-        letter-spacing: 1px;
-        color: #000; 
+        font-family: 'Noto Serif TC', "Apple LiSung", "Songti TC", serif; 
+        font-size: 2.2rem; 
+        margin: 0; font-weight: 900; letter-spacing: 1px; color: #000; 
     }
     .brand-heading .subtitle { 
-        font-size: 0.85rem; 
-        letter-spacing: 2px; 
-        color: #4834d4; 
-        font-weight: 800; 
+        font-size: 0.85rem; letter-spacing: 2px; color: #4834d4; font-weight: 700; text-transform: uppercase;
     }
 
     .info-section { margin-bottom: 50px; scroll-margin-top: 100px; }
     
+    /* 小節標題：比照首頁段落標題尺寸與加粗 */
     .section-title { 
         font-family: 'Noto Serif TC', serif;
-        font-size: 1.45rem; 
-        margin-bottom: 20px; 
-        font-weight: 900; /* 小節標題加粗 */
-        color: #000; 
-        border-bottom: 4px solid #fbc2eb; 
-        display: inline-block; 
-        padding-bottom: 2px;
+        font-size: 1.5rem; 
+        margin-bottom: 20px; font-weight: 900; 
+        color: #000; border-bottom: 4px solid #fbc2eb; 
+        display: inline-block; padding-bottom: 4px;
     }
     
+    /* 內文文字：比照首頁標準字級，並使用無襯線體保持清晰 */
     .content-text { 
+        font-family: -apple-system, sans-serif;
         font-size: 1.1rem; 
-        font-weight: 500; 
-        color: #000; 
-        line-height: 1.9; 
-        text-align: justify; 
-        margin-bottom: 30px; 
+        font-weight: 400; color: #333; 
+        line-height: 1.9; text-align: justify; margin-bottom: 30px; 
     }
 
     /* 4. 重點元件 */
-    .highlight-box { background: #f0edff; border-left: 6px solid #6c5ce7; padding: 25px; margin: 25px 0; border-radius: 0 12px 12px 0; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.1); }
-    .future-tag { color: #fff; background: #6c5ce7; font-weight: 800; padding: 4px 12px; border-radius: 4px; font-size: 0.9rem; margin-right: 10px; vertical-align: middle; }
+    .highlight-box { background: #f0edff; border-left: 6px solid #6c5ce7; padding: 25px; margin: 25px 0; border-radius: 0 12px 12px 0; }
+    .future-tag { color: #fff; background: #6c5ce7; font-weight: 600; padding: 4px 12px; border-radius: 4px; font-size: 0.9rem; margin-right: 10px; }
     .promo-text { font-family: 'Noto Serif TC', serif; font-weight: 900; font-size: 1.8rem; color: #e91e63; text-decoration: underline; }
 
-    /* 📱 手機版 RWD */
+    /* 📱 手機版 RWD：統一縮放比例 */
     @media (max-width: 768px) {
-        .content-text { font-size: 1.05rem; line-height: 1.8; }
-        .promo-text { font-size: 1.6rem; }
+        .brand-heading h1 { font-size: 1.8rem; }
+        .section-title { font-size: 1.3rem; }
+        .content-text { font-size: 1.05rem; }
     }
 </style>
 
@@ -104,7 +85,7 @@
 <div class="content-inner">
     <section class="brand-heading">
         <h1>募資課程</h1>
-        <span class="subtitle">FUNDRAISING & MARKET INSIGHT</span>
+        <div class="subtitle">FUNDRAISING & MARKET INSIGHT</div>
     </section>
 
     <section class="info-section" id="section1">
@@ -121,7 +102,7 @@
             
             <div style="margin-top: 25px; background: rgba(255, 255, 255, 0.8); padding: 20px; border: 1.5px solid #ddd; border-radius: 12px;">
                 <span class="future-tag">課程預告</span>
-                <strong style="color: #322b5f; font-size: 1.1rem; font-weight: 900;">目前 2 門募資課程預計於 115/06/31 上線。</strong>
+                <strong style="color: #322b5f; font-weight: 700;">目前 2 門募資課程預計於 114/12/31 上線。</strong>
             </div>
         </div>
     </section>
@@ -136,7 +117,7 @@
     <section class="info-section" id="section4">
         <div class="section-title">四、募資優惠價</div>
         <div class="highlight-box">
-            <div class="content-text" style="margin-bottom: 0; font-weight: 700;">
+            <div class="content-text" style="margin-bottom: 0;">
                 預購期間的募資課程皆享有 <span class="promo-text">五折</span> 優惠價格購買。
             </div>
         </div>
@@ -149,4 +130,3 @@
         </div>
     </section>
 </div>
-
