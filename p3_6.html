@@ -6,6 +6,7 @@
     <title>創業經營課程 | 活力美髮學院</title>
     
     <link rel="icon" href="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/poto.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -13,19 +14,20 @@
             --soft-indigo: #f0edff;
             --highlight-pink: #fbc2eb;
             --dark-space: #322b5f;
-            --text-gray: #444;
+            --text-gray: #333;
         }
 
+        /* 1. 基礎設定 - 同步首頁規範 */
         body { 
             margin: 0; 
-            font-family: -apple-system, "Microsoft JhengHei", sans-serif; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
             background: #fdfdfd; 
             color: var(--text-gray); 
             line-height: 1.8; 
             scroll-behavior: smooth;
         }
 
-        /* 浮動導覽 (右側) */
+        /* 2. 浮動導覽 (右側) */
         .floating-nav { 
             position: fixed; top: 50%; right: 0; transform: translateY(-50%); 
             display: flex; flex-direction: column; gap: 2px; z-index: 10000; 
@@ -36,47 +38,68 @@
             writing-mode: vertical-rl; letter-spacing: 2px; text-align: center;
         }
 
-        /* 頁內導覽列 (頂部) */
+        /* 3. 頁內導覽列 (頂部) */
         .anchor-nav { 
             display: flex; gap: 10px; padding: 15px 6%; overflow-x: auto; 
             position: sticky; top: 0; background: rgba(255,255,255,0.95); 
-            z-index: 900; border-bottom: 1px solid #eee; backdrop-filter: blur(10px);
+            z-index: 900; border-bottom: 2px solid #eee; backdrop-filter: blur(10px);
         }
         .anchor-nav::-webkit-scrollbar { display: none; }
         .anchor-item { 
             white-space: nowrap; background: var(--soft-indigo); color: var(--primary-indigo); 
-            padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.85rem; 
+            padding: 8px 18px; border-radius: 50px; font-weight: 800; font-size: 0.95rem; 
             text-decoration: none; border: 1px solid var(--primary-indigo);
         }
 
-        .container { padding: 20px 6% 120px 6%; max-width: 1000px; margin: auto; }
+        .container { padding: 30px 6% 120px 6%; max-width: 1000px; margin: auto; box-sizing: border-box; }
 
-        /* 標題與視覺 */
+        /* 4. 標題與視覺 - 對齊襯線加粗 */
         .brand-heading { position: relative; padding-left: 20px; margin: 30px 0 30px 0; }
         .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: var(--primary-indigo); }
-        .brand-heading h1 { font-size: 2.2rem; font-weight: 900; margin: 0; color: #000; }
-        .brand-heading .subtitle { font-size: 0.8rem; letter-spacing: 2px; color: var(--primary-indigo); font-weight: 800; text-transform: uppercase; }
+        .brand-heading h1 { 
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            margin: 0; 
+            color: #000; 
+        }
+        .brand-heading .subtitle { 
+            font-size: 0.9rem; 
+            letter-spacing: 2px; 
+            color: var(--primary-indigo); 
+            font-weight: 800; 
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
 
-        /* 引言區塊 */
+        /* 5. 引言與標題 */
         .intro-box { 
             background: #fff; padding: 25px; margin-bottom: 40px; 
-            border: 1.5px solid #eee; border-radius: 15px; font-size: 1.05rem; 
-            font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.03); 
+            border: 1.5px solid #eee; border-radius: 15px; font-size: 1.1rem; 
+            font-weight: 500; box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+        }
+        .section-title { 
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem; 
+            margin: 45px 0 25px 0; 
+            font-weight: 900; 
+            border-bottom: 4px solid var(--highlight-pink); 
+            display: inline-block; 
+            padding-bottom: 4px;
+            color: #000;
         }
         .highlight-text { color: var(--primary-indigo); font-weight: 900; border-bottom: 2px solid var(--highlight-pink); }
 
-        /* 管理架構圖 */
-        .section-title { 
-            font-size: 1.4rem; margin: 40px 0 25px 0; font-weight: 900; 
-            border-bottom: 4px solid var(--highlight-pink); display: inline-block; padding-bottom: 5px; 
-        }
-
+        /* 6. 管理矩陣圖優化 */
         .management-grid {
             background: #fff; border: 2px solid var(--primary-indigo); border-radius: 20px;
             padding: 30px; position: relative; margin-bottom: 50px;
             box-shadow: 0 10px 30px rgba(72, 52, 212, 0.08);
         }
-        .grid-header { text-align: center; color: var(--primary-indigo); font-weight: 900; font-size: 1.2rem; margin-bottom: 20px; }
+        .grid-header { 
+            font-family: 'Noto Serif TC', serif;
+            text-align: center; color: var(--primary-indigo); font-weight: 900; font-size: 1.3rem; margin-bottom: 20px; 
+        }
         .main-layout { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 15px; }
         .side-card { 
             border: 1.5px solid var(--soft-indigo); background: var(--soft-indigo);
@@ -85,23 +108,35 @@
         }
         .center-stack { display: flex; flex-direction: column; gap: 12px; }
         .sub-card { border: 1.5px solid #eee; padding: 15px; border-radius: 12px; background: #fff; }
-        .sub-card b { display: block; text-align: center; color: var(--primary-indigo); margin-bottom: 8px; }
-        .sub-card ul { margin: 0; padding-left: 20px; font-size: 0.9rem; font-weight: 600; color: #555; }
+        .sub-card b { 
+            font-family: 'Noto Serif TC', serif;
+            display: block; text-align: center; color: var(--primary-indigo); margin-bottom: 8px; font-size: 1.1rem;
+        }
+        .sub-card ul { margin: 0; padding-left: 20px; font-size: 1rem; font-weight: 500; color: #444; }
 
-        /* 適合對象 */
+        /* 7. 適合對象 */
         .suitability-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .suit-item { background: #fff; padding: 20px; border-radius: 15px; border: 1.5px solid #eee; font-weight: 600; }
-        .suit-item b { color: var(--primary-indigo); display: block; margin-bottom: 5px; font-size: 1.1rem; }
+        .suit-item { background: #fff; padding: 25px; border-radius: 15px; border: 1.5px solid #eee; font-weight: 500; }
+        .suit-item b { 
+            font-family: 'Noto Serif TC', serif;
+            color: var(--primary-indigo); display: block; margin-bottom: 8px; font-size: 1.2rem; 
+        }
 
-        /* 深度分享區 */
+        /* 8. 深度分享區 */
         .talk-text { 
             background: #fff; padding: 40px 30px; border-radius: 20px; 
             border: 1.5px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); margin-top: 50px;
         }
-        .talk-text h2 { font-size: 1.6rem; font-weight: 900; color: var(--dark-space); margin-bottom: 25px; }
+        .talk-text h2 { 
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem; font-weight: 900; color: var(--dark-space); margin-bottom: 25px; 
+        }
+        .talk-text p { font-size: 1.1rem; margin-bottom: 20px; }
 
         @media (max-width: 768px) {
             .main-layout { grid-template-columns: 1fr; }
+            .brand-heading h1 { font-size: 1.8rem; }
+            .section-title { font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -145,7 +180,7 @@
                     </div>
                     <div class="sub-card"><b>下外部管理</b><ul><li>行銷管理、活動管理、社區管理</li></ul></div>
                 </div>
-                <div class="side-card" style="background: #fff; border-color: var(--primary-indigo);">
+                <div class="side-card" style="background: #fff; border: 2px solid var(--primary-indigo);">
                     <span>右外部管理</span>
                     <small style="font-weight:600; margin-top:5px;">品牌管理</small>
                 </div>
@@ -163,7 +198,7 @@
             <div class="suit-item"><b>4. 數位化經營</b>適合想避開傳統競爭的人</div>
             <div class="suit-item"><b>5. 可擴展性</b>適合未來想做大的人</div>
         </div>
-        <div style="background: var(--soft-indigo); padding: 15px; border-radius: 50px; margin-top: 25px; text-align: center; font-weight: 800; color: var(--primary-indigo);">
+        <div style="background: var(--soft-indigo); padding: 20px; border-radius: 50px; margin-top: 30px; text-align: center; font-weight: 800; color: var(--primary-indigo); font-size: 1.05rem;">
             💡 小成本試錯，兼職、斜槓、小創業都適用，現金流明確，成就感高。
         </div>
     </section>
@@ -177,7 +212,7 @@
         <p>更重要的是，<b>創業能創造影響力</b>。您不僅是在為自己賺錢，同時也在服務客戶、改變社會。</p>
     </section>
 
-    <div style="text-align: center; color: #999; font-size: 0.85rem; margin-top: 80px;">
+    <div style="text-align: center; color: #999; font-size: 0.9rem; margin-top: 100px;">
         — 活力美髮學院 創業輔導系統 —
     </div>
 </div>
