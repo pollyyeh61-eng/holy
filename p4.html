@@ -1,26 +1,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <style>
-    /* 1. 全域適配：解決遮擋問題 */
+    /* 1. 全域適配 */
     .p4-wrapper {
         background: #fdfdfd;
         min-height: 100vh;
-        padding-top: 70px; /* 為固定導航列預留空間 */
+        padding-top: 70px;
     }
 
-    /* 頂部二級導航：確保在回首頁按鈕之上 */
     .sub-nav {
         display: flex;
         gap: 12px;
         padding: 12px 6%;
         overflow-x: auto;
-        background: #ffffff; /* 純白背景防止透視 */
+        background: #ffffff;
         border-bottom: 2px solid #f0f0f0;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        z-index: 99999; /* 極高層級，防止被擋住 */
+        z-index: 99999;
         box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
@@ -47,30 +46,38 @@
     .brand-heading h1 { font-size: 1.8rem; margin: 0; font-weight: 900; color: #000; }
     .brand-heading .subtitle { font-size: 0.75rem; color: #6c5ce7; font-weight: 800; letter-spacing: 2px; }
 
-    /* 3. 書籍網格：手機版雙欄顯示 */
+    /* 3. 書籍網格控制 */
     .info-section { margin-bottom: 50px; }
     .section-title { 
         font-size: 1.3rem; margin-bottom: 25px; font-weight: 800; color: #000;
         border-bottom: 4px solid #fbc2eb; display: inline-block; padding-bottom: 3px; 
     }
     
+    /* 預設手機版：每排 2 本 */
     .book-grid { 
         display: grid; 
         grid-template-columns: repeat(2, 1fr); 
         gap: 15px; 
+    }
+
+    /* 電腦版設定：螢幕寬度 > 768px 時改為每排 4 本，照片會自動縮小 */
+    @media (min-width: 768px) {
+        .book-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
     }
     
     .book-card { 
         background: #fff; padding: 12px; border: 1px solid #eee; 
         text-align: center; border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column;
+        /* 已取消 hover 放大效果 */
     }
     
-    /* --- 書封容器優化 --- */
     .book-cover {
         width: 100%; 
         aspect-ratio: 1 / 1.4; 
-        background: #ffffff; /* 改為純白背景 */
+        background: #ffffff;
         margin-bottom: 10px; 
         overflow: hidden; 
         border-radius: 6px;
@@ -83,9 +90,9 @@
     .book-cover img { 
         width: 100%; 
         height: 100%; 
-        object-fit: contain; /* 修改處：改為 contain 確保圖片完整不被裁切 */
+        object-fit: contain;
+        transform: scale(0.8); /* 預設縮小照片比例 */
     }
-    /* ------------------ */
 
     .book-card h4 { margin: 8px 0 4px 0; color: #000; font-size: 0.9rem; font-weight: 800; }
     .book-card p { font-size: 0.7rem; color: #666; margin: 0 0 10px 0; min-height: 2.4em; }
@@ -118,36 +125,25 @@
             <div class="section-title">技術類書籍</div>
             <div class="book-grid">
                 <div class="book-card">
-                    <div class="book-cover">
-                        <img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/染髮1.png" alt="染髮1">
-                    </div>
+                    <div class="book-cover"><img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/染髮1.png" alt="染髮1"></div>
                     <h4>葉老師系列 1</h4>
                     <p>十堂課教你學會染髮</p>
                     <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn">立即購買</a>
                 </div>
-
                 <div class="book-card">
-                    <div class="book-cover">
-                        <img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/燙髮1.png" alt="燙髮1">
-                    </div>
+                    <div class="book-cover"><img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/燙髮1.png" alt="燙髮1"></div>
                     <h4>葉老師系列 2</h4>
                     <p>十堂課教你學會燙髮</p>
                     <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn">立即購買</a>
                 </div>
-
                 <div class="book-card">
-                    <div class="book-cover">
-                        <img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/剪髮1.png" alt="剪髮1">
-                    </div>
+                    <div class="book-cover"><img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/剪髮1.png" alt="剪髮1"></div>
                     <h4>葉老師系列 3</h4>
                     <p>十堂課教你學會剪髮</p>
                     <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn">立即購買</a>
                 </div>
-
                 <div class="book-card">
-                    <div class="book-cover">
-                        <img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/染髮2.png" alt="染髮2">
-                    </div>
+                    <div class="book-cover"><img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/染髮2.png" alt="染髮2"></div>
                     <h4>葉老師系列 4</h4>
                     <p>染髮(二版)實作解析</p>
                     <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn">立即購買</a>
@@ -159,18 +155,13 @@
             <div class="section-title">創業成長類</div>
             <div class="book-grid">
                 <div class="book-card">
-                    <div class="book-cover">
-                        <img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/創業1.png" alt="美髮創業">
-                    </div>
+                    <div class="book-cover"><img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/創業1.png" alt="美髮創業"></div>
                     <h4>葉老師系列 5</h4>
                     <p>教你美髮創業</p>
                     <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn">立即購買</a>
                 </div>
-
                 <div class="book-card">
-                    <div class="book-cover">
-                        <img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/講師1.png" alt="美髮講師">
-                    </div>
+                    <div class="book-cover"><img src="https://raw.githubusercontent.com/pollyyeh61-eng/holy/main/講師1.png" alt="美髮講師"></div>
                     <h4>葉老師系列 6</h4>
                     <p>教你成為美髮講師</p>
                     <a href="https://shopee.tw/holy60" target="_blank" class="buy-btn">立即購買</a>
