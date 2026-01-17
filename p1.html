@@ -1,7 +1,10 @@
+<div><br class="Apple-interchange-newline">
 <style>
-    /* 1. 調整整體內距，讓內容在手機上不會頂到上下選單 */
+    /* 1. 調整整體內距與置中 */
     .content-inner { 
         padding: clamp(40px, 10%, 80px) 6% 120px 6%; 
+        max-width: 1000px; /* 設定最大寬度以利置中 */
+        margin: 0 auto;    /* 電腦版水平置中 */
     }
 
     /* 2. 標題區域優化 */
@@ -9,16 +12,16 @@
         position: relative; 
         padding-left: 20px; 
         margin-bottom: 30px; 
+        text-align: left; /* 保持標題文字左對齊 */
     }
     .brand-heading::before { content: ""; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: #000; }
     
-    /* 標題字體縮小：使用 clamp 確保手機不折行，電腦夠大 */
     .brand-heading h1 { 
         font-size: clamp(1.8rem, 8vw, 2.8rem); 
         margin: 0; 
         letter-spacing: 2px; 
         font-weight: 800; 
-        color: #000; /* 純黑增加清晰度 */
+        color: #000; 
     }
     .brand-heading .subtitle { 
         font-size: 0.8rem; 
@@ -27,18 +30,17 @@
         font-weight: 700; 
     }
 
-    /* 3. 內文顏色加深與字體微調 */
-    .info-section { margin-bottom: 40px; max-width: 700px; }
+    /* 3. 內文樣式 */
+    .info-section { margin-bottom: 40px; max-width: 800px; }
     
     p { 
-        color: #000000 !important; /* 強制純黑 */
-        font-size: 1.05rem;        /* 稍微放大字體 */
-        line-height: 1.8;          /* 增加行高，閱讀更輕鬆 */
-        font-weight: 450;          /* 增加一點點粗度 */
+        color: #000000 !important; 
+        font-size: 1.05rem;        
+        line-height: 1.8;          
+        font-weight: 450;          
         margin-bottom: 1.2em;
     }
 
-    /* 強調語錄加深 */
     .highlight-quote { 
         font-size: 1.1rem; 
         font-weight: 700; 
@@ -46,10 +48,10 @@
         padding: 15px 20px; 
         margin: 25px 0; 
         color: #000; 
-        background: rgba(108, 92, 231, 0.08); /* 稍微加深底色 */
+        background: rgba(108, 92, 231, 0.08); 
     }
 
-    /* 4. 職涯路徑卡片在手機改為單欄 */
+    /* 4. 職涯路徑卡片 */
     .path-grid { 
         display: grid; 
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
@@ -59,7 +61,7 @@
     .path-card { 
         background: rgba(255,255,255,0.7); 
         padding: 20px; 
-        border: 1px solid #ccc; /* 邊框顏色加深 */
+        border: 1px solid #ccc; 
         backdrop-filter: blur(10px); 
     }
     .path-card h4 { 
@@ -71,9 +73,14 @@
 
     /* 5. 手機版特別修正 */
     @media (max-width: 768px) {
-        .content-inner { padding-top: 30px; } /* 減少上方留白 */
+        .content-inner { padding-top: 30px; } 
         .brand-heading { padding-left: 15px; }
-        .path-grid { grid-template-columns: 1fr; } /* 強制單欄排列 */
+        .path-grid { grid-template-columns: 1fr; } 
+        
+        /* 手機版字體加粗一級 */
+        p { 
+            font-weight: 600; 
+        }
     }
 </style>
 
@@ -84,7 +91,7 @@
     </section>
 
     <section class="info-section">
-        <p>融合沙龍實戰 + 學術理論 + 著作精華，打造市場稀缺的<strong>三維課程結構</strong>。<br>
+        <p>融合沙龍實戰 + 學術理論 + 著作精華，打造市場稀缺的<strong>三維課程結構</strong>。<br><br>
             🥇 專業不是一夕之間學會，而是日復一日的磨練。選擇二年制專班，您將真正體驗學習的價值。</p>
         
         <div class="highlight-quote">“ 您可以一時學會一個技巧，但只有系統學習，才能成就深厚底蘊。 ”</div>
@@ -110,4 +117,5 @@
         <p>🚩 美髮業的職涯天花板由自己定義。將技術「商品化」，才能突破體力與時間的限制。</p>
         <p style="font-weight: 800; color: #4834d4; margin-bottom: 0; font-size: 1.1rem;">活力美髮學堂：品牌定位與核心價值主張</p>
     </section>
+</div>
 </div>
