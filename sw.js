@@ -1,9 +1,16 @@
-// 簡化版 sw.js
-self.addEventListener('install', (event) => {
-  self.skipWaiting(); // 強制跳過等待，直接激活
-});
+const CACHE_NAME = 'v-system-v2'; // 每次更新版本請改名
 
-self.addEventListener('fetch', (event) => {
-  // 暫時不執行複雜快取，確保請求正常通過
-  event.respondWith(fetch(event.request));
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cache) => {
+                    if (cache !== CACHE_NAME) {
+                        console.log('🛡️ 清理舊版戰略快取:', cache);
+                        return caches.delete(cache);
+                    }
+                })
+            );
+        }).then(() => self.clients.claim()) // 立即接管所有頁面
+    );
 });
