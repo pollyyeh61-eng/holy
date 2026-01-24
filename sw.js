@@ -10,7 +10,8 @@ const ASSETS_TO_CACHE = [
   './index.html',
   // 如果有其他 CSS 或圖示檔案，請列於此
 ];
-
+// 在 index.html 註冊 sw 時改為：
+navigator.serviceWorker.register('./sw.js?v=' + Date.now());
 // 1. 安裝階段：強制跳過等待
 self.addEventListener('install', (event) => {
   self.skipWaiting();
@@ -54,9 +55,8 @@ self.addEventListener('fetch', (event) => {
       .catch(() => {
         // 網路斷開或失敗，回傳快取內容
         return caches.match(event.request);
-      // 在 index.html 註冊 sw 時改為：
-navigator.serviceWorker.register('./sw.js?v=' + Date.now());
       })
   );
 });
+
 
