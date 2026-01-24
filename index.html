@@ -10,7 +10,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>活力美髮學堂官網</title>
     <link rel="manifest" href="/manifest.json">
+/**
+ * V-System 客戶端核心控制邏輯
+ * 20px 核心邏輯：確保戰略資產即時同步，不回流舊版
+ */
+const APP_VERSION = "2.0.0"; // 每次發布二版、三版請務必修改此處
 
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        // 在註冊時加上版本號，強迫瀏覽器檢查 sw.js 是否更新
+        navigator.serviceWorker.register(`./sw.js?v=${APP_VERSION}`).then(reg => {
+            
+            // 檢查是否有更新正在等待
+            reg.addEventListener('updatefound', () => {
+                const newWorker = reg.installing;
+                newWorker.addEventListener('statechange', () => {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                        console.log("🛡️ 偵測到新戰略佈局，即將自動升級...");
+                        // 20px 提示：這裡可以加入一個精美的通知按鈕
+                        window.location.reload(); 
+                    }
+                });
+            });
+
+            // 強制執行一次更新檢查
+            reg.update();
+        }).catch(err => console.error("SW 註冊失敗:", err));
+    });
+
+    // 監聽 Service Worker 控制權更換（當 skipWaiting 觸發時）
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (refreshing) return;
+        refreshing = true;
+        window.location.reload();
+    });
+}
+
+// 版本強制對齊邏輯：防止 LocalStorage 數據結構衝突
+const savedVersion = localStorage.getItem('vsys_version');
+if (savedVersion !== APP_VERSION) {
+    console.log("清理舊版殘留數據...");
+    // 保留解鎖密碼，清理其他配置以重新導入範本
+    const unlockStatus = sessionStorage.getItem('vsystem_unlocked');
+    localStorage.clear();
+    localStorage.setItem('vsys_version', APP_VERSION);
+    if(unlockStatus) sessionStorage.setItem('vsystem_unlocked', unlockStatus);
+}
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -186,6 +232,7 @@
     </script>
 </body>
 </html>
+
 
 
 
