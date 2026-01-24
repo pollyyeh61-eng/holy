@@ -10,120 +10,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>活力美髮學堂官網</title>
     <link rel="manifest" href="/manifest.json">
-/**
- * V-System 客戶端核心控制邏輯
- * 20px 核心邏輯：確保戰略資產即時同步，不回流舊版
- */
-const APP_VERSION = "2.0.0"; // 每次發布二版、三版請務必修改此處
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        // 在註冊時加上版本號，強迫瀏覽器檢查 sw.js 是否更新
-        navigator.serviceWorker.register(`./sw.js?v=${APP_VERSION}`).then(reg => {
-            
-            // 檢查是否有更新正在等待
-            reg.addEventListener('updatefound', () => {
-                const newWorker = reg.installing;
-                newWorker.addEventListener('statechange', () => {
-                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                        console.log("🛡️ 偵測到新戰略佈局，即將自動升級...");
-                        // 20px 提示：這裡可以加入一個精美的通知按鈕
-                        window.location.reload(); 
-                    }
-                });
+    <script>
+        const APP_VERSION = "2.0.0"; // 每次發布二版、三版請務必修改此處
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // 在註冊時加上版本號，強迫瀏覽器檢查 sw.js 是否更新
+                navigator.serviceWorker.register(`./sw.js?v=${APP_VERSION}`).then(reg => {
+                    console.log('🛡️ 戰略總部 PWA 註冊成功！', reg);
+                    
+                    reg.addEventListener('updatefound', () => {
+                        const newWorker = reg.installing;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                console.log("🛡️ 偵測到新佈局，即將自動升級...");
+                                window.location.reload(); 
+                            }
+                        });
+                    });
+                    reg.update();
+                }).catch(err => console.error("SW 註冊失敗:", err));
             });
 
-            // 強制執行一次更新檢查
-            reg.update();
-        }).catch(err => console.error("SW 註冊失敗:", err));
-    });
+            let refreshing = false;
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                if (refreshing) return;
+                refreshing = true;
+                window.location.reload();
+            });
+        }
 
-    // 監聽 Service Worker 控制權更換（當 skipWaiting 觸發時）
-    let refreshing = false;
-    navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (refreshing) return;
-        refreshing = true;
-        window.location.reload();
-    });
-}
+        // 版本強制對齊
+        const savedVersion = localStorage.getItem('vsys_version');
+        if (savedVersion !== APP_VERSION) {
+            localStorage.clear();
+            localStorage.setItem('vsys_version', APP_VERSION);
+        }
+    </script>
 
-// 版本強制對齊邏輯：防止 LocalStorage 數據結構衝突
-const savedVersion = localStorage.getItem('vsys_version');
-if (savedVersion !== APP_VERSION) {
-    console.log("清理舊版殘留數據...");
-    // 保留解鎖密碼，清理其他配置以重新導入範本
-    const unlockStatus = sessionStorage.getItem('vsystem_unlocked');
-    localStorage.clear();
-    localStorage.setItem('vsys_version', APP_VERSION);
-    if(unlockStatus) sessionStorage.setItem('vsystem_unlocked', unlockStatus);
-}
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('PWA 註冊成功！', reg))
-        .catch(err => console.log('PWA 註冊失敗：', err));
-    });
-  }
-</script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&family=Noto+Sans+TC:wght@300;400&display=swap');
-
         body, html { margin: 0; padding: 0; height: 100%; font-family: 'Noto Serif TC', serif; overflow: hidden; background-color: #fff; }
-        
         .app-container {
             display: flex; 
-            flex-direction: column; /* 改為垂直排列讓選單在頂部 */
+            flex-direction: column;
             height: 100vh;
             background: white linear-gradient(105deg, #fff 0%, #fff 25%, #fceae6 40%, #fbc2eb 60%, #a1c4fd 85%, #c2e9fb 100%);
             background-attachment: fixed;
         }
-
         /* --- [電腦版] 頂部導航列 --- */
         .nav-header {
-            width: 100%;
-            height: 80px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.2); 
-            backdrop-filter: blur(25px); 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            z-index: 1000;
+            width: 100%; height: 80px; display: flex; justify-content: center; align-items: center;
+            background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(25px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); z-index: 1000;
         }
-        
-        .nav-box {
-            display: flex;
-            gap: 5px;
-        }
-
+        .nav-box { display: flex; gap: 5px; }
         .nav-item { 
-            padding: 10px 20px; 
-            cursor: pointer; 
-            color: #322b5f; 
-            letter-spacing: 1px; 
-            transition: 0.3s; 
-            font-weight: 500;
-            font-size: 1rem;
-            border-bottom: 3px solid transparent;
+            padding: 10px 20px; cursor: pointer; color: #322b5f; 
+            transition: 0.3s; font-weight: 500; font-size: 1rem;
+            border-bottom: 3px solid transparent; display: flex; align-items: center;
         }
-        
         .nav-item:hover { color: #6c5ce7; }
-
-        .nav-item.active { 
-            color: #6c5ce7;
-            border-bottom: 3px solid #6c5ce7; 
-            font-weight: 700; 
-        }
-
-        /* 內容顯示區塊 */
-        #content-target { 
-            flex: 1; 
-            width: 100%;
-            overflow-y: auto; 
-            scrollbar-width: none; 
-            transition: opacity 0.3s ease, transform 0.3s ease; 
-        }
+        .nav-item.active { color: #6c5ce7; border-bottom: 3px solid #6c5ce7; font-weight: 700; }
+        #content-target { flex: 1; width: 100%; overflow-y: auto; scrollbar-width: none; }
         #content-target::-webkit-scrollbar { display: none; }
 
         /* --- [手機版] 導航設計 --- */
@@ -134,25 +84,14 @@ if (savedVersion !== APP_VERSION) {
         }
         #mobile-top { top: 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
         #mobile-bottom { bottom: 0; border-top: 1px solid rgba(0,0,0,0.05); padding-bottom: env(safe-area-inset-bottom); }
-
         .mobile-nav-list { display: flex; justify-content: space-around; align-items: center; height: 60px; }
-        
-        .m-btn { 
-            flex: 1; text-align: center; font-size: 0.85rem; color: #666; 
-            display: flex; flex-direction: column; justify-content: center; height: 100%;
-            transition: all 0.2s ease; cursor: pointer;
-        }
+        .m-btn { flex: 1; text-align: center; font-size: 0.85rem; color: #666; display: flex; flex-direction: column; justify-content: center; height: 100%; transition: all 0.2s ease; cursor: pointer; }
         .m-btn.active { color: #6c5ce7; font-weight: 700; }
 
-        /* --- RWD 響應式佈局 --- */
         @media (max-width: 768px) {
-            .nav-header { display: none; } /* 手機版隱藏電腦頂部選單 */
+            .nav-header { display: none; }
             .mobile-nav { display: block; }
-            #content-target { 
-                margin-top: 60px; 
-                margin-bottom: 60px; 
-                height: calc(100vh - 120px);
-            }
+            #content-target { margin-top: 60px; margin-bottom: 60px; height: calc(100vh - 120px); }
         }
     </style>
 </head>
@@ -166,8 +105,9 @@ if (savedVersion !== APP_VERSION) {
                 <div class="nav-item" onclick="loadPage('p3.html', this)">專業課程</div>
                 <div class="nav-item" onclick="loadPage('p4.html', this)">美髮書坊</div>
                 <div class="nav-item" onclick="loadPage('p5.html', this)">募資課程</div>
-<div class="nav-item" onclick="window.open('https://transfer.hairweb.net/', '_blank')">
-    <span class="nav-icon">🤝</span> 技轉授權</div>
+                <div class="nav-item" onclick="window.open('https://transfer.hairweb.net/', '_blank')">
+                    <span style="margin-right:5px">🤝</span> 技轉授權
+                </div>
                 <div class="nav-item" onclick="loadPage('p7.html', this)">常見問題</div>
                 <div class="nav-item" onclick="loadPage('p8.html', this)">關於我</div>
             </div>
@@ -187,7 +127,7 @@ if (savedVersion !== APP_VERSION) {
         <nav class="mobile-nav" id="mobile-bottom">
             <div class="mobile-nav-list">
                 <div class="m-btn" onclick="loadPage('p5.html', this)"><span>募資</span></div>
-                <div class="m-btn" onclick="loadPage('p6.html', this)"><span>授權</span></div>
+                <div class="m-btn" onclick="window.open('https://transfer.hairweb.net/', '_blank')"><span>授權</span></div>
                 <div class="m-btn" onclick="loadPage('p7.html', this)"><span>Q&A</span></div>
                 <div class="m-btn" onclick="loadPage('p8.html', this)"><span>關於我</span></div>
             </div>
@@ -198,7 +138,7 @@ if (savedVersion !== APP_VERSION) {
         async function loadPage(url, element) {
             const target = document.getElementById('content-target');
             
-            // 同步電腦版與手機版狀態
+            // 處理選單 Active 狀態
             document.querySelectorAll('.nav-item, .m-btn').forEach(el => {
                 el.classList.remove('active');
                 let targetText = element.innerText || element.textContent;
@@ -223,18 +163,10 @@ if (savedVersion !== APP_VERSION) {
                 }, 200);
             } catch (err) {
                 console.error("載入失敗:", err);
-                target.innerHTML = "<div style='padding:50px; text-align:center;'>內容載入中或頁面不存在...</div>";
+                target.innerHTML = "<div style='padding:50px; text-align:center;'>內容載入中...</div>";
             }
         }
-
-        // 初始載入第一頁
         window.onload = () => loadPage('p1.html', document.querySelector('.nav-item'));
     </script>
 </body>
 </html>
-
-
-
-
-
-
