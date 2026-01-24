@@ -12,25 +12,22 @@
     <link rel="manifest" href="/manifest.json">
 
     <script>
-        const APP_VERSION = "2.0.0"; // 每次發布二版、三版請務必修改此處
+        const APP_VERSION = "2.0.0"; 
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                // 在註冊時加上版本號，強迫瀏覽器檢查 sw.js 是否更新
                 navigator.serviceWorker.register(`./sw.js?v=${APP_VERSION}`).then(reg => {
-                    console.log('🛡️ 戰略總部 PWA 註冊成功！', reg);
-                    
+                    console.log("🛡️ 戰略總部已啟動");
                     reg.addEventListener('updatefound', () => {
                         const newWorker = reg.installing;
                         newWorker.addEventListener('statechange', () => {
                             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                console.log("🛡️ 偵測到新佈局，即將自動升級...");
                                 window.location.reload(); 
                             }
                         });
                     });
                     reg.update();
-                }).catch(err => console.error("SW 註冊失敗:", err));
+                }).catch(err => console.error("SW 錯誤:", err));
             });
 
             let refreshing = false;
@@ -41,9 +38,8 @@
             });
         }
 
-        // 版本強制對齊
-        const savedVersion = localStorage.getItem('vsys_version');
-        if (savedVersion !== APP_VERSION) {
+        // 版本強制清理
+        if (localStorage.getItem('vsys_version') !== APP_VERSION) {
             localStorage.clear();
             localStorage.setItem('vsys_version', APP_VERSION);
         }
@@ -52,51 +48,23 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&family=Noto+Sans+TC:wght@300;400&display=swap');
         body, html { margin: 0; padding: 0; height: 100%; font-family: 'Noto Serif TC', serif; overflow: hidden; background-color: #fff; }
-        .app-container {
-            display: flex; 
-            flex-direction: column;
-            height: 100vh;
-            background: white linear-gradient(105deg, #fff 0%, #fff 25%, #fceae6 40%, #fbc2eb 60%, #a1c4fd 85%, #c2e9fb 100%);
-            background-attachment: fixed;
-        }
-        /* --- [電腦版] 頂部導航列 --- */
-        .nav-header {
-            width: 100%; height: 80px; display: flex; justify-content: center; align-items: center;
-            background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(25px); 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3); z-index: 1000;
-        }
+        .app-container { display: flex; flex-direction: column; height: 100vh; background: white linear-gradient(105deg, #fff 0%, #fff 25%, #fceae6 40%, #fbc2eb 60%, #a1c4fd 85%, #c2e9fb 100%); background-attachment: fixed; }
+        .nav-header { width: 100%; height: 80px; display: flex; justify-content: center; align-items: center; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); z-index: 1000; }
         .nav-box { display: flex; gap: 5px; }
-        .nav-item { 
-            padding: 10px 20px; cursor: pointer; color: #322b5f; 
-            transition: 0.3s; font-weight: 500; font-size: 1rem;
-            border-bottom: 3px solid transparent; display: flex; align-items: center;
-        }
-        .nav-item:hover { color: #6c5ce7; }
+        .nav-item { padding: 10px 20px; cursor: pointer; color: #322b5f; transition: 0.3s; font-weight: 500; font-size: 1rem; border-bottom: 3px solid transparent; }
         .nav-item.active { color: #6c5ce7; border-bottom: 3px solid #6c5ce7; font-weight: 700; }
         #content-target { flex: 1; width: 100%; overflow-y: auto; scrollbar-width: none; }
         #content-target::-webkit-scrollbar { display: none; }
-
-        /* --- [手機版] 導航設計 --- */
-        .mobile-nav { 
-            display: none; position: fixed; width: 100%; left: 0; 
-            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); 
-            z-index: 2000; box-shadow: 0 0 10px rgba(0,0,0,0.05);
-        }
+        .mobile-nav { display: none; position: fixed; width: 100%; left: 0; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); z-index: 2000; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
         #mobile-top { top: 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
         #mobile-bottom { bottom: 0; border-top: 1px solid rgba(0,0,0,0.05); padding-bottom: env(safe-area-inset-bottom); }
         .mobile-nav-list { display: flex; justify-content: space-around; align-items: center; height: 60px; }
-        .m-btn { flex: 1; text-align: center; font-size: 0.85rem; color: #666; display: flex; flex-direction: column; justify-content: center; height: 100%; transition: all 0.2s ease; cursor: pointer; }
+        .m-btn { flex: 1; text-align: center; font-size: 0.85rem; color: #666; display: flex; flex-direction: column; justify-content: center; height: 100%; cursor: pointer; }
         .m-btn.active { color: #6c5ce7; font-weight: 700; }
-
-        @media (max-width: 768px) {
-            .nav-header { display: none; }
-            .mobile-nav { display: block; }
-            #content-target { margin-top: 60px; margin-bottom: 60px; height: calc(100vh - 120px); }
-        }
+        @media (max-width: 768px) { .nav-header { display: none; } .mobile-nav { display: block; } #content-target { margin-top: 60px; margin-bottom: 60px; height: calc(100vh - 120px); } }
     </style>
 </head>
 <body>
-
     <div class="app-container">
         <header class="nav-header">
             <div class="nav-box">
@@ -105,9 +73,7 @@
                 <div class="nav-item" onclick="loadPage('p3.html', this)">專業課程</div>
                 <div class="nav-item" onclick="loadPage('p4.html', this)">美髮書坊</div>
                 <div class="nav-item" onclick="loadPage('p5.html', this)">募資課程</div>
-                <div class="nav-item" onclick="window.open('https://transfer.hairweb.net/', '_blank')">
-                    <span style="margin-right:5px">🤝</span> 技轉授權
-                </div>
+                <div class="nav-item" onclick="window.open('https://transfer.hairweb.net/', '_blank')">🤝 技轉授權</div>
                 <div class="nav-item" onclick="loadPage('p7.html', this)">常見問題</div>
                 <div class="nav-item" onclick="loadPage('p8.html', this)">關於我</div>
             </div>
@@ -137,34 +103,20 @@
     <script>
         async function loadPage(url, element) {
             const target = document.getElementById('content-target');
-            
-            // 處理選單 Active 狀態
             document.querySelectorAll('.nav-item, .m-btn').forEach(el => {
                 el.classList.remove('active');
-                let targetText = element.innerText || element.textContent;
-                let elText = el.innerText || el.textContent;
-                if(elText.includes(targetText.trim())) {
-                    el.classList.add('active');
-                }
+                if((el.innerText || el.textContent).includes((element.innerText || element.textContent).trim())) el.classList.add('active');
             });
-
             target.style.opacity = 0;
-            target.style.transform = "translateY(10px)";
-
             try {
                 const response = await fetch(url);
                 const html = await response.text();
-                
                 setTimeout(() => {
                     target.innerHTML = html;
                     target.style.opacity = 1;
-                    target.style.transform = "translateY(0)";
                     target.scrollTop = 0;
                 }, 200);
-            } catch (err) {
-                console.error("載入失敗:", err);
-                target.innerHTML = "<div style='padding:50px; text-align:center;'>內容載入中...</div>";
-            }
+            } catch (err) { target.innerHTML = "<div style='padding:50px; text-align:center;'>內容載入中...</div>"; }
         }
         window.onload = () => loadPage('p1.html', document.querySelector('.nav-item'));
     </script>
