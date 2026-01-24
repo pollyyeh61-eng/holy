@@ -54,6 +54,9 @@ self.addEventListener('fetch', (event) => {
       .catch(() => {
         // 網路斷開或失敗，回傳快取內容
         return caches.match(event.request);
+      // 在 index.html 註冊 sw 時改為：
+navigator.serviceWorker.register('./sw.js?v=' + Date.now());
       })
   );
 });
+
